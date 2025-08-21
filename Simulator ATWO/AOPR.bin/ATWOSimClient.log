@@ -1,0 +1,22 @@
+<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : Ajak - 653 ; InstanceIndex : 29423
+<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : BMP1 ; InstanceIndex : 28411
+<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : Regu - 01 ; InstanceIndex : 28418
+<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : Teluk Bintuni - 520 ; InstanceIndex : 28409
+<04 Oct 2023 12:35:21> [netVBSOnConnected] Connected to VBS Socket
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0034> CPID_UDP_GAMECTRL_INFO
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0034> CPID_UDP_GAMECTRL_INFO
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0187> CPID_CMD_VERSION
+<04 Oct 2023 12:35:21> [TSimMgr_Client.netRecv_CmdVersion] Receive Data from : 236.184.66.0
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0187> CPID_CMD_VERSION
+<04 Oct 2023 12:35:21> [TSimMgr_Client.netRecv_CmdVersion] Receive Data from : 20.0.14.0
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0059> CPID_CMD_GAME_CTRL               
+<04 Oct 2023 12:35:28> [netVBSOnDisConnected] Disonnected to VBS Socket
+<04 Oct 2023 12:35:30> [netVBSOnDisConnected] Disonnected to VBS Socket

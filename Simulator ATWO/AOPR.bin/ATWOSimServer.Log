@@ -1,0 +1,17 @@
+<20 Feb 2025 14:15:04> [TT3Unit.SetInstanceIndex] InstanceName : Ajak - 653 ; InstanceIndex : 29423
+<20 Feb 2025 14:15:04> [TT3Unit.SetInstanceIndex] InstanceName : BMP1 ; InstanceIndex : 28411
+<20 Feb 2025 14:15:04> [TT3Unit.SetInstanceIndex] InstanceName : Regu - 01 ; InstanceIndex : 28418
+<20 Feb 2025 14:15:04> [TT3Unit.SetInstanceIndex] InstanceName : Teluk Bintuni - 520 ; InstanceIndex : 28409
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.LoadScenarioID] Load Peta
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.LoadScenarioID] D:\Map\GST_GAME\AOTC\Prince Map\Prince Map.gst
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientConnect] 192.168.0.15: _ONLINE_ 
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.15: CPID_TCP_REQUEST                  :  Cubicle Assignment
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netSend_CubicleAssignInfo] Cubicle Count : 0
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.15: CPID_TCP_REQUEST                  :  Synch Game Ctrl Info
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.15: CPID_TCP_REQUEST                  :  Synch Missed Packet
