@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-	<Default.Personality>
-		<Projects ActiveProject="D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRRemote\AOPRRServer.dproj"/>
-	</Default.Personality>
+  <Default.Personality>
+    <Projects ActiveProject="D:\P. AOTC\Simulator AOTC\AOPR.Source\AOPRGameController\GC.dproj"/>
+  </Default.Personality>
 </BorlandProject>

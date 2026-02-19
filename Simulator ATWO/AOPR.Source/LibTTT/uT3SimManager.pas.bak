@@ -95,7 +95,7 @@ type
     FTimeToGo      : TDateTime;
     FElapseTimeToGo: Extended;
 
-//    FGDefList : TList;
+    FGDefList : TList;
     FStateOrderIDRequestDataPosFromVBS : Byte;
 
     FVersion : string;
@@ -1525,16 +1525,61 @@ end;
 
 function TT3SimManager.GetConsoleIdentification: Boolean;
 var
-
+  WMIServices : ISWbemServices;
+  Root        : ISWbemObjectSet;
+  Item        : Variant;
   snTemp      : string;
   regTemp     : string;
-
+  Address     : string;
+  dateTemp    : string;
+  stop, start : TDateTime;
+  selisih     : Double;
+  Tahun, Bulan, Hari : Word;
 begin
   snTemp :=  '';
   regTemp := '';
 
-  Result := snTemp = regTemp;
+  WMIServices := CoSWbemLocator.Create.ConnectServer('.', 'root\cimv2','', '', '', '', 0, nil);
+  Root  := WMIServices.ExecQuery('Select SerialNumber From Win32_DiskDrive','WQL', 0, nil);
+  Item := Root.ItemIndex(0);
+  snTemp:=VarToStr(Item.SerialNumber);
+
+  snTemp := ReplaceStr(snTemp, '_', '');
+  snTemp := ReplaceStr(snTemp, '.', '');
+  snTemp := RightStr(snTemp,8);
+
+  Address := 'Software\CmPack\CmLogin';
+  try
+    try
+      FReg := Tregistry.Create;
+      FReg.OpenKey(Address,False);
+      regTemp := FReg.ReadString('LockID');
+      dateTemp := FReg.ReadString('Date');
+    except on ERegistryException do
+    end;
+  finally
+    FReg.CloseKey;
+  end;
+
+  DecodeDate(Now, Tahun, Bulan, Hari);
+  start := EncodeDate(Tahun, Bulan, Hari);
+
+  Stop := StrToFloat(dateTemp);
+  selisih := Stop - start;
+
+  if dateTemp = 'U' then
+  begin
+    Result := snTemp = regTemp;
+  end
+  else
+  begin
+    if selisih < 0 then
+      Result := False
+    else
+      Result := snTemp = regTemp;
+  end;
 end;
+
 
 procedure TT3SimManager.GetFuelConsBySpeed(aVehicle : TT3Vehicle; aSpeed: Double; var
   afuelCons: Double);
@@ -1883,7 +1928,7 @@ begin
   end;
   Inc(FLastPlottingID);
 
-//  FGDefList := FScenario.GDefList;
+  FGDefList := FScenario.GDefList;
 end;
 
 procedure TT3SimManager.LoadReferencePoint();
@@ -2913,7 +2958,7 @@ begin
           end
           else if p is TT3Torpedo then
           begin
-            if (TT3Torpedo(p).WeaponCategory = wcTorpedoWireGuided) then
+            if (TT3Torpedo(p).TipeTorpedo = 8) then
             begin
               if not(TT3Torpedo(p).WireBreak) then
               begin
@@ -2947,7 +2992,7 @@ begin
           end
           else if p is TT3Torpedo then
           begin
-            if (TT3Torpedo(p).WeaponCategory = wcTorpedoWireGuided) then
+            if (TT3Torpedo(p).TipeTorpedo = 8) then
             begin
               if not(TT3Torpedo(p).WireBreak) then
               begin
@@ -4742,15 +4787,12 @@ begin
       {(5)TorpedoStraigth,    (6)TorpedoActiveAcoustic,  (7)TorpedoPassiveAcoustic, (8)TorpedoWireGuided,
        (9) TorpedoWakeHoming, (10) TorpedoActivePassive, (11) TorpedoAirDropped }
     {$ENDREGION}
-
-    if TWeapoonCategory(r^.TorpType) = wcTorpedoActiveAcoustic then
+    if (r^.TorpType = 6) then
     begin
-
       {$REGION 'Konstanta Acoustic'}
       {(1)Tube, (2)Firing Mode, (3)RunOut Mode, (4)SearchRadius, (5)SearchDepth,
       (6)Safety Ceiling, (7)SeekerRange, (8)GyroAngle }
       {$ENDREGION}
-
       if r^.OrderType = 1 then
         VehicleWeapon.TubeOn := Round(r^.Param)
       else if r^.OrderType = 2 then
@@ -4773,30 +4815,9 @@ begin
         VehicleWeapon.ButtonPlan := False;
       end;
 
-//      case r^.OrderType of
-//        ORDERTYPE_Tube          : VehicleWeapon.TubeOn := Round(r^.Param);
-//        ORDERTYPE_FiringMode    : VehicleWeapon.FiringMode := Round(r^.Param);
-//        ORDERTYPE_RunOutMode    : VehicleWeapon.RunOutMode := Round(r^.Param);
-//        ORDERTYPE_SearchRadius  : VehicleWeapon.SearchRadius := r^.Param;
-//        ORDERTYPE_SearchDepth   : VehicleWeapon.SearchDepth := r^.Param;
-//        ORDERTYPE_SafetyCeiling : VehicleWeapon.SafetyCeiling := r^.Param;
-//        ORDERTYPE_SeekerRange   : VehicleWeapon.SeekerRange := r^.Param;
-//        ORDERTYPE_GyroAngle     : VehicleWeapon.GyroAngle := Round(r^.Param);
-//        ORDERTYPE_Button :
-//        begin
-//          VehicleWeapon.ButtonLaunch := True;
-//          VehicleWeapon.ButtonPlan := False;
-//        end;
-//      end;
     end
-    else if TWeapoonCategory(r^.TorpType) = wcTorpedoWakeHoming then
+    else if (r^.TorpType = 9) then
     begin
-//      case r^.OrderType of
-//        ORDERTYPE_SeekerRange   : VehicleWeapon.SeekerRange := r^.Param;
-//        ORDERTYPE_SalvoSize     : VehicleWeapon.SalvoSize := Round(r^.Param);
-//        ORDERTYPE_LaunchBearing : VehicleWeapon.LaunchBearing := r^.Param;
-//      end;
-
       if r^.OrderType = 1 then
         VehicleWeapon.SalvoSize := Round(r^.Param)
       else if r^.OrderType = 2 then
@@ -4804,16 +4825,8 @@ begin
       else if r^.OrderType = 3 then
         VehicleWeapon.SeekerRange := r^.Param
     end
-    else if TWeapoonCategory(r^.TorpType) = wcTorpedoActivePassive then
+    else if r^.TorpType = 10 then
     begin
-//      case r^.OrderType of
-//        ORDERTYPE_SearchRadius  : VehicleWeapon.SearchRadius := r^.Param;
-//        ORDERTYPE_SearchDepth   : VehicleWeapon.SearchDepth := r^.Param;
-//        ORDERTYPE_SafetyCeiling : VehicleWeapon.SafetyCeiling := r^.Param;
-//        ORDERTYPE_SeekerRange   : VehicleWeapon.SeekerRange := r^.Param;
-//        ORDERTYPE_SalvoSize     : VehicleWeapon.SalvoSize := Round(r^.Param);
-//      end;
-
       if r^.OrderType = 1 then
         VehicleWeapon.SalvoSize := Round(r^.Param)
       else if r^.OrderType = 2 then
@@ -4825,25 +4838,10 @@ begin
       else if r^.OrderType = 5 then
         VehicleWeapon.SeekerRange := r^.Param
     end
-    else if TWeapoonCategory(r^.TorpType) = wcTorpedoAirDropped then
+    else if r^.TorpType = 11 then
     begin
-//      case r^.OrderType of
-//        ORDERTYPE_SearchRadius  : VehicleWeapon.SearchRadius := r^.Param;
-//        ORDERTYPE_SearchDepth   : VehicleWeapon.SearchDepth := r^.Param;
-//        ORDERTYPE_SafetyCeiling : VehicleWeapon.SafetyCeiling := r^.Param;
-//        ORDERTYPE_SeekerRange   : VehicleWeapon.SeekerRange := r^.Param;
-//        ORDERTYPE_LaunchBearing : VehicleWeapon.LaunchBearing := r^.Param;
-//        ORDERTYPE_Button :
-//        begin
-//          if r^.Param = 1 then
-//            VehicleWeapon.EnableLaunchBearing := True
-//          else
-//            VehicleWeapon.EnableLaunchBearing := False;
-//        end;
-//      end;
-
       if r^.OrderType = 1 then
-        VehicleWeapon.SearchRadius := r^.Param / C_NauticalMile_To_Yards
+        VehicleWeapon.SearchRadius := r^.Param
       else if r^.OrderType = 2 then
         VehicleWeapon.SearchDepth := r^.Param
       else if r^.OrderType = 3 then
@@ -4873,94 +4871,91 @@ begin
   r := @apRec^;
 
   OwnPlatform := FindT3PlatformByID(r^.ParentPlatformID);
-
-  if Assigned(OwnPlatform) then
+  if OwnPlatform is TT3Vehicle then
   begin
-    if OwnPlatform is TT3Vehicle then
+    OwnVehicle := TT3Vehicle(OwnPlatform);
+    //Focused_weapon := TT3TorpedoesOnVehicle(OwnVehicle.getWeapon(r^.WeaponName));
+    Focused_weapon := OwnVehicle.getWeapon(r^.WeaponIndex, TT3TorpedoesOnVehicle);
+    if Focused_weapon = nil then
+      Exit;
+
+    if not(Focused_weapon is TT3TorpedoesOnVehicle) then
+      Exit;
+
+    VehicleWeapon  := TT3TorpedoesOnVehicle(Focused_weapon);
+
+    VehicleWeapon.TipeTorpedo   := r^.TorpType;
+    VehicleWeapon.ParentPlatformID := r^.ParentPlatformID;
+    VehicleWeapon.TargetPlatformID := r^.TargetPlatformID;
+    VehicleWeapon.TargetTrack := r^.TargetTrack;
+    VehicleWeapon.NoCubicle := r^.NoCubicle;
+
+    {$REGION 'TipeTorpedo'}
+      {(5)TorpedoStraigth,    (6)TorpedoActiveAcoustic,  (7)TorpedoPassiveAcoustic, (8)TorpedoWireGuided,
+       (9) TorpedoWakeHoming, (10) TorpedoActivePassive, (11) TorpedoAirDropped }
+    {$ENDREGION}
+    if (r^.TorpType = 5) or (r^.TorpType = 8) then
     begin
-      OwnVehicle := TT3Vehicle(OwnPlatform);
-
-      Focused_weapon := OwnVehicle.getWeapon(r^.WeaponIndex, TT3TorpedoesOnVehicle);
-
-      if Assigned(Focused_weapon) then
+      VehicleWeapon.TargetIdentity := r^.Param1;
+      VehicleWeapon.TargetCourse := r^.Param2;
+      VehicleWeapon.TargetGroundSpeed := r^.Param3;
+      VehicleWeapon.TargetAltitude := r^.Param4;
+      VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
+    end
+    else if r^.TorpType = 6 then
+    begin
+      VehicleWeapon.TargetIdentity := r^.Param1;
+      VehicleWeapon.TargetCourse := r^.Param2;
+      VehicleWeapon.TargetGroundSpeed := r^.Param3;
+      VehicleWeapon.TargetAltitude := r^.Param4;
+      VehicleWeapon.FiringMode := r^.FiringMode;
+      VehicleWeapon.RunOutMode := r^.RunOut;
+      VehicleWeapon.SearchRadius := r^.SearchRadius;
+      VehicleWeapon.SearchDepth := r^.SearchDepth;
+      VehicleWeapon.SafetyCeiling := r^.SafetyCeiling;
+      VehicleWeapon.SeekerRange := r^.SeekerRange;
+      VehicleWeapon.GyroAngle := r^.GyroAngle;
+      VehicleWeapon.LaunchBearing := r^.GyroAngle;
+      VehicleWeapon.ButtonPlan := r^.ButtonPlan;
+      VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
+    end
+    else if r^.TorpType = 9 then
+    begin
+      VehicleWeapon.SalvoSize := r^.SalvoSize;
+      VehicleWeapon.TargetIdentity := r^.Param1;
+      VehicleWeapon.TargetBearing := r^.Param2;
+      VehicleWeapon.LaunchBearing := r^.LaunchBearing;
+      VehicleWeapon.SeekerRange := r^.SeekerRange;
+      VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
+    end
+    else if r^.TorpType = 10 then
+    begin
+      if (r^.Param1 = 'x') then
       begin
-        if Focused_weapon is TT3TorpedoesOnVehicle then
-        begin
-          VehicleWeapon  := TT3TorpedoesOnVehicle(Focused_weapon);
-
-          VehicleWeapon.WeaponCategory   := TWeapoonCategory(r^.TorpType);
-          VehicleWeapon.ParentPlatformID := r^.ParentPlatformID;
-          VehicleWeapon.TargetPlatformID := r^.TargetPlatformID;
-          VehicleWeapon.TargetTrack := r^.TargetTrack;
-          VehicleWeapon.NoCubicle := r^.NoCubicle;
-
-          case TWeapoonCategory(r^.TorpType) of
-            wcTorpedoStraigth, wcTorpedoWireGuided :
-            begin
-              VehicleWeapon.TargetIdentity := r^.Param1;
-              VehicleWeapon.TargetCourse := r^.Param2;
-              VehicleWeapon.TargetGroundSpeed := r^.Param3;
-              VehicleWeapon.TargetAltitude := r^.Param4;
-              VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
-            end;
-            wcTorpedoActiveAcoustic :
-            begin
-              VehicleWeapon.TargetIdentity := r^.Param1;
-              VehicleWeapon.TargetCourse := r^.Param2;
-              VehicleWeapon.TargetGroundSpeed := r^.Param3;
-              VehicleWeapon.TargetAltitude := r^.Param4;
-              VehicleWeapon.FiringMode := r^.FiringMode;
-              VehicleWeapon.RunOutMode := r^.RunOut;
-              VehicleWeapon.SearchRadius := r^.SearchRadius;
-              VehicleWeapon.SearchDepth := r^.SearchDepth;
-              VehicleWeapon.SafetyCeiling := r^.SafetyCeiling;
-              VehicleWeapon.SeekerRange := r^.SeekerRange;
-              VehicleWeapon.GyroAngle := r^.GyroAngle;
-              VehicleWeapon.LaunchBearing := r^.GyroAngle;
-              VehicleWeapon.ButtonPlan := r^.ButtonPlan;
-              VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
-            end;
-            wcTorpedoWakeHoming :
-            begin
-              VehicleWeapon.SalvoSize := r^.SalvoSize;
-              VehicleWeapon.TargetIdentity := r^.Param1;
-              VehicleWeapon.TargetBearing := r^.Param2;
-              VehicleWeapon.LaunchBearing := r^.LaunchBearing;
-              VehicleWeapon.SeekerRange := r^.SeekerRange;
-              VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
-            end;
-            wcTorpedoActivePassive :
-            begin
-              if (r^.Param1 = 'x') then
-              begin
-                VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
-              end
-              else
-              begin
-                VehicleWeapon.SalvoSize := r^.SalvoSize;
-                VehicleWeapon.SearchRadius := r^.SearchRadius;
-                VehicleWeapon.SearchDepth := r^.SearchDepth;
-                VehicleWeapon.SafetyCeiling := r^.SafetyCeiling;
-                VehicleWeapon.SeekerRange := r^.SeekerRange;
-                VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
-              end;
-            end;
-            wcTorpedoAirDropped :
-            begin
-              VehicleWeapon.TargetIdentity := r^.Param1;
-              VehicleWeapon.TargetCourse := r^.Param2;
-              VehicleWeapon.TargetGroundSpeed := r^.Param3;
-              VehicleWeapon.TargetAltitude := r^.Param4;
-              VehicleWeapon.SearchRadius := r^.SearchRadius;
-              VehicleWeapon.SearchDepth := r^.SearchDepth;
-              VehicleWeapon.SafetyCeiling := r^.SafetyCeiling;
-              VehicleWeapon.EnableLaunchBearing := True;
-              VehicleWeapon.LaunchWhithoutTarget := r^.NoTarget;
-              VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
-            end;
-          end;
-        end;
+        VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
+      end
+      else
+      begin
+        VehicleWeapon.SalvoSize := r^.SalvoSize;
+        VehicleWeapon.SearchRadius := r^.SearchRadius;
+        VehicleWeapon.SearchDepth := r^.SearchDepth;
+        VehicleWeapon.SafetyCeiling := r^.SafetyCeiling;
+        VehicleWeapon.SeekerRange := r^.SeekerRange;
+        VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
       end;
+    end
+    else if r^.TorpType = 11 then
+    begin
+      VehicleWeapon.TargetIdentity := r^.Param1;
+      VehicleWeapon.TargetCourse := r^.Param2;
+      VehicleWeapon.TargetGroundSpeed := r^.Param3;
+      VehicleWeapon.TargetAltitude := r^.Param4;
+      VehicleWeapon.SearchRadius := r^.SearchRadius;
+      VehicleWeapon.SearchDepth := r^.SearchDepth;
+      VehicleWeapon.SafetyCeiling := r^.SafetyCeiling;
+      VehicleWeapon.EnableLaunchBearing := True;
+      VehicleWeapon.LaunchWhithoutTarget := r^.NoTarget;
+      VehicleWeapon.ButtonLaunch := r^.ButtonLaunch;
     end;
   end;
 end;
@@ -11159,11 +11154,6 @@ begin
 
     TT3TorpedoesOnVehicle(mis).Planned := false;
 
-    if (rec.ParentPlatformID = rec.TargetPlatformID) then
-    begin
-      TT3TorpedoesOnVehicle(mis).LaunchWhithoutTarget := True;
-    end;
-
     projectile := TT3TorpedoesOnVehicle(mis).PrepareLaunch;
     if Assigned(projectile) then
     begin
@@ -11172,7 +11162,6 @@ begin
 
       AssignWeaponEvent(projectile);
       projectile.TargetPlatforms  := SimPlatforms;
-
       projectile.Launched         := true;
       projectile.Parent           := nil;
       projectile.PlatformDomain   :=  2;
@@ -11235,10 +11224,10 @@ begin
       //param
       with TT3TorpedoesOnVehicle(Weapon) do
       begin
-        SearchRadius  := Round(TorpedoDefinition.FDef.Terminal_Circle_Radius);
+        SearchRadius  := Round(TorpedoDefinition.FDef.Terminal_Circle_Radius * C_NauticalMile_To_Yards);
         SearchDepth   := Round(TorpedoDefinition.FDef.Default_Depth * C_Feet_To_Meter);
         SafetyCeiling := Round(TorpedoDefinition.FDef.Acoustic_Torp_Ceiling_Depth * C_Feet_To_Meter);
-        SeekerRange   := Round(TorpedoDefinition.FDef.Seeker_TurnOn_Range);
+        SeekerRange   := Round(TorpedoDefinition.FDef.Seeker_TurnOn_Range * C_NauticalMile_To_Yards);
         TipeTorpedo   := 11;
       end;
 

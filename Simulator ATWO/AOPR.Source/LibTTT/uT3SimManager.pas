@@ -1525,8 +1525,10 @@ end;
 
 function TT3SimManager.GetConsoleIdentification: Boolean;
 var
+
   snTemp      : string;
   regTemp     : string;
+
 begin
   snTemp :=  '';
   regTemp := '';
