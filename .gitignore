@@ -1,2 +1,7 @@
 /Bridge INWO
 /Database Editor ATWO/Comp
+*.dcu
+/Database Editor ATWO/Source/DBEditor.src/__history
+/Database Editor ATWO/Source/LibTTT/forms/User Interface/Exercise/__history
+*.exe
+/Simulator ATWO/AOPR.Source/LibTTT/forms/__history
