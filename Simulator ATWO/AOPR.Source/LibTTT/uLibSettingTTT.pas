@@ -363,26 +363,15 @@ begin
 
   s := ExtractFilePath(ParamStr(0));
   with mSet do begin
-    MapPath := IncludeTrailingBackslash(
-      IniFReadstring(inif, c_map, 'mappath', 'M:\game_area'));
+    MapPath := IncludeTrailingBackslash(IniFReadstring(inif, c_map, 'mappath', 'M:\game_area'));
 //      s + IniFReadstring(inif, c_map, 'mappath', 'mapsea'));
 
-    MapENCPath:= IncludeTrailingBackslash(
-      IniFReadstring(inif, c_map, 'mapencpath', 'M:\mapsea'));
-
+    MapENCPath:= IncludeTrailingBackslash(IniFReadstring(inif, c_map, 'mapencpath', 'M:\mapsea'));
     MapGSTGame := INIFReadString(IniF, c_map, 'MapGSTGame', '');
-
     MapDefGame := INIFReadString(IniF, c_map, 'MapDefGame', '');
-
     MapGeoset     := IniFReadstring(inif, c_map, 'defmap', 'Indonesia.gst');
-
-    MapDataGeoset  := IniFReadstring(inif, c_map, 'mapdata',
-      'M:\map\mapdata\mapdata.gst');
-
+    MapDataGeoset  := IniFReadstring(inif, c_map, 'mapdata', 'M:\map\mapdata\mapdata.gst');
     MapKarvak := INIFReadString(IniF, c_map, 'MapKarvak', '');
-
-//    MapDataGeoset  := IniFReadstring(inif, c_map, 'mapdata',
-//      'M:\maps\mapdata\mapdata.gst');
 
     MapZoom := INIFReadInteger(inif, c_map, 'zoom', 5);
     if MapZoom > C_MaxZoomIndex then
@@ -399,34 +388,19 @@ begin
     FormViewer := INIFReadBool(inif, c_map, 'formViewer', True );
     FormPlotter := INIFReadBool(inif, c_map, 'formPlotter', True );
 
-//    GroupController := INIFReadBool(inif, c_map, 'groupcontroller', True );
-//    GroupWasdal := INIFReadBool(inif, c_map, 'groupwasdal', True );
-//    GroupCubicle := INIFReadBool(inif, c_map, 'groupcubicle', True );
-
-
     ActiveDoubleBufferd := INIFReadBool(inif, c_map, 'activeDoubleBuffered', True );
 
     {added by me}
-    OverlayPath := IncludeTrailingBackslash(
-      IniFReadstring(inif, c_map, 'overlaypath', 'M:\map\map\overlay'));
-
-    OverlayDestination := IncludeTrailingBackslash(
-      IniFReadstring(inif, c_map, 'overlayDestination', '\\192.168.1.202\Map\Map\overlay'));
-
-    PlottingPath := IncludeTrailingBackslash(
-      IniFReadstring(inif, c_map, 'plottingpath', 'M:\map\PlottingPath'));
-    PlottingDestination := IncludeTrailingBackslash(
-      INIFReadString(inif, c_map, 'PlottingDestination', '\\192.168.5.1\Map\PlottingPath'));
-    PatternPath := IncludeTrailingBackslash(
-      IniFReadstring(inif, c_map, 'patternpath', 'M:\map\pattern'));
-
+    OverlayPath := IncludeTrailingBackslash(IniFReadstring(inif, c_map, 'overlaypath', 'M:\map\map\overlay'));
+    OverlayDestination := IncludeTrailingBackslash(IniFReadstring(inif, c_map, 'overlayDestination', '\\192.168.1.202\Map\Map\overlay'));
+    PlottingPath := IncludeTrailingBackslash(IniFReadstring(inif, c_map, 'plottingpath', 'M:\map\PlottingPath'));
+    PlottingDestination := IncludeTrailingBackslash(INIFReadString(inif, c_map, 'PlottingDestination', '\\192.168.5.1\Map\PlottingPath'));
+    PatternPath := IncludeTrailingBackslash(IniFReadstring(inif, c_map, 'patternpath', 'M:\map\pattern'));
     TerrainID := INIFReadInteger(IniF, c_map, 'TerrainID', 0);
-    TerrainName := INIFReadString(IniF, c_map, 'TerrainName',
-      'Indonesia_Surabaya');
-    MiniMapPath := INIFReadString(IniF, c_map, 'MiniMapPath',
-      'D:\MAP\DEF_MAP_VIEW\Indonesia');
-    Project := INIFReadString(IniF, c_map, 'Project',
-      'NOPR');
+    TerrainName := INIFReadString(IniF, c_map, 'TerrainName', 'Indonesia_Surabaya');
+    MiniMapPath := INIFReadString(IniF, c_map, 'MiniMapPath', 'D:\MAP\DEF_MAP_VIEW\Indonesia');
+
+    Project := INIFReadString(IniF, c_map, 'Project', 'ATWO');
 
   end;
 
