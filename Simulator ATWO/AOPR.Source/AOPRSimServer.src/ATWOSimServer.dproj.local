@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.908,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\ATWOSimServer.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\SimServer.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.468,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\ATWOSimServer.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\SimServer.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.956,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\SimServer.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\ATWOSimServer.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.956,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\ATWOSimServer.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\SimServer.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.468,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\SimServer.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\ATWOSimServer.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.908,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\SimServer.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimServer.src\ATWOSimServer.dproj</Transaction>
   </Transactions>
 </BorlandProject>

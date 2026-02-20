@@ -5994,6 +5994,10 @@ begin
           VBS_Class_Name := FieldByName('vbs_class_name').AsString;
           Quantity_Group_Personal := FieldByName('Quantity_Group_Personal').AsInteger;
           GangwayPosition := FieldByName('GangwayPosition').AsInteger;
+          FrontGangway := FieldByName('FrontGangway').AsBoolean;
+          RearGangway := FieldByName('RearGangway').AsBoolean;
+          PortGangway := FieldByName('PortGangway').AsBoolean;
+          StarBoardGangway := FieldByName('StarBoardGangway').AsBoolean;
           DWT := FieldByName('DWT').AsSingle;
         end;
 
