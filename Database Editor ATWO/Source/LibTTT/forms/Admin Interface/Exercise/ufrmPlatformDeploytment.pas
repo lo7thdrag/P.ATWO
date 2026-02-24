@@ -9,7 +9,7 @@ uses
   uDBAsset_Deploy, uDBAssetObject, uDBAsset_GameEnvironment, uCoordConvertor,
   uObjectVisuals, uDBAsset_Base, newClassASTT, tttData, uDBEditSetting,
   uBaseCoordSystem, uSimContainers, uSimDBEditor, uVectorVisual,
-  uDBAsset_FontTaktis, RzBmpBtn;
+  uDBAsset_FontTaktis, RzBmpBtn, System.Math;
 
 type
   E_MapCursor = (mceHook, mceMove, mceApproximatePosition, mceTargetingPlatform, mceTargetingPosition, mceScreenCapture);
@@ -293,7 +293,7 @@ begin
 
   FDrawBase := TDrawBase.Create;
   FDrawBase.Converter := FConverter;
-  FModeTag := 0;//initials value tactical view
+  FModeTag := 1;//initials value dynamic tactical view
 end;
 
 procedure TfrmPlatformDeploytment.FormDestroy(Sender: TObject);
@@ -1126,13 +1126,13 @@ procedure TfrmPlatformDeploytment.btnViewClick(Sender: TObject);
 begin
   if btnView.Hint = 'View Platform Mode' then
   begin
-    btnView.Hint := 'View Tactical Mode';
+    btnView.Hint := 'View Dynamic Tactical Mode';
     FModeTag := 2;//platom view
   end
-  else if btnView.Hint = 'View Tactical Mode' then
+  else if btnView.Hint = 'View Dynamic Tactical Mode' then
   begin
     btnView.Hint := 'View Platform Mode';
-    FModeTag := 0;//tactical view
+    FModeTag := 1;//tactical view
   end;
   Map1.Repaint;
 end;
@@ -1246,6 +1246,18 @@ var
   baseInst : TResource_Base_Mapping;
   color : TColor;
   fontTaktis : TFontTaktis;
+
+  qx, qy : Integer;
+  lf : TLogFont;
+  tf : TFont;
+  sz: TSize;
+  q : TPoint;
+
+  sinX, cosX : extended;
+  FRotation : integer;
+  FHeading   : double;
+
+
 begin
   if not Assigned(FCanvas) then
     Exit;
@@ -1299,12 +1311,48 @@ begin
           end;
           1: //tactical dynamic view
           begin
+            with FCanvas do
+            begin
 
+              dmTTT.getFontById(platInst.Vehicle.FData.font_id, fontTaktis);
+              Font.Name  :=  fontTaktis.FData.FONT_NAME;
+              Font.Size  :=  24;
+              Font.Color :=  GetColor(FData.Force_Designation);
+              Font.Style := [fsBold];
+
+              FRotation := Round( 10.0 * (90.0 - FActivation.Init_Course ));
+              FHeading := DegToRad(90.0 - FActivation.Init_Course);
+
+              tf := TFont.Create;
+              tf.Assign(Font);
+              GetObject(tf.Handle, sizeof(lf), @lf);
+
+              lf.lfEscapement  :=  FRotation;
+              lf.lfOrientation :=  FRotation;
+
+              tf.Handle := CreateFontIndirect(lf);
+              Font.Assign(tf);
+              tf.Free;
+
+              SetTextAlign(handle, TA_CENTER or VTA_CENTER);
+              sz := TextExtent(char(fontTaktis.FData.FONT_INDEX));
+
+              SetBkMode(Handle, TRANSPARENT);
+              SinCos(FHeading , sinX, cosX );
+
+              qx := ix - Floor( 0.5 * sz.cy * sinX);
+              qy := iy - Floor( 0.5 * sz.cy * cosX);
+
+
+              TextOut(qx, qy, char(fontTaktis.FData.FONT_INDEX));
+              Font.Style := [fsBold];
+
+              Brush.Style := bsClear;
+            end;
           end;
           2: //platform view
           begin
             FConverter.FMap := Map1;
-
 
             if Assigned(FHookedPlatform) and (platInst.FData.Platform_Instance_Index = FHookedPlatform.FData.Platform_Instance_Index) then
               platInst.FVectorSymbol.Color := RGB(255, 191, 128)
@@ -1321,18 +1369,6 @@ begin
             platInst.FVectorSymbol.ConvertCoord(FConverter);
             platInst.FVectorSymbol.Draw(FCanvas);
 
-            {$REGION 'TSymbolsProp tidak jadi dipakai'}
-//            TSymbolsProp(platInst).Fplatform.FVectorSymbol.Course := FActivation.Init_Course;
-//            TSymbolsProp(platInst).Fplatform.FVectorSymbol.DimWidth := Vehicle.FData.Width;
-//            TSymbolsProp(platInst).Fplatform.FVectorSymbol.DimLength := Vehicle.FData.Length;
-//
-//            TSymbolsProp(platInst).Fplatform.FVectorSymbol.Center.X := ix;
-//            TSymbolsProp(platInst).Fplatform.FVectorSymbol.Center.Y := iy;
-//
-//            TSymbolsProp(platInst).Fplatform.FVectorSymbol.ConvertCoord(FConverter);
-//            TSymbolsProp(platInst).Fplatform.FVectorSymbol.Draw(FCanvas);
-            {$ENDREGION}
-
           end;
         end;
 
@@ -1342,6 +1378,30 @@ begin
       Font.Size := 8;
       Pen.Style := psDot;
       Pen.Width := 1;
+
+      FRotation := Round( 10.0 * (90.0 - 90 ));
+      FHeading := DegToRad(90.0 - 90);
+
+      tf := TFont.Create;
+      tf.Assign(Font);
+      GetObject(tf.Handle, sizeof(lf), @lf);
+
+      lf.lfEscapement  :=  FRotation;
+      lf.lfOrientation :=  FRotation;
+
+      tf.Handle := CreateFontIndirect(lf);
+      Font.Assign(tf);
+      tf.Free;
+
+      SetTextAlign(handle, TA_CENTER or VTA_CENTER);
+      sz := TextExtent(char(fontTaktis.FData.FONT_INDEX));
+
+      SinCos(FHeading , sinX, cosX );
+
+      qx := ix - Floor( 0.5 * sz.cy * sinX);
+      qy := iy - Floor( 0.5 * sz.cy * cosX);
+
+
       SetBkMode(FCanvas.Handle, TRANSPARENT);
       FCanvas.TextOut(ix + 10, iy + 10, platInst.FData.Track_ID);
       fontTaktis.Free;
