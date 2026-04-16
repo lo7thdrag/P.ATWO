@@ -13367,7 +13367,7 @@ begin
   {$ENDREGION}
 
   {$REGION ' Proses Disembark '}
-  memberShipTemp.StateTransport := rec.StateTransport;
+
   memberShipTemp.HostIdTransport := 0;
 
   memberShipTemp.MemberLoadState := mlsNone;
@@ -13375,9 +13375,14 @@ begin
   memberShipTemp.OrderedHeading := rec.InitCourse;
   memberShipTemp.OrderedAltitude := rec.InitAltitude;
 
+  memberShipTemp.PosX := hostShipTemp.PosX;
+  memberShipTemp.PosY := hostShipTemp.PosY;
+
   memberShipTemp.Speed := rec.InitSpeed;
 
   hostShipTemp.HostLoadState := hlsReady;
+
+  memberShipTemp.StateTransport := rec.StateTransport;
 
   {$REGION ' Menghapus data kapal dari dalam host nya '}
   for i := 0 to hostShipTemp.MemberTransportList.Count - 1 do
