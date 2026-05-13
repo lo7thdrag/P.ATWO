@@ -1,4 +1,31 @@
+<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Ahmad Yani - 351 ; InstanceIndex : 28350
+<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Andau - 650 ; InstanceIndex : 28428
+<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Bontang - 907 ; InstanceIndex : 28352
+<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Frigate X - 1 ; InstanceIndex : 28433
+<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Karel Satsuitubun - 356 ; InstanceIndex : 28374
 -------------------------------------------------
-<30 Dec 1899 00:00:00> [TSimMgr_Server.LoadScenarioID] Load Peta
+<04 Oct 2023 12:35:21> [TSimMgr_Server.LoadScenarioID] Load Peta
 -------------------------------------------------
-<30 Dec 1899 00:00:00> [TSimMgr_Server.LoadScenarioID] D:\Map\GST_GAME\AOTC\\.gst
+<04 Oct 2023 12:35:21> [TSimMgr_Server.LoadScenarioID] D:\Map\GST_GAME\AOTC\Prince Map\Prince Map.gst
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientConnect] 192.168.0.110: _ONLINE_ 
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Cubicle Assignment
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netSend_CubicleAssignInfo] Cubicle Count : 0
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Game Ctrl Info
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Missed Packet
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientDisConnect] 192.168.0.110: _OFFLINE_ 
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientConnect] 192.168.0.110: _ONLINE_ 
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Cubicle Assignment
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netSend_CubicleAssignInfo] Cubicle Count : 0
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Game Ctrl Info
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Missed Packet
+-------------------------------------------------
+<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientDisConnect] 192.168.0.110: _OFFLINE_ 

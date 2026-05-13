@@ -1,11 +1,19 @@
-<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : Ajak - 653 ; InstanceIndex : 29423
-<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : BMP1 ; InstanceIndex : 28411
-<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : Regu - 01 ; InstanceIndex : 28418
-<20 Feb 2025 14:15:44> [TT3Unit.SetInstanceIndex] InstanceName : Teluk Bintuni - 520 ; InstanceIndex : 28409
+<13 May 2026 14:27:49> [TT3Unit.SetInstanceIndex] InstanceName : Ahmad Yani - 351 ; InstanceIndex : 28350
+<13 May 2026 14:27:49> [TT3Unit.SetInstanceIndex] InstanceName : Andau - 650 ; InstanceIndex : 28428
+<13 May 2026 14:27:49> [TT3Unit.SetInstanceIndex] InstanceName : Bontang - 907 ; InstanceIndex : 28352
+<13 May 2026 14:27:49> [TT3Unit.SetInstanceIndex] InstanceName : Frigate X - 1 ; InstanceIndex : 28433
+<13 May 2026 14:27:49> [TT3Unit.SetInstanceIndex] InstanceName : Karel Satsuitubun - 356 ; InstanceIndex : 28374
+<04 Oct 2023 12:35:21> [LoadScenarioID] Load Peta
+<04 Oct 2023 12:35:21> [LoadScenarioID] D:\Map\GST_GAME\AOTC\Prince Map\Prince Map.gst
 <04 Oct 2023 12:35:21> [netVBSOnConnected] Connected to VBS Socket
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0034> CPID_UDP_GAMECTRL_INFO
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0034> CPID_UDP_GAMECTRL_INFO
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0034> CPID_UDP_GAMECTRL_INFO
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
+<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0055> CPID_CMD_SYNCH                   
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0015> UNDEFINED (15)
@@ -16,7 +24,4 @@
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0187> CPID_CMD_VERSION
 <04 Oct 2023 12:35:21> [TSimMgr_Client.netRecv_CmdVersion] Receive Data from : 236.184.66.0
 <04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0187> CPID_CMD_VERSION
-<04 Oct 2023 12:35:21> [TSimMgr_Client.netRecv_CmdVersion] Receive Data from : 20.0.14.0
-<04 Oct 2023 12:35:21> [TSimMgr_Client.LogEventRecv] <0059> CPID_CMD_GAME_CTRL               
-<04 Oct 2023 12:35:28> [netVBSOnDisConnected] Disonnected to VBS Socket
-<04 Oct 2023 12:35:30> [netVBSOnDisConnected] Disonnected to VBS Socket
+<04 Oct 2023 12:35:21> [TSimMgr_Client.netRecv_CmdVersion] Receive Data from : 13.0.14.0

@@ -1749,113 +1749,113 @@ END
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\Controls.res */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\KeyboardLayouts.res */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\Buttons.res */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uDataModuleTTT.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufProgress.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSelectRecipient.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uDataModuleTTT.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufProgress.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSelectRecipient.dfm */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\ExtDlgs.res */
-/* C:\Komponen\DbEditor TTT\TMS Instrumentation Workshop v2.0.0.0 for Rio\VRCURSORS.D32 */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uLaunchPlatform.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmControlled.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmFireControl.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmDetailPlan.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufmWeaponCtrl.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufTrackTargetDetail.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\ufLog.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufSurfaceToSurfaceMissile.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufrmNGSGunSetup.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufrmGunAutoManual.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufrmGunCIWS.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmWeapon.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmCounterMeasure.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmEMCON.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uDetailRouteLogistic.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmLogisticCalculation.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmKeyboard.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uOverlayTemplateEditor.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSettingCoordinate.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uLogisticCalculation.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uLogisticChange.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmMapWindow.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmSensor.dfm */
-/* C:\Komponen\DbEditor TTT\TMS Instrumentation Workshop v2.0.0.0 for Rio\VRWHEEL.D32 */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uWaypointCopy.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSaveWaypoint.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uWaypointEditor.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmPlatformGuidance.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFLanding.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufTransportEmbarkasi.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufLandTemp.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufReturnToBase.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmOwnShip.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeSonobuoyDepth.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeSonobuoyEndurance.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uTransferSonobuoy.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeTorpedoDepth.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeTorpedoCourse.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\monitor\uRotateMonitor.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmTimeOfRaid.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uBrowseMap.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uRuler.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmViewWasdal.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmTools.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmTrackDetails.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmPlatformInfo.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmGroupName.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmGuidance.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmRadar.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmWeapon.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmC.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmFireControl.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmEMCON.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmLogistic.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmGeneraPfTools.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmPlatformTools.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmHelp.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmTop.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmMapTools.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmRight.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\ufrmLaunchRPCount.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmRightToolsPlotter.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmLeftToolsPlotter.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmTopPlotter.dfm */
-/* C:\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzCommonBitmaps.res */
-/* C:\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzCommonCursors.res */
-/* C:\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzCmboBx.res */
-/* C:\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzToolbarForm.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uPictureCentreControl.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uTrackHistory.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uPictureFilter.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uRPLibrary.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufEditRealTimeTrack.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufChangeTrackNumber.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufMergeTracks.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufEditNonRealTimeTrack.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRRemote\uRemoteHost.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationMembersDetail.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationAddRemMembers.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationEditorPanel.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationEditorForm.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRReplay\uSnapshotDLG.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSimbolTaktis.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uStrategiEditor.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uShipTacticalInfo.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uGotoTime.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufDeployMine.dfm */
+/* C:\Users\Caecilia Maiya\Delphi Installer\Komponen\Komponen\DbEditor TTT\TMS Instrumentation Workshop v2.0.0.0 for Rio\VRCURSORS.D32 */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uLaunchPlatform.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmControlled.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmFireControl.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmDetailPlan.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufmWeaponCtrl.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufTrackTargetDetail.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\ufLog.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufSurfaceToSurfaceMissile.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufrmNGSGunSetup.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufrmGunAutoManual.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmWeapon\ufrmGunCIWS.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmWeapon.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmCounterMeasure.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmEMCON.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uDetailRouteLogistic.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmLogisticCalculation.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmKeyboard.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uOverlayTemplateEditor.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSettingCoordinate.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uLogisticCalculation.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uLogisticChange.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmMapWindow.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmSensor.dfm */
+/* C:\Users\Caecilia Maiya\Delphi Installer\Komponen\Komponen\DbEditor TTT\TMS Instrumentation Workshop v2.0.0.0 for Rio\VRWHEEL.D32 */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uWaypointCopy.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSaveWaypoint.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uWaypointEditor.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmPlatformGuidance.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFLanding.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufTransportEmbarkasi.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufLandTemp.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufReturnToBase.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frames\ufmOwnShip.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeSonobuoyDepth.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeSonobuoyEndurance.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uTransferSonobuoy.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeTorpedoDepth.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uChangeTorpedoCourse.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\monitor\uRotateMonitor.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmTimeOfRaid.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uBrowseMap.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uRuler.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmViewWasdal.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmTools.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmTrackDetails.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmPlatformInfo.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\frmGroupName.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmGuidance.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmRadar.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmWeapon.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmC.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmFireControl.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmEMCON.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmLogistic.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmGeneraPfTools.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmPlatformTools.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmHelp.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmTop.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmMapTools.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\wasdalUI\ufrmRight.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\ufrmLaunchRPCount.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmRightToolsPlotter.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmLeftToolsPlotter.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmTopPlotter.dfm */
+/* C:\Users\Caecilia Maiya\Delphi Installer\Komponen\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzCommonBitmaps.res */
+/* C:\Users\Caecilia Maiya\Delphi Installer\Komponen\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzCommonCursors.res */
+/* C:\Users\Caecilia Maiya\Delphi Installer\Komponen\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzCmboBx.res */
+/* C:\Users\Caecilia Maiya\Delphi Installer\Komponen\Komponen\DbEditor TTT\Raize Components 6.2.3 FS D10.4 Sydney\Source\RzToolbarForm.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uPictureCentreControl.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uTrackHistory.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uPictureFilter.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uRPLibrary.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufEditRealTimeTrack.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufChangeTrackNumber.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufMergeTracks.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufEditNonRealTimeTrack.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRRemote\uRemoteHost.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationMembersDetail.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationAddRemMembers.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationEditorPanel.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uFormationEditorForm.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRReplay\uSnapshotDLG.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSimbolTaktis.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uStrategiEditor.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uShipTacticalInfo.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uGotoTime.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufDeployMine.dfm */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\Vcl.DBLogDlg.dfm */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\Vcl.DBPWDlg.dfm */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\DBCtrls.res */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uPlottingTime.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSaveAsPlotting.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSaveAsOverlay.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufTacticalDisplay.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uNewMessage.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmInputTrackId.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmDisembarkWith.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufrmPlatformBaseDetail.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufToteDisplay.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufDBSetting.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\ufChangeTrackNum.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmRightPlotter.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmLeftPlotter.dfm */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\ATWOSimClient.res */
-/* D:\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\ATWOSimClient.drf */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uPlottingTime.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSaveAsPlotting.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uSaveAsOverlay.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufTacticalDisplay.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\uNewMessage.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmInputTrackId.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufmDisembarkWith.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufrmPlatformBaseDetail.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufToteDisplay.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\LibTTT\forms\ufDBSetting.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\ufChangeTrackNum.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmRightPlotter.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\formClient\plotterUI\ufrmLeftPlotter.dfm */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\ATWOSimClient.res */
+/* D:\Pekerjaan\New Folder\P.ATWO\Simulator ATWO\AOPR.Source\AOPRSimClient.src\ATWOSimClient.drf */
