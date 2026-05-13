@@ -492,6 +492,28 @@ type
     btnPolygon: TRzBmpButton;
     btnOutline: TRzBmpButton;
     btnFill: TRzBmpButton;
+    imgCopyArc: TImage;
+    imgPasteArc: TImage;
+    btnCopyCircle: TImage;
+    btnPasteCircle: TImage;
+    btnCopyEllipse: TImage;
+    btnPasteEllipse: TImage;
+    btnPasteGrid: TImage;
+    btnCopyGrid: TImage;
+    btnCopyStartLine: TImage;
+    btnPasteStartLine: TImage;
+    btnCopyEndLine: TImage;
+    btnPasteEndLine: TImage;
+    btnCopyPolygon: TImage;
+    btnPastePolygon: TImage;
+    btnCopyTopRec: TImage;
+    btnPasteTopRec: TImage;
+    btnCopyEndRec: TImage;
+    btnPasteEndRec: TImage;
+    btnPasteSector: TImage;
+    btnCopySector: TImage;
+    btnCopyText: TImage;
+    btnPasteText: TImage;
     // Label61: TLabel;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -548,8 +570,33 @@ type
     procedure btnoutClick(Sender: TObject);
     procedure btnGameAreaClick(Sender: TObject);
     procedure btnRullerClick(Sender: TObject);
+    procedure imgCopyArcClick(Sender: TObject);
+    procedure imgPasteArcClick(Sender: TObject);
+    procedure btnCopyCircleClick(Sender: TObject);
+    procedure btnPasteCircleClick(Sender: TObject);
+    procedure btnCopyEllipseClick(Sender: TObject);
+    procedure btnPasteEllipseClick(Sender: TObject);
+    procedure btnCopyGridClick(Sender: TObject);
+    procedure btnPasteGridClick(Sender: TObject);
+    procedure btnCopyStartLineClick(Sender: TObject);
+    procedure btnPasteStartLineClick(Sender: TObject);
+    procedure btnCopyEndLineClick(Sender: TObject);
+    procedure btnPasteEndLineClick(Sender: TObject);
+    procedure btnCopyPolygonClick(Sender: TObject);
+    procedure btnPastePolygonClick(Sender: TObject);
+    procedure btnCopyTopRecClick(Sender: TObject);
+    procedure btnPasteTopRecClick(Sender: TObject);
+    procedure btnCopyEndRecClick(Sender: TObject);
+    procedure btnPasteEndRecClick(Sender: TObject);
+    procedure btnCopySectorClick(Sender: TObject);
+    procedure btnPasteSectorClick(Sender: TObject);
+    procedure btnCopyTextClick(Sender: TObject);
+    procedure btnPasteTextClick(Sender: TObject);
 
   private
+    Flatt : string;
+    Flong : string;
+
     FSelectedPolyID: Integer;
     FTagTombolPosition: Integer;
     FSelectedOverlay: TOverlay_Definition;
@@ -2259,6 +2306,66 @@ begin
   btnPan.ImageIndex := 6;
 end;
 
+procedure TfrmOverlayEditor.btnPasteCircleClick(Sender: TObject);
+begin
+  edtCirclePosLat.Text  := Flatt;
+  edtCirclePosLong.Text := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteEllipseClick(Sender: TObject);
+begin
+  edtEllipsePosLat.Text   := Flatt;
+  edtEllipsePosLong.Text  := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteEndLineClick(Sender: TObject);
+begin
+  edtLineEndPosLat.Text   := Flatt;
+  edtLineEndPosLong.Text  := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteEndRecClick(Sender: TObject);
+begin
+  edtRectEndPosLat.Text   := Flatt;
+  edtRectEndPosLong.Text  := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteGridClick(Sender: TObject);
+begin
+  edtTablePosLat.Text   := Flatt;
+  edtTablePosLong.Text  := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPastePolygonClick(Sender: TObject);
+begin
+  edtPolyPosLat.Text  := Flatt;
+  edtPolyPosLong.Text := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteSectorClick(Sender: TObject);
+begin
+  edtSectorPosLat.Text  := Flatt;
+  edtSectorPosLong.Text := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteStartLineClick(Sender: TObject);
+begin
+  edtLineStartPosLat.Text   := Flatt;
+  edtLineStartPosLong.Text  := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteTextClick(Sender: TObject);
+begin
+  edtTextPosLAt.Text   := Flatt;
+  edtTextPosLong.Text  := Flong;
+end;
+
+procedure TfrmOverlayEditor.btnPasteTopRecClick(Sender: TObject);
+begin
+  edtRectStartPosLat.Text   := Flatt;
+  edtRectStartPosLong.Text  := Flong;
+end;
+
 procedure TfrmOverlayEditor.btnRullerClick(Sender: TObject);
 begin
   btnRuller.Down := not btnRuller.Down;
@@ -2566,6 +2673,54 @@ begin
         edtPolyPosLong.Text := formatDMS_long(mx);
       end;
   end;
+end;
+
+procedure TfrmOverlayEditor.btnCopyGridClick(Sender: TObject);
+begin
+  Flatt := edtTablePosLat.Text;
+  Flong := edtTablePosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopyPolygonClick(Sender: TObject);
+begin
+  Flatt := edtPolyPosLat.Text;
+  Flong := edtPolyPosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopySectorClick(Sender: TObject);
+begin
+  Flatt := edtSectorPosLat.Text;
+  Flong := edtSectorPosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopyStartLineClick(Sender: TObject);
+begin
+  Flatt := edtLineStartPosLat.Text;
+  Flong := edtLineStartPosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopyTextClick(Sender: TObject);
+begin
+  Flatt := edtTextPosLAt.Text;
+  Flong := edtTextPosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopyTopRecClick(Sender: TObject);
+begin
+  Flatt := edtRectStartPosLat.Text;
+  Flong := edtRectStartPosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.imgCopyArcClick(Sender: TObject);
+begin
+  Flatt := edtArcPosLat.Text;
+  Flong := edtArcPosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.imgPasteArcClick(Sender: TObject);
+begin
+  edtArcPosLat.Text   := Flatt;
+  edtArcPosLong.Text  := Flong;
 end;
 
 function TfrmOverlayEditor.GetGridLong(xCursorPoint: Double): string;
@@ -2931,6 +3086,30 @@ begin
 
   AfterClose := false;
   Close;
+end;
+
+procedure TfrmOverlayEditor.btnCopyCircleClick(Sender: TObject);
+begin
+  Flatt := edtCirclePosLat.Text;
+  Flong := edtCirclePosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopyEllipseClick(Sender: TObject);
+begin
+  Flatt := edtEllipsePosLat.Text;
+  Flong := edtEllipsePosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopyEndLineClick(Sender: TObject);
+begin
+  Flatt := edtLineEndPosLat.Text;
+  Flong := edtLineEndPosLong.Text;
+end;
+
+procedure TfrmOverlayEditor.btnCopyEndRecClick(Sender: TObject);
+begin
+  Flatt := edtRectEndPosLat.Text;
+  Flong := edtRectEndPosLong.Text;
 end;
 
 procedure TfrmOverlayEditor.AddPolyDClick(Sender: TObject);
