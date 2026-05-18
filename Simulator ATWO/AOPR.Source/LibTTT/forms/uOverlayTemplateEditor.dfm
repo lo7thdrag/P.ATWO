@@ -320,6 +320,7 @@ object fmOverlayEditor: TfmOverlayEditor
         Font.Style = []
         ParentColor = False
         ParentFont = False
+        Visible = False
       end
       object lblWarning: TLabel
         Left = 0
@@ -336,6 +337,7 @@ object fmOverlayEditor: TfmOverlayEditor
         Font.Style = []
         ParentColor = False
         ParentFont = False
+        Visible = False
         WordWrap = True
       end
       object lblIdxDrawOverlay: TLabel
@@ -1955,6 +1957,7 @@ object fmOverlayEditor: TfmOverlayEditor
         Width = 98
         Height = 13
         Caption = 'Can'#39't edit this shape'
+        Visible = False
       end
     end
     object btnSelect: TRzBmpButton

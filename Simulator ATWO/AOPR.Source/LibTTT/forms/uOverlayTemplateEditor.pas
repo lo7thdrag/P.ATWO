@@ -1760,10 +1760,12 @@ begin
 end;
 
 function TfmOverlayEditor.CekInput(IdObject: Integer): Boolean;
+var
+  InnerRadius, OuterRadius, InputHeading: Double;
 begin
   Result := False;
-  lbl86.Visible := False;
-  lblWarning.Visible := False;
+//  lbl86.Visible := False;
+//  lblWarning.Visible := False;
 
   case StateOverlay of
 
@@ -1926,15 +1928,16 @@ begin
         ovText:{Text}
          begin
           {$REGION ' Text '}
-          if(edtTextPosLong.Text = '') or (edtTextPosLAt.Text= '')or
-          (edtTextField.Text = '')or(cbbTextSize.Text = '')then
+          if (edtTextPosLong.Text = '') or (edtTextPosLAt.Text = '') or
+            (edtTextField.Text = '') or (cbbTextSize.Text = '') then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+            ShowMessage( 'Incomplete data input' );
             Result := True;
           end
-          else if (StrToInt(cbbTextSize.Text) > 72 )or (StrToInt(cbbTextSize.Text) = 0 )then
+          else if (StrToInt(cbbTextSize.Text) > 72) or
+            (StrToInt(cbbTextSize.Text) = 0) then
           begin
-            lblWarning.Caption := 'Invalid size input';
+            ShowMessage( 'Invalid size input' );
             Result := True;
           end;
           {$ENDREGION}
@@ -1942,15 +1945,17 @@ begin
         ovLine:{Line}
         begin
           {$REGION ' Line '}
-          if (edtLineStartPosLong.Text ='') or (edtLineStartPosLat.Text = '')or
-          (edtLineEndPosLong.Text = '') or (edtLineEndPosLat.Text = '')then
+          if (edtLineStartPosLong.Text = '') or
+            (edtLineStartPosLat.Text = '') or (edtLineEndPosLong.Text = '')
+            or (edtLineEndPosLat.Text = '') then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+            ShowMessage( 'Incomplete data input' );
             Result := True;
           end
-          else if (edtLineStartPosLong.Text = edtLineEndPosLong.Text) and (edtLineStartPosLat.Text = edtLineEndPosLat.Text)then
+          else if (edtLineStartPosLong.Text = edtLineEndPosLong.Text) and
+            (edtLineStartPosLat.Text = edtLineEndPosLat.Text) then
           begin
-            lblWarning.Caption := 'Invalid input..., Start and End position can not be identical';
+            ShowMessage( 'Invalid input..., Start and End position can not be identical' );
             Result := True;
           end;
           {$ENDREGION}
@@ -1963,12 +1968,12 @@ begin
           (edtRectStartPosLong.Text= '')or (edtRectStartPosLat.Text= '')or
           (edtRectEndPosLat.Text= '')or(edtRectEndPosLong.Text= '') then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+            ShowMessage( 'Incomplete data input' );
             Result := True;
           end
           else if (edtRectStartPosLong.Text = edtRectEndPosLong.Text ) and (edtRectStartPosLat.Text = edtRectEndPosLat.Text )then
           begin
-            lblWarning.Caption := 'Invalid input..., Top-Left and Bottom-Right position can not be identical';
+            ShowMessage( 'Invalid input..., Top-Left and Bottom-Right position can not be identical' );
             Result := True;;
           end;
           {$ENDREGION}
@@ -1980,12 +1985,13 @@ begin
           (edtCircleRadius.Text = '')or(edtCirclePosLong.text='')or
           (edtCirclePosLat.Text= '') then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+            ShowMessage('The provided input data is incomplete.');
             Result := True;
           end
-          else if (edtCircleRadius.Text = '0' ) then
+             // Radius tidak boleh 0
+          else if StrToFloat(edtCircleRadius.Text) = 0 then
           begin
-            lblWarning.Caption := 'Invalid radius input, minimum radius > 0';
+            ShowMessage('Invalid input. Radius must not be 0.');
             Result := True;
           end;
           {$ENDREGION}
@@ -1998,12 +2004,12 @@ begin
           (edtEllipsePosLat.text= '')or
           (edtEllipsePosLong.Text= '') then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+            ShowMessage( 'Incomplete data input' );
             Result := True;
           end
           else if (edtHorizontal.Text = '0') or (edtVertical.Text = '0')then
           begin
-            lblWarning.Caption := 'Invalid radius input, minimum radius > 0';
+            ShowMessage( 'Invalid radius input, minimum radius > 0' );
             Result := True;
           end;
           {$ENDREGION}
@@ -2011,21 +2017,21 @@ begin
         ovArc:{Arc}
         begin
           {$REGION ' Arc '}
-          if (edtArcPosLong.Text = '') or (edtArcPosLat.Text = '')or
-          (edtArcRadius.Text = '')or(edtArcStartAngle.Text = '')or
-          (edtArcEndAngle.Text = '')then
+          if (edtArcPosLong.Text = '') or (edtArcPosLat.Text = '') or
+            (edtArcRadius.Text = '') or (edtArcEndAngle.Text = '') or
+            (edtArcStartAngle.Text = '') then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+            ShowMessage( 'Incomplete data input' );
             Result := True;
           end
           else if (edtArcRadius.Text = '0') then
           begin
-            lblWarning.Caption := 'Invalid radius input, minimum radius > 0';
+            ShowMessage( 'Invalid radius input, minimum radius > 0' );
             Result := True;
           end
           else if (edtArcEndAngle.Text = edtArcStartAngle.Text) then
           begin
-            lblWarning.Caption := 'Invalid input..., Start and End Angle can not be identical';
+            ShowMessage( 'Invalid input..., Start and End Angle can not be identical' );
             Result := True;
           end;
           {$ENDREGION}
@@ -2033,27 +2039,40 @@ begin
         ovSector:{Sector}
         begin
           {$REGION ' Sector '}
+          InnerRadius := StrToFloat(edtSectorInner.Text);
+          OuterRadius := StrToFloat(edtSectorOuter.Text);
+
           if(edtSectorInner.Text = '') or (edtSectorOuter.Text = '')or
           (edtSectorStartAngle.Text = '') or (edtSectorEndAngle.Text = '')or
           (edtSectorPosLat.Text = '')or (edtSectorPosLong.Text = '')then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
-            Result := True;
+          ShowMessage ('The provided input data is incomplete');
+          Result := True;
           end
-          else if (edtSectorInner.Text = '0')or (edtSectorOuter.Text = '0')then
+          else if (InnerRadius <= 0) or (OuterRadius <= 0) then
           begin
-            lblWarning.Caption := 'Invalid radius input, minimum radius > 0';
-            Result := True;
+          ShowMessage ('Invalid radius value. Radius must be greater than 0.');
+          Result := True;
           end
           else if (edtSectorStartAngle.Text = edtSectorEndAngle.Text) then
           begin
-            lblWarning.Caption := 'Invalid input..., Start and End Angle can not be identical';
-            Result := True;
+          ShowMessage ('Invalid input. Start Angle and End Angle cannot be same.');
+          Result := True;
           end
-          else if (edtSectorInner.Text = edtSectorOuter.Text) then
+          else if (InnerRadius = OuterRadius) then
           begin
-            lblWarning.Caption := 'Invalid input..., Inner and Outer Radius can not be identical';
-            Result := True;
+          ShowMessage ('Invalid input. Inner Radius and Outer Radius must not be same.');
+          Result := True;
+          end
+          else if (InnerRadius > OuterRadius) then
+          begin
+          ShowMessage ('Invalid input data. The Inner Radius value cannot exceed the Outer Radius value.');
+          Result := True;
+          end
+          else if (OuterRadius < InnerRadius) then
+          begin
+          ShowMessage ('Invalid input. Outer Radius must not be smaller than Inner Radius.');
+          Result := True;
           end;
           {$ENDREGION}
         end;
@@ -2066,14 +2085,14 @@ begin
           (edtTableRotationAngle.Text = '')or(edtTablePosLat.Text ='')
           or(edtTablePosLong.Text='') then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+           ShowMessage( 'Incomplete Data Input' );
             Result := True;
           end
 
           else if (edtTableHeight.Text = '0') or (edtTableColumn.Text = '0') or (edtTableWidth.Text = '0')
           or (edtTableRow.Text = '0') then
           begin
-            lblWarning.Caption := 'Invalid input, minimum Col, Row and height > 0';
+            ShowMessage( 'Invalid input, minimum Col, Row and height > 0' );
             Result := True;
           end;
           {$ENDREGION}
@@ -2083,7 +2102,7 @@ begin
           {$REGION ' Polygon '}
           if lvPolyVertex.Items.Count < 1 then
           begin
-            lblWarning.Caption := 'Incomplete Data Input';
+            ShowMessage( 'Incomplete Data Input'  );
             Result := True;
           end;
           {$ENDREGION}
@@ -2437,13 +2456,13 @@ begin
 
   if Result then
   begin
-    pnlWarning.Visible := True;
-    lbl86.Visible := True;
-    lblWarning.Visible := True;
-    lbl86.Font.Color := clRed;
-    lbl86.Font.Style := [fsBold];
-    lblWarning.Font.Color := clRed;
-    isInputProblem := True;
+//    pnlWarning.Visible := True;
+//    lbl86.Visible := True;
+//    lblWarning.Visible := True;
+//    lbl86.Font.Color := clRed;
+//    lbl86.Font.Style := [fsBold];
+//    lblWarning.Font.Color := clRed;
+//    isInputProblem := True;
   end;
 end;
 
