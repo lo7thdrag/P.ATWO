@@ -3737,7 +3737,7 @@ begin
           ovCircle: { Circle }
             begin
               {$REGION ' Circle '}
-               if (edtCirclePosLong.Text = '')or (edtCirclePosLat.Text = '') or
+              if (edtCirclePosLong.Text = '')or (edtCirclePosLat.Text = '') or
               (edtCircleRadius.Text = '')or(edtCirclePosLong.text='')or
               (edtCirclePosLat.Text= '') then
               begin
