@@ -592,6 +592,8 @@ type
     procedure btnPasteSectorClick(Sender: TObject);
     procedure btnCopyTextClick(Sender: TObject);
     procedure btnPasteTextClick(Sender: TObject);
+    procedure edtSectorStartAngleKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSectorEndAngleKeyPress(Sender: TObject; var Key: Char);
 
   private
     Flatt : string;
@@ -3839,6 +3841,38 @@ begin
   RadiusValues := StrToInt(edtArcRadius.Text);
 
   if RadiusValues > 31 then
+end;
+
+procedure TfrmOverlayEditor.edtSectorEndAngleKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if not (Key in[#48 .. #57, #8, #13, #46]) then
+  begin
+    Key := #0;
+    Exit;
+  end;
+
+  if GetInput(TEdit(sender).Text) then
+  begin
+    if Key = #46 then
+      Key := #0;
+  end;
+end;
+
+procedure TfrmOverlayEditor.edtSectorStartAngleKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if not (Key in[#48 .. #57, #8, #13, #46]) then
+  begin
+    Key := #0;
+    Exit;
+  end;
+
+  if GetInput(TEdit(sender).Text) then
+  begin
+    if Key = #46 then
+      Key := #0;
+  end;
 end;
 
 procedure TfrmOverlayEditor.ScreenShot(DestBitmap: TBitmap);

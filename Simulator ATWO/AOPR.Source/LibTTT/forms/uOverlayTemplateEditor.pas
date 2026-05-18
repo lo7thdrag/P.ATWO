@@ -498,6 +498,7 @@ type
     procedure imgPasteSectorClick(Sender: TObject);
     procedure imgCopyTextClick(Sender: TObject);
     procedure imgPasteTextClick(Sender: TObject);
+    procedure edtSectorStartAngleKeyPress(Sender: TObject; var Key: Char);
 
   private
     Flatt : string;
@@ -717,17 +718,17 @@ end;
 
 procedure TfmOverlayEditor.OnKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not (Key in[#48 .. #57, #8, #13, #46]) then
-  begin
-    Key := #0;
-    Exit;
-  end;
-
-  if GetInput(TEdit(sender).Text) then
-  begin
-    if Key = #46 then
-      Key := #0;
-  end;
+//  if not (Key in[#48 .. #57, #8, #13, #46]) then
+//  begin
+//    Key := #0;
+//    Exit;
+//  end;
+//
+//  if GetInput(TEdit(sender).Text) then
+//  begin
+//    if Key = #46 then
+//      Key := #0;
+//  end;
 end;
 
 procedure TfmOverlayEditor.rbDomainHandle(Sender: TObject);
@@ -1923,6 +1924,7 @@ begin
       case IdObject of
         ovText:{Text}
          begin
+          {$REGION ' Text '}
           if(edtTextPosLong.Text = '') or (edtTextPosLAt.Text= '')or
           (edtTextField.Text = '')or(cbbTextSize.Text = '')then
           begin
@@ -1934,9 +1936,11 @@ begin
             lblWarning.Caption := 'Invalid size input';
             Result := True;
           end;
+          {$ENDREGION}
         end;
         ovLine:{Line}
         begin
+          {$REGION ' Line '}
           if (edtLineStartPosLong.Text ='') or (edtLineStartPosLat.Text = '')or
           (edtLineEndPosLong.Text = '') or (edtLineEndPosLat.Text = '')then
           begin
@@ -1947,10 +1951,12 @@ begin
           begin
             lblWarning.Caption := 'Invalid input..., Start and End position can not be identical';
             Result := True;
-          end;;
+          end;
+          {$ENDREGION}
         end;
         ovRectangle:{Rectangle}
         begin
+          {$REGION ' Rectangle '}
           if (edtRectStartPosLong.Text = '')or(edtRectStartPosLat.Text = '')or
           (edtRectEndPosLong.Text = '')or (edtRectEndPosLat.Text = '')or
           (edtRectStartPosLong.Text= '')or (edtRectStartPosLat.Text= '')or
@@ -1964,9 +1970,11 @@ begin
             lblWarning.Caption := 'Invalid input..., Top-Left and Bottom-Right position can not be identical';
             Result := True;;
           end;
+          {$ENDREGION}
         end;
         ovCircle:{Circle}
         begin
+          {$REGION ' Circle '}
           if (edtCirclePosLong.Text = '')or (edtCirclePosLat.Text = '') or
           (edtCircleRadius.Text = '')or(edtCirclePosLong.text='')or
           (edtCirclePosLat.Text= '') then
@@ -1979,9 +1987,11 @@ begin
             lblWarning.Caption := 'Invalid radius input, minimum radius > 0';
             Result := True;
           end;
+          {$ENDREGION}
         end;
         ovEllipse:{Ellipse}
         begin
+          {$REGION ' Ellipse '}
           if (edtEllipsePosLong.Text = '')or (edtEllipsePosLat.Text = '')
           or(edtHorizontal.Text = '') or (edtVertical.Text = '')or
           (edtEllipsePosLat.text= '')or
@@ -1995,9 +2005,11 @@ begin
             lblWarning.Caption := 'Invalid radius input, minimum radius > 0';
             Result := True;
           end;
+          {$ENDREGION}
         end;
         ovArc:{Arc}
         begin
+          {$REGION ' Arc '}
           if (edtArcPosLong.Text = '') or (edtArcPosLat.Text = '')or
           (edtArcRadius.Text = '')or(edtArcStartAngle.Text = '')or
           (edtArcEndAngle.Text = '')then
@@ -2015,9 +2027,11 @@ begin
             lblWarning.Caption := 'Invalid input..., Start and End Angle can not be identical';
             Result := True;
           end;
+          {$ENDREGION}
         end;
         ovSector:{Sector}
         begin
+          {$REGION ' Sector '}
           if(edtSectorInner.Text = '') or (edtSectorOuter.Text = '')or
           (edtSectorStartAngle.Text = '') or (edtSectorEndAngle.Text = '')or
           (edtSectorPosLat.Text = '')or (edtSectorPosLong.Text = '')then
@@ -2040,9 +2054,11 @@ begin
             lblWarning.Caption := 'Invalid input..., Inner and Outer Radius can not be identical';
             Result := True;
           end;
+          {$ENDREGION}
         end;
         ovGrid:{Grid}
         begin
+          {$REGION ' Grid '}
           if (edtTablePosLong.Text = '')or (edtTablePosLat.Text ='') or
           (edtTableHeight.Text = '')or (edtTableColumn.Text = '') or
           (edtTableWidth.Text = '') or (edtTableRow.Text = '')or
@@ -2059,14 +2075,17 @@ begin
             lblWarning.Caption := 'Invalid input, minimum Col, Row and height > 0';
             Result := True;
           end;
+          {$ENDREGION}
         end;
         ovPolygon:{Polygon}
         begin
+          {$REGION ' Polygon '}
           if lvPolyVertex.Items.Count < 1 then
           begin
             lblWarning.Caption := 'Incomplete Data Input';
             Result := True;
           end;
+          {$ENDREGION}
         end;
       end;
 
@@ -2726,6 +2745,22 @@ begin
     end
     else
       ShowMessage('You can not edit this template');
+  end;
+end;
+
+procedure TfmOverlayEditor.edtSectorStartAngleKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ if not (Key in[#48 .. #57, #8, #13, #46]) then
+  begin
+    Key := #0;
+    Exit;
+  end;
+
+  if GetInput(TEdit(sender).Text) then
+  begin
+    if Key = #46 then
+      Key := #0;
   end;
 end;
 
