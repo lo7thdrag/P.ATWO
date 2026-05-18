@@ -1,31 +1,11 @@
-<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Ahmad Yani - 351 ; InstanceIndex : 28350
-<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Andau - 650 ; InstanceIndex : 28428
-<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Bontang - 907 ; InstanceIndex : 28352
-<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Frigate X - 1 ; InstanceIndex : 28433
-<13 May 2026 11:02:02> [TT3Unit.SetInstanceIndex] InstanceName : Karel Satsuitubun - 356 ; InstanceIndex : 28374
+<18 May 2026 14:27:09> [TT3Unit.SetInstanceIndex] InstanceName : Ahmad Yani - 351 ; InstanceIndex : 28350
+<18 May 2026 14:27:09> [TT3Unit.SetInstanceIndex] InstanceName : Andau - 650 ; InstanceIndex : 28428
+<18 May 2026 14:27:09> [TT3Unit.SetInstanceIndex] InstanceName : Bontang - 907 ; InstanceIndex : 28352
+<18 May 2026 14:27:09> [TT3Unit.SetInstanceIndex] InstanceName : Frigate X - 1 ; InstanceIndex : 28433
+<18 May 2026 14:27:09> [TT3Unit.SetInstanceIndex] InstanceName : Karel Satsuitubun - 356 ; InstanceIndex : 28374
 -------------------------------------------------
 <04 Oct 2023 12:35:21> [TSimMgr_Server.LoadScenarioID] Load Peta
 -------------------------------------------------
 <04 Oct 2023 12:35:21> [TSimMgr_Server.LoadScenarioID] D:\Map\GST_GAME\AOTC\Prince Map\Prince Map.gst
 -------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientConnect] 192.168.0.110: _ONLINE_ 
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Cubicle Assignment
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netSend_CubicleAssignInfo] Cubicle Count : 0
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Game Ctrl Info
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Missed Packet
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientDisConnect] 192.168.0.110: _OFFLINE_ 
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientConnect] 192.168.0.110: _ONLINE_ 
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Cubicle Assignment
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netSend_CubicleAssignInfo] Cubicle Count : 0
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Game Ctrl Info
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.netRecv_TCPRequest] 192.168.0.110: CPID_TCP_REQUEST                  :  Synch Missed Packet
--------------------------------------------------
-<04 Oct 2023 12:35:21> [TSimMgr_Server.FNetServerOnClientDisConnect] 192.168.0.110: _OFFLINE_ 
+<04 Oct 2023 12:35:21> [TSimMgr_Server.LoadScenarioID] EOleException error raised, with message : Unable to open file '..\..\..\_MAP_OTHER\indonesia-Background\ID2000_land.TAB'. Verify that the the file exists in either the geodictionary directory or on the list of search paths. Also make sure that you have sufficient access rights to open it

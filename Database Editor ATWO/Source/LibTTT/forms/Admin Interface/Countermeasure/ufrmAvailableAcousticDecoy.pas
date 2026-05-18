@@ -35,6 +35,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -59,13 +60,18 @@ uses
 
 procedure TfrmAvailableAcousticDecoy.FormClose(Sender: TObject;var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAcousticDecoyList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAcousticDecoyList);
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableAcousticDecoy.FormCreate(Sender: TObject);
 begin
   FAcousticDecoyList := TList.Create;
+end;
+
+procedure TfrmAvailableAcousticDecoy.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAcousticDecoyList);
 end;
 
 procedure TfrmAvailableAcousticDecoy.FormShow(Sender: TObject);

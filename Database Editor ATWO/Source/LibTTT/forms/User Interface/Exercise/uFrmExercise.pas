@@ -191,6 +191,7 @@ begin
   FreeItemsAndFreeList(FScenarioList);
   FreeItemsAndFreeList(FSnapshotList);
   FreeItemsAndFreeList(FReplayList);
+  FreeItemsAndFreeList(FIdTranslateList);
   FSelectedAssetDeployment.Free;
   FSelectedResourceAllocation.Free;
   FSelectedEnvironment.Free;

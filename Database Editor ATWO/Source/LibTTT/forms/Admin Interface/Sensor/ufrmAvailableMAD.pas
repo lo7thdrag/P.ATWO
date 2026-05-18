@@ -35,6 +35,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -60,13 +61,18 @@ uses
 
 procedure TfrmAvailableMAD.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FMADList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FMADList);
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableMAD.FormCreate(Sender: TObject);
 begin
   FMADList := TList.Create;
+end;
+
+procedure TfrmAvailableMAD.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FMADList);
 end;
 
 procedure TfrmAvailableMAD.FormShow(Sender: TObject);

@@ -22,6 +22,7 @@ type
     procedure lstAvailableSNRvsPODClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedPODvsSNRId : Integer;
@@ -50,6 +51,11 @@ uses
 procedure TfrmSNRvsPODPickList.FormCreate(Sender: TObject);
 begin
   FSNRvsPODList := TList.Create;
+end;
+
+procedure TfrmSNRvsPODPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FSNRvsPODList);
 end;
 
 procedure TfrmSNRvsPODPickList.FormShow(Sender: TObject);

@@ -34161,7 +34161,7 @@ object frmSummarySonobuoy: TfrmSummarySonobuoy
       Top = 0
       Width = 351
       Height = 185
-      ActivePage = tsPhysical
+      ActivePage = tsGeneral
       Align = alClient
       TabHeight = 30
       TabOrder = 0

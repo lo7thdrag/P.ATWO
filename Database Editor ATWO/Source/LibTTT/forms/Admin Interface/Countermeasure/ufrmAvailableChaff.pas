@@ -36,6 +36,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -61,13 +62,18 @@ uses
 
 procedure TfrmAvailableChaff.FormClose(Sender: TObject;var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FChaffList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FChaffList);
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableChaff.FormCreate(Sender: TObject);
 begin
   FChaffList := TList.Create;
+end;
+
+procedure TfrmAvailableChaff.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FChaffList);
 end;
 
 procedure TfrmAvailableChaff.FormShow(Sender: TObject);

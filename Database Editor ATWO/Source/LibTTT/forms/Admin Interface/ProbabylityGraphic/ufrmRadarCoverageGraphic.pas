@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,Vcl.Imaging.pngimage, Math,
   uScrCapture, ufCaptureRes,
-  uDBAsset_Radar, Vcl.ComCtrls, Vcl.ToolWin, System.ImageList, Vcl.ImgList, tttData;
+  uDBAsset_Radar, Vcl.ComCtrls, Vcl.ToolWin, System.ImageList, Vcl.ImgList, tttData, uSimContainers;
 
 type
   E_VerticalCoverageCurve = (vcCurve1 = 1, vcCurve2);
@@ -84,6 +84,7 @@ type
     procedure edtRangeMaxKeyPress(Sender: TObject; var Key: Char);
     procedure edtElevationMinKeyPress(Sender: TObject; var Key: Char);
     procedure edtElevationMaxKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedRadar : TRadar_On_Board;
@@ -142,6 +143,12 @@ procedure TfrmRadarCoverageGraphic.FormCreate(Sender: TObject);
 begin
   FVerticalCoverageList := TList.Create;
   FDeletedVerticalCoverageList := TList.Create;
+end;
+
+procedure TfrmRadarCoverageGraphic.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FVerticalCoverageList);
+  FreeItemsAndFreeList(FDeletedVerticalCoverageList);
 end;
 
 procedure TfrmRadarCoverageGraphic.FormShow(Sender: TObject);

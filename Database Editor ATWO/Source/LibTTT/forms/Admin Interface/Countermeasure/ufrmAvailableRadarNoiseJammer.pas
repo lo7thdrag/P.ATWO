@@ -36,6 +36,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -62,13 +63,18 @@ uses
 procedure TfrmAvailableRadarNoiseJammer.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FRadarNoiseJammerList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FRadarNoiseJammerList);
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableRadarNoiseJammer.FormCreate(Sender: TObject);
 begin
   FRadarNoiseJammerList := TList.Create;
+end;
+
+procedure TfrmAvailableRadarNoiseJammer.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FRadarNoiseJammerList);
 end;
 
 procedure TfrmAvailableRadarNoiseJammer.FormShow(Sender: TObject);

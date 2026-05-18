@@ -35,6 +35,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -60,13 +61,18 @@ uses
 
 procedure TfrmAvailableSelfDefensiveJammer.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FSelfDefensiveJammerList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FSelfDefensiveJammerList);
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableSelfDefensiveJammer.FormCreate(Sender: TObject);
 begin
   FSelfDefensiveJammerList := TList.Create;
+end;
+
+procedure TfrmAvailableSelfDefensiveJammer.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FSelfDefensiveJammerList);
 end;
 
 procedure TfrmAvailableSelfDefensiveJammer.FormShow(Sender: TObject);

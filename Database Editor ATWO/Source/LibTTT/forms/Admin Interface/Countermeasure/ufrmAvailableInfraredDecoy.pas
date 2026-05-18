@@ -36,6 +36,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -60,13 +61,18 @@ uses
 
 procedure TfrmAvailableInfraredDecoy.FormClose(Sender: TObject;var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FInfraredDecoyList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FInfraredDecoyList);
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableInfraredDecoy.FormCreate(Sender: TObject);
 begin
   FInfraredDecoyList := TList.Create;
+end;
+
+procedure TfrmAvailableInfraredDecoy.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FInfraredDecoyList);
 end;
 
 procedure TfrmAvailableInfraredDecoy.FormShow(Sender: TObject);

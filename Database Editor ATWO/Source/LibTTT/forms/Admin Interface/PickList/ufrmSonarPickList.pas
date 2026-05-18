@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,Vcl.ExtCtrls,
-  uDBAsset_Sonar, RzBmpBtn;
+  uDBAsset_Sonar, RzBmpBtn, uSimContainers;
 
 type
   TfrmSonarPickList = class(TForm)
@@ -22,6 +22,7 @@ type
     procedure lstAvailableSonarClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedSonarId : Integer;
@@ -50,6 +51,11 @@ uses
 procedure TfrmSonarPickList.FormCreate(Sender: TObject);
 begin
   FSonarList := TList.Create;
+end;
+
+procedure TfrmSonarPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FSonarList);
 end;
 
 procedure TfrmSonarPickList.FormShow(Sender: TObject);

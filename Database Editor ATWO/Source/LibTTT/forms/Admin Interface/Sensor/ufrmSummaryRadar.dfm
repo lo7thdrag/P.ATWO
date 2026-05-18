@@ -34163,7 +34163,7 @@ object frmSummaryRadar: TfrmSummaryRadar
       Top = 0
       Width = 741
       Height = 305
-      ActivePage = tsAntiJamming
+      ActivePage = tsCharacteristic
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
