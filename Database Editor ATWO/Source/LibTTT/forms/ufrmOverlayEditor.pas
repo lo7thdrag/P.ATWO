@@ -799,6 +799,9 @@ end;
 
 procedure TfrmOverlayEditor.btnApplyClick(Sender: TObject);
 begin
+  if CekInput(ShapeType) then
+    Exit;
+
   case ShapeType of
     ovText:
       GbrText;
@@ -856,7 +859,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+    {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         pnlDynamic.Visible := True;
@@ -865,14 +868,14 @@ begin
         cbbTextSize.Text := '11';
         isDynamic := True;
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+      {$ENDREGION}
+    {$REGION ' Static Section '}
     osStatic:
       begin
         pnlStatic.Visible := True;
         isDynamic := false;
       end
-{$ENDREGION}
+    {$ENDREGION}
   end;
 
 //  ShapeType := TImage(Sender).Tag;
@@ -1187,7 +1190,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1208,8 +1211,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(TextDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1239,7 +1243,7 @@ begin
         if IdAction <> 2 then
           DrawOverlay.StaticList.Add(TextStatic);
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -1251,7 +1255,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1272,8 +1276,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(LineDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1316,7 +1321,7 @@ begin
         if IdAction <> 2 then
           DrawOverlay.StaticList.Add(LineStatic);
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -1328,7 +1333,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1361,8 +1366,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(RectangleDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1417,7 +1423,7 @@ begin
           DrawOverlay.StaticList.Add(RectangleStatic);
       end;
 
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -1429,7 +1435,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1463,8 +1469,9 @@ begin
           DrawOverlay.DynamicList.Add(CircleDynamic);
       end;
 
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1505,7 +1512,7 @@ begin
         if IdAction <> 2 then
           DrawOverlay.StaticList.Add(CircleStatic);
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -1517,7 +1524,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1551,8 +1558,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(EllipseDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1594,7 +1602,7 @@ begin
         if IdAction <> 2 then
           DrawOverlay.StaticList.Add(EllipseStatic);
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -1606,7 +1614,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1631,8 +1639,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(ArcDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1665,7 +1674,7 @@ begin
         if IdAction <> 2 then
           DrawOverlay.StaticList.Add(ArcStatic);
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -1676,7 +1685,7 @@ var
 begin
 
   case FTipeOverlay of
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1703,8 +1712,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(SectorDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1749,7 +1759,7 @@ var
 begin
 
   case FTipeOverlay of
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1787,8 +1797,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(GridDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1834,7 +1845,7 @@ begin
         if IdAction <> 2 then
           DrawOverlay.StaticList.Add(GridStatic);
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -1851,7 +1862,7 @@ begin
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         if IdAction = 2 then
@@ -1895,8 +1906,9 @@ begin
         if IdAction <> 2 then
           DrawOverlay.DynamicList.Add(PolygonDynamic);
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         if IdAction = 2 then
@@ -1938,7 +1950,7 @@ begin
           DrawOverlay.StaticList.Add(PolygonStatic);
         SpeedButton10.Down := false;
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 end;
 
@@ -3480,12 +3492,14 @@ begin
 end;
 
 function TfrmOverlayEditor.CekInput(IdObject: Integer): Boolean;
+var
+  InnerRadius, OuterRadius, InputHeading: Double;
 begin
   Result := false;
 
   case FTipeOverlay of
 
-{$REGION ' Dynamic Section '}
+  {$REGION ' Dynamic Section '}
     osDynamic:
       begin
         case IdObject of
@@ -3646,176 +3660,281 @@ begin
             end;
         end;
       end;
-{$ENDREGION}
-{$REGION ' Static Section '}
+  {$ENDREGION}
+
+  {$REGION ' Static Section '}
     osStatic:
       begin
         case IdObject of
           ovText: { Text }
             begin
+              {$REGION ' Text '}
               if (edtTextPosLong.Text = '') or (edtTextPosLAt.Text = '') or
                 (edtTextField.Text = '') or (cbbTextSize.Text = '') then
               begin
-                lblWarning.Caption := 'Incomplete data input';
+                ShowMessage( 'Incomplete data input' );
                 Result := True;
               end
               else if (StrToInt(cbbTextSize.Text) > 72) or
                 (StrToInt(cbbTextSize.Text) = 0) then
               begin
-                lblWarning.Caption := 'Invalid size input';
+                ShowMessage( 'Invalid size input' );
                 Result := True;
               end;
+              {$ENDREGION}
             end;
           ovLine: { Line }
             begin
+              {$REGION ' Line '}
               if (edtLineStartPosLong.Text = '') or
                 (edtLineStartPosLat.Text = '') or (edtLineEndPosLong.Text = '')
                 or (edtLineEndPosLat.Text = '') then
               begin
-                lblWarning.Caption := 'Incomplete data input';
+                ShowMessage( 'Incomplete data input' );
                 Result := True;
               end
               else if (edtLineStartPosLong.Text = edtLineEndPosLong.Text) and
                 (edtLineStartPosLat.Text = edtLineEndPosLat.Text) then
               begin
-                lblWarning.Caption :=
-                  'Invalid input..., Start and End position can not be identical';
+                ShowMessage( 'Invalid input..., Start and End position can not be identical' );
                 Result := True;
               end;
+              {$ENDREGION}
             end;
           ovRectangle: { Rectangle }
             begin
-              if (edtRectStartPosLong.Text = '') or
-                (edtRectStartPosLat.Text = '') or (edtRectEndPosLong.Text = '')
-                or (edtRectEndPosLat.Text = '') then
+              {$REGION ' Rectangle '}
+              if (edtRectStartPosLong.Text = '')or(edtRectStartPosLat.Text = '')or
+              (edtRectEndPosLong.Text = '')or (edtRectEndPosLat.Text = '')or
+              (edtRectStartPosLong.Text= '')or (edtRectStartPosLat.Text= '')or
+              (edtRectEndPosLat.Text= '')or(edtRectEndPosLong.Text= '') then
               begin
-                lblWarning.Caption := 'Incomplete data input';
+                ShowMessage( 'Incomplete data input' );
                 Result := True;
               end
-              else if (edtRectStartPosLong.Text = edtRectEndPosLong.Text) and
-                (edtRectStartPosLat.Text = edtRectEndPosLat.Text) then
+              else if (edtRectStartPosLong.Text = edtRectEndPosLong.Text ) and (edtRectStartPosLat.Text = edtRectEndPosLat.Text )then
               begin
-                lblWarning.Caption :=
-                  'Invalid input..., Top-Left and Bottom-Right position can not be identical';
-                Result := True;
+                ShowMessage( 'Invalid input..., Top-Left and Bottom-Right position can not be identical' );
+                Result := True;;
               end;
+
+//              if (edtRectStartPosLong.Text = '') or
+//                (edtRectStartPosLat.Text = '') or (edtRectEndPosLong.Text = '')
+//                or (edtRectEndPosLat.Text = '') then
+//              begin
+//                lblWarning.Caption := 'Incomplete data input';
+//                Result := True;
+//              end
+//              else if (edtRectStartPosLong.Text = edtRectEndPosLong.Text) and
+//                (edtRectStartPosLat.Text = edtRectEndPosLat.Text) then
+//              begin
+//                lblWarning.Caption :=
+//                  'Invalid input..., Top-Left and Bottom-Right position can not be identical';
+//                Result := True;
+//              end;
+              {$ENDREGION}
             end;
           ovCircle: { Circle }
             begin
-              if (edtCirclePosLong.Text = '') or (edtCirclePosLat.Text = '') or
-                (edtCircleRadius.Text = '') then
+              {$REGION ' Circle '}
+               if (edtCirclePosLong.Text = '')or (edtCirclePosLat.Text = '') or
+              (edtCircleRadius.Text = '')or(edtCirclePosLong.text='')or
+              (edtCirclePosLat.Text= '') then
               begin
-                lblWarning.Caption := 'Incomplete data input';
+                ShowMessage('The provided input data is incomplete.');
                 Result := True;
               end
-              else if (edtCircleRadius.Text = '0') then
+                 // Radius tidak boleh 0
+              else if StrToFloat(edtCircleRadius.Text) = 0 then
               begin
-                lblWarning.Caption :=
-                  'Invalid radius input, minimum radius > 0';
+                ShowMessage('Invalid input. Radius must not be 0.');
                 Result := True;
               end;
+//              if (edtCirclePosLong.Text = '') or (edtCirclePosLat.Text = '') or
+//                (edtCircleRadius.Text = '') then
+//              begin
+//                lblWarning.Caption := 'Incomplete data input';
+//                Result := True;
+//              end
+//              else if (edtCircleRadius.Text = '0') then
+//              begin
+//                lblWarning.Caption :=
+//                  'Invalid radius input, minimum radius > 0';
+//                Result := True;
+//              end;
+              {$ENDREGION}
             end;
           ovEllipse: { Ellipse }
             begin
-              if (edtEllipsePosLong.Text = '') or (edtEllipsePosLat.Text = '')
-                or (edtHorizontal.Text = '') or (edtVertical.Text = '') then
+              {$REGION ' Ellipse '}
+              if (edtEllipsePosLong.Text = '')or (edtEllipsePosLat.Text = '')
+              or(edtHorizontal.Text = '') or (edtVertical.Text = '')or
+              (edtEllipsePosLat.text= '')or
+              (edtEllipsePosLong.Text= '') then
               begin
-                lblWarning.Caption := 'Incomplete data input';
+                ShowMessage( 'Incomplete data input' );
                 Result := True;
               end
-              else if (edtHorizontal.Text = '0') or (edtVertical.Text = '0')
-              then
+              else if (edtHorizontal.Text = '0') or (edtVertical.Text = '0')then
               begin
-                lblWarning.Caption :=
-                  'Invalid radius input, minimum radius > 0';
+                ShowMessage( 'Invalid radius input, minimum radius > 0' );
                 Result := True;
               end;
+//              if (edtEllipsePosLong.Text = '') or (edtEllipsePosLat.Text = '')
+//                or (edtHorizontal.Text = '') or (edtVertical.Text = '') then
+//              begin
+//                lblWarning.Caption := 'Incomplete data input';
+//                Result := True;
+//              end
+//              else if (edtHorizontal.Text = '0') or (edtVertical.Text = '0')
+//              then
+//              begin
+//                lblWarning.Caption :=
+//                  'Invalid radius input, minimum radius > 0';
+//                Result := True;
+//              end;
+              {$ENDREGION}
             end;
           ovArc: { Arc }
             begin
+              {$REGION ' Arc '}
               if (edtArcPosLong.Text = '') or (edtArcPosLat.Text = '') or
                 (edtArcRadius.Text = '') or (edtArcEndAngle.Text = '') or
                 (edtArcStartAngle.Text = '') then
               begin
-                lblWarning.Caption := 'Incomplete data input';
+                ShowMessage( 'Incomplete data input' );
                 Result := True;
               end
               else if (edtArcRadius.Text = '0') then
               begin
-                lblWarning.Caption :=
-                  'Invalid radius input, minimum radius > 0';
+                ShowMessage( 'Invalid radius input, minimum radius > 0' );
                 Result := True;
               end
               else if (edtArcEndAngle.Text = edtArcStartAngle.Text) then
               begin
-                lblWarning.Caption :=
-                  'Invalid input..., Start and End Angle can not be identical';
+                ShowMessage( 'Invalid input..., Start and End Angle can not be identical' );
                 Result := True;
               end;
+              {$ENDREGION}
             end;
           ovSector: { Sector }
             begin
-              if (edtSectorPosLong.Text = '') or (edtSectorPosLat.Text = '') or
-                (edtSectorInner.Text = '') or (edtSectorOuter.Text = '') or
-                (edtSectorStartAngle.Text = '') or (edtSectorEndAngle.Text = '')
-              then
+              {$REGION ' Sector '}
+              InnerRadius := StrToFloat(edtSectorInner.Text);
+              OuterRadius := StrToFloat(edtSectorOuter.Text);
+
+              if(edtSectorInner.Text = '') or (edtSectorOuter.Text = '')or
+              (edtSectorStartAngle.Text = '') or (edtSectorEndAngle.Text = '')or
+              (edtSectorPosLat.Text = '')or (edtSectorPosLong.Text = '')then
               begin
-                lblWarning.Caption := 'Incomplete data input';
-                Result := True;
+              ShowMessage ('The provided input data is incomplete');
+              Result := True;
               end
-              else if (edtSectorInner.Text = '0') or (edtSectorOuter.Text = '0')
-              then
+              else if (InnerRadius <= 0) or (OuterRadius <= 0) then
               begin
-                lblWarning.Caption :=
-                  'Invalid radius input, minimum radius > 0';
-                Result := True;
+              ShowMessage ('Invalid radius value. Radius must be greater than 0.');
+              Result := True;
               end
               else if (edtSectorStartAngle.Text = edtSectorEndAngle.Text) then
               begin
-                lblWarning.Caption :=
-                  'Invalid input..., Start and End Angle can not be identical';
-                Result := True;
+              ShowMessage ('Invalid input. Start Angle and End Angle cannot be same.');
+              Result := True;
               end
+              else if (InnerRadius = OuterRadius) then
+              begin
+              ShowMessage ('Invalid input. Inner Radius and Outer Radius must not be same.');
+              Result := True;
+              end
+              else if (InnerRadius > OuterRadius) then
+              begin
+              ShowMessage ('Invalid input data. The Inner Radius value cannot exceed the Outer Radius value.');
+              Result := True;
+              end
+              else if (OuterRadius < InnerRadius) then
+              begin
+              ShowMessage ('Invalid input. Outer Radius must not be smaller than Inner Radius.');
+              Result := True;
+              end;
+//              if (edtSectorPosLong.Text = '') or (edtSectorPosLat.Text = '') or
+//                (edtSectorInner.Text = '') or (edtSectorOuter.Text = '') or
+//                (edtSectorStartAngle.Text = '') or (edtSectorEndAngle.Text = '')
+//              then
+//              begin
+//                ShowMessage( 'Incomplete data input' );
+//                Result := True;
+//              end
+//              else if (edtSectorInner.Text = '0') or (edtSectorOuter.Text = '0')
+//              then
+//              begin
+//                ShowMessage( 'Invalid radius input, minimum radius > 0' );
+//                Result := True;
+//              end
+//              else if (edtSectorStartAngle.Text = edtSectorEndAngle.Text) then
+//              begin
+//                ShowMessage( 'Invalid input..., Start and End Angle can not be identical' );
+//                Result := True;
+//              end
+              {$ENDREGION}
             end;
           ovGrid: { Grid }
-            begin
-              if (edtTablePosLong.Text = '') or (edtTablePosLat.Text = '') or
-                (edtTableHeight.Text = '') or (edtTableColumn.Text = '') or
-                (edtTableWidth.Text = '') or (edtTableRow.Text = '') or
-                (edtTableRotationAngle.Text = '') then
+              {$REGION ' Grid '}
               begin
-                lblWarning.Caption := 'Incomplete Data Input';
+              if (edtTablePosLong.Text = '')or (edtTablePosLat.Text ='') or
+              (edtTableHeight.Text = '')or (edtTableColumn.Text = '') or
+              (edtTableWidth.Text = '') or (edtTableRow.Text = '')or
+              (edtTableRotationAngle.Text = '')or(edtTablePosLat.Text ='')
+              or(edtTablePosLong.Text='') then
+              begin
+               ShowMessage( 'Incomplete Data Input' );
                 Result := True;
               end
-              else if (edtTableHeight.Text = '0') or (edtTableColumn.Text = '0')
-                or (edtTableWidth.Text = '0') or (edtTableRow.Text = '0') then
+
+              else if (edtTableHeight.Text = '0') or (edtTableColumn.Text = '0') or (edtTableWidth.Text = '0')
+              or (edtTableRow.Text = '0') then
               begin
-                lblWarning.Caption :=
-                  'Invalid input, minimum Col, Row and height > 0';
+                ShowMessage( 'Invalid input, minimum Col, Row and height > 0' );
                 Result := True;
               end;
+  //              if (edtTablePosLong.Text = '') or (edtTablePosLat.Text = '') or
+  //                (edtTableHeight.Text = '') or (edtTableColumn.Text = '') or
+  //                (edtTableWidth.Text = '') or (edtTableRow.Text = '') or
+  //                (edtTableRotationAngle.Text = '') then
+  //              begin
+  //                lblWarning.Caption := 'Incomplete Data Input';
+  //                Result := True;
+  //              end
+  //              else if (edtTableHeight.Text = '0') or (edtTableColumn.Text = '0')
+  //                or (edtTableWidth.Text = '0') or (edtTableRow.Text = '0') then
+  //              begin
+  //                lblWarning.Caption :=
+  //                  'Invalid input, minimum Col, Row and height > 0';
+  //                Result := True;
+  //              end;
+                {$ENDREGION}
             end;
           ovPolygon: { Polygon }
             begin
+              {$REGION ' Polygon '}
               if lvPolyVertex.Items.Count < 1 then
               begin
-                lblWarning.Caption := 'Incomplete Data Input';
+                ShowMessage( 'Incomplete Data Input'  );
                 Result := True;
               end;
+              {$ENDREGION}
             end;
         end;
       end;
-{$ENDREGION}
+  {$ENDREGION}
   end;
 
   if Result then
   begin
-    pnlWarning.Visible := True;
-    lbl33.Visible := True;
-    lblWarning.Visible := True;
-    lbl33.Font.Color := clRed;
-    lbl33.Font.Style := [fsBold];
-    lblWarning.Font.Color := clRed;
+//    pnlWarning.Visible := True;
+//    lbl33.Visible := True;
+//    lblWarning.Visible := True;
+//    lbl33.Font.Color := clRed;
+//    lbl33.Font.Style := [fsBold];
+//    lblWarning.Font.Color := clRed;
     // isInputProblem := True;
   end;
 end;

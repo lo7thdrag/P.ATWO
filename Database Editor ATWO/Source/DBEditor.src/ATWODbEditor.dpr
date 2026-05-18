@@ -400,7 +400,7 @@ uses
 
 begin
 
-//  ReportMemoryLeaksOnShutdown:= True;
+  ReportMemoryLeaksOnShutdown:= True;
 
   Application.Initialize;
   Application.CreateForm(TdmTTT, dmTTT);
