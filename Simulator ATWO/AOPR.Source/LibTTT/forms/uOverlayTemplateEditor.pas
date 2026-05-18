@@ -499,6 +499,7 @@ type
     procedure imgCopyTextClick(Sender: TObject);
     procedure imgPasteTextClick(Sender: TObject);
     procedure edtSectorStartAngleKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSectorEndAngleKeyPress(Sender: TObject; var Key: Char);
 
   private
     Flatt : string;
@@ -718,17 +719,17 @@ end;
 
 procedure TfmOverlayEditor.OnKeyPress(Sender: TObject; var Key: Char);
 begin
-//  if not (Key in[#48 .. #57, #8, #13, #46]) then
-//  begin
-//    Key := #0;
-//    Exit;
-//  end;
-//
-//  if GetInput(TEdit(sender).Text) then
-//  begin
-//    if Key = #46 then
-//      Key := #0;
-//  end;
+  if not (Key in[#48 .. #57, #8, #13, #46]) then
+  begin
+    Key := #0;
+    Exit;
+  end;
+
+  if GetInput(TEdit(sender).Text) then
+  begin
+    if Key = #46 then
+      Key := #0;
+  end;
 end;
 
 procedure TfmOverlayEditor.rbDomainHandle(Sender: TObject);
@@ -2745,6 +2746,22 @@ begin
     end
     else
       ShowMessage('You can not edit this template');
+  end;
+end;
+
+procedure TfmOverlayEditor.edtSectorEndAngleKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ if not (Key in[#48 .. #57, #8, #13, #46]) then
+  begin
+    Key := #0;
+    Exit;
+  end;
+
+  if GetInput(TEdit(sender).Text) then
+  begin
+    if Key = #46 then
+      Key := #0;
   end;
 end;
 
