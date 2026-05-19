@@ -63455,10 +63455,6 @@ object frmExercise: TfrmExercise
       object tsReplay: TTabSheet
         Caption = 'Replay'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object lstReplay: TListBox
           Left = -1
           Top = -2
@@ -63482,10 +63478,6 @@ object frmExercise: TfrmExercise
       object tsSnapshot: TTabSheet
         Caption = 'Snapshot'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object lstSnapshot: TListBox
           Left = -1
           Top = -2

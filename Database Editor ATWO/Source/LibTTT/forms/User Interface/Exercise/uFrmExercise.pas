@@ -258,14 +258,20 @@ begin
   try
     with frmSummaryScenario do
     begin
-      SelectedScenario := TScenario_Definition.Create;
-      SelectedResourceAllocation := TResource_Allocation.Create;
-      SelectedEnvironment := TGame_Environment_Definition.Create;
-      SelectedGameArea := TGame_Area_Definition.Create;
-      SelectedAssetDeployment := TAsset_Deployment.Create;
+      SelectedScenario            := TScenario_Definition.Create;
+      SelectedResourceAllocation  := TResource_Allocation.Create;
+      SelectedEnvironment         := TGame_Environment_Definition.Create;
+      SelectedGameArea            := TGame_Area_Definition.Create;
+      SelectedAssetDeployment     := TAsset_Deployment.Create;
       ShowModal;
     end;
   finally
+//    frmSummaryScenario.SelectedScenario.Free;
+//    frmSummaryScenario.SelectedResourceAllocation.Free;
+//    frmSummaryScenario.SelectedEnvironment.Free;
+//    frmSummaryScenario.SelectedGameArea.Free;
+//    frmSummaryScenario.SelectedAssetDeployment.Free;
+
     frmSummaryScenario.Free;
   end;
 
