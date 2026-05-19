@@ -29,6 +29,7 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FLauncherOwner : E_LauncherOwner;
@@ -62,6 +63,11 @@ begin
   FLauncherList := TList.Create;
 end;
 
+procedure TfrmLauncherList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FLauncherList);
+end;
+
 procedure TfrmLauncherList.FormShow(Sender: TObject);
 begin
   UpdateLauncherList;
@@ -69,8 +75,8 @@ end;
 
 procedure TfrmLauncherList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FLauncherList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FLauncherList);
+//  Action := cafree;
 end;
 
 {$ENDREGION}

@@ -34096,7 +34096,7 @@ object frmChaffAssets: TfrmChaffAssets
       Top = 0
       Width = 446
       Height = 280
-      ActivePage = ts1
+      ActivePage = ts2
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText

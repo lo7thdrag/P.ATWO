@@ -52,6 +52,7 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
     procedure btnEditLaunchersClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -89,8 +90,8 @@ uses
 
 procedure TfrmTorpedoMount.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FBlindZoneView.Free;
-  Action := cafree;
+//  FBlindZoneView.Free;
+//  Action := cafree;
 end;
 
 procedure TfrmTorpedoMount.FormCreate(Sender: TObject);
@@ -106,6 +107,11 @@ begin
     Width := pnlBlindZone.Width;
     OnClick := pnlBlindZoneClick;
   end;
+end;
+
+procedure TfrmTorpedoMount.FormDestroy(Sender: TObject);
+begin
+  FBlindZoneView.Free;
 end;
 
 procedure TfrmTorpedoMount.FormShow(Sender: TObject);

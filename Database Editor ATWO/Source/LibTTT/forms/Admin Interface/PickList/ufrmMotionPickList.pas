@@ -60,9 +60,9 @@ begin
     TMotion_Characteristics(FMotionList[i]).Free
   end;
   FMotionList.Clear;
-  FMotionList.Free;
-
-  Action := cafree;
+//  FMotionList.Free;
+//
+//  Action := cafree;
 end;
 
 procedure TfrmMotionPickList.FormCreate(Sender: TObject);

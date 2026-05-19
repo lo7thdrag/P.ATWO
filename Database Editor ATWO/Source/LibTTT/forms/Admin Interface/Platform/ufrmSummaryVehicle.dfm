@@ -34119,7 +34119,7 @@ object frmSummaryVehicle: TfrmSummaryVehicle
       Top = 0
       Width = 881
       Height = 411
-      ActivePage = tsNotes
+      ActivePage = tsAssets
       Align = alClient
       TabHeight = 30
       TabOrder = 0

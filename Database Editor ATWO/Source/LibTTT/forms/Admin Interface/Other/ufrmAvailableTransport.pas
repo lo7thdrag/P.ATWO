@@ -35,6 +35,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -53,7 +54,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT, ufrmSummaryTransport, ufrmUsage;
+  uDataModuleTTT, ufrmSummaryTransport, ufrmUsage, uSimContainers;
 
 {$R *.dfm}
 
@@ -61,12 +62,17 @@ uses
 
 procedure TfrmAvailableTransport.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action := cafree;
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableTransport.FormCreate(Sender: TObject);
 begin
   FTransportList := TList.Create;
+end;
+
+procedure TfrmAvailableTransport.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FTransportList);
 end;
 
 procedure TfrmAvailableTransport.FormShow(Sender: TObject);
