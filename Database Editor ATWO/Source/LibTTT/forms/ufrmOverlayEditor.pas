@@ -594,6 +594,7 @@ type
     procedure btnPasteTextClick(Sender: TObject);
     procedure edtSectorStartAngleKeyPress(Sender: TObject; var Key: Char);
     procedure edtSectorEndAngleKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     Flatt : string;
@@ -751,6 +752,15 @@ begin
   DrawFlagPoint.Converter := FConverter;
 
   btnOk.Enabled := false;
+end;
+
+procedure TfrmOverlayEditor.FormDestroy(Sender: TObject);
+begin
+  FCanvas.Free;
+  FConverter.Free;
+  FFormula.Free;
+  DrawOverlay.Free;
+  DrawFlagPoint.Free;
 end;
 
 procedure TfrmOverlayEditor.FormResize(Sender: TObject);

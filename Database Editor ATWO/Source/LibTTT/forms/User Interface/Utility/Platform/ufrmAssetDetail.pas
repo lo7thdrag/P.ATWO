@@ -20,6 +20,7 @@ type
 
     procedure btnCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FAssetList : TList;
@@ -49,13 +50,18 @@ uses
 
 procedure TfrmAssetDetail.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAssetList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAssetList);
+//  Action := cafree;
 end;
 
 procedure TfrmAssetDetail.FormCreate(Sender: TObject);
 begin
   FAssetList := TList.Create;
+end;
+
+procedure TfrmAssetDetail.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAssetList);
 end;
 
 procedure TfrmAssetDetail.FormShow(Sender: TObject);

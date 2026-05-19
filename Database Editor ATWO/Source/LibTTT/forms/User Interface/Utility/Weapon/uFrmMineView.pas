@@ -91,6 +91,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure trckbrLethalityChange(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -136,13 +137,18 @@ end;
 
 procedure TfrmMineView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FMineList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FMineList);
+//  Action := cafree;
 end;
 
 procedure TfrmMineView.FormCreate(Sender: TObject);
 begin
  FMineList := TList.Create;
+end;
+
+procedure TfrmMineView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FMineList);
 end;
 
 procedure TfrmMineView.FormShow(Sender: TObject);

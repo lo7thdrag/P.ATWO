@@ -21,6 +21,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
   private
       FRuntimePlatformLibraryList : TList;
   public
@@ -33,7 +34,7 @@ var
 implementation
 
  uses
-  uDataModuleTTT;
+  uDataModuleTTT, uSimContainers;
 
 {$R *.dfm}
 
@@ -63,6 +64,11 @@ end;
 procedure TfrmRPLView.FormCreate(Sender: TObject);
 begin
  FRuntimePlatformLibraryList := TList.Create;
+end;
+
+procedure TfrmRPLView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FRuntimePlatformLibraryList);
 end;
 
 procedure TfrmRPLView.FormShow(Sender: TObject);

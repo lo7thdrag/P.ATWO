@@ -403,6 +403,7 @@ type
     procedure UpdateCbbTypeItems;
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     { Private declarations }
@@ -459,10 +460,10 @@ end;
 
 procedure TfrmSurfaceView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FSurfaceVehicleList);
-  FreeItemsAndFreeList(FPlatInstList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FSurfaceVehicleList);
+//  FreeItemsAndFreeList(FPlatInstList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmSurfaceView.FormCreate(Sender: TObject);
@@ -470,6 +471,12 @@ begin
   FSurfaceVehicleList := TList.Create;
   FPlatInstList := TList.Create;
 
+end;
+
+procedure TfrmSurfaceView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FSurfaceVehicleList);
+  FreeItemsAndFreeList(FPlatInstList);
 end;
 
 procedure TfrmSurfaceView.FormShow(Sender: TObject);

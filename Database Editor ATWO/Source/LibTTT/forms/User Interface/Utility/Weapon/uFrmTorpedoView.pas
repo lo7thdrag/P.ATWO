@@ -287,6 +287,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FtargetDomainList : TStringList;
@@ -340,14 +341,19 @@ end;
 
 procedure TfrmTorpedoView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FTorpedoList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FTorpedoList);
+//  Action := cafree;
 end;
 
 procedure TfrmTorpedoView.FormCreate(Sender: TObject);
 begin
  FtargetDomainList := TStringList.Create;
  FTorpedoList := TList.Create;
+end;
+
+procedure TfrmTorpedoView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FTorpedoList);
 end;
 
 procedure TfrmTorpedoView.FormShow(Sender: TObject);

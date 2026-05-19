@@ -29,6 +29,7 @@ type
     procedure btnAddClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedForce : Integer;
@@ -56,7 +57,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT, ufrmSummaryResourceAllocation, ufrmSummaryOverlay, ufrmAvailableResourceAllocation;
+  uDataModuleTTT, ufrmSummaryResourceAllocation, ufrmSummaryOverlay, ufrmAvailableResourceAllocation, uSimContainers;
 
 {$R *.dfm}
 
@@ -66,6 +67,12 @@ procedure TfrmOverlayResourceAllocationPickList.FormCreate(Sender: TObject);
 begin
   FAllOverlayDefList := TList.Create;
   FAllOverlayOnScenarioList := TList.Create;
+end;
+
+procedure TfrmOverlayResourceAllocationPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllOverlayDefList);
+  FreeItemsAndFreeList(FAllOverlayOnScenarioList);
 end;
 
 procedure TfrmOverlayResourceAllocationPickList.FormShow(Sender: TObject);

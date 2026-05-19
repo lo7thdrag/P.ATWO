@@ -34,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedForce : Integer;
@@ -61,7 +62,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT, ufrmResourceAllocationInputName, uVehicleList;
+  uDataModuleTTT, ufrmResourceAllocationInputName, uVehicleList, uSimContainers;
 
 
 {$R *.dfm}
@@ -72,6 +73,12 @@ procedure TfrmVehicleResourceAllocationPickList.FormCreate(Sender: TObject);
 begin
   FAllVehicleDefList := TList.Create;
   FAllVehicleOnRAList := TList.Create;
+end;
+
+procedure TfrmVehicleResourceAllocationPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllVehicleDefList);
+  FreeItemsAndFreeList(FAllVehicleOnRAList);
 end;
 
 procedure TfrmVehicleResourceAllocationPickList.FormShow(Sender: TObject);

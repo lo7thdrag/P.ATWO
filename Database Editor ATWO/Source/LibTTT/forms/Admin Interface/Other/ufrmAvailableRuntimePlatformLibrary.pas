@@ -35,6 +35,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -51,7 +52,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT, ufrmSummaryRuntimePlatform, ufrmUsage;
+  uDataModuleTTT, ufrmSummaryRuntimePlatform, ufrmUsage, uSimContainers;
 
 {$R *.dfm}
 
@@ -65,6 +66,11 @@ end;
 procedure TfrmAvailableRuntimePlatformLibrary.FormCreate(Sender: TObject);
 begin
   FRuntimePlatformLibraryList := TList.Create;
+end;
+
+procedure TfrmAvailableRuntimePlatformLibrary.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FRuntimePlatformLibraryList);
 end;
 
 procedure TfrmAvailableRuntimePlatformLibrary.FormShow(Sender: TObject);

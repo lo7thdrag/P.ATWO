@@ -29,6 +29,7 @@ type
     procedure btnAddClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
  private
     FAllVehicleDefList : TList;
@@ -52,7 +53,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT;
+  uDataModuleTTT, uSimContainers;
 
 {$R *.dfm}
 
@@ -62,6 +63,13 @@ procedure TfrmVehicleRuntimePlatformLibraryPickList.FormCreate(Sender: TObject);
 begin
   FAllVehicleDefList := TList.Create;
   FAllVehicleOnRPLList := TList.Create;
+end;
+
+procedure TfrmVehicleRuntimePlatformLibraryPickList.FormDestroy(
+  Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllVehicleDefList);
+  FreeItemsAndFreeList(FAllVehicleOnRPLList);
 end;
 
 procedure TfrmVehicleRuntimePlatformLibraryPickList.FormShow(Sender: TObject);

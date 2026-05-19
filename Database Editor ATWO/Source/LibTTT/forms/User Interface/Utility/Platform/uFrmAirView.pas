@@ -404,6 +404,7 @@ type
     procedure UpdateCbbTypeItems;
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
 
@@ -455,14 +456,19 @@ end;
 
 procedure TfrmAirView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAirVehicleList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FAirVehicleList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmAirView.FormCreate(Sender: TObject);
 begin
   FAirVehicleList := TList.Create;
+end;
+
+procedure TfrmAirView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAirVehicleList);
 end;
 
 procedure TfrmAirView.FormShow(Sender: TObject);

@@ -82,6 +82,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
 
@@ -131,14 +132,19 @@ end;
 procedure TfrmAvailableFloatingDecoyView.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FFloatingDecoyList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FFloatingDecoyList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableFloatingDecoyView.FormCreate(Sender: TObject);
 begin
   FFloatingDecoyList := TList.Create;
+end;
+
+procedure TfrmAvailableFloatingDecoyView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FFloatingDecoyList);
 end;
 
 procedure TfrmAvailableFloatingDecoyView.FormShow(Sender: TObject);

@@ -35,6 +35,7 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -68,12 +69,17 @@ end;
 
 procedure TfrmAvailableGameArea.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FGameAreaList);
+//  FreeItemsAndFreeList(FGameAreaList);
 end;
 
 procedure TfrmAvailableGameArea.FormCreate(Sender: TObject);
 begin
   FGameAreaList := TList.Create;
+end;
+
+procedure TfrmAvailableGameArea.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FGameAreaList);
 end;
 
 {$ENDREGION}

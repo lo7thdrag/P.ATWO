@@ -31,6 +31,7 @@ type
     procedure btnAddClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FCaller : E_GroupMemberFormCaller;
@@ -60,7 +61,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uDataModuleTTT;
+  uDataModuleTTT, uSimContainers;
 
 {$REGION ' Form Handle '}
 
@@ -68,6 +69,12 @@ procedure TfrmGroupMemberSelection.FormCreate(Sender: TObject);
 begin
   FAllMemberDeffList := TList.Create;
   FAllMemberOnScenarioList := TList.Create;
+end;
+
+procedure TfrmGroupMemberSelection.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllMemberDeffList);
+  FreeItemsAndFreeList(FAllMemberOnScenarioList);
 end;
 
 procedure TfrmGroupMemberSelection.FormShow(Sender: TObject);

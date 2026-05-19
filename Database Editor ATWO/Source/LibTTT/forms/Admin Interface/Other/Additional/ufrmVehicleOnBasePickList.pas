@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -66,9 +67,9 @@ uses
 
 procedure TfrmVehicleOnBasePickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllVehicleDefList);
-  FreeItemsAndFreeList(FAllVehicleOnBaseList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllVehicleDefList);
+//  FreeItemsAndFreeList(FAllVehicleOnBaseList);
+//  Action := cafree;
 end;
 
 procedure TfrmVehicleOnBasePickList.FormCreate(Sender: TObject);
@@ -77,6 +78,12 @@ begin
   FAllVehicleOnBaseList := TList.Create;
 
   AfterClose := False;
+end;
+
+procedure TfrmVehicleOnBasePickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllVehicleDefList);
+  FreeItemsAndFreeList(FAllVehicleOnBaseList);
 end;
 
 procedure TfrmVehicleOnBasePickList.FormShow(Sender: TObject);

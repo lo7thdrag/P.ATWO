@@ -29,6 +29,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
 
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -61,13 +62,18 @@ implementation
 {$R *.dfm}
 
 uses
- uDataModuleTTT, ufrmGroupAllocation ;
+ uDataModuleTTT, ufrmGroupAllocation, uSimContainers;
 
  {$REGION ' Form Handle '}
 
 procedure TfrmGroupSelect.FormCreate(Sender: TObject);
 begin
   FCubicleGroupList := TList.Create;
+end;
+
+procedure TfrmGroupSelect.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FCubicleGroupList);
 end;
 
 procedure TfrmGroupSelect.FormShow(Sender: TObject);

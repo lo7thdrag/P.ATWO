@@ -37,6 +37,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundAvailableClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -53,7 +54,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT, ufrmSummaryOverlay, ufrmUsage, uDBEditSetting;
+  uDataModuleTTT, ufrmSummaryOverlay, ufrmUsage, uDBEditSetting, uSimContainers;
 
 {$R *.dfm}
 
@@ -66,12 +67,17 @@ end;
 
 procedure TfrmAvailableOverlay.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action := cafree;
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableOverlay.FormCreate(Sender: TObject);
 begin
   FOverlayList := TList.Create;
+end;
+
+procedure TfrmAvailableOverlay.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FOverlayList);
 end;
 
 procedure TfrmAvailableOverlay.FormShow(Sender: TObject);

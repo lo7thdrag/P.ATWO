@@ -69,6 +69,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
 
@@ -121,14 +122,19 @@ end;
 procedure TfrmAvailableRadarNoiseJammerView.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FRadarNoiseJammerList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FRadarNoiseJammerList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableRadarNoiseJammerView.FormCreate(Sender: TObject);
 begin
   FRadarNoiseJammerList := TList.Create;
+end;
+
+procedure TfrmAvailableRadarNoiseJammerView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FRadarNoiseJammerList);
 end;
 
 procedure TfrmAvailableRadarNoiseJammerView.FormShow(Sender: TObject);

@@ -33,6 +33,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -92,15 +93,21 @@ uses
 
 procedure TfrmEmbarkedFromScenario.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllVehicleDefList);
-  FreeItemsAndFreeList(FAllVehicleOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllVehicleDefList);
+//  FreeItemsAndFreeList(FAllVehicleOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmEmbarkedFromScenario.FormCreate(Sender: TObject);
 begin
   FAllVehicleDefList := TList.Create;
   FAllVehicleOnBoardList := TList.Create;
+end;
+
+procedure TfrmEmbarkedFromScenario.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllVehicleDefList);
+  FreeItemsAndFreeList(FAllVehicleOnBoardList);
 end;
 
 procedure TfrmEmbarkedFromScenario.FormShow(Sender: TObject);

@@ -63,6 +63,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
 
@@ -115,14 +116,19 @@ end;
 procedure TfrmAvailableSelfDefensiveJammerView.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FSelfDefensiveJammerList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FSelfDefensiveJammerList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableSelfDefensiveJammerView.FormCreate(Sender: TObject);
 begin
   FSelfDefensiveJammerList := TList.Create;
+end;
+
+procedure TfrmAvailableSelfDefensiveJammerView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FSelfDefensiveJammerList);
 end;
 
 procedure TfrmAvailableSelfDefensiveJammerView.FormShow(Sender: TObject);

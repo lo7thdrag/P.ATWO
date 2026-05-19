@@ -152,6 +152,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure trckbrJammerStrengthChange(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
    tabIndex, tabMax : Integer;
@@ -198,13 +199,18 @@ end;
 
 procedure TfrmRadarView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FRadarList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FRadarList);
+//  Action := cafree;
 end;
 
 procedure TfrmRadarView.FormCreate(Sender: TObject);
 begin
  FRadarList := TList.Create;
+end;
+
+procedure TfrmRadarView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FRadarList);
 end;
 
 procedure TfrmRadarView.FormShow(Sender: TObject);

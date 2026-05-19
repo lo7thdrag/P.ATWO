@@ -43,6 +43,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -89,13 +90,18 @@ end;
 
 procedure TfrmMADView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FMADList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FMADList);
+//  Action := cafree;
 end;
 
 procedure TfrmMADView.FormCreate(Sender: TObject);
 begin
 FMADList := TList.Create;
+end;
+
+procedure TfrmMADView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FMADList);
 end;
 
 procedure TfrmMADView.FormShow(Sender: TObject);

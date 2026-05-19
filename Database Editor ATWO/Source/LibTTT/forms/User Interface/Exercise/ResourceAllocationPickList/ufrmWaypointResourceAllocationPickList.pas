@@ -28,6 +28,7 @@ type
     procedure btnAddClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -53,7 +54,7 @@ var
 
 implementation
 
-uses uDataModuleTTT, ufrmUsage;
+uses uDataModuleTTT, ufrmUsage, uSimContainers;
 
 {$R *.dfm}
 
@@ -63,6 +64,12 @@ procedure TfrmWaypointResourceAllocationPickList.FormCreate(Sender: TObject);
 begin
   FAllWaypointDefList := TList.Create;
   FAllWaypointOnScenarioList := TList.Create;
+end;
+
+procedure TfrmWaypointResourceAllocationPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllWaypointDefList);
+  FreeItemsAndFreeList(FAllWaypointOnScenarioList);
 end;
 
 procedure TfrmWaypointResourceAllocationPickList.FormShow(Sender: TObject);

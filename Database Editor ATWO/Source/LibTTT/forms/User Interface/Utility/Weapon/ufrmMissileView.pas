@@ -356,6 +356,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -415,17 +416,23 @@ end;
 
 procedure TfrmMissileView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FMissileList);
-
-  FSelectedHybrid.Free;
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FMissileList);
+//
+//  FSelectedHybrid.Free;
+//
+//  Action := cafree;
 end;
 
 procedure TfrmMissileView.FormCreate(Sender: TObject);
 begin
 FMissileList := TList.Create;
 FtargetDomainList := TStringList.Create
+end;
+
+procedure TfrmMissileView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FMissileList);
+  FSelectedHybrid.Free;
 end;
 
 procedure TfrmMissileView.FormShow(Sender: TObject);

@@ -72,6 +72,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
 
@@ -121,14 +122,19 @@ end;
 procedure TfrmAvailableChaffView.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FChaffList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FChaffList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableChaffView.FormCreate(Sender: TObject);
 begin
   FChaffList := TList.Create;
+end;
+
+procedure TfrmAvailableChaffView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FChaffList);
 end;
 
 procedure TfrmAvailableChaffView.FormShow(Sender: TObject);

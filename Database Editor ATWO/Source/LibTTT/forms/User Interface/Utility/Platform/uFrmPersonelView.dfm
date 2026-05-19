@@ -17,6 +17,7 @@ object frmPersonelView: TfrmPersonelView
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

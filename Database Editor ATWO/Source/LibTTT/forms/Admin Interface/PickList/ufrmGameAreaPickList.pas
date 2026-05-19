@@ -23,6 +23,7 @@ type
     procedure lstAvailableGameAreaClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedGameAreaId : Integer;
@@ -52,14 +53,19 @@ uses
 
 procedure TfrmGameAreaPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FGameAreaList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FGameAreaList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmGameAreaPickList.FormCreate(Sender: TObject);
 begin
   FGameAreaList := TList.Create;
+end;
+
+procedure TfrmGameAreaPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FGameAreaList);
 end;
 
 procedure TfrmGameAreaPickList.FormShow(Sender: TObject);
