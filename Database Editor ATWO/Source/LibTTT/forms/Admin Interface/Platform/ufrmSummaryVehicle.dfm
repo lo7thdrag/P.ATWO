@@ -18,6 +18,7 @@ object frmSummaryVehicle: TfrmSummaryVehicle
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34118,7 +34119,7 @@ object frmSummaryVehicle: TfrmSummaryVehicle
       Top = 0
       Width = 881
       Height = 411
-      ActivePage = tsPhysical
+      ActivePage = tsNotes
       Align = alClient
       TabHeight = 30
       TabOrder = 0

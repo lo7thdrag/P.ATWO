@@ -29,6 +29,7 @@ type
     procedure btnAddClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FAllDefensiveJammerDefList : TList;
@@ -51,7 +52,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT;
+  uDataModuleTTT, uSimContainers;
 
 {$R *.dfm}
 
@@ -61,6 +62,12 @@ procedure TfrmSelfDefensiveJammerOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllDefensiveJammerDefList := TList.Create;
   FAllDefensiveJammerOnBoardList := TList.Create;
+end;
+
+procedure TfrmSelfDefensiveJammerOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllDefensiveJammerDefList);
+  FreeItemsAndFreeList(FAllDefensiveJammerOnBoardList);
 end;
 
 procedure TfrmSelfDefensiveJammerOnBoardPickList.FormShow(Sender: TObject);

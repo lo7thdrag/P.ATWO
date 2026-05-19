@@ -18,6 +18,7 @@ object frmChaffAssets: TfrmChaffAssets
   Position = poMainFormCenter
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34095,7 +34096,7 @@ object frmChaffAssets: TfrmChaffAssets
       Top = 0
       Width = 446
       Height = 280
-      ActivePage = tsGeneral
+      ActivePage = ts1
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText

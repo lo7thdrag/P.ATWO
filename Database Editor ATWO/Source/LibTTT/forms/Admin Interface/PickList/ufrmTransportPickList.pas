@@ -22,6 +22,7 @@ type
     procedure lstAvailableTransportClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedTransportId : Integer;
@@ -41,7 +42,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT ;
+  uDataModuleTTT, uSimContainers;
 
 {$R *.dfm}
 
@@ -50,6 +51,11 @@ uses
 procedure TfrmTransportPickList.FormCreate(Sender: TObject);
 begin
   FTransportList := TList.Create;
+end;
+
+procedure TfrmTransportPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FTransportList);
 end;
 
 procedure TfrmTransportPickList.FormShow(Sender: TObject);

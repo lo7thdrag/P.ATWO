@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FAllVisualDefList : TList;
@@ -61,9 +62,9 @@ uses
 
 procedure TfrmVisualDetectorOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllVisualOnBoardList);
-  FreeItemsAndFreeList(FAllVisualDefList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllVisualOnBoardList);
+//  FreeItemsAndFreeList(FAllVisualDefList);
+//  Action := cafree;
 end;
 
 procedure TfrmVisualDetectorOnBoardPickList.FormCreate(Sender: TObject);
@@ -77,6 +78,12 @@ begin
   visual.FData.Instance_Identifier := 'Visual';
 
   FAllVisualDefList.Add(visual);
+end;
+
+procedure TfrmVisualDetectorOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllVisualOnBoardList);
+  FreeItemsAndFreeList(FAllVisualDefList);
 end;
 
 procedure TfrmVisualDetectorOnBoardPickList.FormShow(Sender: TObject);

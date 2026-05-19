@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -62,15 +63,21 @@ uses
 
 procedure TfrmBombOnBoardPickList.FormClose(Sender: TObject;  var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllBombDefList);
-  FreeItemsAndFreeList(FAllBombOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllBombDefList);
+//  FreeItemsAndFreeList(FAllBombOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmBombOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllBombDefList := TList.Create;
   FAllBombOnBoardList := TList.Create;
+end;
+
+procedure TfrmBombOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllBombDefList);
+  FreeItemsAndFreeList(FAllBombOnBoardList);
 end;
 
 procedure TfrmBombOnBoardPickList.FormShow(Sender: TObject);

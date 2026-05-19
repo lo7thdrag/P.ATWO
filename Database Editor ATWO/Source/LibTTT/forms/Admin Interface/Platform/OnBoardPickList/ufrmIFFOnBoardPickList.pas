@@ -32,6 +32,7 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FAllIFFDefList : TList;
@@ -62,9 +63,9 @@ uses
 
 procedure TfrmIFFOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllIFFDefList);
-  FreeItemsAndFreeList(FAllIFFOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllIFFDefList);
+//  FreeItemsAndFreeList(FAllIFFOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmIFFOnBoardPickList.FormCreate(Sender: TObject);
@@ -78,6 +79,12 @@ begin
   iff.FData.Instance_Identifier := 'IFF';
 
   FAllIFFDefList.Add(iff);
+end;
+
+procedure TfrmIFFOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllIFFDefList);
+  FreeItemsAndFreeList(FAllIFFOnBoardList);
 end;
 
 procedure TfrmIFFOnBoardPickList.FormShow(Sender: TObject);

@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -64,15 +65,21 @@ uses
 
 procedure TfrmTowedJammerDecoyOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllTowedJammerDecoyDefList);
-  FreeItemsAndFreeList(FAllTowedJammerDecoyOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllTowedJammerDecoyDefList);
+//  FreeItemsAndFreeList(FAllTowedJammerDecoyOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmTowedJammerDecoyOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllTowedJammerDecoyDefList := TList.Create;
   FAllTowedJammerDecoyOnBoardList := TList.Create;
+end;
+
+procedure TfrmTowedJammerDecoyOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllTowedJammerDecoyDefList);
+  FreeItemsAndFreeList(FAllTowedJammerDecoyOnBoardList);
 end;
 
 procedure TfrmTowedJammerDecoyOnBoardPickList.FormShow(Sender: TObject);

@@ -22,6 +22,7 @@ type
     procedure lstAvailableMotionClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedLogisticId : Integer;
@@ -41,7 +42,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT ;
+  uDataModuleTTT, uSimContainers;
 
 {$R *.dfm}
 
@@ -50,6 +51,11 @@ uses
 procedure TfrmLogisticPickList.FormCreate(Sender: TObject);
 begin
   FLogisticList := TList.Create;
+end;
+
+procedure TfrmLogisticPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FLogisticList);
 end;
 
 procedure TfrmLogisticPickList.FormShow(Sender: TObject);

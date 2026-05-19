@@ -35,6 +35,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -52,18 +53,23 @@ implementation
 {$R *.dfm}
 
 uses
-  uDataModuleTTT, ufrmSummaryLogistic, ufrmUsage;
+  uDataModuleTTT, ufrmSummaryLogistic, ufrmUsage, uSimContainers;
 
 {$REGION ' Form Handle '}
 
 procedure TfrmAvailableLogistic.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action := cafree;
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableLogistic.FormCreate(Sender: TObject);
 begin
   FLogisticList := TList.Create;
+end;
+
+procedure TfrmAvailableLogistic.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FLogisticList);
 end;
 
 procedure TfrmAvailableLogistic.FormShow(Sender: TObject);

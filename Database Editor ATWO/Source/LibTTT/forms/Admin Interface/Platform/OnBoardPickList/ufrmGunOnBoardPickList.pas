@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -62,15 +63,21 @@ uses
 
 procedure TfrmGunOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllGunDefList);
-  FreeItemsAndFreeList(FAllGunOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllGunDefList);
+//  FreeItemsAndFreeList(FAllGunOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmGunOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllGunDefList := TList.Create;
   FAllGunOnBoardList := TList.Create;
+end;
+
+procedure TfrmGunOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllGunDefList);
+  FreeItemsAndFreeList(FAllGunOnBoardList);
 end;
 
 procedure TfrmGunOnBoardPickList.FormShow(Sender: TObject);

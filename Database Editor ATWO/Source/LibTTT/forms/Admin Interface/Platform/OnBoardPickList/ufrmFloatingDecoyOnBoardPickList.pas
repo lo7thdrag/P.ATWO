@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FAllFloatingDecoyDefList : TList;
@@ -62,15 +63,21 @@ uses
 
 procedure TfrmFloatingDecoyOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllFloatingDecoyDefList);
-  FreeItemsAndFreeList(FAllFloatingDecoyOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllFloatingDecoyDefList);
+//  FreeItemsAndFreeList(FAllFloatingDecoyOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmFloatingDecoyOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllFloatingDecoyDefList := TList.Create;
   FAllFloatingDecoyOnBoardList := TList.Create;
+end;
+
+procedure TfrmFloatingDecoyOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllFloatingDecoyDefList);
+  FreeItemsAndFreeList(FAllFloatingDecoyOnBoardList);
 end;
 
 procedure TfrmFloatingDecoyOnBoardPickList.FormShow(Sender: TObject);

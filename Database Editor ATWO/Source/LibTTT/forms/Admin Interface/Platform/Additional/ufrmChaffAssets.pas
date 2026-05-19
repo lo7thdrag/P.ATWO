@@ -70,6 +70,7 @@ type
     procedure btnOKClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedVehicle : TVehicle_Definition;
@@ -99,13 +100,18 @@ uses
 
 procedure TfrmChaffAssets.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FChaffLauncherList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FChaffLauncherList);
+//  Action := cafree;
 end;
 
 procedure TfrmChaffAssets.FormCreate(Sender: TObject);
 begin
   FChaffLauncherList := TList.Create;
+end;
+
+procedure TfrmChaffAssets.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FChaffLauncherList);
 end;
 
 procedure TfrmChaffAssets.FormShow(Sender: TObject);

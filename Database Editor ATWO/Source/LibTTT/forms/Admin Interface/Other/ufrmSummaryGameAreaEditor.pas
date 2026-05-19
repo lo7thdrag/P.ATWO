@@ -67,6 +67,7 @@ type
     procedure btnZoomClick(Sender: TObject);
     procedure btnCenterOnGameCenterClick(Sender: TObject);
     procedure btnPanClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FSelectedGameArea : TGame_Environment_Definition;
@@ -182,6 +183,15 @@ begin
       itemMaxWidth := itemWidth;
   end;
   SendMessage(chklstArea.Handle, LB_SETHORIZONTALEXTENT, itemMaxWidth + 20, 0);
+end;
+
+procedure TfrmSummaryGameAreaEditor.FormDestroy(Sender: TObject);
+begin
+  FListMapIndex.Free;
+  FListFiltered.Free;
+  FCanvas.Free;
+  FConverter.Free;
+  FMap1.Free;
 end;
 
 procedure TfrmSummaryGameAreaEditor.FormShow(Sender: TObject);

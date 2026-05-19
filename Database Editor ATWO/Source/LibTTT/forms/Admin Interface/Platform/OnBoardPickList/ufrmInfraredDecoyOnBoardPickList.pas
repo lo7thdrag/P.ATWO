@@ -32,6 +32,7 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FAllInfraredDecoyDefList : TList;
@@ -62,15 +63,21 @@ uses uDataModuleTTT, ufrmInfraRedmount;
 
 procedure TfrmInfraredDecoyOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllInfraredDecoyDefList);
-  FreeItemsAndFreeList(FAllInfraredDecoyOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllInfraredDecoyDefList);
+//  FreeItemsAndFreeList(FAllInfraredDecoyOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmInfraredDecoyOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllInfraredDecoyDefList := TList.Create;
   FAllInfraredDecoyOnBoardList := TList.Create;
+end;
+
+procedure TfrmInfraredDecoyOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllInfraredDecoyDefList);
+  FreeItemsAndFreeList(FAllInfraredDecoyOnBoardList);
 end;
 
 procedure TfrmInfraredDecoyOnBoardPickList.FormShow(Sender: TObject);

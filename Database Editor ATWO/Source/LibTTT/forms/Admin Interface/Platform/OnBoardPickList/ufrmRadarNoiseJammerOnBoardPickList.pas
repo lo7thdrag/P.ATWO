@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -63,15 +64,21 @@ uses
 
 procedure TfrmRadarNoiseJammerOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllRadarJammerDefList);
-  FreeItemsAndFreeList(FAllRadarJammerOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllRadarJammerDefList);
+//  FreeItemsAndFreeList(FAllRadarJammerOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmRadarNoiseJammerOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllRadarJammerDefList := TList.Create;
   FAllRadarJammerOnBoardList := TList.Create;
+end;
+
+procedure TfrmRadarNoiseJammerOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllRadarJammerDefList);
+  FreeItemsAndFreeList(FAllRadarJammerOnBoardList);
 end;
 
 procedure TfrmRadarNoiseJammerOnBoardPickList.FormShow(Sender: TObject);

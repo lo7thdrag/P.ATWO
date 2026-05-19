@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -62,15 +63,21 @@ uses
 
 procedure TfrmAcousticDecoyOnBoardPickList.FormClose(Sender: TObject;  var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllAcousticDecoyDefList);
-  FreeItemsAndFreeList(FAllAcousticDecoyOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllAcousticDecoyDefList);
+//  FreeItemsAndFreeList(FAllAcousticDecoyOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmAcousticDecoyOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllAcousticDecoyDefList := TList.Create;
   FAllAcousticDecoyOnBoardList := TList.Create;
+end;
+
+procedure TfrmAcousticDecoyOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllAcousticDecoyDefList);
+  FreeItemsAndFreeList(FAllAcousticDecoyOnBoardList);
 end;
 
 procedure TfrmAcousticDecoyOnBoardPickList.FormShow(Sender: TObject);

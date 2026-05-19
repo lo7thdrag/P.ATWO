@@ -36,6 +36,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -70,13 +71,18 @@ uses
 
 procedure TfrmAvailableVehicle.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FVehicleList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FVehicleList);
+//  Action := cafree;
 end;
 
 procedure TfrmAvailableVehicle.FormCreate(Sender: TObject);
 begin
   FVehicleList := TList.Create;
+end;
+
+procedure TfrmAvailableVehicle.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FVehicleList);
 end;
 
 procedure TfrmAvailableVehicle.FormShow(Sender: TObject);

@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
 
   private
@@ -64,15 +65,21 @@ uses
 
 procedure TfrmChaffOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllChaffDefList);
-  FreeItemsAndFreeList(FAllChaffOnBoardList);
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllChaffDefList);
+//  FreeItemsAndFreeList(FAllChaffOnBoardList);
+//  Action := cafree;
 end;
 
 procedure TfrmChaffOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllChaffDefList := TList.Create;
   FAllChaffOnBoardList := TList.Create;
+end;
+
+procedure TfrmChaffOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllChaffDefList);
+  FreeItemsAndFreeList(FAllChaffOnBoardList);
 end;
 
 procedure TfrmChaffOnBoardPickList.FormShow(Sender: TObject);

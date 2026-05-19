@@ -33,6 +33,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -50,7 +51,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT, ufrmSummaryGameDefaults, ufrmUsage, newClassASTT;
+  uDataModuleTTT, ufrmSummaryGameDefaults, ufrmUsage, newClassASTT, uSimContainers;
 
 {$R *.dfm}
 
@@ -59,6 +60,11 @@ uses
 procedure TfrmAvailableGameDefault.FormCreate(Sender: TObject);
 begin
   FGameDefaultList := TList.Create;
+end;
+
+procedure TfrmAvailableGameDefault.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FGameDefaultList);
 end;
 
 procedure TfrmAvailableGameDefault.FormShow(Sender: TObject);

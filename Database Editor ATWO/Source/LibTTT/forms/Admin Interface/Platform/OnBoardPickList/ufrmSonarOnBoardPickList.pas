@@ -32,6 +32,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FAllSonarDefList : TList;
@@ -62,16 +63,22 @@ uses
 
 procedure TfrmSonarOnBoardPickList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FreeItemsAndFreeList(FAllSonarDefList);
-  FreeItemsAndFreeList(FAllSonarOnBoardList);
-
-  Action := cafree;
+//  FreeItemsAndFreeList(FAllSonarDefList);
+//  FreeItemsAndFreeList(FAllSonarOnBoardList);
+//
+//  Action := cafree;
 end;
 
 procedure TfrmSonarOnBoardPickList.FormCreate(Sender: TObject);
 begin
   FAllSonarDefList := TList.Create;
   FAllSonarOnBoardList := TList.Create;
+end;
+
+procedure TfrmSonarOnBoardPickList.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAllSonarDefList);
+  FreeItemsAndFreeList(FAllSonarOnBoardList);
 end;
 
 procedure TfrmSonarOnBoardPickList.FormShow(Sender: TObject);
