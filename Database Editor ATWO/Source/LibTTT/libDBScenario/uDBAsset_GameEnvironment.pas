@@ -47,7 +47,7 @@ destructor TGame_Environment_Definition.Destroy;
 begin
   FreeItemsAndFreeList(FOverlay);
 //  FOverlay.Free;
-  inherited;
+//  inherited;
 end;
 
 procedure TGame_Environment_Definition.calculateMaxPowerScaleArea;

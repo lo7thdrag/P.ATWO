@@ -155,7 +155,6 @@ begin
   try
     with frmSummaryGun do
     begin
-      SelectedGun := TGun_Definition.Create;
       SelectedGun := FSelectedGun;
       ShowModal;
       FUpdateList := AfterClose;

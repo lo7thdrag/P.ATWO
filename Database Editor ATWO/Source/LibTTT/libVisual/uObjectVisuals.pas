@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Graphics, uSimVisuals, uCoordConvertor, uDataTypes, tttData,
-  GdiPlus, GDIPAPI, GDIPOBJ ;
+  GdiPlus, GDIPAPI, GDIPOBJ, SysUtils ;
 
 type
 
@@ -595,7 +595,6 @@ end;
 constructor TRangeVisual.Create;
 begin
   inherited;
-
   Color := clBlue;
   LineStyles := psDot;
 
