@@ -61,8 +61,8 @@ uses
 
 procedure TfrmVehicleRuntimePlatformLibraryPickList.FormCreate(Sender: TObject);
 begin
-  FAllVehicleDefList := TList.Create;
-  FAllVehicleOnRPLList := TList.Create;
+  FAllVehicleDefList    := TList.Create;
+  FAllVehicleOnRPLList  := TList.Create;
 end;
 
 procedure TfrmVehicleRuntimePlatformLibraryPickList.FormDestroy(
