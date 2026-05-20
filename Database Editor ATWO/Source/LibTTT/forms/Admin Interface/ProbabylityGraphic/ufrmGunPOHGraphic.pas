@@ -79,6 +79,7 @@ type
     procedure edtAspectMaxKeyPress(Sender: TObject; var Key: Char);
     procedure edtProbabilityMinKeyPress(Sender: TObject; var Key: Char);
     procedure edtProbabilityMaxKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FProbabilityGraph : E_ProbabilityGraph;
@@ -119,7 +120,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT ;
+  uDataModuleTTT, uSimContainers ;
 
 {$R *.dfm}
 
@@ -130,6 +131,11 @@ procedure TfrmGunPOHGraphic.FormCreate(Sender: TObject);
 begin
   FProbabilityPointList := TList.Create;
   FDeletedProbabilityPointList := TList.Create;
+end;
+
+procedure TfrmGunPOHGraphic.FormDestroy(Sender: TObject);
+begin
+   FreeItemsAndFreeList(FProbabilityPointList);
 end;
 
 procedure TfrmGunPOHGraphic.FormShow(Sender: TObject);

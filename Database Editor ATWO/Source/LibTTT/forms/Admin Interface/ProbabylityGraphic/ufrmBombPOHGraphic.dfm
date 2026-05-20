@@ -16,6 +16,7 @@ object frmBombPOHGraphic: TfrmBombPOHGraphic
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

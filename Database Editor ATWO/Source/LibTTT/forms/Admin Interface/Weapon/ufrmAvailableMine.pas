@@ -22,7 +22,7 @@ type
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
 
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+//    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -35,6 +35,7 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -58,15 +59,20 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableMine.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  FreeItemsAndFreeList(FMineList);
-  Action := cafree;
-end;
+//procedure TfrmAvailableMine.FormClose(Sender: TObject; var Action: TCloseAction);
+//begin
+//  FreeItemsAndFreeList(FMineList);
+//  Action := cafree;
+//end;
 
 procedure TfrmAvailableMine.FormCreate(Sender: TObject);
 begin
   FMineList := TList.Create;
+end;
+
+procedure TfrmAvailableMine.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FMineList);
 end;
 
 procedure TfrmAvailableMine.FormShow(Sender: TObject);

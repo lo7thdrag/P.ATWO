@@ -33,8 +33,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+//    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,15 +58,15 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableMissile.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  FreeItemsAndFreeList(FMissileList);
-  Action := caFree;
-end;
 
 procedure TfrmAvailableMissile.FormCreate(Sender: TObject);
 begin
   FMissileList := TList.Create;
+end;
+
+procedure TfrmAvailableMissile.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FMissileList);
 end;
 
 procedure TfrmAvailableMissile.FormShow(Sender: TObject);
