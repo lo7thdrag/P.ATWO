@@ -136,6 +136,7 @@ end;
 procedure TfrmGunPOHGraphic.FormDestroy(Sender: TObject);
 begin
    FreeItemsAndFreeList(FProbabilityPointList);
+   FreeItemsAndFreeList(FDeletedProbabilityPointList);
 end;
 
 procedure TfrmGunPOHGraphic.FormShow(Sender: TObject);

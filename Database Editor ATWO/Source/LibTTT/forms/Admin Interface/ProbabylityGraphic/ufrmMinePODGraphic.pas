@@ -134,6 +134,7 @@ end;
 procedure TfrmMinePODGraphic.FormDestroy(Sender: TObject);
 begin
   FreeItemsAndFreeList(FProbabilityPointList);
+  FreeItemsAndFreeList(FDeletedProbabilityPointList);
 end;
 
 procedure TfrmMinePODGraphic.FormShow(Sender: TObject);

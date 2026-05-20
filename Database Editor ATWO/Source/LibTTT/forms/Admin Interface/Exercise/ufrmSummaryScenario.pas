@@ -136,6 +136,7 @@ type
     procedure ForceChosePlatformClick(Sender: TObject);
     procedure dtpDateChange(Sender: TObject);
     procedure dtpDDayChange(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
 
   private
     FTabpage : Integer;
@@ -192,6 +193,15 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
+
+procedure TfrmSummaryScenario.FormDestroy(Sender: TObject);
+begin
+    SelectedScenario.Free;
+    SelectedResourceAllocation.Free;
+    SelectedEnvironment.Free;
+    SelectedGameArea.Free;
+    SelectedAssetDeployment.Free;
+end;
 
 procedure TfrmSummaryScenario.FormShow(Sender: TObject);
 begin

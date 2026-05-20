@@ -16,7 +16,7 @@ type
     btnAdd: TRzBmpButton;
     btnCancel: TRzBmpButton;
 
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+//    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -49,21 +49,39 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmMotionPickList.FormClose(Sender: TObject; var Action: TCloseAction);
-var
-  i : Integer;
-
-begin
-
-  for i := FMotionList.Count - 1 downto 0 do
-  begin
-    TMotion_Characteristics(FMotionList[i]).Free
-  end;
-  FMotionList.Clear;
+//<<<<<<< Updated upstream
+//procedure TfrmMotionPickList.FormClose(Sender: TObject; var Action: TCloseAction);
+//var
+//  i : Integer;
+//
+//begin
+//
+//  for i := FMotionList.Count - 1 downto 0 do
+//  begin
+//    TMotion_Characteristics(FMotionList[i]).Free
+//  end;
+//  FMotionList.Clear;
 //  FMotionList.Free;
 //
 //  Action := cafree;
-end;
+//end;
+//=======
+//procedure TfrmMotionPickList.FormClose(Sender: TObject; var Action: TCloseAction);
+//var
+////  i : Integer;
+//
+//begin
+//
+//  for i := FMotionList.Count - 1 downto 0 do
+//  begin
+//    TMotion_Characteristics(FMotionList[i]).Free
+//  end;
+//  FMotionList.Clear;
+//  FMotionList.Free;
+//
+//  Action := cafree;
+//end;
+//>>>>>>> Stashed changes
 
 procedure TfrmMotionPickList.FormCreate(Sender: TObject);
 begin

@@ -4,7 +4,7 @@ interface
 
 uses
 
- tttData,Classes,math;
+ tttData,Classes,math, uSimContainers;
 
 type
 
@@ -45,7 +45,8 @@ end;
 
 destructor TGame_Environment_Definition.Destroy;
 begin
-  FOverlay.Free;
+  FreeItemsAndFreeList(FOverlay);
+//  FOverlay.Free;
   inherited;
 end;
 
