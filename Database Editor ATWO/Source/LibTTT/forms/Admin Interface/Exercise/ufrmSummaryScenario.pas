@@ -196,11 +196,11 @@ uses
 
 procedure TfrmSummaryScenario.FormDestroy(Sender: TObject);
 begin
-    SelectedScenario.Free;
-    SelectedResourceAllocation.Free;
-    SelectedEnvironment.Free;
-    SelectedGameArea.Free;
-    SelectedAssetDeployment.Free;
+//    SelectedScenario.Free;
+//    SelectedResourceAllocation.Free;
+//    SelectedEnvironment.Free;
+//    FSelectedGameArea.Free;
+//    SelectedAssetDeployment.Free;
 end;
 
 procedure TfrmSummaryScenario.FormShow(Sender: TObject);

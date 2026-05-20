@@ -16,7 +16,6 @@ type
     btnAdd: TRzBmpButton;
     btnCancel: TRzBmpButton;
 
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -51,13 +50,6 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmGameAreaPickList.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FGameAreaList);
-//
-//  Action := cafree;
-end;
-
 procedure TfrmGameAreaPickList.FormCreate(Sender: TObject);
 begin
   FGameAreaList := TList.Create;
@@ -82,10 +74,13 @@ begin
   if lstAvailableGameArea.ItemIndex = -1 then
     Exit;
 
-  FSelectedGameAreaId := FSelectedGameArea.FGameArea.Game_Area_Index;
-  FSelectedGameAreaName := FSelectedGameArea.FGameArea.Game_Area_Identifier;
-  Close;
+  if Assigned(FSelectedGameArea) then
+  begin
+    FSelectedGameAreaId := FSelectedGameArea.FGameArea.Game_Area_Index;
+    FSelectedGameAreaName := FSelectedGameArea.FGameArea.Game_Area_Identifier;
+  end;
 
+  Close;
 end;
 
 procedure TfrmGameAreaPickList.btnCancelClick(Sender: TObject);

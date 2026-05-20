@@ -417,21 +417,22 @@ end;
 procedure TfrmMissileView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 //  FreeItemsAndFreeList(FMissileList);
+//
 //  FSelectedHybrid.Free;
+//
 //  Action := cafree;
 end;
 
 procedure TfrmMissileView.FormCreate(Sender: TObject);
 begin
-  FMissileList := TList.Create;
-  FtargetDomainList := TStringList.Create
+FMissileList := TList.Create;
+FtargetDomainList := TStringList.Create
 end;
 
 procedure TfrmMissileView.FormDestroy(Sender: TObject);
 begin
   FreeItemsAndFreeList(FMissileList);
   FSelectedHybrid.Free;
-  FtargetDomainList.Free;
 end;
 
 procedure TfrmMissileView.FormShow(Sender: TObject);

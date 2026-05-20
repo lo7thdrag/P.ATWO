@@ -263,14 +263,17 @@ begin
       SelectedEnvironment         := TGame_Environment_Definition.Create;
       SelectedGameArea            := TGame_Area_Definition.Create;
       SelectedAssetDeployment     := TAsset_Deployment.Create;
+
       ShowModal;
+
+      SelectedScenario.Free;
+      SelectedResourceAllocation.Free;
+      SelectedEnvironment.Free;
+      SelectedGameArea.Free;
+      SelectedAssetDeployment.Free;
     end;
   finally
-//    frmSummaryScenario.SelectedScenario.Free;
-//    frmSummaryScenario.SelectedResourceAllocation.Free;
-//    frmSummaryScenario.SelectedEnvironment.Free;
-//    frmSummaryScenario.SelectedGameArea.Free;
-//    frmSummaryScenario.SelectedAssetDeployment.Free;
+
 
     frmSummaryScenario.Free;
   end;

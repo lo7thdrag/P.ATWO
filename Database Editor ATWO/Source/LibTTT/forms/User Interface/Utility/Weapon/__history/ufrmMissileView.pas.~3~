@@ -417,7 +417,9 @@ end;
 procedure TfrmMissileView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 //  FreeItemsAndFreeList(FMissileList);
+//
 //  FSelectedHybrid.Free;
+//
 //  Action := cafree;
 end;
 

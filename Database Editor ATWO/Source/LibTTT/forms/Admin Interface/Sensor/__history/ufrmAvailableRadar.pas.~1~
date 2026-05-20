@@ -91,9 +91,8 @@ begin
     begin
       SelectedRadar := TRadar_On_Board.Create;
       ShowModal;
-      SelectedRadar.Free;
-
       FUpdateList := AfterClose;
+      SelectedRadar.Free;
     end;
   finally
     frmSummaryRadar.Free;

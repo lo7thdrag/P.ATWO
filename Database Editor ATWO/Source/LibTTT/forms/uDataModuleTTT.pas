@@ -5728,8 +5728,9 @@ begin
     begin
       First;
 
-      aResult := TGame_Area_Definition.Create
-      ;
+      if not Assigned(aResult) then
+        aResult := TGame_Area_Definition.Create;
+
       with aResult.FData do
       begin
         Game_Area_Index := FieldByName('Game_Area_Index').AsInteger;

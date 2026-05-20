@@ -90,8 +90,6 @@ begin
     begin
       SelectedRPL := TRuntime_Platform_Library.Create;
       ShowModal;
-      SelectedRPL.Free;
-
       FUpdateList := AfterClose;
     end;
   finally

@@ -34162,7 +34162,7 @@ object frmSummaryTorpedo: TfrmSummaryTorpedo
       Top = 0
       Width = 781
       Height = 476
-      ActivePage = tsGuidance
+      ActivePage = tsPhysical
       Align = alClient
       MultiLine = True
       TabHeight = 30
