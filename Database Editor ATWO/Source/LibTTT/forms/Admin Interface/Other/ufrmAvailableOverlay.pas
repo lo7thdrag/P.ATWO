@@ -102,6 +102,8 @@ begin
     begin
       SelectedOverlay := TOverlay_Definition.Create;
       ShowModal;
+      SelectedOverlay.Free;
+
       FUpdateList := AfterClose;
     end;
   finally

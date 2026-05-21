@@ -238,6 +238,7 @@ begin
     runtimeplatformlibrary := FRuntimePlatformLibraryList.Items[i];
     lstRuntimePlatformLibrary.Items.AddObject(runtimeplatformlibrary.FData.Library_Name, runtimeplatformlibrary);
   end;
+
 end;
 
 procedure TfrmAvailableRuntimePlatformLibrary.CopyPlatfromLibraryEntry(const aLibraryIndex, aNewLibraryIndex: Integer);

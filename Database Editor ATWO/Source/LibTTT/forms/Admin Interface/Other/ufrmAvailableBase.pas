@@ -83,6 +83,8 @@ begin
     begin
       SelectedBase := TBase.Create;
       ShowModal;
+      SelectedBase.Free;
+
       FUpdateList := AfterClose;
     end;
   finally

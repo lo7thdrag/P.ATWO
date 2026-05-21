@@ -111,6 +111,7 @@ begin
       if isUpdate then
         UpdateVehicleList;
 
+      PlatformInstance.Free;
       isNoCancel := True;
     end;
   finally
@@ -139,6 +140,7 @@ begin
       if isUpdate then
         UpdateVehicleList;
 
+      Vehicle.Free;
       isNoCancel := True;
     end;
   finally

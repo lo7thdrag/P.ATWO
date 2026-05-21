@@ -20297,14 +20297,18 @@ begin
 
     result := RecordCount;
 
-    if not Assigned(aList) then
+    if Assigned(aList) then
     begin
-      aList.Create;
+      for i := 0 to aList.Count - 1 do
+      begin
+        rec := aList.Items[i];
+        rec.Free;
+      end;
+
+      aList.Clear;
     end
     else
-    begin
-      aList.Clear;
-    end;
+      aList := TList.Create;
 
     if not IsEmpty then
     begin
@@ -20315,8 +20319,7 @@ begin
         rec := TRuntime_Platform_Library.Create;
         with rec.FData do
         begin
-          Platform_Library_Index := FieldByName('Platform_Library_Index')
-            .AsInteger;
+          Platform_Library_Index := FieldByName('Platform_Library_Index').AsInteger;
           Library_Name := FieldByName('Library_Name').AsString;
         end;
         aList.Add(rec);
@@ -21342,6 +21345,8 @@ end;
 function TdmTTT.GetAllMotionCharacteristicDef(aList: TList): Integer;
 var
   rec : TMotion_Characteristics;
+  i   : Integer;
+
 begin
   Result := -1;
 
@@ -21360,7 +21365,15 @@ begin
     Result := RecordCount;
 
     if Assigned(aList) then
-      aList.Clear
+    begin
+      for i := 0 to aList.Count - 1 do
+      begin
+        rec := aList.Items[i];
+        rec.Free;
+      end;
+
+      aList.Clear;
+    end
     else
       aList := TList.Create;
 
@@ -22770,11 +22783,11 @@ begin
 
     if Assigned(aList) then
     begin
-//      for i := 0 to aList.Count - 1 do
-//      begin
-//        rec := aList.Items[i];
-//        rec.Free;
-//      end;
+      for i := 0 to aList.Count - 1 do
+      begin
+        rec := aList.Items[i];
+        rec.Free;
+      end;
 
       aList.Clear;
     end

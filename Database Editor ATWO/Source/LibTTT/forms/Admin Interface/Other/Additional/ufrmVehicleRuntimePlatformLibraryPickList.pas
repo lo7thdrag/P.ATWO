@@ -173,6 +173,7 @@ begin
     else
       lbAllVehicleDef.Items.AddObject(Vehicle.FData.Vehicle_Identifier, Vehicle);
   end;
+
 end;
 
  {$ENDREGION}

@@ -99,6 +99,7 @@ begin
     Exit;
 
   frmEODMount := TfrmEODMount.Create(Self);
+
   try
     with frmEODMount do
     begin

@@ -347,12 +347,13 @@ end;
 
 procedure TfrmTorpedoView.FormCreate(Sender: TObject);
 begin
- FtargetDomainList := TStringList.Create;
- FTorpedoList := TList.Create;
+ FtargetDomainList  := TStringList.Create;
+ FTorpedoList       := TList.Create;
 end;
 
 procedure TfrmTorpedoView.FormDestroy(Sender: TObject);
 begin
+  FtargetDomainList.Free;
   FreeItemsAndFreeList(FTorpedoList);
 end;
 

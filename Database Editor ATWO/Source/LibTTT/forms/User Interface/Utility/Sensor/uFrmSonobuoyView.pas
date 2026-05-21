@@ -119,7 +119,7 @@ end;
 
 procedure TfrmSonobuoyView.FormCreate(Sender: TObject);
 begin
- FSonobuoyList := TList.Create;
+  FSonobuoyList := TList.Create;
 end;
 
 procedure TfrmSonobuoyView.FormDestroy(Sender: TObject);
