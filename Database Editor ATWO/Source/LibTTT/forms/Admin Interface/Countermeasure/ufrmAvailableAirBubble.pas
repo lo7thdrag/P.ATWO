@@ -93,6 +93,7 @@ begin
       SelectedAirBubble := TAir_Bubble_On_Board.Create;
       ShowModal;
       SelectedAirBubble.Free;
+
       FUpdateList := AfterClose;
     end;
   finally

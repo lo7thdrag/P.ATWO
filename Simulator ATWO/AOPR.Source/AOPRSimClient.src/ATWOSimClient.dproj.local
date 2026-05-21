@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.466,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimClient.src\SimClient.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimClient.src\ATWOSimClient.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.466,D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimClient.src\ATWOSimClient.dproj=D:\P.AOTC\Simulator AOTC\AOPR.Source\AOPRSimClient.src\SimClient.dproj</Transaction>
   </Transactions>
 </BorlandProject>

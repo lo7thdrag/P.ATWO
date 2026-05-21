@@ -92,14 +92,14 @@ end;
 
 procedure TfrmUserMainForm.ImgLoginClick(Sender: TObject);
 begin
-  with frmLogin do
-  begin
-    ShowModal;
-    isLogin := CloseState;
-  end;
-
-  if isLogin then
-  begin
+//  with frmLogin do
+//  begin
+//    ShowModal;
+//    isLogin := CloseState;
+//  end;
+//
+//  if isLogin then
+//  begin
     Self.Hide;
 
     frmNewAdminMainForm := TfrmNewAdminMainForm.Create(Self);
@@ -112,7 +112,7 @@ begin
     Self.Show;
 //<<<<<<< Updated upstream
   end;
-end;
+//end;
 //=======
 
 //>>>>>>> Stashed changes

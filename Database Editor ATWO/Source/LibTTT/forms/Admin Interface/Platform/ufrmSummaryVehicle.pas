@@ -1827,6 +1827,7 @@ begin
   aFontTaktis := TFontTaktis.Create;
 
   dmTTT.getFontByID(StrToInt(edtFontID.Text), aFontTaktis);
+
   with FSelectedVehicle.FData do
   begin
     lblFontTaktis.Font.Name := aFontTaktis.FData.FONT_NAME;
@@ -1888,6 +1889,8 @@ begin
     edtDefaultLogistics.Text := logistic.FData.Logistic_Identifier
   else
     edtDefaultLogistics.Text := '(None)';
+
+  logistic.Free
 end;
 
 procedure TfrmSummaryVehicle.UpdateTransportData;
@@ -1901,6 +1904,8 @@ begin
     edtDefaultCarryingCap.Text := transport.FData.Transport_Identifier
   else
     edtDefaultCarryingCap.Text := '(None)';
+
+  transport.Free;
 end;
 
 procedure TfrmSummaryVehicle.UpdateCbbCategoryItems(const aDomain, IdCategory: Byte);

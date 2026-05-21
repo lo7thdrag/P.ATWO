@@ -38,7 +38,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModuleTTT, uPlottingEditor;
+uses uDataModuleTTT, uPlottingEditor, uSimContainers;
 
 procedure TfrmSimbolTaktis.btnCancelClick(Sender: TObject);
 begin
@@ -111,7 +111,7 @@ end;
 
 procedure TfrmSimbolTaktis.FormDestroy(Sender: TObject);
 begin
-  FontTaktisList.Free;
+  FreeItemsAndFreeList(FontTaktisList);
 end;
 
 procedure TfrmSimbolTaktis.FormShow(Sender: TObject);

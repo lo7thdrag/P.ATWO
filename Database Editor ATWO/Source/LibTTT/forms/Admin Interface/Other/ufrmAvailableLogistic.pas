@@ -89,6 +89,8 @@ begin
     begin
       SelectedLogistic := TLogistics.Create;
       ShowModal;
+      SelectedLogistic.Free;
+
       FUpdateList := AfterClose;
     end;
   finally
