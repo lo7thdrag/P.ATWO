@@ -3938,7 +3938,7 @@ begin
     begin
       First;
 
-      aResult := TResource_Allocation.Create;
+//      aResult := TResource_Allocation.Create;
 
       with aResult.FData do
       begin
@@ -5218,7 +5218,7 @@ begin
     begin
       First;
 
-      aResult := TGame_Environment_Definition.Create;
+//      aResult := TGame_Environment_Definition.Create;
 
       with aResult.FData do
       begin
