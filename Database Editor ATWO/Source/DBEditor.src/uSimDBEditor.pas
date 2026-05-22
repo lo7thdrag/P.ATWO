@@ -292,7 +292,10 @@ begin
         Surface_Temperature            := TGame_Environment_Definition(pList[i]).FData.Surface_Temperature;
         Start_HF_Range_Gap             := TGame_Environment_Definition(pList[i]).FData.Start_HF_Range_Gap;
         End_HF_Range_Gap               := TGame_Environment_Definition(pList[i]).FData.End_HF_Range_Gap;
+
+//        rec.Free;
      end;
+     rec.Free;
     end;
 end;
 

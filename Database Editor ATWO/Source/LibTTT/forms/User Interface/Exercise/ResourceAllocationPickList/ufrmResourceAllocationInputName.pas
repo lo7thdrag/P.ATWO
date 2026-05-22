@@ -54,7 +54,7 @@ var
 implementation
 
 uses
-  uDataModuleTTT ;
+  uDataModuleTTT,uSimContainers ;
 
 {$R *.dfm}
 
@@ -140,6 +140,7 @@ begin
       LastName := FPlatformInstance.FData.Instance_Name;
       LastTrackID := FPlatformInstance.FData.Track_ID;
     end;
+
   end;
 
   {Set Posisi cbb index}
@@ -162,7 +163,7 @@ begin
 
   cbbNameChange(nil);
 
-  piIdentList.Free;
+  FreeItemsAndFreeList(piIdentList);
 end;
 
 function TfrmResourceAllocationInputName.CekInput: Boolean;
