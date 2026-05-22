@@ -675,7 +675,10 @@ end;
 procedure TfrmExercise.btnEditClick(Sender: TObject);
 begin
   if lstScenario.ItemIndex = -1 then
-     Exit;
+  begin
+    ShowMessage('Select Scenario First');
+    Exit;
+  end;
 
   frmSummaryScenario := TfrmSummaryScenario.Create(Self);
   try
