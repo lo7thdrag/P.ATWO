@@ -3938,8 +3938,9 @@ begin
     begin
       First;
 
-      if not Assigned(aResult) then
-      aResult := TResource_Allocation.Create;
+//      if not Assigned(aResult) then
+//      aResult.Free;
+//      aResult := TResource_Allocation.Create;
 
       with aResult.FData do
       begin
