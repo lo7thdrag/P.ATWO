@@ -3,7 +3,7 @@ unit uDBAsset_Cubicle;
 interface
 
 uses
-  Windows, Classes, SysUtils, Graphics,tttData;
+  Windows, Classes, SysUtils, Graphics,tttData, uSimContainers;
 
 type
 
@@ -36,8 +36,8 @@ end;
 
 destructor TCubicle_Group.Destroy;
 begin
- PlatformInstances.Free;
- Channel_Assgmnt.Free;
+  FreeItemsAndFreeList(PlatformInstances);
+  FreeItemsAndFreeList(Channel_Assgmnt);
 end;
 
 
