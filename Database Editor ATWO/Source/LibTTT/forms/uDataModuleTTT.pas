@@ -3937,9 +3937,8 @@ begin
     if not IsEmpty then
     begin
       First;
-//
-      if not Assigned(aResult) then
-      aResult.Free;
+
+      FreeAndNil(aResult);
       aResult := TResource_Allocation.Create;
 
       with aResult.FData do
