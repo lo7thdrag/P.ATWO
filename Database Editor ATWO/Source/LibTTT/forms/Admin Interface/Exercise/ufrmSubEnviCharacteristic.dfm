@@ -34138,7 +34138,7 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
       Top = 10
       Width = 465
       Height = 469
-      ActivePage = tsSurfaceAndSubsurface
+      ActivePage = tsAboveWater
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -34149,12 +34149,8 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
       TabHeight = 30
       TabOrder = 0
       TabWidth = 140
-      ExplicitHeight = 465
       object tsAboveWater: TTabSheet
         Caption = 'Above Water'
-        ExplicitLeft = 0
-        ExplicitWidth = 461
-        ExplicitHeight = 425
         object grpHFRangeGap: TGroupBox
           Left = 234
           Top = 3
@@ -34680,6 +34676,12 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
             Top = 28
             Width = 55
             Height = 22
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 0
             Text = '0.00'
             OnChange = edtChange
@@ -34690,6 +34692,12 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
             Top = 55
             Width = 55
             Height = 22
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 1
             Text = '0'
             OnChange = DirectionChange
@@ -34723,8 +34731,6 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
       object tsSurfaceAndSubsurface: TTabSheet
         Caption = 'Surface and Subsurface'
         ImageIndex = 1
-        ExplicitWidth = 474
-        ExplicitHeight = 425
         object grbSoundVelocity: TGroupBox
           Left = 22
           Top = 125
@@ -35251,6 +35257,12 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
             Top = 28
             Width = 55
             Height = 22
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 2
             Text = '0.00'
             OnKeyPress = DataChangeKeyPress
@@ -35260,6 +35272,12 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
             Top = 55
             Width = 55
             Height = 22
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 3
             Text = '0'
             OnKeyPress = DirectionChangeKeyPress
@@ -35468,8 +35486,6 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
         Caption = 'Convergence Zones'
         ImageIndex = 2
         TabVisible = False
-        ExplicitWidth = 474
-        ExplicitHeight = 425
         object grbCoverageZones: TGroupBox
           Left = 12
           Top = 34
@@ -35631,8 +35647,6 @@ object frmSubEnviCharacteristic: TfrmSubEnviCharacteristic
         Caption = 'Boundaries'
         ImageIndex = 3
         TabVisible = False
-        ExplicitWidth = 474
-        ExplicitHeight = 425
         object grbTopLeft: TGroupBox
           Left = 15
           Top = 21
