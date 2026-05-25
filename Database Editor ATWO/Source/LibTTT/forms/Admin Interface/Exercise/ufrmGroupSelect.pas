@@ -112,6 +112,7 @@ begin
       end;
 
       ShowModal;
+      CubicleGroup.Free;
       FUpdateList := AfterClose;
     end;
   finally
