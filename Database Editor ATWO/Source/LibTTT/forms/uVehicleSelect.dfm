@@ -15,6 +15,7 @@ object fVehicleSelect: TfVehicleSelect
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnMouseDown = FormMouseDown
   OnShortCut = FormShortCut
   OnShow = FormShow

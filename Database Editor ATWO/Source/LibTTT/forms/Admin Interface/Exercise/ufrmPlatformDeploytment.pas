@@ -283,15 +283,15 @@ uses
 procedure TfrmPlatformDeploytment.FormCreate(Sender: TObject);
 begin
   FPlatformInstanceOnScenarioList := TList.Create;
-  FPlatformActivationList := TList.Create;
-  FBaseList := TList.Create;
-  FOverlayList := TList.Create;
+  FPlatformActivationList         := TList.Create;
+  FBaseList                       := TList.Create;
+  FOverlayList                    := TList.Create;
 
-  FCanvas := TCanvas.Create;
-  FConverter := TCoordConverter.Create;
-  FBmpSym := TBitmapSymbol.Create;
+  FCanvas     := TCanvas.Create;
+  FConverter  := TCoordConverter.Create;
+  FBmpSym     := TBitmapSymbol.Create;
+  FDrawBase   := TDrawBase.Create;
 
-  FDrawBase := TDrawBase.Create;
   FDrawBase.Converter := FConverter;
   FModeTag := 1;//initials value dynamic tactical view
 end;
@@ -334,15 +334,15 @@ begin
   {$ENDREGION}
 
   {$Region ' Load Base '}
-  LoadAllBase;
+//  LoadAllBase;
   {$ENDREGION}
 
   {$Region ' Load Overlay '}
-  LoadAllOverlay;
+//  LoadAllOverlay;
   {$ENDREGION}
 
   {$Region ' Load Waypoint '}
-//  LoadAllPlatformInstance;
+
   {$ENDREGION}
 
   {$Region ' Set Cursor '}
@@ -1018,7 +1018,7 @@ begin
         j := j+1;
       end;
     end;
-
+    FreeItemsAndFreeList(tempList);
     {$ENDREGION}
 
   end;

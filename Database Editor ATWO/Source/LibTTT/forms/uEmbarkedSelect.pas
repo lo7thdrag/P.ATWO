@@ -73,6 +73,7 @@ type
     procedure cbbFilterSensorTypeChange(Sender: TObject);
     procedure cbbFilterWeaponTypeChange(Sender: TObject);
     procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     { Private declarations }
@@ -109,7 +110,7 @@ uDataModuleTTT, uResurceAllocationSelect,ufrmAvailableResourceAllocation,uInputN
 ufrmSummaryVehicle, ufrmSummaryRuntimePlatform, ufrmSummaryPredefinedPattern, ufrmUsage,
   uWeaponDoubleList, uSensorDoubleList, uVehicleSelect,
   ufrmSummaryEOD, ufrmSummaryMAD, ufrmSummarySonar, ufrmSonobuoyMount, ufrmSummaryMine,
-  ufrmSummaryMissile, ufrmSummaryTorpedo;
+  ufrmSummaryMissile, ufrmSummaryTorpedo, uSimContainers;
 
 {$R *.dfm}
 
@@ -731,6 +732,20 @@ begin
   vList               := TList.Create;
   sList               := TList.Create;
   wList               := TList.Create;
+end;
+
+procedure TfEmbarkedSelect.FormDestroy(Sender: TObject);
+begin
+  platform_identifier.Free;
+  platform_instance.Free;
+  platform_activation.Free;
+  vehicle.Free;
+  hosted_plat.Free;
+
+  FreeItemsAndFreeList(pList);
+  FreeItemsAndFreeList(vList);
+  FreeItemsAndFreeList(sList);
+  FreeItemsAndFreeList(wList);
 end;
 
 procedure TfEmbarkedSelect.FormShow(Sender: TObject);

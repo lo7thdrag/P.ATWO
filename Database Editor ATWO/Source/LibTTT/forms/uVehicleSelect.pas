@@ -81,6 +81,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure chkNegaraClick(Sender: TObject);
     procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
 
   private
     { Private declarations }
@@ -123,7 +124,7 @@ ufrmSummaryVehicle, ufrmSummaryRuntimePlatform, ufrmSummaryPredefinedPattern, uf
   uSensorDoubleList, ufrmSummaryMAD, ufrmSummarySonar, ufrmSonobuoyMount,
   ufrmSummaryEOD, uWeaponDoubleList, ufrmSummaryMine, ufrmSummaryMissile,
   ufrmSummaryTorpedo, uEmbarkedSelect, ufrmGroupMemberSelection,
-  ufrmSummaryLogistic, uFormationeditor, ufrmSummaryTransport;//dng
+  ufrmSummaryLogistic, uFormationeditor, ufrmSummaryTransport, uSimContainers;//dng
 
 {$R *.dfm}
 
@@ -1200,6 +1201,21 @@ begin
   vList               := TList.Create;
   sList := TList.Create;
   wList := TList.Create;
+end;
+
+procedure TfVehicleSelect.FormDestroy(Sender: TObject);
+begin
+  platform_identifier.Free;
+  platform_instance.Free;
+  platform_activation.Free;
+  vehicle.Free;
+  hosted_plat.Free;
+
+  FreeItemsAndFreeList(allVecList);
+  FreeItemsAndFreeList(selVecList);
+  FreeItemsAndFreeList(vList);
+  FreeItemsAndFreeList(sList);
+  FreeItemsAndFreeList(wList);
 end;
 
 procedure TfVehicleSelect.FormMouseDown(Sender: TObject; Button: TMouseButton;

@@ -537,7 +537,7 @@ begin
 
     InitData;
   end;
-
+  vDef.Free;
 //  frmTacticalDisplay.RefreshTrackList;
 end;
 

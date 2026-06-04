@@ -266,6 +266,8 @@ begin
 
       ShowModal;
 
+      {Proses Free di letakkan di destroy formnya, untuk kebutuhan edit juga}
+
       SelectedScenario.Free;
       SelectedResourceAllocation.Free;
       SelectedEnvironment.Free;
@@ -687,6 +689,10 @@ begin
       SelectedScenario := FSelectedScenario;
       SelectedAssetDeployment := FSelectedAssetDeployment;
       ShowModal;
+
+      SelectedResourceAllocation.Free;
+      SelectedEnvironment.Free;
+      SelectedGameArea.Free;
     end;
   finally
     frmSummaryScenario.Free;

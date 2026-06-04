@@ -43,7 +43,7 @@ type
 implementation
 
 uses
-  uMainPlottingShape;
+  uMainPlottingShape, uSimContainers;
 
 constructor TMainPlottingTemplate.create;
 begin
@@ -52,8 +52,9 @@ end;
 
 destructor TMainPlottingTemplate.destroy;
 begin
+  FreeItemsAndFreeList(ShapeList);
   inherited;
-  ShapeList.Free;
+//  ShapeList.Free;
 end;
 
 procedure TMainPlottingTemplate.Draw(FCanvas: TCanvas);

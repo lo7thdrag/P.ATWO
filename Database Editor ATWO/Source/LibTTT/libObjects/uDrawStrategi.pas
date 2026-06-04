@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, Buttons, ExtCtrls, ImgList, ComCtrls, ToolWin, OleCtrls,
   uMapXHandler, uBaseCoordSystem, math, {TeCanvas,} ColorGrd,
   uMainStrategi, uMainPlottingShape, uPlottingRecord, tttData,
-  uRecord, uFormula, uDataTypes, uCoordConvertor;
+  uRecord, uFormula, uDataTypes, uCoordConvertor, uSimContainers;
 type
 
   TDrawStrategi = class
@@ -63,7 +63,8 @@ end;
 
 destructor TDrawStrategi.Destroy;
 begin
-  FList.Free;
+//  FList.Free;
+  FreeItemsAndFreeList(FList);
 end;
 
 procedure TDrawStrategi.AddPlotting(Plotting : TMainPlottingShape);
@@ -523,8 +524,10 @@ end;
 
 destructor TDrawFlagPoint.Destroy;
 begin
+  FreeItemsAndFreeList(FList);
   inherited;
-  FList.Free;
+//  inherited;
+//  FList.Free;
 end;
 
 procedure TDrawFlagPoint.Draw(FCanvas: TCanvas);

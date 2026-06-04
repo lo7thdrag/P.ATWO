@@ -6,7 +6,7 @@ uses
   MapXLib_TLB, Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtCtrls, ImgList, ComCtrls, ToolWin, uRecord, uFormula,
   OleCtrls, uMapXHandler, uCoordConvertor, uGameData_TTT, uBaseCoordSystem, uLibSettingTTT,
-  tttData, {TeCanvas,} ColorGrd, uDataTypes;
+  tttData, {TeCanvas,} ColorGrd, uDataTypes, uSimContainers;
 
 type
   TPersonel = class
@@ -94,7 +94,8 @@ end;
 
 destructor TBrigade.Destroy;
 begin
-  BatalyonList.Free;
+//  BatalyonList.Free;
+  FreeItemsAndFreeList(BatalyonList);
   inherited;
 end;
 
@@ -106,7 +107,8 @@ end;
 
 destructor TBatalyon.Destroy;
 begin
-  KompiList.Free;
+//  KompiList.Free;
+  FreeItemsAndFreeList(KompiList);
   inherited;
 end;
 
@@ -118,7 +120,8 @@ end;
 
 destructor TKompi.Destroy;
 begin
-  PlatoonList.Free;
+//  PlatoonList.Free;
+  FreeItemsAndFreeList(PlatoonList);
   inherited;
 end;
 
@@ -130,7 +133,8 @@ end;
 
 destructor TPlatoon.Destroy;
 begin
-  GroupList.Free;
+//  GroupList.Free;
+  FreeItemsAndFreeList(GroupList);
   inherited;
 end;
 

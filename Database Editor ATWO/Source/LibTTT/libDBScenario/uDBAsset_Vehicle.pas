@@ -91,7 +91,7 @@ uses
 
 constructor TVehicle_Definition.Create;
 begin
-//sensors
+  {$REGION 'sensors'}
   Radars         := TList.Create;
   Sonars         := TList.Create;
   EOSensors      := TList.Create;
@@ -100,14 +100,16 @@ begin
   MADSensors     := TList.Create;
   Visualsensors  := TList.Create;
   FCRSensors     := TList.Create;
+  {$ENDREGION}
 
-//weapons
+  {$REGION 'weapons'}
   Missiles := TList.Create;
   Torpedos := TList.Create;
   Mines    := TList.Create;
   Hybrids  := TList.Create;
+  {$ENDREGION}
 
-//countermeasure
+  {$REGION 'countermeasure'}
   Acoustic_Decoys         := TList.Create;
   Air_Bubble_Mount        := TList.Create;
   Bombs                   := TList.Create;
@@ -120,6 +122,7 @@ begin
   Jammers                 := TList.Create;
   Point_Effects           := TList.Create;
   Towed_Jammer_Decoys     := TList.Create;
+  {$ENDREGION}
 
 //embarked platform
   Hosted_Platform         := TList.Create;
@@ -136,6 +139,7 @@ end;
 
 destructor TVehicle_Definition.Destroy;
 begin
+  {$REGION 'sensors'}
   FreeItemsAndFreeList(Radars);
   FreeItemsAndFreeList(Sonars);
   FreeItemsAndFreeList(EOSensors);
@@ -144,31 +148,35 @@ begin
   FreeItemsAndFreeList(MADSensors);
   FreeItemsAndFreeList(Visualsensors);
   FreeItemsAndFreeList(FCRSensors);
-  FreeItemsAndFreeList(Sonobuoy);
+  {$ENDREGION}
 
+  {$REGION 'weapons'}
   FreeItemsAndFreeList(Missiles);
   FreeItemsAndFreeList(Torpedos);
   FreeItemsAndFreeList(Mines);
   FreeItemsAndFreeList(Hybrids);
-  FreeItemsAndFreeList(Bombs);
-  FreeItemsAndFreeList(Guns);
-  FreeItemsAndFreeList(Point_Effects);
+  {$ENDREGION}
 
+  {$REGION 'countermeasure'}
   FreeItemsAndFreeList(Acoustic_Decoys);
   FreeItemsAndFreeList(Air_Bubble_Mount);
+  FreeItemsAndFreeList(Bombs);
   FreeItemsAndFreeList(Chaffs);
   FreeItemsAndFreeList(Chaff_Launchers);
   FreeItemsAndFreeList(Defensive_Jammers);
   FreeItemsAndFreeList(Floating_Decoys);
+  FreeItemsAndFreeList(Guns);
   FreeItemsAndFreeList(Infrared_Decoys);
   FreeItemsAndFreeList(Jammers);
+  FreeItemsAndFreeList(Point_Effects);
   FreeItemsAndFreeList(Towed_Jammer_Decoys);
+  {$ENDREGION}
 
   FreeItemsAndFreeList(Hosted_Platform);
+  FreeItemsAndFreeList(Sonobuoy);
   FreeItemsAndFreeList(Predefined);
 
   Waypoints.Free;
-
   inherited;
 end;
 

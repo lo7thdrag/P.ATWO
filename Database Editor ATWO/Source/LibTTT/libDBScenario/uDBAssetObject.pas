@@ -551,28 +551,24 @@ begin
   FIsRepositioning  := false;
   FIsGrounded       := false;
   FIsOnLand         := false;
-
 end;
 
 destructor TPlatform_Instance.Destroy;
 begin
   FMover.Free;
   FHisCounter.Free;
+  Vehicle.Free;
+  Satellite.Free;
+  Sonobuoy.Free;
   Hybrid.Free;
+
+  FMissileViews.Free;
+  FTorpedoViews.Free;
 
   FVHistory.Free;
   FTacticalSymbol.Free;
 
-  FMissileViews.Free;
-  FTorpedoViews.Free;
   FDetectedObject.Free;
-
-  if Assigned(Vehicle) then
-    FreeAndNil(Vehicle);
-  if Assigned(Satellite) then
-    FreeAndNil(Satellite);
-  if Assigned(Sonobuoy) then
-    FreeAndNil(Sonobuoy);
 
   inherited;
 end;
