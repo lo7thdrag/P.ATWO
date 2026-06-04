@@ -194433,10 +194433,8 @@ object frmUserMainForm: TfrmUserMainForm
       F2F2}
     Stretch = True
     Transparent = True
-    ExplicitLeft = -296
-    ExplicitTop = -64
-    ExplicitWidth = 1300
-    ExplicitHeight = 700
+    ExplicitLeft = 64
+    ExplicitTop = 24
   end
   object ImgExercise: TRzBmpButton
     Left = 176

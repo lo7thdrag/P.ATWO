@@ -156,7 +156,7 @@ end;
 
 procedure TfrmSummaryOverlay.btnEditOverlayClick(Sender: TObject);
 begin
-  frmOverlayEditor := TfrmOverlayEditor.Create(Self);
+//  frmOverlayEditor := TfrmOverlayEditor.Create(Self);
   with frmOverlayEditor do
   begin
     SelectedOverlay := FSelectedOverlay;
