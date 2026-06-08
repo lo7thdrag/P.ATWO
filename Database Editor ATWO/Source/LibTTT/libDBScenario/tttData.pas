@@ -3268,6 +3268,17 @@ end;
     Subject : string;
   end;
 
+  {$REGION ' frm TFG '}
+  TSchedule = class
+    Schedule_Day    : string;
+    Schedule_Date   : TDate;
+    Schedule_Time   : TTime;
+    Schedule_Desc   : string;
+    Schedule_ID     : Integer;
+  end;
+
+  {$ENDREGION}
+
   TSingleArray = array of Single;
   TString      = array of String;
   TDefaultDef  = array of TRecDefault_Definition;
