@@ -280,7 +280,8 @@ begin
     libraryPlatformList.Clear;
   end;
 
-  libraryPlatformList.Free;
+//  libraryPlatformList.Free;
+  FreeItemsAndFreeList(libraryPlatformList);
 end;
 
 

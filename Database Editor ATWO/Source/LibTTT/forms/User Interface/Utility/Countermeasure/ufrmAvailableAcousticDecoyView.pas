@@ -39,13 +39,13 @@ type
     ImgBtnNextTab: TRzBmpButton;
     ImgBc: TImage;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
 
@@ -92,17 +92,14 @@ begin
   end;
 end;
 
-procedure TfrmAvailableAcousticDecoyView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-  FreeItemsAndFreeList(FAcousticDecoyList);
-
-  Action := cafree;
-end;
-
 procedure TfrmAvailableAcousticDecoyView.FormCreate(Sender: TObject);
 begin
   FAcousticDecoyList := TList.Create;
+end;
+
+procedure TfrmAvailableAcousticDecoyView.FormDestroy(Sender: TObject);
+begin
+  FreeItemsAndFreeList(FAcousticDecoyList);
 end;
 
 procedure TfrmAvailableAcousticDecoyView.FormShow(Sender: TObject);

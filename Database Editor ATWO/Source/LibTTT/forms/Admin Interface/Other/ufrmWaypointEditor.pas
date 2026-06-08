@@ -201,6 +201,7 @@ begin
 //  FListWpData.Free;
   FreeItemsAndFreeList(FListWpData);
   FSelectedWaypoint.Free;
+  DrawFlagPoint.Free;
 end;
 
 procedure TfrmWaypointEditor.FormResize(Sender: TObject);
