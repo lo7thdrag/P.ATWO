@@ -26401,10 +26401,9 @@ end;
 //-------------------------------------------------------------------
 
 /// /====================================================
-function TdmTTT.getAllPlatform_Library_Entry(const id: Integer;
-  var aRec: TList): Integer;
+function TdmTTT.getAllPlatform_Library_Entry(const id: Integer; var aRec: TList): Integer;
 var
-  //i: Integer;
+  i: Integer;
   rec: TPlatform_Library_Entry;
 begin
   result := -1;
@@ -26426,10 +26425,20 @@ begin
     begin
       First;
 
-      if not Assigned(aRec) then
-        aRec := TList.Create
-      else
+      {$REGION ' Bersihkan List Dulu '}
+      if Assigned(aRec) then
+      begin
+        for i := 0 to aRec.Count - 1 do
+        begin
+          rec := aRec.Items[i];
+          rec.Free;
+        end;
+
         aRec.Clear;
+      end
+      else
+        aRec := TList.Create;
+      {$ENDREGION}
 
       while not ZQ.Eof do
       begin

@@ -493,7 +493,7 @@ begin
     o.Free;
   end;
   l.Clear;
-  l.Pack;
+  l.Free;
 
 end;
 
