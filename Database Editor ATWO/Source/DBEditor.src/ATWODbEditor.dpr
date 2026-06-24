@@ -414,23 +414,7 @@ begin
   Application.CreateForm(TfrmAssetDetail, frmAssetDetail);
   Application.CreateForm(Tpickpoint, pickpoint);
   Application.CreateForm(TfrmRuler, frmRuler);
-//  Application.CreateForm(TfrmSummaryGameAreaEditor, frmSummaryGameAreaEditor);
-//  Application.CreateForm(TfrmSubEnviCharacteristic, frmSubEnviCharacteristic);
-//  Application.CreateForm(TfrmVehicleResourceAllocationPickList, frmVehicleResourceAllocationPickList);
-//  Application.CreateForm(TfrmResourceAllocationInputName, frmResourceAllocationInputName);
-//  Application.CreateForm(TfrmAvailableAcousticDecoyView, frmAvailableAcousticDecoyView);
-//  Application.CreateForm(TfrmAvailableAirBubbleView, frmAvailableAirBubbleView);
-//  Application.CreateForm(TfrmAvailableChaffView, frmAvailableChaffView);
-//  Application.CreateForm(TfrmAvailableFloatingDecoyView, frmAvailableFloatingDecoyView);
-//  Application.CreateForm(TfrmAvailableInfraredDecoyView, frmAvailableInfraredDecoyView);
-//  Application.CreateForm(TfrmAvailableRadarNoiseJammerView, frmAvailableRadarNoiseJammerView);
-//  Application.CreateForm(TfrmAvailableSelfDefensiveJammerView, frmAvailableSelfDefensiveJammerView);
-//  Application.CreateForm(TfrmAvailableTowedJammerDecoyView, frmAvailableTowedJammerDecoyView);
-//  Application.CreateForm(TfrmPlatformDeploytment, frmPlatformDeploytment);
-//  Application.CreateForm(TfrmGroupSelect, frmGroupSelect);
-//  Application.CreateForm(TfrmGroupAllocation, frmGroupAllocation);
-//  Application.CreateForm(TfrmGroupMemberSelection, frmGroupMemberSelection);
-//  Application.CreateForm(TfrmSNRvsPODGraphic, frmSNRvsPODGraphic);
+
   uSimDBEditor.StartInitialize;
 
   {$Region ' Form Lama '}

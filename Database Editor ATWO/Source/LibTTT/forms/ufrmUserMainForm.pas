@@ -110,12 +110,9 @@ begin
     end;
 
     Self.Show;
-//<<<<<<< Updated upstream
-  end;
-//end;
-//=======
 
-//>>>>>>> Stashed changes
+end;
+
 
 procedure TfrmUserMainForm.ImgShutdownClick(Sender: TObject);
 begin

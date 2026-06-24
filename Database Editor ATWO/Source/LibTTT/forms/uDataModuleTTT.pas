@@ -6575,7 +6575,9 @@ begin
     if not IsEmpty then
     begin
       First;
-      aResult := TVehicle_Definition.Create;
+
+      if not Assigned(aResult) then
+        aResult := TVehicle_Definition.Create;
 
       with aResult.FData do
       begin
@@ -21864,7 +21866,7 @@ end;
 function TdmTTT.GetLogisticDef(const aClassID: Integer; var aLogistic: TLogistics): Boolean;
 begin
   Result := False;
-  aLogistic := nil;
+//  aLogistic := nil;
 
   if not ZConn.Connected then
     Exit;
@@ -21882,7 +21884,9 @@ begin
 
     if not IsEmpty then
     begin
-      aLogistic := TLogistics.Create;
+
+      if not Assigned(aLogistic) then
+        aLogistic := TLogistics.Create;
 
       with aLogistic.FData do
       begin
@@ -22212,7 +22216,7 @@ end;
 function TdmTTT.GetTransportDef(const aClassID: Integer; var aTransport: TTransport): Boolean;
 begin
   result := False;
-  aTransport := nil;
+//  aTransport := nil;
 
   if not ZConn.Connected then
     exit;
@@ -22230,7 +22234,9 @@ begin
 
     if not IsEmpty then
     begin
-      aTransport := TTransport.Create;
+
+      if not Assigned(aTransport) then
+        aTransport := TTransport.Create;
 
       with aTransport.FData do
       begin
@@ -61453,8 +61459,7 @@ end;
 
 //-------------------------------------------------------------------
 
-function TdmTTT.GetMotion_Characteristics(const id: Integer;
-  var rec: TMotion_Characteristics): boolean;
+function TdmTTT.GetMotion_Characteristics(const id: Integer; var rec: TMotion_Characteristics): boolean;
 begin
   result := false;
   if not ZConn.Connected then

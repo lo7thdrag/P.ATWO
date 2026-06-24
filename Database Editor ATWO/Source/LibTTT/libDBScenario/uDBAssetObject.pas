@@ -282,8 +282,8 @@ type
     FTorpedoViews: TDrawContainers;
 
     // FV = Visual member
-    FVHistory: THistoryVisual;
-    FTacticalSymbol  : TTacticalSymbol;
+    FVHistory       : THistoryVisual;
+    FTacticalSymbol : TTacticalSymbol;
 
     FHisCounter: TDelayer;
 
@@ -311,18 +311,11 @@ type
     Logistic  : TLogistics;
     Transport : TTransport;
 
-    FVectorSymbol     : TVectorSymbol;
+    VectorSymbol   : TVectorSymbol;
 
     ISOnGroup: boolean;
     ClientRole: integer;
 
-    //ISIntruktur: boolean;
-    // Waypont   :
-    // Missile   : TMissile_Definition;
-    { Torpedo   : TTorpedo_Definition;
-      Mines     : TMine_Definition;
-
-      }  // 0 0 0   View TDrawContainers
   public
 
     constructor Create;
@@ -519,11 +512,15 @@ begin
   Satellite := TSatellite_Definition.Create;
   Sonobuoy := TSonobuoy_On_Board.Create;
   Hybrid := THybrid_Definition.Create;
+  Motion := TMotion_Characteristics.Create;
+  Logistic  := TLogistics.Create;
+  Transport := TTransport.Create;
 
   FMissileViews := TDrawContainers.Create;
   FTorpedoViews := TDrawContainers.Create;
 
   FTacticalSymbol := TTacticalSymbol.Create;
+//  VectorSymbol   := TVectorSymbol.Create;
 
   FOrderedSpeed    := 0;
   FOrderedHeading  := 0;
@@ -557,10 +554,14 @@ destructor TPlatform_Instance.Destroy;
 begin
   FMover.Free;
   FHisCounter.Free;
+
   Vehicle.Free;
   Satellite.Free;
   Sonobuoy.Free;
   Hybrid.Free;
+  Motion.Free;
+  Logistic.Free;
+  Transport.Free;
 
   FMissileViews.Free;
   FTorpedoViews.Free;
@@ -569,6 +570,9 @@ begin
   FTacticalSymbol.Free;
 
   FDetectedObject.Free;
+
+  if Assigned(VectorSymbol) then
+    FreeAndNil(VectorSymbol);
 
   inherited;
 end;
