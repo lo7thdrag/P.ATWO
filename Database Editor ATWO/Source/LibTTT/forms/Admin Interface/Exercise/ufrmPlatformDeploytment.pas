@@ -1286,17 +1286,17 @@ begin
           begin
             {$region ' Tactical Static View '}
 
-//            if Assigned(FHookedPlatform) and (platInst.FData.Platform_Instance_Index = FHookedPlatform.FData.Platform_Instance_Index) then
-//              Font.Color := RGB(255, 191, 128)
-//            else
-//              Font.Color := GetColor(FData.Force_Designation);
-//
-//            dmTTT.getFontById(platInst.Vehicle.FData.font_id, fontTaktis);
-//            Font.Name := fontTaktis.FData.FONT_NAME;
-//            Font.Size := 24;
-//            Font.Style := [fsBold];
-//            SetBkMode(FCanvas.Handle, TRANSPARENT);
-//            FCanvas.TextOut(ix - 13, iy - 20, char(fontTaktis.FData.FONT_INDEX));
+            if Assigned(FHookedPlatform) and (platInst.FData.Platform_Instance_Index = FHookedPlatform.FData.Platform_Instance_Index) then
+              Font.Color := RGB(255, 191, 128)
+            else
+              Font.Color := GetColor(FData.Force_Designation);
+
+            dmTTT.getFontById(platInst.Vehicle.FData.font_id, fontTaktis);
+            Font.Name := fontTaktis.FData.FONT_NAME;
+            Font.Size := 24;
+            Font.Style := [fsBold];
+            SetBkMode(FCanvas.Handle, TRANSPARENT);
+            FCanvas.TextOut(ix - 13, iy - 20, char(fontTaktis.FData.FONT_INDEX));
 
             {$endregion}
 
@@ -1306,62 +1306,62 @@ begin
 
             {$region ' Tactical Dynamic View '}
 
-//            dmTTT.getFontById(platInst.Vehicle.FData.font_id, fontTaktis);
-//            Font.Name  :=  fontTaktis.FData.FONT_NAME;
-//            Font.Size  :=  24;
-//            Font.Color :=  GetColor(FData.Force_Designation);
-//            Font.Style := [fsBold];
-//
-//            FRotation := Round( 10.0 * (90.0 - FActivation.Init_Course ));
-//            FHeading := DegToRad(90.0 - FActivation.Init_Course);
-//
-//            tf := TFont.Create;
-//            tf.Assign(Font);
-//            GetObject(tf.Handle, sizeof(lf), @lf);
-//
-//            lf.lfEscapement  :=  FRotation;
-//            lf.lfOrientation :=  FRotation;
-//
-//            tf.Handle := CreateFontIndirect(lf);
-//            Font.Assign(tf);
-//            tf.Free;
-//
-//            SetTextAlign(handle, TA_CENTER or VTA_CENTER);
-//            sz := TextExtent(char(fontTaktis.FData.FONT_INDEX));
-//
-//            SetBkMode(Handle, TRANSPARENT);
-//            SinCos(FHeading , sinX, cosX );
-//
-//            qx := ix - Floor( 0.5 * sz.cy * sinX);
-//            qy := iy - Floor( 0.5 * sz.cy * cosX);
-//
-//
-//            TextOut(qx, qy, char(fontTaktis.FData.FONT_INDEX));
-//            Font.Style := [fsBold];
-//
-//            Brush.Style := bsClear;
+            dmTTT.getFontById(platInst.Vehicle.FData.font_id, fontTaktis);
+            Font.Name  :=  fontTaktis.FData.FONT_NAME;
+            Font.Size  :=  24;
+            Font.Color :=  GetColor(FData.Force_Designation);
+            Font.Style := [fsBold];
+
+            FRotation := Round( 10.0 * (90.0 - FActivation.Init_Course ));
+            FHeading := DegToRad(90.0 - FActivation.Init_Course);
+
+            tf := TFont.Create;
+            tf.Assign(Font);
+            GetObject(tf.Handle, sizeof(lf), @lf);
+
+            lf.lfEscapement  :=  FRotation;
+            lf.lfOrientation :=  FRotation;
+
+            tf.Handle := CreateFontIndirect(lf);
+            Font.Assign(tf);
+            tf.Free;
+
+            SetTextAlign(handle, TA_CENTER or VTA_CENTER);
+            sz := TextExtent(char(fontTaktis.FData.FONT_INDEX));
+
+            SetBkMode(Handle, TRANSPARENT);
+            SinCos(FHeading , sinX, cosX );
+
+            qx := ix - Floor( 0.5 * sz.cy * sinX);
+            qy := iy - Floor( 0.5 * sz.cy * cosX);
+
+
+            TextOut(qx, qy, char(fontTaktis.FData.FONT_INDEX));
+            Font.Style := [fsBold];
+
+            Brush.Style := bsClear;
 
             {$endregion}
 
           end;
           2: //platform view
           begin
-//            FConverter.FMap := Map1;
-//
-//            if Assigned(FHookedPlatform) and (platInst.FData.Platform_Instance_Index = FHookedPlatform.FData.Platform_Instance_Index) then
-//              platInst.VectorSymbol.Color := RGB(255, 191, 128)
-//            else
-//              platInst.VectorSymbol.Color := GetColor(FData.Force_Designation);
-//
-//            platInst.VectorSymbol.Course := FActivation.Init_Course;
-//            platInst.VectorSymbol.DimWidth := Vehicle.FData.Width;
-//            platInst.VectorSymbol.DimLength := Vehicle.FData.Length;
-//
-//            platInst.VectorSymbol.Center.X := ix;
-//            platInst.VectorSymbol.Center.Y := iy;
-//
-//            platInst.VectorSymbol.ConvertCoord(FConverter);
-//            platInst.VectorSymbol.Draw(FCanvas);
+            FConverter.FMap := Map1;
+
+            if Assigned(FHookedPlatform) and (platInst.FData.Platform_Instance_Index = FHookedPlatform.FData.Platform_Instance_Index) then
+              platInst.VectorSymbol.Color := RGB(255, 191, 128)
+            else
+              platInst.VectorSymbol.Color := GetColor(FData.Force_Designation);
+
+            platInst.VectorSymbol.Course := FActivation.Init_Course;
+            platInst.VectorSymbol.DimWidth := Vehicle.FData.Width;
+            platInst.VectorSymbol.DimLength := Vehicle.FData.Length;
+
+            platInst.VectorSymbol.Center.X := ix;
+            platInst.VectorSymbol.Center.Y := iy;
+
+            platInst.VectorSymbol.ConvertCoord(FConverter);
+            platInst.VectorSymbol.Draw(FCanvas);
 
           end;
         end;
