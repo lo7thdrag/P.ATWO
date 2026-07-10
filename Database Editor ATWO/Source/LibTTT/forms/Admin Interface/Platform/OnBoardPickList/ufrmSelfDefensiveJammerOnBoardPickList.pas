@@ -160,8 +160,9 @@ end;
 
 procedure TfrmSelfDefensiveJammerOnBoardPickList.UpdateDefensiveJammerList;
 var
-  i : Integer;
-  definsivejammer : TDefensive_Jammer_On_Board;
+  i, j : Integer;
+  definsivejammer, definsivejammeronboard: TDefensive_Jammer_On_Board;
+  found : Boolean;
 begin
   lbAllDefensiveJammerDef.Items.Clear;
   lbAllDefensiveJammerOnBoard.Items.Clear;
@@ -172,13 +173,23 @@ begin
   for i := 0 to FAllDefensiveJammerDefList.Count - 1 do
   begin
     definsivejammer := FAllDefensiveJammerDefList.Items[i];
-    lbAllDefensiveJammerDef.Items.AddObject(definsivejammer.FDefensiveJammer_Def.Defensive_Jammer_Identifier, definsivejammer);
-  end;
 
-  for i := 0 to FAllDefensiveJammerOnBoardList.Count - 1 do
-  begin
-    definsivejammer := FAllDefensiveJammerOnBoardList.Items[i];
-    lbAllDefensiveJammerOnBoard.Items.AddObject(definsivejammer.FData.Instance_Identifier, definsivejammer);
+    found := False;
+    for j := 0 to FAllDefensiveJammerOnBoardList.Count - 1 do
+    begin
+      definsivejammerOnboard := FAllDefensiveJammerOnBoardList.Items[j];
+
+      if definsivejammerOnboard.FDefensiveJammer_Def.Defensive_Jammer_Index = definsivejammer.FDefensiveJammer_Def.Defensive_Jammer_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if found then
+      lbAllDefensiveJammerOnBoard.Items.AddObject(definsivejammerOnboard.FDefensiveJammer_Def.Defensive_Jammer_Identifier, definsivejammerOnboard)
+    else
+      lbAllDefensiveJammerDef.Items.AddObject(definsivejammer.FDefensiveJammer_Def.Defensive_Jammer_Identifier, definsivejammer);
   end;
 end;
 

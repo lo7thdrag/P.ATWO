@@ -186,14 +186,14 @@ begin
 
   for i := 0 to FAllMADDefList.Count - 1 do
   begin
-    mad := FAllMADDefList.Items[i];
-    lbAllMADDef.Items.AddObject(mad.FMAD_Def.Class_Identifier, mad);
+    MAD := FAllMADDefList.Items[i];
+    lbAllMADDef.Items.AddObject(MAD.FMAD_Def.Class_Identifier, MAD);
   end;
 
   for i := 0 to FAllMADOnBoardList.Count - 1 do
   begin
-    mad := FAllMADOnBoardList.Items[i];
-    lbAllMADOnBoard.Items.AddObject(mad.FData.Instance_Identifier, mad);
+    MAD := FAllMADOnBoardList.Items[i];
+    lbAllMADOnBoard.Items.AddObject(MAD.FMAD_Def.Class_Identifier, MAD);
   end;
 end;
 

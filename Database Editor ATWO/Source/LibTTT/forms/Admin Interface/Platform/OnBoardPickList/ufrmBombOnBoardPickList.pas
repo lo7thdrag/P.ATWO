@@ -186,7 +186,7 @@ begin
   for i := 0 to FAllBombOnBoardList.Count - 1 do
   begin
     bomb := FAllBombOnBoardList.Items[i];
-    lbAllBombOnBoard.Items.AddObject(bomb.FData.Bomb_Identifier, bomb);
+    lbAllBombOnBoard.Items.AddObject(bomb.FPoint.FData.Instance_Identifier, bomb);
   end;
 end;
 

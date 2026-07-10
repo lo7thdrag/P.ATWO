@@ -183,9 +183,8 @@ begin
 
   dmTTT.GetVisualOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllVisualOnBoardList);
 
-  for i := 0 to FAllVisualDefList.Count - 1 do
+  if FAllVisualOnBoardList.Count = 0 then
   begin
-    visual := FAllVisualDefList.Items[i];
     lbAllVisualDetectorDef.Items.AddObject(visual.FData.Instance_Identifier, visual);
   end;
 

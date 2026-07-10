@@ -168,8 +168,9 @@ end;
 
 procedure TfrmAirBubbleOnBoardPickList.UpdateAirBubbleList;
 var
-  i : Integer;
-  airbubble : TAir_Bubble_On_Board;
+  i, j : Integer;
+  airbubble, airbubbleonboard : TAir_Bubble_On_Board;
+  found : Boolean;
 begin
   lbAllAirBubbleDef.Items.Clear;
   lbAllAirBubbleOnBoard.Items.Clear;
@@ -180,13 +181,23 @@ begin
   for i := 0 to FAllAirBubbleDefList.Count - 1 do
   begin
     airbubble := FAllAirBubbleDefList.Items[i];
-    lbAllAirBubbleDef.Items.AddObject(airbubble.FAirBubble_Def.Air_Bubble_Identifier, airbubble);
-  end;
 
-  for i := 0 to FAllAirBubbleOnBoardList.Count - 1 do
-  begin
-    airbubble := FAllAirBubbleOnBoardList.Items[i];
-    lbAllAirBubbleOnBoard.Items.AddObject(airbubble.FData.Instance_Identifier, airbubble);
+    found := False;
+    for j := 0 to FAllAirBubbleOnBoardList.Count - 1 do
+    begin
+      airbubbleonboard := FAllAirBubbleOnBoardList.Items[j];
+
+      if airbubbleonboard.FAirBubble_Def.Air_Bubble_Index = airbubble.FAirBubble_Def.Air_Bubble_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if found then
+      lbAllAirBubbleOnBoard.Items.AddObject(airbubbleonboard.FAirBubble_Def.Air_Bubble_Identifier, airbubbleonboard)
+    else
+      lbAllAirBubbleDef.Items.AddObject(airbubble.FAirBubble_Def.Air_Bubble_Identifier, airbubble);
   end;
 end;
 

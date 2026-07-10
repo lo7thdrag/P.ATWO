@@ -169,8 +169,10 @@ end;
 
 procedure TfrmRadarNoiseJammerOnBoardPickList.UpdateRadarJammerList;
 var
-  i : Integer;
-  radarjammer : TRadar_Noise_Jammer_On_Board;
+  i, j : Integer;
+  radarjammer, radarjammeronboard : TRadar_Noise_Jammer_On_Board;
+  found : Boolean;
+
 begin
   lbAllRadarJammerDef.Items.Clear;
   lbAllRadarJammerOnBoard.Items.Clear;
@@ -181,13 +183,23 @@ begin
   for i := 0 to FAllRadarJammerDefList.Count - 1 do
   begin
     radarjammer := FAllRadarJammerDefList.Items[i];
-    lbAllRadarJammerDef.Items.AddObject(radarjammer.FDef.Jammer_Identifier, radarjammer);
-  end;
 
-  for i := 0 to FAllRadarJammerOnBoardList.Count - 1 do
-  begin
-    radarjammer := FAllRadarJammerOnBoardList.Items[i];
-    lbAllRadarJammerOnBoard.Items.AddObject(radarjammer.FData.Instance_Identifier, radarjammer);
+    found := False;
+    for j := 0 to FAllRadarJammerOnBoardList.Count - 1 do
+    begin
+      radarjammeronboard := FAllRadarJammerOnBoardList.Items[j];
+
+      if radarjammeronboard.FDef.Jammer_Index = radarjammer.FDef.Jammer_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if found then
+      lbAllRadarJammerOnBoard.Items.AddObject(radarjammeronboard.FData.Instance_Identifier, radarjammeronboard)
+    else
+       lbAllRadarJammerDef.Items.AddObject(radarjammer.FDef.Jammer_Identifier, radarjammer);
   end;
 end;
 

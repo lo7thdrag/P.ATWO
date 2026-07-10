@@ -168,8 +168,9 @@ end;
 
 procedure TfrmInfraredDecoyOnBoardPickList.UpdateInfraredDecoyList;
 var
-  i : Integer;
-  infrareddecoy : TInfrared_Decoy_On_Board;
+  i, j : Integer;
+  infrareddecoy, infrareddecoyonboard : TInfrared_Decoy_On_Board;
+  found : Boolean;
 begin
   lbAllInfraredDecoyDef.Items.Clear;
   lbAllInfraredDecoyOnBoard.Items.Clear;
@@ -180,13 +181,23 @@ begin
   for i := 0 to FAllInfraredDecoyDefList.Count - 1 do
   begin
     infrareddecoy := FAllInfraredDecoyDefList.Items[i];
-    lbAllInfraredDecoyDef.Items.AddObject(infrareddecoy.FInfraRedDecoy_Def.Infrared_Decoy_Identifier, infrareddecoy);
-  end;
 
-  for i := 0 to FAllInfraredDecoyOnBoardList.Count - 1 do
-  begin
-    infrareddecoy := FAllInfraredDecoyOnBoardList.Items[i];
-    lbAllInfraredDecoyOnBoard.Items.AddObject(infrareddecoy.FData.Instance_Identifier, infrareddecoy);
+    found := False;
+    for j := 0 to FAllInfraredDecoyOnBoardList.Count - 1 do
+    begin
+      infrareddecoyOnBoard := FAllInfraredDecoyOnBoardList.Items[j];
+
+      if infrareddecoyOnBoard.FInfraRedDecoy_Def.Infrared_Decoy_Index = infrareddecoy.FInfraRedDecoy_Def.Infrared_Decoy_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if found then
+      lbAllInfraredDecoyOnBoard.Items.AddObject(infrareddecoyOnBoard.FInfraRedDecoy_Def.Infrared_Decoy_Identifier, infrareddecoyOnBoard)
+    else
+      lbAllInfraredDecoyDef.Items.AddObject(infrareddecoy.FInfraRedDecoy_Def.Infrared_Decoy_Identifier, infrareddecoy);
   end;
 end;
 
