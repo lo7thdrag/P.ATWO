@@ -16,7 +16,6 @@ object frmAvailableSonar: TfrmAvailableSonar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -17856,6 +17855,7 @@ object frmAvailableSonar: TfrmAvailableSonar
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton

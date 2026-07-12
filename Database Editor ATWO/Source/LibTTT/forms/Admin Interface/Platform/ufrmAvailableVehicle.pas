@@ -34,9 +34,9 @@ type
     procedure btnUsageClick(Sender: TObject);
 
     procedure btnCloseClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -69,12 +69,6 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableVehicle.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FVehicleList);
-//  Action := cafree;
-end;
-
 procedure TfrmAvailableVehicle.FormCreate(Sender: TObject);
 begin
   FVehicleList := TList.Create;
@@ -87,7 +81,6 @@ end;
 
 procedure TfrmAvailableVehicle.FormShow(Sender: TObject);
 begin
-//  UpdateFilterTypeItems;
   UpdateVehicleList;
 end;
 
@@ -298,22 +291,16 @@ begin
   Close;
 end;
 
+procedure TfrmAvailableVehicle.edtCheatChange(Sender: TObject);
+begin
+  UpdateVehicleList;
+end;
+
 procedure TfrmAvailableVehicle.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  vehicle : TVehicle_Definition;
 begin
   if Key = #13 then
   begin
-    lbAllVehicleDef.Items.Clear;
-
-    dmTTT.GetFilterVehicleDef(FVehicleList, edtCheat.text);
-
-    for i := 0 to FVehicleList.Count - 1 do
-    begin
-      vehicle := FVehicleList.Items[i];
-      lbAllVehicleDef.Items.AddObject(vehicle.FData.Vehicle_Identifier, vehicle);
-    end;
+    UpdateVehicleList
   end;
 end;
 

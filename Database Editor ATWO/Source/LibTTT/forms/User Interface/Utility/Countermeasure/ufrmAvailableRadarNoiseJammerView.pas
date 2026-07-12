@@ -62,7 +62,6 @@ type
     ImgBtnPreviousTab: TRzBmpButton;
     ImgBtnNextTab: TRzBmpButton;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
@@ -70,6 +69,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -99,32 +99,17 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableRadarNoiseJammerView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  radarnoisejammer : TRadar_Noise_Jammer_On_Board;
+procedure TfrmAvailableRadarNoiseJammerView.edtCheatChange(Sender: TObject);
+begin
+  UpdateRadarNoiseJammerList;
+end;
+
+procedure TfrmAvailableRadarNoiseJammerView.edtCheatKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstRadarNoiseJammer.Items.Clear;
-
-    dmTTT.GetFilterRadarNoiseJammerDef(FRadarNoiseJammerList, edtCheat.text);
-
-    for i := 0 to FRadarNoiseJammerList.Count - 1 do
-    begin
-      radarnoisejammer := FRadarNoiseJammerList.Items[i];
-      lstRadarNoiseJammer.Items.AddObject(radarnoisejammer.FDef.Jammer_Identifier, radarnoisejammer);
-    end;
+    UpdateRadarNoiseJammerList
   end;
-end;
-
-procedure TfrmAvailableRadarNoiseJammerView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FRadarNoiseJammerList);
-//
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableRadarNoiseJammerView.FormCreate(Sender: TObject);

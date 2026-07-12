@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -36,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
 
   private
@@ -58,12 +57,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableFloatingDecoy.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FFloatingDecoyList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableFloatingDecoy.FormCreate(Sender: TObject);
 begin
@@ -218,23 +211,16 @@ begin
   
 end;
 
-procedure TfrmAvailableFloatingDecoy.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  floatingdecoy : TFloating_Decoy_On_Board;
+procedure TfrmAvailableFloatingDecoy.edtCheatChange(Sender: TObject);
+begin
+  UpdateFloatingDecoyList;
+end;
+
+procedure TfrmAvailableFloatingDecoy.edtCheatKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstFloatingDecoy.Items.Clear;
-
-    dmTTT.GetFilterFloatingDecoyDef(FFloatingDecoyList, edtCheat.text);
-
-    for i := 0 to FFloatingDecoyList.Count - 1 do
-    begin
-      floatingdecoy := FFloatingDecoyList.Items[i];
-      lstFloatingDecoy.Items.AddObject(floatingdecoy.FFloatingDecoy_Def.Floating_Decoy_Identifier, floatingdecoy);
-    end;
+    UpdateFloatingDecoyList
   end;
 end;
 

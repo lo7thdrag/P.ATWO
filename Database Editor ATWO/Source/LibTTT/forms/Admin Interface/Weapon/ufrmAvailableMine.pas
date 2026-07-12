@@ -36,6 +36,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -289,22 +290,16 @@ begin
   end;
 end;
 
+procedure TfrmAvailableMine.edtCheatChange(Sender: TObject);
+begin
+  UpdateMineList;
+end;
+
 procedure TfrmAvailableMine.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  mine : TMine_On_Board;
 begin
   if Key = #13 then
   begin
-    lstMine.Items.Clear;
-
-    dmTTT.GetFilterMineDef(FMineList, edtCheat.text);
-
-    for i := 0 to FMineList.Count - 1 do
-    begin
-      mine := FMineList.Items[i];
-      lstMine.Items.AddObject(mine.FMine_Def.Mine_Identifier, mine);
-    end;
+    UpdateMineList
   end;
 end;
 

@@ -43,7 +43,6 @@ type
     ImgBtnNextTab: TRzBmpButton;
     ImgBc: TImage;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
@@ -51,6 +50,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -77,32 +77,17 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableAirBubbleView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  airbubble : TAir_Bubble_On_Board;
+procedure TfrmAvailableAirBubbleView.edtCheatChange(Sender: TObject);
+begin
+  UpdateAirBubbleList;
+end;
+
+procedure TfrmAvailableAirBubbleView.edtCheatKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstAirBubble.Items.Clear;
-
-    dmTTT.GetFilterAirBubbleDef(FAirBubbleList, edtCheat.text);
-
-    for i := 0 to FAirBubbleList.Count - 1 do
-    begin
-      airbubble := FAirBubbleList.Items[i];
-      lstAirBubble.Items.AddObject(airbubble.FAirBubble_Def.Air_Bubble_Identifier, airbubble);
-    end;
+    UpdateAirBubbleList
   end;
-end;
-
-procedure TfrmAvailableAirBubbleView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FAirBubbleList);
-//
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableAirBubbleView.FormCreate(Sender: TObject);

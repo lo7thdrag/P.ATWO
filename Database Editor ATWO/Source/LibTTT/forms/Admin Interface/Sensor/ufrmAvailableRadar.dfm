@@ -16,7 +16,6 @@ object frmAvailableRadar: TfrmAvailableRadar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -17855,6 +17854,7 @@ object frmAvailableRadar: TfrmAvailableRadar
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton

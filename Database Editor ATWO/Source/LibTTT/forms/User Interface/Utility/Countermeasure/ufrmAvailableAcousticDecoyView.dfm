@@ -66375,6 +66375,7 @@ object frmAvailableAcousticDecoyView: TfrmAvailableAcousticDecoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object ImgBtnBack: TRzBmpButton

@@ -36,6 +36,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -255,22 +256,16 @@ begin
   end;
 end;
 
+procedure TfrmAvailableBomb.edtCheatChange(Sender: TObject);
+begin
+  UpdateBombList;
+end;
+
 procedure TfrmAvailableBomb.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  bomb : TBomb_Definition;
 begin
   if Key = #13 then
   begin
-    lstBomb.Items.Clear;
-
-    dmTTT.GetFilterBombDef(FBombList, edtCheat.text);
-
-    for i := 0 to FBombList.Count - 1 do
-    begin
-      bomb := FBombList.Items[i];
-      lstBomb.Items.AddObject(bomb.FData.Bomb_Identifier, bomb);
-    end;
+    UpdateBombList
   end;
 end;
 

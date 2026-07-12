@@ -34,10 +34,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundAvailableClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -63,11 +63,6 @@ uses
 procedure TfrmAvailableOverlay.FormActivate(Sender: TObject);
 begin
 //  WindowState := wsMaximized;
-end;
-
-procedure TfrmAvailableOverlay.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableOverlay.FormCreate(Sender: TObject);
@@ -244,22 +239,16 @@ begin
 
 end;
 
+procedure TfrmAvailableOverlay.edtCheatChange(Sender: TObject);
+begin
+  UpdateOverlayList;
+end;
+
 procedure TfrmAvailableOverlay.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  overlay : TOverlay_Definition;
 begin
   if Key = #13 then
   begin
-    lstOverlay.Items.Clear;
-
-    dmTTT.GetFilterOverlayDef(FOverlayList, edtCheat.text);
-
-    for i := 0 to FOverlayList.Count - 1 do
-    begin
-      overlay := FOverlayList.Items[i];
-      lstOverlay.Items.AddObject(overlay.FData.Overlay_Identifier, overlay);
-    end;
+    UpdateOverlayList
   end;
 end;
 

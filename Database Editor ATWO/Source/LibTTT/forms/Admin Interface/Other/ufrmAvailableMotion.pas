@@ -23,7 +23,6 @@ type
     ImgBtnBack: TRzBmpButton;
 
     procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormActivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -38,6 +37,7 @@ type
     procedure CheatClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
 
   private
@@ -63,11 +63,6 @@ uses
 procedure TfrmAvailableMotion.FormActivate(Sender: TObject);
 begin
 //  WindowState := wsMaximized;
-end;
-
-procedure TfrmAvailablemotion.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableMotion.FormCreate(Sender: TObject);
@@ -250,22 +245,16 @@ begin
   edtCheat.Visible := not edtCheat.Visible;
 end;
 
+procedure TfrmAvailablemotion.edtCheatChange(Sender: TObject);
+begin
+  UpdateMotionList;
+end;
+
 procedure TfrmAvailablemotion.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  motion : TMotion_Characteristics;
 begin
   if Key = #13 then
   begin
-    lbMotions.Items.Clear;
-
-    dmTTT.GetFilterMotionDef(FMotionList, edtCheat.text);
-
-    for i := 0 to FMotionList.Count - 1 do
-    begin
-      motion := FMotionList.Items[i];
-      lbMotions.Items.AddObject(motion.FData.Motion_Identifier, motion);
-    end;
+    UpdateMotionList
   end;
 end;
 

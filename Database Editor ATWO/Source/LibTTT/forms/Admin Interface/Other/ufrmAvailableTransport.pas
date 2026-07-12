@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -36,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
 
   private
@@ -59,11 +58,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableTransport.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableTransport.FormCreate(Sender: TObject);
 begin
@@ -227,23 +221,16 @@ begin
   
 end;
 
-procedure TfrmAvailableTransport.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  transport: TTransport;
+procedure TfrmAvailableTransport.edtCheatChange(Sender: TObject);
+begin
+  UpdateTransportList;
+end;
+
+procedure TfrmAvailableTransport.edtCheatKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstTransport.Items.Clear;
-
-    dmTTT.GetFilterTransportDef(FTransportList, edtCheat.text);
-
-    for i := 0 to FTransportList.Count - 1 do
-    begin
-      transport := FTransportList.Items[i];
-      lstTransport.Items.AddObject(Transport.FData.Transport_Identifier, transport);
-    end;
+    UpdateTransportList
   end;
 end;
 

@@ -17,7 +17,6 @@ object frmAvailableSelfDefensiveJammer: TfrmAvailableSelfDefensiveJammer
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
-  OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
@@ -17856,6 +17855,7 @@ object frmAvailableSelfDefensiveJammer: TfrmAvailableSelfDefensiveJammer
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton

@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
 
@@ -36,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -65,11 +64,6 @@ uses
 procedure TfrmAvailableGameArea.FormShow(Sender: TObject);
 begin
   UpdateGameAreaList;
-end;
-
-procedure TfrmAvailableGameArea.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FGameAreaList);
 end;
 
 procedure TfrmAvailableGameArea.FormCreate(Sender: TObject);
@@ -307,23 +301,16 @@ begin
   end;
 end;
 
-procedure TfrmAvailableGameArea.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  gameArea : TGame_Environment_Definition;
+procedure TfrmAvailableGameArea.edtCheatChange(Sender: TObject);
+begin
+  UpdateGameAreaList;
+end;
+
+procedure TfrmAvailableGameArea.edtCheatKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstGameArea.Items.Clear;
-
-    dmTTT.GetFilterGameAreaDef(FGameAreaList, edtCheat.text);
-
-    for i := 0 to FGameAreaList.Count - 1 do
-    begin
-      gameArea := FGameAreaList[i];
-      lstGameArea.Items.AddObject(gameArea.FGameArea.Game_Area_Identifier, gameArea);
-    end;
+    UpdateGameAreaList
   end;
 end;
 

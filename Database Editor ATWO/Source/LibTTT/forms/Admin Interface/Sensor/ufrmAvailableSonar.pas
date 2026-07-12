@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -36,6 +34,7 @@ type
 
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtCheatChange(Sender: TObject);
 
 
   private
@@ -58,12 +57,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableSonar.FormClose(Sender: TObject;  var Action: TCloseAction);
-begin
-  FreeItemsAndFreeList(FSonarList);
-  Action := cafree;
-end;
 
 procedure TfrmAvailableSonar.FormCreate(Sender: TObject);
 begin
@@ -223,22 +216,16 @@ begin
   end;
 end;
 
+procedure TfrmAvailableSonar.edtCheatChange(Sender: TObject);
+begin
+  UpdateSonarList;
+end;
+
 procedure TfrmAvailableSonar.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  sonar : TSonar_On_Board;
 begin
   if Key = #13 then
   begin
-    lbSonar.Items.Clear;
-
-    dmTTT.GetFilterSonarDef(FSonarList, edtCheat.text);
-
-    for i := 0 to FSonarList.Count - 1 do
-    begin
-      sonar := FSonarList.Items[i];
-      lbSonar.Items.AddObject(sonar.FDef.Sonar_Identifier, sonar);
-    end;
+    UpdateSonarList
   end;
 end;
 

@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -37,6 +35,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,12 +56,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableSNRvsPOD.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FSNRvsPODList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableSNRvsPOD.FormCreate(Sender: TObject);
 begin
@@ -261,23 +254,16 @@ begin
   PODvsSNRPointList.Free;
 end;
 
-procedure TfrmAvailableSNRvsPOD.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  snrvspod : TPOD_vs_SNR_Curve_Definition;
+procedure TfrmAvailableSNRvsPOD.edtCheatChange(Sender: TObject);
+begin
+  UpdateSNRvsPODList;
+end;
+
+procedure TfrmAvailableSNRvsPOD.edtCheatKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstSNRvsPOD.Items.Clear;
-
-    dmTTT.GetFilterPODvsSNRCurveDef(FSNRvsPODList, edtCheat.text);
-
-    for i := 0 to FSNRvsPODList.Count - 1 do
-    begin
-      snrvspod := FSNRvsPODList.Items[i];
-      lstSNRvsPOD.Items.AddObject(snrvspod.FData.Curve_Definition_Identifier, snrvspod);
-    end;
+    UpdateSNRvsPODList
   end;
 end;
 

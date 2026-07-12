@@ -16,7 +16,6 @@ object frmAvailableWaypoint: TfrmAvailableWaypoint
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -17854,6 +17853,7 @@ object frmAvailableWaypoint: TfrmAvailableWaypoint
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton

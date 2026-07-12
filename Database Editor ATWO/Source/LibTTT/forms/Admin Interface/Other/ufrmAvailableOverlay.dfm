@@ -17,7 +17,6 @@ object frmAvailableOverlay: TfrmAvailableOverlay
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -17856,6 +17855,7 @@ object frmAvailableOverlay: TfrmAvailableOverlay
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton

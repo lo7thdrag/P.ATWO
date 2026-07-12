@@ -46,6 +46,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -72,23 +73,16 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableAcousticDecoyView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  acousticdecoy : TAcoustic_Decoy_On_Board;
+procedure TfrmAvailableAcousticDecoyView.edtCheatChange(Sender: TObject);
+begin
+  UpdateAcousticDecoyList;
+end;
+
+procedure TfrmAvailableAcousticDecoyView.edtCheatKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstAcousticDecoy.Items.Clear;
-
-    dmTTT.GetFilterAcousticDecoyDef(FAcousticDecoyList, edtCheat.text);
-
-    for i := 0 to FAcousticDecoyList.Count - 1 do
-    begin
-      acousticdecoy := FAcousticDecoyList.Items[i];
-      lstAcousticDecoy.Items.AddObject(acousticdecoy.FAccousticDecoy_Def.Decoy_Identifier, acousticdecoy);
-    end;
+    UpdateAcousticDecoyList
   end;
 end;
 

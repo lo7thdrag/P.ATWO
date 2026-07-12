@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -37,6 +35,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,12 +56,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableEOD.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FEODList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableEOD.FormCreate(Sender: TObject);
 begin
@@ -213,22 +206,16 @@ begin
   end;
 end;
 
+procedure TfrmAvailableEOD.edtCheatChange(Sender: TObject);
+begin
+  UpdateEODList;
+end;
+
 procedure TfrmAvailableEOD.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  eod : TEOD_On_Board;
 begin
   if Key = #13 then
   begin
-    lbEOD.Items.Clear;
-
-    dmTTT.GetFilterEODef(FEODList, edtCheat.text);
-
-    for i := 0 to FEODList.Count - 1 do
-    begin
-      eod := FEODList.Items[i];
-      lbEOD.Items.AddObject(eod.FEO_Def.Class_Identifier, eod);
-    end;
+    UpdateEODList
   end;
 end;
 

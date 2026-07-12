@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -36,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -58,12 +57,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableMAD.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FMADList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableMAD.FormCreate(Sender: TObject);
 begin
@@ -216,22 +209,16 @@ begin
   
 end;
 
+procedure TfrmAvailableMAD.edtCheatChange(Sender: TObject);
+begin
+  UpdateMADList;
+end;
+
 procedure TfrmAvailableMAD.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  mad : TMAD_On_Board;
 begin
   if Key = #13 then
   begin
-    lbMAD.Items.Clear;
-
-    dmTTT.GetFilterMADDef(FMADList, edtCheat.text);
-
-    for i := 0 to FMADList.Count - 1 do
-    begin
-      mad := FMADList.Items[i];
-      lbMAD.Items.AddObject(mad.FMAD_Def.Class_Identifier, mad);
-    end;
+    UpdateMADList
   end;
 end;
 

@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -36,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -56,12 +55,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableESM.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FESMList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableESM.FormCreate(Sender: TObject);
 begin
@@ -214,22 +207,16 @@ begin
  
 end;
 
+procedure TfrmAvailableESM.edtCheatChange(Sender: TObject);
+begin
+  UpdateESMList;
+end;
+
 procedure TfrmAvailableESM.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  esm : TESM_On_Board;
 begin
   if Key = #13 then
   begin
-    lbESM.Items.Clear;
-
-    dmTTT.GetFilterESMDef(FESMList, edtCheat.text);
-
-    for i := 0 to FESMList.Count - 1 do
-    begin
-      esm := FESMList.Items[i];
-      lbESM.Items.AddObject(esm.FESM_Def.Class_Identifier, esm);
-    end;
+    UpdateESMList
   end;
 end;
 

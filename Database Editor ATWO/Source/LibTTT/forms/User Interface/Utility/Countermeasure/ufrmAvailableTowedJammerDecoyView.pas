@@ -111,7 +111,6 @@ type
     Label20: TLabel;
     Label24: TLabel;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
@@ -119,6 +118,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -148,32 +148,17 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableTowedJammerDecoyView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  towedjammerdecoy : TTowed_Jammer_Decoy_On_Board;
+procedure TfrmAvailableTowedJammerDecoyView.edtCheatChange(Sender: TObject);
+begin
+  UpdateTowedJammerDecoyList;
+end;
+
+procedure TfrmAvailableTowedJammerDecoyView.edtCheatKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstTowedJammerDecoy.Items.Clear;
-
-    dmTTT.GetFilterTowedJammerDecoyDef(FTowedJammerDecoyList, edtCheat.text);
-
-    for i := 0 to FTowedJammerDecoyList.Count - 1 do
-    begin
-      towedjammerdecoy := FTowedJammerDecoyList.Items[i];
-      lstTowedJammerDecoy.Items.AddObject(towedjammerdecoy.FDef.Towed_Decoy_Identifier, towedjammerdecoy);
-    end;
+    UpdateTowedJammerDecoyList
   end;
-end;
-
-procedure TfrmAvailableTowedJammerDecoyView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FTowedJammerDecoyList);
-//
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableTowedJammerDecoyView.FormCreate(Sender: TObject);

@@ -17,7 +17,6 @@ object frmAvailableTransport: TfrmAvailableTransport
   OldCreateOrder = False
   Position = poScreenCenter
   ShowHint = True
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -17857,6 +17856,7 @@ object frmAvailableTransport: TfrmAvailableTransport
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton

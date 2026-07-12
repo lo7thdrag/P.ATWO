@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -36,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,11 +56,6 @@ uses
   uDataModuleTTT, ufrmSummaryWaypoint, ufrmUsage, uSimContainers;
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableWaypoint.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableWaypoint.FormCreate(Sender: TObject);
 begin
@@ -261,23 +255,16 @@ begin
   
 end;
 
-procedure TfrmAvailableWaypoint.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  waypoint : TWaypoint_Def;
+procedure TfrmAvailableWaypoint.edtCheatChange(Sender: TObject);
+begin
+  UpdateWaypointList
+end;
+
+procedure TfrmAvailableWaypoint.edtCheatKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstWaypoint.Items.Clear;
-
-    dmTTT.GetFilterWaypointDef(FWaypointList, edtCheat.text);
-
-    for i := 0 to FWaypointList.Count - 1 do
-    begin
-      waypoint := FWaypointList.Items[i];
-      lstWaypoint.Items.AddObject(waypoint.FData.Waypoint_Name, waypoint);
-    end;
+    UpdateWaypointList
   end;
 end;
 

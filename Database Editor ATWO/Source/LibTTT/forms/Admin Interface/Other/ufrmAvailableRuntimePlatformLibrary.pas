@@ -36,6 +36,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -285,23 +286,16 @@ begin
 end;
 
 
-procedure TfrmAvailableRuntimePlatformLibrary.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  runtimeplatformlibrary : TRuntime_Platform_Library;
+procedure TfrmAvailableRuntimePlatformLibrary.edtCheatChange(Sender: TObject);
+begin
+  UpdateRPLList;
+end;
+
+procedure TfrmAvailableRuntimePlatformLibrary.edtCheatKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstRuntimePlatformLibrary.Items.Clear;
-
-    dmTTT.GetFilterRuntimePlatformLibraryDef(FRuntimePlatformLibraryList, edtCheat.text);
-
-    for i := 0 to FRuntimePlatformLibraryList.Count - 1 do
-    begin
-      runtimeplatformlibrary := FRuntimePlatformLibraryList.Items[i];
-      lstRuntimePlatformLibrary.Items.AddObject(runtimeplatformlibrary.FData.Library_Name, runtimeplatformlibrary);
-    end;
+    UpdateRPLList
   end;
 end;
 

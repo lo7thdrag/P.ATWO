@@ -34,6 +34,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -523,23 +524,16 @@ begin
   iffMCList.Free;
 end;
 
-procedure TfrmAvailableGameDefault.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  gamedefaults : TGame_Defaults;
+procedure TfrmAvailableGameDefault.edtCheatChange(Sender: TObject);
+begin
+  UpdateGameDefaultList;
+end;
+
+procedure TfrmAvailableGameDefault.edtCheatKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstGameDefault.Items.Clear;
-
-    dmTTT.GetFilterGameDefaultDef(FGameDefaultList, edtCheat.text);
-
-    for i := 0 to FGameDefaultList.Count - 1 do
-    begin
-      gamedefaults := FGameDefaultList.Items[i];
-      lstGameDefault.Items.AddObject(gamedefaults.FData.Defaults_Identifier, gamedefaults);
-    end;
+    UpdateGameDefaultList
   end;
 end;
 

@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -38,6 +36,7 @@ type
     procedure ImgBtnBackClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
 
   private
@@ -65,12 +64,6 @@ uses
 procedure TfrmAvailableSonobuoy.FormActivate(Sender: TObject);
 begin
   WindowState := wsMaximized;
-end;
-
-procedure TfrmAvailableSonobuoy.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-  FreeItemsAndFreeList(FSonobuoyList);
-  Action := cafree;
 end;
 
 procedure TfrmAvailableSonobuoy.FormCreate(Sender: TObject);
@@ -249,22 +242,16 @@ begin
   end;
 end;
 
+procedure TfrmAvailableSonobuoy.edtCheatChange(Sender: TObject);
+begin
+  UpdateSonobuoyList;
+end;
+
 procedure TfrmAvailableSonobuoy.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  sonobuoy : TSonobuoy_On_Board;
 begin
   if Key = #13 then
   begin
-    lbSonobuoy.Items.Clear;
-
-    dmTTT.GetFilterSonobuoyDef(FSonobuoyList, edtCheat.text);
-
-    for i := 0 to FSonobuoyList.Count - 1 do
-    begin
-      sonobuoy := FSonobuoyList.Items[i];
-      lbSonobuoy.Items.AddObject(sonobuoy.FDef.Class_Identifier, sonobuoy);
-    end;
+    UpdateSonobuoyList
   end;
 end;
 

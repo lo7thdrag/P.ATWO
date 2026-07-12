@@ -36,6 +36,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure ImgBackgroundClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -286,23 +287,16 @@ begin
   studentRoleList.Free;
 end;
 
-procedure TfrmAvailableStudentRole.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  studentroles : TStudent_Role_List;
+procedure TfrmAvailableStudentRole.edtCheatChange(Sender: TObject);
+begin
+  UpdateStudentRoleList;
+end;
+
+procedure TfrmAvailableStudentRole.edtCheatKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstStudentRole.Items.Clear;
-
-    dmTTT.GetFilterStudentRoleList(FStudentRoleList, edtCheat.text);
-
-    for i := 0 to FStudentRoleList.Count - 1 do
-    begin
-      studentroles := FStudentRoleList.Items[i];
-      lstStudentRole.Items.AddObject(studentroles.FData.Role_List_Identifier,studentroles);
-    end;
+    UpdateStudentRoleList
   end;
 end;
 

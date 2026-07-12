@@ -17855,6 +17855,7 @@ object frmAvailableTorpedo: TfrmAvailableTorpedo
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton

@@ -15,7 +15,6 @@ object frmAvailableChaffView: TfrmAvailableChaffView
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -66376,6 +66375,7 @@ object frmAvailableChaffView: TfrmAvailableChaffView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object ImgBtnBack: TRzBmpButton

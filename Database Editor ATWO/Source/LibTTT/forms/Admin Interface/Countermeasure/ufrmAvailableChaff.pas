@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -37,6 +35,7 @@ type
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
 
   private
@@ -59,12 +58,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableChaff.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FChaffList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableChaff.FormCreate(Sender: TObject);
 begin
@@ -227,22 +220,16 @@ begin
 
 end;
 
+procedure TfrmAvailableChaff.edtCheatChange(Sender: TObject);
+begin
+  UpdateChaffList;
+end;
+
 procedure TfrmAvailableChaff.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  chaff : TChaff_On_Board;
 begin
   if Key = #13 then
   begin
-    lstChaff.Items.Clear;
-
-    dmTTT.GetFilterChaffDef(FChaffList, edtCheat.text);
-
-    for i := 0 to FChaffList.Count - 1 do
-    begin
-      chaff := FChaffList.Items[i];
-      lstChaff.Items.AddObject(chaff.FChaff_Def.Chaff_Identifier, chaff);
-    end;
+    UpdateChaffList
   end;
 end;
 

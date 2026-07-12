@@ -15,7 +15,6 @@ object frmAvailableSelfDefensiveJammerView: TfrmAvailableSelfDefensiveJammerView
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -75619,6 +75618,7 @@ object frmAvailableSelfDefensiveJammerView: TfrmAvailableSelfDefensiveJammerView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object ImgBtnBack: TRzBmpButton

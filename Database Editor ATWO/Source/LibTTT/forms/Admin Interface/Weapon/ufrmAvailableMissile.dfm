@@ -17853,6 +17853,7 @@ object frmAvailableMissile: TfrmAvailableMissile
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton
