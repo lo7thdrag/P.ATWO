@@ -87,8 +87,6 @@ type
     chTransferCapability: TCheckBox;
     edtClass: TEdit;
     txtClass: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     //Global
@@ -127,11 +125,6 @@ uses
   uDataModuleTTT;
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryLogistic.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryLogistic.FormShow(Sender: TObject);
 begin

@@ -76,7 +76,6 @@ type
     procedure btnOKClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     FSelectedTransport : TTransport;
@@ -106,11 +105,6 @@ uses
   uDataModuleTTT;
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryTransport.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryTransport.FormShow(Sender: TObject);
 begin

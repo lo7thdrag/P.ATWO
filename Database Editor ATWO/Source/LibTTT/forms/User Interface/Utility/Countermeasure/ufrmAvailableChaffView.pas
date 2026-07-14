@@ -59,7 +59,7 @@ type
     lblTab: TLabel;
     ImgBc: TImage;
     ImgHeader: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnPreviousTab: TRzBmpButton;
@@ -70,9 +70,9 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -99,12 +99,12 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableChaffView.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableChaffView.edtSearchChange(Sender: TObject);
 begin
   UpdateChaffList;
 end;
 
-procedure TfrmAvailableChaffView.edtCheatKeyPress(Sender: TObject;var Key: Char);
+procedure TfrmAvailableChaffView.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -214,7 +214,7 @@ var
 begin
   lstChaff.Items.Clear;
 
-  dmTTT.GetAllChaffDef(FChaffList);
+  dmTTT.GetFilterChaffDef(FChaffList, edtSearch.Text);
 
   for i := 0 to FChaffList.Count - 1 do
   begin

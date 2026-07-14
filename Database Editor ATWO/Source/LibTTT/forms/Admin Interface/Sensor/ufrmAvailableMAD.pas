@@ -11,7 +11,7 @@ type
   TfrmAvailableMAD = class(TForm)
     lbMAD: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -32,9 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -209,12 +209,12 @@ begin
   
 end;
 
-procedure TfrmAvailableMAD.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableMAD.edtSearchChange(Sender: TObject);
 begin
   UpdateMADList;
 end;
 
-procedure TfrmAvailableMAD.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableMAD.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -242,7 +242,7 @@ var
 begin
   lbMAD.Items.Clear;
 
-  dmTTT.GetAllMADDef(FMADList);
+  dmTTT.GetFilterMADDef(FMADList, edtSearch.Text);
 
   for i := 0 to FMADList.Count - 1 do
   begin

@@ -23,8 +23,6 @@ type
     txtClass: TLabel;
 
     procedure edtChange(Sender: TObject);
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     procedure btnApplyClick(Sender: TObject);
@@ -60,11 +58,6 @@ uses ufrmAdminMainForm, uWaypointWindow,uBaseCoordSystem, uDataModuleTTT, ufrmWa
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryWaypoint.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryWaypoint.FormShow(Sender: TObject);
 begin

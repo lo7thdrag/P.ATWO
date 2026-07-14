@@ -34123,6 +34123,10 @@ object frmSummaryGameDefault: TfrmSummaryGameDefault
       TabWidth = 110
       object tsAboveWater: TTabSheet
         Caption = 'Above Water'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grpRadarEffect: TGroupBox
           Left = 14
           Top = 15
@@ -34637,6 +34641,10 @@ object frmSummaryGameDefault: TfrmSummaryGameDefault
       object tsUnderWater: TTabSheet
         Caption = 'Under Water'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblSonobuoy: TLabel
           Left = 204
           Top = 13
@@ -34914,6 +34922,10 @@ object frmSummaryGameDefault: TfrmSummaryGameDefault
       object tsTrack: TTabSheet
         Caption = 'Tracks'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblClutterReduction: TLabel
           Left = 375
           Top = 316
@@ -35399,6 +35411,10 @@ object frmSummaryGameDefault: TfrmSummaryGameDefault
       object tsGuidance: TTabSheet
         Caption = 'Guidance'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblZigZagPredefinedLegs: TLabel
           Left = 21
           Top = 118
@@ -35758,6 +35774,10 @@ object frmSummaryGameDefault: TfrmSummaryGameDefault
       object tsAllocatioinMax: TTabSheet
         Caption = 'Allocation Max'
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblMaxRadarClass: TLabel
           Left = 11
           Top = 13
@@ -35920,6 +35940,10 @@ object frmSummaryGameDefault: TfrmSummaryGameDefault
       object tsCommunication: TTabSheet
         Caption = 'Communication'
         ImageIndex = 6
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grpMHSDelayTime: TGroupBox
           Left = 11
           Top = 3

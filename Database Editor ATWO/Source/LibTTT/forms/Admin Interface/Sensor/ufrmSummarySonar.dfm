@@ -15,7 +15,6 @@ object frmSummarySonar: TfrmSummarySonar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 16
@@ -34169,6 +34168,10 @@ object frmSummarySonar: TfrmSummarySonar
       StyleElements = [seFont, seClient]
       object tsGeneral: TTabSheet
         Caption = 'General'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grpActiveDetectionCapabilities: TGroupBox
           Left = 15
           Top = 71
@@ -34569,6 +34572,10 @@ object frmSummarySonar: TfrmSummarySonar
       object tsCharacteristic: TTabSheet
         Caption = 'Characteristics'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object txtSNRvsPODCurve: TLabel
           Left = 261
           Top = 120
@@ -35030,6 +35037,10 @@ object frmSummarySonar: TfrmSummarySonar
         BorderWidth = 10
         Caption = 'Notes'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object mmoNotes: TMemo
           Left = 0
           Top = 0

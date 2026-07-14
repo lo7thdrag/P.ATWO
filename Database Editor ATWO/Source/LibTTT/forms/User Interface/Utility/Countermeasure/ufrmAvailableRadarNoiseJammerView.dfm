@@ -75723,7 +75723,7 @@ object frmAvailableRadarNoiseJammerView: TfrmAvailableRadarNoiseJammerView
       TabOrder = 1
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 139
     Top = 125
     Width = 267
@@ -75736,8 +75736,8 @@ object frmAvailableRadarNoiseJammerView: TfrmAvailableRadarNoiseJammerView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 203

@@ -284,7 +284,6 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
     procedure chkFlyOutRequiredClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     FSelectedMissile : TMissile_On_Board;
@@ -317,13 +316,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryMissile.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  FSelectedHybrid.Free;
-
-  Action := cafree;
-end;
 
 procedure TfrmSummaryMissile.FormShow(Sender: TObject);
 begin

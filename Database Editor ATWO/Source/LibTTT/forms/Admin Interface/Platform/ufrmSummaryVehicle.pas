@@ -334,8 +334,6 @@ type
     cbGangwayStarboard: TCheckBox;
     edtClass: TEdit;
     txtClass: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -468,15 +466,6 @@ uses
 
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryVehicle.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FPlatInstList);
-//  FreeItemsAndFreeList(iList);
-//  FreeItemsAndFreeList(PIList);
-//  FreeItemsAndFreeList(embarkedList);
-//  Action := cafree;
-end;
 
 procedure TfrmSummaryVehicle.FormCreate(Sender: TObject);
 begin

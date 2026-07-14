@@ -17841,7 +17841,7 @@ object frmAvailableStudentRole: TfrmAvailableStudentRole
     OnClick = lbSingleClick
     OnDblClick = btnEditClick
   end
-  object edtCheat: TEdit
+  object edtstudentrolelist: TEdit
     Left = 85
     Top = 103
     Width = 155
@@ -17854,8 +17854,8 @@ object frmAvailableStudentRole: TfrmAvailableStudentRole
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtstudentrolelistChange
+    OnKeyPress = edtstudentrolelistKeyPress
   end
   object btnNew: TRzBmpButton
     Left = 253

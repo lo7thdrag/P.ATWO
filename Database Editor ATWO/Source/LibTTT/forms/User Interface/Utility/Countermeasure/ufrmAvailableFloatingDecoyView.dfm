@@ -75916,7 +75916,7 @@ object frmAvailableFloatingDecoyView: TfrmAvailableFloatingDecoyView
       TabOrder = 3
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 140
     Top = 123
     Width = 267
@@ -75930,8 +75930,8 @@ object frmAvailableFloatingDecoyView: TfrmAvailableFloatingDecoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 203

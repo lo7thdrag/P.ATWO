@@ -11,7 +11,7 @@ type
   TfrmAvailableMine = class(TForm)
     lstMine: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -34,9 +34,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -290,12 +290,12 @@ begin
   end;
 end;
 
-procedure TfrmAvailableMine.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableMine.edtSearchChange(Sender: TObject);
 begin
   UpdateMineList;
 end;
 
-procedure TfrmAvailableMine.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableMine.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -311,7 +311,7 @@ var
 begin
   lstMine.Items.Clear;
 
-  dmTTT.GetAllMineDef(FMineList);
+  dmTTT.GetFilterMineDef(FMineList, edtSearch.Text);
 
   for i := 0 to FMineList.Count - 1 do
   begin

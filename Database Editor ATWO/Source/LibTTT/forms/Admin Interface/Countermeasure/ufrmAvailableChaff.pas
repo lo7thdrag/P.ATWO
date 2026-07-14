@@ -11,7 +11,7 @@ type
   TfrmAvailableChaff = class(TForm)
     Label2: TLabel;
     lstChaff: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -32,10 +32,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -220,12 +220,12 @@ begin
 
 end;
 
-procedure TfrmAvailableChaff.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableChaff.edtSearchChange(Sender: TObject);
 begin
   UpdateChaffList;
 end;
 
-procedure TfrmAvailableChaff.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableChaff.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -248,7 +248,7 @@ var
 begin
   lstChaff.Items.Clear;
 
-  dmTTT.GetAllChaffDef(FChaffList);
+  dmTTT.GetFilterChaffDef(FChaffList, edtSearch.Text);
 
   for i := 0 to FChaffList.Count - 1 do
   begin

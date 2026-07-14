@@ -76461,7 +76461,7 @@ object frmAvailableTowedJammerDecoyView: TfrmAvailableTowedJammerDecoyView
       TabOrder = 10
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 140
     Top = 121
     Width = 269
@@ -76474,8 +76474,8 @@ object frmAvailableTowedJammerDecoyView: TfrmAvailableTowedJammerDecoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 219

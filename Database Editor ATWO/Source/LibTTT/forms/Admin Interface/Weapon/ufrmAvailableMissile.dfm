@@ -17840,9 +17840,9 @@ object frmAvailableMissile: TfrmAvailableMissile
     OnClick = lbSingleClick
     OnDblClick = btnEditClick
   end
-  object edtCheat: TEdit
-    Left = 85
-    Top = 103
+  object edtSearch: TEdit
+    Left = 89
+    Top = 104
     Width = 155
     Height = 27
     AutoSize = False
@@ -17853,8 +17853,8 @@ object frmAvailableMissile: TfrmAvailableMissile
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object btnNew: TRzBmpButton
     Left = 250

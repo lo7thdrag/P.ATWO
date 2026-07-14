@@ -11,7 +11,7 @@ type
   TfrmAvailableRadar = class(TForm)
     lbRadars: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -33,9 +33,9 @@ type
     procedure btnUsageClick(Sender: TObject);
 
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -211,12 +211,12 @@ begin
   end;
 end;
 
-procedure TfrmAvailableRadar.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableRadar.edtSearchChange(Sender: TObject);
 begin
   UpdateRadarList;
 end;
 
-procedure TfrmAvailableRadar.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableRadar.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -244,7 +244,7 @@ var
 begin
   lbRadars.Items.Clear;
 
-  dmTTT.GetAllRadarDef(FRadarList);
+  dmTTT.GetFilterRadarDef(FRadarList, edtSearch.Text);
 
   for i := 0 to FRadarList.Count - 1 do
   begin

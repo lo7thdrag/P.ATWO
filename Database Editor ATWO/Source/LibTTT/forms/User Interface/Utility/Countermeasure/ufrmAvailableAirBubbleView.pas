@@ -36,7 +36,7 @@ type
     Label18: TLabel;
     ImgHeader: TImage;
     lblTab: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnPreviousTab: TRzBmpButton;
@@ -48,9 +48,9 @@ type
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -77,12 +77,12 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableAirBubbleView.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableAirBubbleView.edtSearchChange(Sender: TObject);
 begin
   UpdateAirBubbleList;
 end;
 
-procedure TfrmAvailableAirBubbleView.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableAirBubbleView.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -176,7 +176,7 @@ var
 begin
   lstAirBubble.Items.Clear;
 
-  dmTTT.GetAllAirBubbleDef(FAirBubbleList);
+  dmTTT.GetFilterAirBubbleDef(FAirBubbleList, edtSearch.Text);
 
   for i := 0 to FAirBubbleList.Count - 1 do
   begin

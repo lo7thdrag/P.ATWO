@@ -11,7 +11,7 @@ type
   TfrmAvailableAcousticDecoy = class(TForm)
     lstAcousticDecoy: TListBox;
     lblsearch: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     Label1: TLabel;
     ImgHeader: TImage;
@@ -32,9 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -241,12 +241,12 @@ begin
   end;
 end;
 
-procedure TfrmAvailableAcousticDecoy.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableAcousticDecoy.edtSearchChange(Sender: TObject);
 begin
   UpdateAcousticDecoyList;
 end;
 
-procedure TfrmAvailableAcousticDecoy.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableAcousticDecoy.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -274,7 +274,7 @@ var
 begin
   lstAcousticDecoy.Items.Clear;
 
-  dmTTT.GetAllAcousticDecoyDef(FAcousticDecoyList);
+  dmTTT.GetFilterAcousticDecoyDef(FAcousticDecoyList, edtSearch.Text);
 
   for i := 0 to FAcousticDecoyList.Count - 1 do
   begin

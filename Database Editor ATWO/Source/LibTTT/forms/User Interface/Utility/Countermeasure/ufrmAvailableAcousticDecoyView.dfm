@@ -66362,7 +66362,7 @@ object frmAvailableAcousticDecoyView: TfrmAvailableAcousticDecoyView
       ExplicitHeight = 26
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 139
     Top = 124
     Width = 268
@@ -66375,8 +66375,8 @@ object frmAvailableAcousticDecoyView: TfrmAvailableAcousticDecoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 219

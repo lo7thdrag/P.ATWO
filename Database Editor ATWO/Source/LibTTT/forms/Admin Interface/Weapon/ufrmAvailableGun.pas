@@ -10,7 +10,7 @@ uses
 type
   TfrmAvailableGun = class(TForm)
     lstGun: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -35,9 +35,9 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure CheatClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -246,7 +246,7 @@ end;
 
 procedure TfrmAvailableGun.CheatClick(Sender: TObject);
 begin
-  edtCheat.Visible := not edtCheat.Visible;
+//  edtCheat.Visible := not edtCheat.Visible;
 end;
 
 procedure TfrmAvailableGun.CopyTargetCurve(idGun, targetType: integer);
@@ -275,12 +275,12 @@ begin
   end;
 end;
 
-procedure TfrmAvailableGun.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableGun.edtSearchChange(Sender: TObject);
 begin
   UpdateGunList;
 end;
 
-procedure TfrmAvailableGun.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableGun.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -296,7 +296,7 @@ var
 begin
   lstGun.Items.Clear;
 
-  dmTTT.GetAllGunDef(FGunList);
+  dmTTT.GetFilterGunDef(FGunList, edtSearch.Text);
 
   for i := 0 to FGunList.Count - 1 do
   begin

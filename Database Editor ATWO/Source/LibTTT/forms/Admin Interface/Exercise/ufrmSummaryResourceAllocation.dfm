@@ -35,6 +35,10 @@ object frmSummaryResourceAllocation: TfrmSummaryResourceAllocation
       TabOrder = 0
       object General: TTabSheet
         Caption = 'General'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object btnBrowseEnvironment: TSpeedButton
           Left = 383
           Top = 72
@@ -263,6 +267,10 @@ object frmSummaryResourceAllocation: TfrmSummaryResourceAllocation
       object Resources: TTabSheet
         Caption = 'Resources'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grbForceResources: TGroupBox
           Left = 11
           Top = 8

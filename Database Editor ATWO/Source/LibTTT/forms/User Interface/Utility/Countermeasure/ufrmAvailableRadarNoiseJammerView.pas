@@ -56,7 +56,7 @@ type
     lblTab: TLabel;
     ImgBc: TImage;
     ImgHeader: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnPreviousTab: TRzBmpButton;
@@ -67,9 +67,9 @@ type
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -99,12 +99,12 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableRadarNoiseJammerView.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableRadarNoiseJammerView.edtSearchChange(Sender: TObject);
 begin
   UpdateRadarNoiseJammerList;
 end;
 
-procedure TfrmAvailableRadarNoiseJammerView.edtCheatKeyPress(Sender: TObject;var Key: Char);
+procedure TfrmAvailableRadarNoiseJammerView.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -209,7 +209,7 @@ var
 begin
   lstRadarNoiseJammer.Items.Clear;
 
-  dmTTT.GetAllRadarNoiseJammerDef(FRadarNoiseJammerList);
+  dmTTT.GetFilterRadarNoiseJammerDef(FRadarNoiseJammerList, edtSearch.Text);
 
   for i := 0 to FRadarNoiseJammerList.Count - 1 do
   begin

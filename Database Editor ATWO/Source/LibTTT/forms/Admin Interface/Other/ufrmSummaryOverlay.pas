@@ -37,7 +37,6 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
     procedure edtNameChange(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
 
@@ -67,11 +66,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryOverlay.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryOverlay.FormShow(Sender: TObject);
 begin

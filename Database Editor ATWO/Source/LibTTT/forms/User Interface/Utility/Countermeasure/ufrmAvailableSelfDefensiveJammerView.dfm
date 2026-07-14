@@ -75605,7 +75605,7 @@ object frmAvailableSelfDefensiveJammerView: TfrmAvailableSelfDefensiveJammerView
       TabOrder = 6
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 145
     Top = 129
     Width = 267
@@ -75618,8 +75618,8 @@ object frmAvailableSelfDefensiveJammerView: TfrmAvailableSelfDefensiveJammerView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 219

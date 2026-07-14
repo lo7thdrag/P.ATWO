@@ -64,7 +64,6 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
     procedure btnVehicleClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     FSelectedBase : TBase;
@@ -92,11 +91,6 @@ uses
 
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryBase.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryBase.FormShow(Sender: TObject);
 begin

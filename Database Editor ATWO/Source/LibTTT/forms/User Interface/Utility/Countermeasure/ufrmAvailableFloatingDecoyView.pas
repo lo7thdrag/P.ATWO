@@ -69,7 +69,7 @@ type
     ImgHeader: TImage;
     lblTab: TLabel;
     ImgBc: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnPreviousTab: TRzBmpButton;
@@ -80,9 +80,9 @@ type
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -109,12 +109,12 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableFloatingDecoyView.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableFloatingDecoyView.edtSearchChange(Sender: TObject);
 begin
   UpdateFloatingDecoyList;
 end;
 
-procedure TfrmAvailableFloatingDecoyView.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableFloatingDecoyView.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -222,7 +222,7 @@ var
 begin
   lstFloatingDecoy.Items.Clear;
 
-  dmTTT.GetAllFloatingDecoyDef(FFloatingDecoyList);
+  dmTTT.GetFilterFloatingDecoyDef(FFloatingDecoyList, edtSearch.Text);
 
   for i := 0 to FFloatingDecoyList.Count - 1 do
   begin

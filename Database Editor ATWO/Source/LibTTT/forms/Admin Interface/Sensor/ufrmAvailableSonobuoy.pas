@@ -11,7 +11,7 @@ type
   TfrmAvailableSonobuoy = class(TForm)
     lbSonobuoy: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -34,9 +34,9 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -242,12 +242,12 @@ begin
   end;
 end;
 
-procedure TfrmAvailableSonobuoy.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableSonobuoy.edtSearchChange(Sender: TObject);
 begin
   UpdateSonobuoyList;
 end;
 
-procedure TfrmAvailableSonobuoy.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableSonobuoy.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -275,7 +275,7 @@ var
 begin
   lbSonobuoy.Items.Clear;
 
-  dmTTT.GetAllSonobuoyDef(FSonobuoyList);
+  dmTTT.GetFilterSonobuoyDef(FSonobuoyList, edtSearch.Text);
 
   for i := 0 to FSonobuoyList.Count - 1 do
   begin

@@ -11,7 +11,7 @@ type
   TfrmAvailableFloatingDecoy = class(TForm)
     Label2: TLabel;
     lstFloatingDecoy: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -32,9 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -211,12 +211,12 @@ begin
   
 end;
 
-procedure TfrmAvailableFloatingDecoy.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableFloatingDecoy.edtSearchChange(Sender: TObject);
 begin
   UpdateFloatingDecoyList;
 end;
 
-procedure TfrmAvailableFloatingDecoy.edtCheatKeyPress(Sender: TObject;var Key: Char);
+procedure TfrmAvailableFloatingDecoy.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -239,7 +239,7 @@ var
 begin
   lstFloatingDecoy.Items.Clear;
 
-  dmTTT.GetAllFloatingDecoyDef(FFloatingDecoyList);
+  dmTTT.GetFilterFloatingDecoyDef(FFloatingDecoyList, edtSearch.Text);
 
   for i := 0 to FFloatingDecoyList.Count - 1 do
   begin

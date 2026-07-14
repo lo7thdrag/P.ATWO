@@ -31,7 +31,7 @@ type
     Panel2: TPanel;
     trckbrDecoyNoise: TTrackBar;
     ImgHeader: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnPreviousTab: TRzBmpButton;
@@ -44,9 +44,9 @@ type
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -73,12 +73,12 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableAcousticDecoyView.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableAcousticDecoyView.edtSearchChange(Sender: TObject);
 begin
   UpdateAcousticDecoyList;
 end;
 
-procedure TfrmAvailableAcousticDecoyView.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableAcousticDecoyView.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -171,7 +171,7 @@ var
 begin
   lstAcousticDecoy.Items.Clear;
 
-  dmTTT.GetAllAcousticDecoyDef(FAcousticDecoyList);
+  dmTTT.GetFilterAcousticDecoyDef(FAcousticDecoyList, edtSearch.Text);
 
   for i := 0 to FAcousticDecoyList.Count - 1 do
   begin

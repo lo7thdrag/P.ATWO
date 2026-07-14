@@ -11,7 +11,7 @@ type
   TfrmAvailableStudentRole = class(TForm)
     lstStudentRole: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtstudentrolelist: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -35,8 +35,8 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure ImgBackgroundClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtstudentrolelistKeyPress(Sender: TObject; var Key: Char);
+    procedure edtstudentrolelistChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -287,12 +287,12 @@ begin
   studentRoleList.Free;
 end;
 
-procedure TfrmAvailableStudentRole.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableStudentRole.edtstudentrolelistChange(Sender: TObject);
 begin
   UpdateStudentRoleList;
 end;
 
-procedure TfrmAvailableStudentRole.edtCheatKeyPress(Sender: TObject;var Key: Char);
+procedure TfrmAvailableStudentRole.edtstudentrolelistKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin

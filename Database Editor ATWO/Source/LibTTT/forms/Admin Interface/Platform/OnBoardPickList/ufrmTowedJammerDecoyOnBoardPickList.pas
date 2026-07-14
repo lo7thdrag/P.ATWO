@@ -16,11 +16,12 @@ type
     btnRemove: TRzBmpButton;
     btnEdit: TRzBmpButton;
     btnClose: TRzBmpButton;
-    edtSearch: TEdit;
     Panel1: TPanel;
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    edtSearch: TEdit;
+    lbl1: TLabel;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -34,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -147,6 +150,19 @@ begin
 
   AfterClose := True;
   UpdateTowedJammerDecoyList;
+end;
+
+procedure TfrmTowedJammerDecoyOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateTowedJammerDecoyList;
+end;
+
+procedure TfrmTowedJammerDecoyOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateTowedJammerDecoyList;
+  end;
 end;
 
 procedure TfrmTowedJammerDecoyOnBoardPickList.btnCloseClick(Sender: TObject);

@@ -17841,7 +17841,7 @@ object frmAvailableESM: TfrmAvailableESM
     OnClick = lbSingleClick
     OnDblClick = btnEditClick
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 85
     Top = 103
     Width = 157
@@ -17854,8 +17854,8 @@ object frmAvailableESM: TfrmAvailableESM
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object btnNew: TRzBmpButton
     Left = 254

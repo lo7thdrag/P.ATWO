@@ -20,8 +20,6 @@ type
     btnEditList: TButton;
     edtName: TEdit;
     Label2: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     procedure btnOKClick(Sender: TObject);
@@ -54,11 +52,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummarySnrVsPod.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummarySnrVsPod.FormShow(Sender: TObject);
 begin

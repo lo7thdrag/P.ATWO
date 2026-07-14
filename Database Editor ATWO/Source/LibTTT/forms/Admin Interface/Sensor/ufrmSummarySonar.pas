@@ -123,8 +123,6 @@ type
     ImgHeader: TImage;
     edtClass: TEdit;
     txtClass: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     //Global
@@ -172,11 +170,6 @@ uses
 
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummarySonar.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummarySonar.FormShow(Sender: TObject);
 begin

@@ -11,7 +11,7 @@ type
   TfrmAvailableSNRvsPOD = class(TForm)
     Label2: TLabel;
     lstSNRvsPOD: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -33,9 +33,9 @@ type
     procedure btnUsageClick(Sender: TObject);
 
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -254,12 +254,12 @@ begin
   PODvsSNRPointList.Free;
 end;
 
-procedure TfrmAvailableSNRvsPOD.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableSNRvsPOD.edtSearchChange(Sender: TObject);
 begin
   UpdateSNRvsPODList;
 end;
 
-procedure TfrmAvailableSNRvsPOD.edtCheatKeyPress(Sender: TObject;var Key: Char);
+procedure TfrmAvailableSNRvsPOD.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -287,7 +287,7 @@ var
 begin
   lstSNRvsPOD.Items.Clear;
 
-  dmTTT.GetAllPODvsSNRCurveDef(FSNRvsPODList);
+  dmTTT.GetfilterPODvsSNRCurveDef(FSNRvsPODList,edtSearch.text);
 
   for i := 0 to FSNRvsPODList.Count - 1 do
   begin

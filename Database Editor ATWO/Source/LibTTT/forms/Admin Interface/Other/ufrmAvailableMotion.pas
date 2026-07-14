@@ -11,7 +11,7 @@ type
   TfrmAvailablemotion = class(TForm)
     lbMotions: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -35,9 +35,9 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure CheatClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -242,15 +242,15 @@ end;
 
 procedure TfrmAvailablemotion.CheatClick(Sender: TObject);
 begin
-  edtCheat.Visible := not edtCheat.Visible;
+//  edtCheat.Visible := not edtCheat.Visible;
 end;
 
-procedure TfrmAvailablemotion.edtCheatChange(Sender: TObject);
+procedure TfrmAvailablemotion.edtSearchChange(Sender: TObject);
 begin
   UpdateMotionList;
 end;
 
-procedure TfrmAvailablemotion.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailablemotion.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -273,7 +273,7 @@ var
 begin
   lbMotions.Items.Clear;
 
-  dmTTT.GetAllMotionCharacteristicDef(FMotionList);
+  dmTTT.GetFilterMotionCharacteristicDef(FMotionList, edtSearch.Text);
 
   for i := 0 to FMotionList.Count - 1 do
   begin

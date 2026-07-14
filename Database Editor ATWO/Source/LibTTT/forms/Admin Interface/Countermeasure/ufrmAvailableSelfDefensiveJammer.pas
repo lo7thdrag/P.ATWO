@@ -11,7 +11,7 @@ type
   TfrmAvailableSelfDefensiveJammer = class(TForm)
     Label2: TLabel;
     lstSelfDefensiveJammer: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     procedure lbSingleClick(Sender: TObject);
@@ -33,9 +31,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -58,12 +56,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableSelfDefensiveJammer.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FSelfDefensiveJammerList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableSelfDefensiveJammer.FormDestroy(Sender: TObject);
 begin
@@ -215,12 +207,12 @@ begin
   
 end;
 
-procedure TfrmAvailableSelfDefensiveJammer.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableSelfDefensiveJammer.edtSearchChange(Sender: TObject);
 begin
   UpdateSelfDefensiveJammerList;
 end;
 
-procedure TfrmAvailableSelfDefensiveJammer.edtCheatKeyPress(Sender: TObject;var Key: Char);
+procedure TfrmAvailableSelfDefensiveJammer.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -243,7 +235,7 @@ var
 begin
   lstSelfDefensiveJammer.Items.Clear;
 
-  dmTTT.GetAllSelfDefensiveJammerDef(FSelfDefensiveJammerList);
+  dmTTT.GetFilterSelfDefensiveJammerDef(FSelfDefensiveJammerList, edtSearch.Text);
 
   for i := 0 to FSelfDefensiveJammerList.Count - 1 do
   begin

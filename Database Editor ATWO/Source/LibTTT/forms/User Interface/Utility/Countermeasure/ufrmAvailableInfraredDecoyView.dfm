@@ -75540,7 +75540,7 @@ object frmAvailableInfraredDecoyView: TfrmAvailableInfraredDecoyView
       Transparent = True
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 148
     Top = 123
     Width = 265
@@ -75553,8 +75553,8 @@ object frmAvailableInfraredDecoyView: TfrmAvailableInfraredDecoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnChange = edtCheatChange
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnPreviousTab: TRzBmpButton
     Left = 740

@@ -48,7 +48,7 @@ type
     ImgHeader: TImage;
     lblTab: TLabel;
     ImgBc: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnNextTab: TRzBmpButton;
@@ -61,9 +61,9 @@ type
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -93,12 +93,12 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableSelfDefensiveJammerView.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableSelfDefensiveJammerView.edtSearchChange(Sender: TObject);
 begin
   UpdateSelfDefensiveJammerList;
 end;
 
-procedure TfrmAvailableSelfDefensiveJammerView.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableSelfDefensiveJammerView.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -205,7 +205,7 @@ var
 begin
   lstSelfDefensiveJammer.Items.Clear;
 
-  dmTTT.GetAllSelfDefensiveJammerDef(FSelfDefensiveJammerList);
+  dmTTT.GetFilterSelfDefensiveJammerDef(FSelfDefensiveJammerList, edtSearch.Text);
 
   for i := 0 to FSelfDefensiveJammerList.Count - 1 do
   begin

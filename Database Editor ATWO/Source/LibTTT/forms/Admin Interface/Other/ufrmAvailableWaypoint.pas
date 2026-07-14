@@ -11,7 +11,7 @@ type
   TfrmAvailableWaypoint = class(TForm)
     lstWaypoint: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -32,9 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -255,12 +255,12 @@ begin
   
 end;
 
-procedure TfrmAvailableWaypoint.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableWaypoint.edtSearchChange(Sender: TObject);
 begin
   UpdateWaypointList
 end;
 
-procedure TfrmAvailableWaypoint.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableWaypoint.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -284,7 +284,7 @@ var
 begin
   lstWaypoint.Items.Clear;
 
-  dmTTT.GetAllWaypointDef(FWaypointList);
+  dmTTT.GetFilterWaypointDef(FWaypointList, edtSearch.text);
 
   for i := 0 to FWaypointList.Count - 1 do
   begin

@@ -271,6 +271,7 @@ type
 
     {$REGION ' EOD Definition '}
     function GetAllEODef(var aList: TList): Integer; {New}
+    function GetFilterEODDef(var aList: TList; aFilter: String): Integer;
     function GetFilterEODef(var aList: TList; aFilter: String): Integer;
     function GetEODef(const aClassName: string): Integer; overload;
 
@@ -659,6 +660,7 @@ type
     {$ENDREGION}
 
     {$REGION ' Motion '}
+    function GetFilterMotionCharacteristicDef(var aList: TList; aFilter: String): Integer;
     function GetFilterMotionDef(var aList: TList; aFilter: String): Integer;
     function GetAllMotionCharacteristicDef(aList: TList): Integer;
     function GetMotionCharacteristicDef(const aClassName: string): Integer; overload;
@@ -9009,6 +9011,78 @@ end;
 {$ENDREGION}
 
 {$REGION ' EOD Definition '}
+
+function TdmTTT.GetFilterEODDef(var aList: TList; aFilter: String): Integer;
+var
+  i : Integer;
+  rec : TEOD_On_Board;
+begin
+  Result := -1;
+
+  if not ZConn.Connected then
+    Exit;
+
+  with ZQ do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT *');
+    SQL.Add('FROM EO_Detection_Definition a LEFT JOIN Note_Storage b');
+    SQL.Add('ON a.EO_Index = b.EO_Index');
+    SQL.Add('WHERE Class_Identifier like '  + quotedStr('%' + aFilter + '%'));
+    SQL.Add('ORDER BY Class_Identifier');
+    Open;
+
+    Result := RecordCount;
+
+    {$REGION ' Membersihkan List '}
+    if Assigned(aList) then
+    begin
+      for i := 0 to aList.Count - 1 do
+      begin
+        rec := aList.Items[i];
+        rec.Free;
+      end;
+
+      aList.Clear;
+    end
+    else
+      aList := TList.Create;
+    {$ENDREGION}
+
+    if not IsEmpty then
+    begin
+      First;
+
+      while not ZQ.Eof do
+      begin
+        rec := TEOD_On_Board.Create;
+
+        with rec.FEO_Def do
+        begin
+          EO_Index := FieldByName('EO_Index').AsInteger;
+          Class_Identifier := FieldByName('Class_Identifier').AsString;
+          Sensor_Type := FieldByName('Sensor_Type').AsInteger;
+          Detection_Range := FieldByName('Detection_Range').AsSingle;
+          Known_Cross_Section := FieldByName('Known_Cross_Section').AsSingle;
+          Max_Range := FieldByName('Max_Range').AsSingle;
+          Scan_Rate := FieldByName('Scan_Rate').AsSingle;
+          Num_FC_Channels := FieldByName('Num_FC_Channels').AsInteger;
+        end;
+
+        with rec.FNote do
+        begin
+          Note_Index := FieldByName('Note_Index').AsInteger;
+          Note_Type := FieldByName('Note_Type').AsInteger;
+          Notes := FieldByName('Notes').AsString;
+        end;
+
+        aList.Add(rec);
+        Next;
+      end;
+    end;
+  end;
+end;
 
 function TdmTTT.GetAllEODef(var aList: TList): Integer;
 var
@@ -21262,6 +21336,98 @@ end;
 {$ENDREGION}
 
 {$REGION ' Motion '}
+
+function TdmTTT.GetFilterMotionCharacteristicDef(var aList: TList; aFilter: String): Integer;
+var
+  i : Integer;
+  rec : TMotion_Characteristics;
+begin
+  Result := -1;
+
+  if not ZConn.Connected then
+    Exit;
+
+  with ZQ do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT * ');
+    SQL.Add('FROM Motion_Characteristics ');
+    SQL.Add('WHERE Motion_Identifier like '  + quotedStr('%' + aFilter + '%'));
+    SQL.Add('ORDER BY Motion_Identifier');
+    Open;
+
+    Result := RecordCount;
+
+    {$REGION ' Membersihkan List '}
+    if Assigned(aList) then
+    begin
+      for i := 0 to aList.Count - 1 do
+      begin
+        rec := aList.Items[i];
+        rec.Free;
+      end;
+
+      aList.Clear;
+    end
+    else
+      aList := TList.Create;
+    {$ENDREGION}
+
+    if not IsEmpty then
+    begin
+      First;
+
+      while not Eof do
+      begin
+        rec := TMotion_Characteristics.Create;
+
+        with rec.FData do
+        begin
+          Motion_Index := FieldByName('Motion_Index').AsInteger;
+          Motion_Identifier := FieldByName('Motion_Identifier').AsString;
+          Motion_Type := FieldByName('Motion_Type').AsInteger;
+          Max_Altitude := FieldByName('Max_Altitude').AsSingle;
+          Max_Depth := FieldByName('Max_Depth').AsSingle;
+          Min_Ground_Speed := FieldByName('Min_Ground_Speed').AsSingle;
+          Cruise_Ground_Speed := FieldByName('Cruise_Ground_Speed').AsSingle;
+          High_Ground_Speed := FieldByName('High_Ground_Speed').AsSingle;
+          Max_Ground_Speed := FieldByName('Max_Ground_Speed').AsSingle;
+          Acceleration := FieldByName('Acceleration').AsSingle;
+          Deceleration := FieldByName('Deceleration').AsSingle;
+          Normal_Climb_Rate := FieldByName('Normal_Climb_Rate').AsSingle;
+          Max_Climb_Rate := FieldByName('Max_Climb_Rate').AsSingle;
+          Normal_Descent_Rate := FieldByName('Normal_Descent_Rate').AsSingle;
+          Max_Descent_Rate := FieldByName('Max_Descent_Rate').AsSingle;
+          Vertical_Accel := FieldByName('Vertical_Accel').AsSingle;
+          Standard_Turn_Rate := FieldByName('Standard_Turn_Rate').AsSingle;
+          Tight_Turn_Rate := FieldByName('Tight_Turn_Rate').AsSingle;
+          Max_Helm_Angle := FieldByName('Max_Helm_Angle').AsSingle;
+          Helm_Angle_Rate := FieldByName('Helm_Angle_Rate').AsSingle;
+          Speed_Reduce_In_Turn := FieldByName('Speed_Reduce_In_Turn').AsSingle;
+          Time_To_Reduce_Speed := FieldByName('Time_To_Reduce_Speed').AsSingle;
+          Min_Speed_To_Reduce := FieldByName('Min_Speed_To_Reduce').AsSingle;
+          Rate_of_Turn_Rate_Chg := FieldByName('Rate_of_Turn_Rate_Chg').AsSingle;
+          Min_Pitch_Angle := FieldByName('Min_Pitch_Angle').AsSingle;
+          Max_Pitch_Angle := FieldByName('Max_Pitch_Angle').AsSingle;
+          Max_Roll_Angle := FieldByName('Max_Roll_Angle').AsSingle;
+          Endurance_Type := FieldByName('Endurance_Type').AsInteger;
+          Endurance_Time := FieldByName('Endurance_Time').AsInteger;
+          Max_Effective_Range := FieldByName('Max_Effective_Range').AsSingle;
+          Fuel_Unit_Type := FieldByName('Fuel_Unit_Type').AsInteger;
+          Max_Fuel_Capacity := FieldByName('Max_Fuel_Capacity').AsSingle;
+          Min_Speed_Fuel_Consume := FieldByName('Min_Speed_Fuel_Consume').AsFloat;
+          Cruise_Speed_Fuel_Consume := FieldByName('Cruise_Speed_Fuel_Consume').AsFloat;
+          High_Speed_Fuel_Consume := FieldByName('High_Speed_Fuel_Consume').AsFloat;
+          Max_Speed_Fuel_Consume := FieldByName('Max_Speed_Fuel_Consume').AsFloat;
+        end;
+
+        aList.Add(rec);
+        Next;
+      end;
+    end;
+  end;
+end;
 
 function TdmTTT.GetFilterMotionDef(var aList: TList; aFilter: String): Integer;
 var

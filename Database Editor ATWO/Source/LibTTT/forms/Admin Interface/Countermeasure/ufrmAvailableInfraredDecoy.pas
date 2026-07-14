@@ -11,7 +11,7 @@ type
   TfrmAvailableInfraredDecoy = class(TForm)
     Label2: TLabel;
     lstInfraredDecoy: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -32,10 +32,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -218,12 +218,12 @@ begin
 
 end;
 
-procedure TfrmAvailableInfraredDecoy.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableInfraredDecoy.edtSearchChange(Sender: TObject);
 begin
   UpdateInfraredDecoyList;
 end;
 
-procedure TfrmAvailableInfraredDecoy.edtCheatKeyPress(Sender: TObject;var Key: Char);
+procedure TfrmAvailableInfraredDecoy.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -246,7 +246,7 @@ var
 begin
   lstInfraredDecoy.Items.Clear;
 
-  dmTTT.GetAllInfraredDecoyDef(FInfraredDecoyList);
+  dmTTT.GetFilterInfraredDecoyDef(FInfraredDecoyList, edtSearch.Text);
 
   for i := 0 to FInfraredDecoyList.Count - 1 do
   begin

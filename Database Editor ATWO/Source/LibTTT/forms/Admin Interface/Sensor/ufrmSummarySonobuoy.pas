@@ -42,8 +42,6 @@ type
     Label1: TLabel;
     edtClass: TEdit;
     lblName: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     //Global
@@ -85,11 +83,6 @@ uses
   uDataModuleTTT, ufrmSonarPickList;
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummarySonobuoy.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummarySonobuoy.FormShow(Sender: TObject);
 begin

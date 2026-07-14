@@ -11,7 +11,7 @@ type
   TfrmAvailableOverlay = class(TForm)
     lstOverlay: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -34,10 +34,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundAvailableClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -239,12 +239,12 @@ begin
 
 end;
 
-procedure TfrmAvailableOverlay.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableOverlay.edtSearchChange(Sender: TObject);
 begin
   UpdateOverlayList;
 end;
 
-procedure TfrmAvailableOverlay.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableOverlay.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -266,7 +266,7 @@ var
 begin
   lstOverlay.Items.Clear;
 
-  dmTTT.GetAllOverlayDef(FOverlayList);
+  dmTTT.GetFilterOverlayDef(FOverlayList, edtSearch.Text);
 
   for i := 0 to FOverlayList.Count - 1 do
   begin

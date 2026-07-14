@@ -19,6 +19,9 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
+    btnEditMount: TButton;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -30,6 +33,8 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FAllDefensiveJammerDefList : TList;
@@ -122,6 +127,19 @@ begin
   end;
 
   Result := True;
+end;
+
+procedure TfrmSelfDefensiveJammerOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateDefensiveJammerList;
+end;
+
+procedure TfrmSelfDefensiveJammerOnBoardPickList.edtSearchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateDefensiveJammerList;
+  end;
 end;
 
 procedure TfrmSelfDefensiveJammerOnBoardPickList.btnRemoveClick(Sender: TObject);

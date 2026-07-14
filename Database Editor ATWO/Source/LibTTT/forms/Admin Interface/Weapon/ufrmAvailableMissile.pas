@@ -11,7 +11,7 @@ type
   TfrmAvailableMissile = class(TForm)
     Label2: TLabel;
     lstMissile: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -34,9 +34,9 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
 //    procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
-    procedure edtCheatChange(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -257,12 +257,12 @@ begin
 
 end;
 
-procedure TfrmAvailableMissile.edtCheatChange(Sender: TObject);
+procedure TfrmAvailableMissile.edtSearchChange(Sender: TObject);
 begin
   UpdateMissileList;
 end;
 
-procedure TfrmAvailableMissile.edtCheatKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmAvailableMissile.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -286,7 +286,7 @@ var
 begin
   lstMissile.Items.Clear;
 
-  dmTTT.GetAllMissileDef(FMissileList);
+  dmTTT.GetFilterMissileDef(FMissileList, edtSearch.Text);
 
   for i := 0 to FMissileList.Count - 1 do
   begin
