@@ -938,8 +938,7 @@ type
 
     {$REGION ' Nanti Dulu '}
     // --- 1 -- Scenario ----------------------------------------------------------
-    function GetScenario(const id: Integer; var rec: TScenario_Definition)
-      : boolean;
+    function GetScenario(const id: Integer; var rec: TScenario_Definition): boolean;
     function getAllScenario_Definition(var aRec: TList): Integer;
 
 
@@ -947,23 +946,21 @@ type
     function DeleteWaypointByID(const id : integer) : Integer;
     function GetWaypointBySce(const id: Integer; var pList: TList): boolean;
     function DeleteAllResource_Waypoint_Mapping(const id: string): Integer;
-    function InsertWaypointByResourceAlloc(const id: string;
-      var rec: TWaypoint_Def): Integer;
-    function CekWaypointName(WaypointName : String) : Boolean;
+    function InsertWaypointByResourceAlloc(const id: string;var rec: TWaypoint_Def): Integer;
+//    function CekWaypointName(WaypointName : String) : Boolean;
 //    function InsertWaypointDef(WaypointDef : TWaypoint_Def) : integer;
-    procedure InsertWaypointDataPoint(WaypointIndex : Integer; Waypoint : TRecWaypoint_Data);
+//    procedure InsertWaypointDataPoint(WaypointIndex : Integer; Waypoint : TRecWaypoint_Data);
     procedure getWaypointDataByID(const id : integer; var wpDataList : TList);
 //    function UpdateWaypointDef(WaypointDef : TWaypoint_Def) : integer;
-    function DeleteWaypointDataByID(const id: Integer): Integer;
-    function GetWaypointByResourceAlloc(const id: Integer;
-      var pList: TList): boolean;
+//    function DeleteWaypointDataByID(const id: Integer): Integer;
+//    function GetWaypointByResourceAlloc(const id: Integer;var pList: TList): boolean;
 
 
     //==================target================
     function GetTargetListFromVec_Def(var pList : TList):boolean;
     function GetTargetIdentifierFromClass(const vId : integer; var pList : TList):boolean;
     function GetIDVecTarget(const Ident : string): Integer;
-    function isTargetFromPlatformInst(const vId : Integer): Boolean;
+//    function isTargetFromPlatformInst(const vId : Integer): Boolean;
 
     //--------------------------------------------
 
@@ -976,11 +973,10 @@ type
     function CekScenarioNameAlreadyExist(const aName : string):Boolean;
 
     // --- 2 ---------------------------------------------------------------------
-    function GetResourceAlloc(const id: Integer; var rec: TResource_Allocation)
-      : boolean;
-    function GetResourceAlloc_byGameDef(const id: Integer; var aRec: TList): Integer;
+    function GetResourceAlloc(const id: Integer; var rec: TResource_Allocation): boolean;
+//    function GetResourceAlloc_byGameDef(const id: Integer; var aRec: TList): Integer;
 
-    function GetResource_Overlay_Mapping(const id: Integer; var recList: TList): boolean;
+//    function GetResource_Overlay_Mapping(const id: Integer; var recList: TList): boolean;
 
     function getAllResource_Allocation(var aRec: TList): Integer;
     function GetMaxResource_Allocation(var id: Integer): boolean;
@@ -992,30 +988,25 @@ type
     function GetPlatformIdentIndex(var aRec : TList) : Boolean;
     function GetIdentIndex(const aPI : TPlatform_Instance) : integer;
     function UpdateIdentIndex(const aPI : TPlatform_Instance; const id : integer) : Boolean;
-    function getAllPlatFormInstance(const id: Integer;
-      var aRec: TList): Integer;
+    function getAllPlatFormInstance(const id: Integer;var aRec: TList): Integer;
     function getPlatformInstanceByIndex(const id:integer;var rec:TPlatform_Instance):boolean;
-    function getAllPlatFormInstanceForceClassification(const v_id,id: integer;
-      var aRec: TList;force:integer;classification:integer): Integer;
+    function getAllPlatFormInstanceForceClassification(const v_id,id: integer;var aRec: TList;force:integer;classification:integer): Integer;
 
 //    function getPlatFormInstance(const ra_id,force: integer;const instance:string;
 //    var aRec: TList): Integer;
-    function filterPlatFormInstance(const ra_id,force,clas,deployed: integer;
-    var aRec: TList): Integer;
+    function filterPlatFormInstance(const ra_id,force,clas,deployed: integer;var aRec: TList): Integer;
 
-    function getPlatformInstanceByGroup(const group_id:integer;var cList:TList)
-    :integer;
-    function getPlatformInstanceByName(const id,ra_id,force:string;var rec:TPlatform_Instance):boolean;
-    function getPlatformInstanceByMissile(const miss_id:integer;var cList:TList):integer;
-    function getPlatformInstanceByHybrid(const hyb_id:integer;var cList:TList):integer;
+//    function getPlatformInstanceByGroup(const group_id:integer;var cList:TList):integer;
+//    function getPlatformInstanceByName(const id,ra_id,force:string;var rec:TPlatform_Instance):boolean;
+//    function getPlatformInstanceByMissile(const miss_id:integer;var cList:TList):integer;
+//    function getPlatformInstanceByHybrid(const hyb_id:integer;var cList:TList):integer;
 
-    function GetPlatform_Instance_Identifier(const v_id: integer;const v_ident:string;var vList:TList;
-    var rec: TPlatform_Instance_Identifier): boolean;
-    function InsertPlatform_Instance_Identifier(var rec: TPlatform_Instance_Identifier): integer;
-    function DeletePlatform_Instance_Identifier(const id: string): integer;
-    function DeletePlatform_Instance_IdentifierByVec(const id: string): integer;
-    function UpdatePlatform_Instance_ModelPathByInx(const ins_ident, vbsName, modelPath: string): Integer;
-    function UpdatePlatform_Instance_Identifier(const id, aIdent: string): integer;
+    function GetPlatform_Instance_Identifier(const v_id: integer;const v_ident:string;var vList:TList;var rec: TPlatform_Instance_Identifier): boolean;
+//    function InsertPlatform_Instance_Identifier(var rec: TPlatform_Instance_Identifier): integer;
+//    function DeletePlatform_Instance_Identifier(const id: string): integer;
+//    function DeletePlatform_Instance_IdentifierByVec(const id: string): integer;
+//    function UpdatePlatform_Instance_ModelPathByInx(const ins_ident, vbsName, modelPath: string): Integer;
+//    function UpdatePlatform_Instance_Identifier(const id, aIdent: string): integer;
     function GetIdentifierById(const id : integer): string;
 
     function getMaxIDPlatformInstance(var id: Integer): boolean;
@@ -1025,23 +1016,21 @@ type
 //    function updatePlatformInstance(var rec: TPlatform_Instance;const pi_id,mis_id,tor_id,mine_id,hybrid_id,satelit_id,son_id:integer):Integer;
     function updatePlatformInst(const index: Integer; rec: TPlatform_Instance;pi_id:string):integer;
 
-    function GetPlatform_ActivationByPlatformInstance(const id: integer;var rec: TPlatform_Activation): boolean;
-    function GetPlatform_ActivationToPlatformInstance(const id: integer;
-    var rec: TPlatform_Instance): boolean;
+//    function GetPlatform_ActivationByPlatformInstance(const id: integer;var rec: TPlatform_Activation): boolean;
+    function GetPlatform_ActivationToPlatformInstance(const id: integer;var rec: TPlatform_Instance): boolean;
     function updatePlatformAct(var rec: TPlatform_Instance; pi_id: Integer):Integer;
     function InsertPlatform_Activation(var rec: TPlatform_Instance): integer;
     function CekPlatformAlreadyExist(rec : TPlatform_Instance):Boolean;
 
     function GetDomainFromVehicleID(const VID: Integer) : Integer;
 
-    function deletePlatform_ActivationByIndex(const platform_instace_index: string)
-      : Integer;
+    function deletePlatform_ActivationByIndex(const platform_instace_index: string): Integer;
     function deletePlatformActivationByDeploy(const deploy_id: string): Integer;
 
     function getPlatformType(var aRec: TList): Integer;
 
     // --- 2.1.1 -- Platform Instance Detail --------------------------------------
-    function GetVehicle_Definition(const id: Integer;  //dngvehicle
+    function GetVehicle_Definition(const id: Integer; //dngvehicle
       var rec: TVehicle_Definition): boolean;
     function GetAllVehicle_Def(var vList: TList; var id: Integer;  //dngvehicle
       var rec: TVehicle_Definition): Integer;
@@ -1049,17 +1038,17 @@ type
       var vList: TList): Integer;
     function getVehicleByLibrary(const id_Library: Integer; //dngvehicle
       var vList: TList): Integer;
-    function updateVehicle_Def(var rec: TVehicle_Definition; //dngvehicle
-      const id: string): Integer;
-    function insertVehicle_Def(rec: TVehicle_Definition): Integer; //dngvehicle
+//    function updateVehicle_Def(var rec: TVehicle_Definition; //dngvehicle
+//      const id: string): Integer;
+//    function insertVehicle_Def(rec: TVehicle_Definition): Integer; //dngvehicle
     function deleteVehicle(const id: Integer): Integer;
     function GetVehicleIdentifierByID(const id: Integer): string;
-    function updatePredifened_Pattern(rec: TPredefined_Pattern; id: string;
-      pattern_id: string): Integer;
+//    function updatePredifened_Pattern(rec: TPredefined_Pattern; id: string;
+//      pattern_id: string): Integer;
     function insertPredifened_Pattern(rec: TPredefined_Pattern): Integer;
-    function DeleteAllSensorAssetFromVehicle(const id: string): Integer;
-    function DeleteAllWeaponAssetFromVehicle(const id: string): Integer;
-    function DeleteAllCountermsAssetFromVehicle(const id: string): Integer;
+//    function DeleteAllSensorAssetFromVehicle(const id: string): Integer;
+//    function DeleteAllWeaponAssetFromVehicle(const id: string): Integer;
+//    function DeleteAllCountermsAssetFromVehicle(const id: string): Integer;
     function getSensor_On_Board(const index, id: Integer; sens_name: string): Boolean;
     function getWeapon_On_Board(const index, id: Integer; weap_name: string): Boolean;
     function getCountermeasure_On_Board(const index, id: Integer; count_name: string): Boolean;
@@ -1075,13 +1064,13 @@ type
       var aRec: TList): Integer;
     function updateEO(rec: TEOD_On_Board; id: string): Integer;
     function insertEO(rec: TEOD_On_Board): Integer;
-    function DeleteEO_On_Board(const id: string): Integer;
+//    function DeleteEO_On_Board(const id: string): Integer;
 
     function getEO_Def(const id: Integer; var aRec: TList;
       var rec: TEOD_On_Board): Integer;
-    function updateEO_Def(rec: TEOD_On_Board; id: string): Integer;
-    function insertEO_Def(rec: TEOD_On_Board): Integer;
-    function deleteEO_Def(id: Integer): Integer;
+//    function updateEO_Def(rec: TEOD_On_Board; id: string): Integer;
+//    function insertEO_Def(rec: TEOD_On_Board): Integer;
+//    function deleteEO_Def(id: Integer): Integer;
 
     function getFilterVehicle(const aSrch: string; const negara, domain,tipe,weapon,wpn_id,sensor,
     sensor_id,emb_id: Integer;var vList: TList):integer;
@@ -1094,9 +1083,9 @@ type
       var aRec: TList): Integer;
     function updateESM(rec: TESM_On_Board; id: string): Integer;
     function insertESM(rec: TESM_On_Board): Integer;
-    function UpdateESM_On_Board(const id: string;
-      var rec: TESM_On_Board): integer;
-    function DeleteESM_On_Board(const id: string): Integer;
+//    function UpdateESM_On_Board(const id: string;
+//      var rec: TESM_On_Board): integer;
+//    function DeleteESM_On_Board(const id: string): Integer;
     function deleteESM(id: string): Integer;
     function getESM_Def(var aRec: TList): boolean;
     function updateESM_Def(rec: TESM_On_Board; id: string): Integer;
@@ -1105,7 +1094,7 @@ type
     // IFF
     function getAllIFF_Sensor_On_Board(const id, index: Integer;
       var aRec: TList): Integer;
-    function updateScriptIFF(rec: TScripted_IFF_Event; id: string): Integer;
+//    function updateScriptIFF(rec: TScripted_IFF_Event; id: string): Integer;
     function updateIFF(rec: TIFF_Sensor_On_Board; id: string): Integer;
     function insertIFF(rec: TIFF_Sensor_On_Board): Integer;
     function DeleteIFF_Sensor_On_Board(const id: string): Integer;
@@ -32899,60 +32888,60 @@ begin
   end;
 end;
 //--------------------------------------------------------------------------------
-function TdmTTT.GetResource_Overlay_Mapping(const id: Integer; var recList: TList): boolean;
-var
-  rec: TResource_Allocation;
-begin
-  result := false;
-  if not ZConn.Connected then
-    exit;
-
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT * ');
-    SQL.Add('FROM  Resource_Overlay_Mapping a JOIN Overlay_Definition b');
-    SQL.Add('on a.Overlay_Index = b.Overlay_Index');
-    SQL.Add('WHERE a.Overlay_Index = ' + IntToStr(id));
-    Open;
-
-    result := RecordCount > 0;
-    if not IsEmpty then
-    begin
-
-      First;
-      if not Assigned(recList) then
-        recList := TList.Create
-      else
-        recList.Clear;
-
-      while not ZQ.Eof do
-      begin
-        rec := TResource_Allocation.Create;
-        with rec.FOverlay do
-        begin
-          Overlay_Index := FieldByName('Overlay_Index').AsInteger;
-          Overlay_Identifier := FieldByName('Overlay_Identifier').AsString;
-          Name := FieldByName('Overlay_Filename').AsString;
-          Tipe := FieldByName('Static_Overlay').AsInteger;
-          Game_Area_Index := FieldByName('Game_Area_Index').AsInteger;
-          domain := FieldByName('Domain').AsInteger;
-        end;
-        with rec.FResource_Overlay do
-        begin
-          Overlay_Instance_Index  := FieldByName('Overlay_Instance_Index').AsInteger;
-          Resource_Alloc_Index    := FieldByName('Resource_Alloc_Index').AsInteger;
-          Overlay_Index           := FieldByName('Overlay_Index').AsInteger;
-          Force_Designation       := FieldByName('Force_Designation').AsInteger;
-        end;
-        recList.Add(rec);
-        ZQ.Next;
-      end;
-    end;
-  end;
-
-end;
+//function TdmTTT.GetResource_Overlay_Mapping(const id: Integer; var recList: TList): boolean;
+//var
+//  rec: TResource_Allocation;
+//begin
+//  result := false;
+//  if not ZConn.Connected then
+//    exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT * ');
+//    SQL.Add('FROM  Resource_Overlay_Mapping a JOIN Overlay_Definition b');
+//    SQL.Add('on a.Overlay_Index = b.Overlay_Index');
+//    SQL.Add('WHERE a.Overlay_Index = ' + IntToStr(id));
+//    Open;
+//
+//    result := RecordCount > 0;
+//    if not IsEmpty then
+//    begin
+//
+//      First;
+//      if not Assigned(recList) then
+//        recList := TList.Create
+//      else
+//        recList.Clear;
+//
+//      while not ZQ.Eof do
+//      begin
+//        rec := TResource_Allocation.Create;
+//        with rec.FOverlay do
+//        begin
+//          Overlay_Index := FieldByName('Overlay_Index').AsInteger;
+//          Overlay_Identifier := FieldByName('Overlay_Identifier').AsString;
+//          Name := FieldByName('Overlay_Filename').AsString;
+//          Tipe := FieldByName('Static_Overlay').AsInteger;
+//          Game_Area_Index := FieldByName('Game_Area_Index').AsInteger;
+//          domain := FieldByName('Domain').AsInteger;
+//        end;
+//        with rec.FResource_Overlay do
+//        begin
+//          Overlay_Instance_Index  := FieldByName('Overlay_Instance_Index').AsInteger;
+//          Resource_Alloc_Index    := FieldByName('Resource_Alloc_Index').AsInteger;
+//          Overlay_Index           := FieldByName('Overlay_Index').AsInteger;
+//          Force_Designation       := FieldByName('Force_Designation').AsInteger;
+//        end;
+//        recList.Add(rec);
+//        ZQ.Next;
+//      end;
+//    end;
+//  end;
+//
+//end;
 // ------------------------------------------------------------------------------
 
 //function TdmTTT.updatePlatformInstance(var rec: TPlatform_Instance;
@@ -33077,123 +33066,123 @@ end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.updatePredifened_Pattern(rec: TPredefined_Pattern;
-  id, pattern_id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    with rec.FData do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('UPDATE Predefined_Pattern');
-      SQL.Add('SET ');
-      SQL.Add('Pattern_Identifier = ' + (Pattern_Identifier) + ',');
-      SQL.Add('Pattern_Type = ' + IntToStr(Pattern_Type) + ',');
-      SQL.Add('Pattern_Termination = ' + IntToStr(Pattern_Termination) + ',');
-      SQL.Add('Termination_Heading = ' + FloatToStr(Termination_Heading));
-    end;
-    SQL.Add('WHERE (Pattern_Index = ' + pattern_id + ' AND');
-    SQL.Add('Vehicle_Index=' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.updatePredifened_Pattern(rec: TPredefined_Pattern;
+//  id, pattern_id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    with rec.FData do
+//    begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('UPDATE Predefined_Pattern');
+//      SQL.Add('SET ');
+//      SQL.Add('Pattern_Identifier = ' + (Pattern_Identifier) + ',');
+//      SQL.Add('Pattern_Type = ' + IntToStr(Pattern_Type) + ',');
+//      SQL.Add('Pattern_Termination = ' + IntToStr(Pattern_Termination) + ',');
+//      SQL.Add('Termination_Heading = ' + FloatToStr(Termination_Heading));
+//    end;
+//    SQL.Add('WHERE (Pattern_Index = ' + pattern_id + ' AND');
+//    SQL.Add('Vehicle_Index=' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
-function TdmTTT.GetPlatform_ActivationByPlatformInstance(const id: Integer;
-  var rec: TPlatform_Activation): boolean;
-begin
-  result := false;
-  if not ZConn.Connected then
-    exit;
-
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT * ');
-    SQL.Add('FROM Platform_Activation ');
-    SQL.Add('WHERE (Platform_Instance_Index = ' + IntToStr(id) + ')');
-    Open;
-
-    result := RecordCount > 0;
-    if not IsEmpty then
-    begin
-      First;
-      if not Assigned(rec) then
-        rec := TPlatform_Activation.Create;
-      with rec.FData do
-      begin
-        Platform_Event_Index := FieldByName('Platform_Event_Index').AsInteger;
-        Deployment_Index := FieldByName('Deployment_Index').AsInteger;
-        Platform_Instance_Index := FieldByName('Platform_Instance_Index')
-          .AsInteger;
-        Platform_Activation_Time := FieldByName('Platform_Activation_Time')
-          .AsInteger;
-        Init_Guidance_Type := FieldByName('Init_Guidance_Type').AsInteger;
-        Init_Position_Latitude := FieldByName('Init_Position_Latitude').AsFloat;
-        Init_Position_Longitude := FieldByName('Init_Position_Longitude')
-          .AsFloat;
-        Init_Position_Cartesian_X := FieldByName('Init_Position_Cartesian_X')
-          .AsSingle;
-        Init_Position_Cartesian_Y := FieldByName('Init_Position_Cartesian_Y')
-          .AsSingle;
-        Init_Altitude := FieldByName('Init_Altitude').AsSingle;
-        Init_Fuel := FieldByName('Init_Fuel').AsSingle;
-        Init_Lubricants := FieldByName('Init_Lubricants').AsSingle;
-        Init_Freshwater := FieldByName('Init_Freshwater').AsSingle;
-        Init_Water := FieldByName('Init_Water').AsSingle;
-        Init_Food := FieldByName('Init_Food').AsSingle;
-        Init_Course := FieldByName('Init_Course').AsSingle;
-        Init_Helm_Angle := FieldByName('Init_Helm_Angle').AsSingle;
-        Init_Ground_Speed := FieldByName('Init_Ground_Speed').AsInteger;
-        Init_Vertical_Speed := FieldByName('Init_Vertical_Speed').AsInteger;
-        Init_Command_Altitude := FieldByName('Init_Command_Altitude').AsSingle;
-        Init_Command_Course := FieldByName('Init_Command_Course').AsSingle;
-        Init_Command_Helm_Angle := FieldByName('Init_Command_Helm_Angle')
-          .AsSingle;
-        Init_Command_Ground := FieldByName('Init_Command_Ground').AsInteger;
-        Init_Command_Vert := FieldByName('Init_Command_Vert').AsInteger;
-        Deg_of_Rotation := FieldByName('Deg_of_Rotation').AsSingle;
-        Radius_of_Travel := FieldByName('Radius_of_Travel').AsSingle;
-        Direction_of_Travel := FieldByName('Direction_of_Travel').AsInteger;
-        Circle_Latitude := FieldByName('Circle_Latitude').AsFloat;
-        Circle_Longitude := FieldByName('Circle_Longitude').AsFloat;
-        Circle_X := FieldByName('Circle_X').AsSingle;
-        Circle_Y := FieldByName('Circle_Y').AsSingle;
-        Dynamic_Circle_Range_Offset := FieldByName
-          ('Dynamic_Circle_Range_Offset').AsSingle;
-        Dynamic_Circle_Angle_Offset := FieldByName
-          ('Dynamic_Circle_Angle_Offset')
-          .AsInteger;
-        Dynamic_Circle_Offset_Mode := FieldByName('Dynamic_Circle_Offset_Mode')
-          .AsInteger;
-        Period_Distance := FieldByName('Period_Distance').AsSingle;
-        Amplitude_Distance := FieldByName('Amplitude_Distance').AsSingle;
-        Zig_Zag_Leg_Type := FieldByName('Zig_Zag_Leg_Type').AsInteger;
-        Target_Angle_Offset := FieldByName('Target_Angle_Offset').AsSingle;
-        Target_Angle_Type := FieldByName('Target_Angle_Type').AsInteger;
-        Target_Range := FieldByName('Target_Range').AsSingle;
-        Guidance_Target := FieldByName('Guidance_Target').AsInteger;
-        Pattern_Instance_Index := FieldByName('Pattern_Instance_Index')
-          .AsInteger;
-        Angular_Offset := FieldByName('Angular_Offset').AsSingle;
-        Anchor_Cartesian_X := FieldByName('Anchor_Cartesian_X').AsSingle;
-        Anchor_Cartesian_Y := FieldByName('Anchor_Cartesian_Y').AsSingle;
-        Anchor_Latitude := FieldByName('Anchor_Latitude').AsSingle;
-        Anchor_Longitude := FieldByName('Anchor_Longitude').AsSingle;
-        Current_Drift := FieldByName('Current_Drift').AsInteger;
-        Waypoint_Termination := FieldByName('Waypoint_Termination').AsInteger;
-        Termination_Heading := FieldByName('Termination_Heading').AsSingle;
-        Cond_List_Instance_Index := FieldByName('Cond_List_Instance_Index')
-          .AsInteger;
-        Damage := FieldByName('Damage').AsSingle;
-        DE_Index := FieldByName('DE_Index').AsInteger;
-      end;
-    end;
-  end;
-end;
+//function TdmTTT.GetPlatform_ActivationByPlatformInstance(const id: Integer;
+//  var rec: TPlatform_Activation): boolean;
+//begin
+//  result := false;
+//  if not ZConn.Connected then
+//    exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT * ');
+//    SQL.Add('FROM Platform_Activation ');
+//    SQL.Add('WHERE (Platform_Instance_Index = ' + IntToStr(id) + ')');
+//    Open;
+//
+//    result := RecordCount > 0;
+//    if not IsEmpty then
+//    begin
+//      First;
+//      if not Assigned(rec) then
+//        rec := TPlatform_Activation.Create;
+//      with rec.FData do
+//      begin
+//        Platform_Event_Index := FieldByName('Platform_Event_Index').AsInteger;
+//        Deployment_Index := FieldByName('Deployment_Index').AsInteger;
+//        Platform_Instance_Index := FieldByName('Platform_Instance_Index')
+//          .AsInteger;
+//        Platform_Activation_Time := FieldByName('Platform_Activation_Time')
+//          .AsInteger;
+//        Init_Guidance_Type := FieldByName('Init_Guidance_Type').AsInteger;
+//        Init_Position_Latitude := FieldByName('Init_Position_Latitude').AsFloat;
+//        Init_Position_Longitude := FieldByName('Init_Position_Longitude')
+//          .AsFloat;
+//        Init_Position_Cartesian_X := FieldByName('Init_Position_Cartesian_X')
+//          .AsSingle;
+//        Init_Position_Cartesian_Y := FieldByName('Init_Position_Cartesian_Y')
+//          .AsSingle;
+//        Init_Altitude := FieldByName('Init_Altitude').AsSingle;
+//        Init_Fuel := FieldByName('Init_Fuel').AsSingle;
+//        Init_Lubricants := FieldByName('Init_Lubricants').AsSingle;
+//        Init_Freshwater := FieldByName('Init_Freshwater').AsSingle;
+//        Init_Water := FieldByName('Init_Water').AsSingle;
+//        Init_Food := FieldByName('Init_Food').AsSingle;
+//        Init_Course := FieldByName('Init_Course').AsSingle;
+//        Init_Helm_Angle := FieldByName('Init_Helm_Angle').AsSingle;
+//        Init_Ground_Speed := FieldByName('Init_Ground_Speed').AsInteger;
+//        Init_Vertical_Speed := FieldByName('Init_Vertical_Speed').AsInteger;
+//        Init_Command_Altitude := FieldByName('Init_Command_Altitude').AsSingle;
+//        Init_Command_Course := FieldByName('Init_Command_Course').AsSingle;
+//        Init_Command_Helm_Angle := FieldByName('Init_Command_Helm_Angle')
+//          .AsSingle;
+//        Init_Command_Ground := FieldByName('Init_Command_Ground').AsInteger;
+//        Init_Command_Vert := FieldByName('Init_Command_Vert').AsInteger;
+//        Deg_of_Rotation := FieldByName('Deg_of_Rotation').AsSingle;
+//        Radius_of_Travel := FieldByName('Radius_of_Travel').AsSingle;
+//        Direction_of_Travel := FieldByName('Direction_of_Travel').AsInteger;
+//        Circle_Latitude := FieldByName('Circle_Latitude').AsFloat;
+//        Circle_Longitude := FieldByName('Circle_Longitude').AsFloat;
+//        Circle_X := FieldByName('Circle_X').AsSingle;
+//        Circle_Y := FieldByName('Circle_Y').AsSingle;
+//        Dynamic_Circle_Range_Offset := FieldByName
+//          ('Dynamic_Circle_Range_Offset').AsSingle;
+//        Dynamic_Circle_Angle_Offset := FieldByName
+//          ('Dynamic_Circle_Angle_Offset')
+//          .AsInteger;
+//        Dynamic_Circle_Offset_Mode := FieldByName('Dynamic_Circle_Offset_Mode')
+//          .AsInteger;
+//        Period_Distance := FieldByName('Period_Distance').AsSingle;
+//        Amplitude_Distance := FieldByName('Amplitude_Distance').AsSingle;
+//        Zig_Zag_Leg_Type := FieldByName('Zig_Zag_Leg_Type').AsInteger;
+//        Target_Angle_Offset := FieldByName('Target_Angle_Offset').AsSingle;
+//        Target_Angle_Type := FieldByName('Target_Angle_Type').AsInteger;
+//        Target_Range := FieldByName('Target_Range').AsSingle;
+//        Guidance_Target := FieldByName('Guidance_Target').AsInteger;
+//        Pattern_Instance_Index := FieldByName('Pattern_Instance_Index')
+//          .AsInteger;
+//        Angular_Offset := FieldByName('Angular_Offset').AsSingle;
+//        Anchor_Cartesian_X := FieldByName('Anchor_Cartesian_X').AsSingle;
+//        Anchor_Cartesian_Y := FieldByName('Anchor_Cartesian_Y').AsSingle;
+//        Anchor_Latitude := FieldByName('Anchor_Latitude').AsSingle;
+//        Anchor_Longitude := FieldByName('Anchor_Longitude').AsSingle;
+//        Current_Drift := FieldByName('Current_Drift').AsInteger;
+//        Waypoint_Termination := FieldByName('Waypoint_Termination').AsInteger;
+//        Termination_Heading := FieldByName('Termination_Heading').AsSingle;
+//        Cond_List_Instance_Index := FieldByName('Cond_List_Instance_Index')
+//          .AsInteger;
+//        Damage := FieldByName('Damage').AsSingle;
+//        DE_Index := FieldByName('DE_Index').AsInteger;
+//      end;
+//    end;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -33797,54 +33786,54 @@ end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.GetResourceAlloc_byGameDef(const id: Integer; var aRec: TList): Integer;
-var
-  rec: TResource_Allocation;
-begin
-  result := -1;
-  if not ZConn.Connected then
-    exit;
-
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT * ');
-    SQL.Add('FROM  Resource_Allocation ');
-    SQL.Add('WHERE  Defaults_Index = '+ IntToStr(id));
-    SQL.Add('ORDER BY Allocation_Identifier');
-    Open;
-
-    result := RecordCount;
-    if not IsEmpty then
-    begin
-
-      First;
-
-      if not Assigned(aRec) then
-        aRec := TList.Create
-      else
-        aRec.Clear;
-
-      while not ZQ.Eof do
-      begin
-        rec := TResource_Allocation.Create;
-        with rec.FData do
-        begin
-          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
-          Allocation_Identifier := FieldByName('Allocation_Identifier')
-            .AsString;
-          Game_Enviro_Index := FieldByName('Game_Enviro_Index').AsInteger;
-          Defaults_Index := FieldByName('Defaults_Index').AsInteger;
-          Role_List_Index := FieldByName('Role_List_Index').AsInteger;
-          Game_Start_Time := FieldByName('Game_Start_Time').AsFloat;
-        end;
-        aRec.Add(rec);
-        ZQ.Next;
-      end;
-    end;
-  end;
-end;
+//function TdmTTT.GetResourceAlloc_byGameDef(const id: Integer; var aRec: TList): Integer;
+//var
+//  rec: TResource_Allocation;
+//begin
+//  result := -1;
+//  if not ZConn.Connected then
+//    exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT * ');
+//    SQL.Add('FROM  Resource_Allocation ');
+//    SQL.Add('WHERE  Defaults_Index = '+ IntToStr(id));
+//    SQL.Add('ORDER BY Allocation_Identifier');
+//    Open;
+//
+//    result := RecordCount;
+//    if not IsEmpty then
+//    begin
+//
+//      First;
+//
+//      if not Assigned(aRec) then
+//        aRec := TList.Create
+//      else
+//        aRec.Clear;
+//
+//      while not ZQ.Eof do
+//      begin
+//        rec := TResource_Allocation.Create;
+//        with rec.FData do
+//        begin
+//          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
+//          Allocation_Identifier := FieldByName('Allocation_Identifier')
+//            .AsString;
+//          Game_Enviro_Index := FieldByName('Game_Enviro_Index').AsInteger;
+//          Defaults_Index := FieldByName('Defaults_Index').AsInteger;
+//          Role_List_Index := FieldByName('Role_List_Index').AsInteger;
+//          Game_Start_Time := FieldByName('Game_Start_Time').AsFloat;
+//        end;
+//        aRec.Add(rec);
+//        ZQ.Next;
+//      end;
+//    end;
+//  end;
+//end;
 
 
 function TdmTTT.getAllRuntimePlatform(allocIndex: Integer;
@@ -35411,248 +35400,248 @@ end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.getPlatformInstanceByGroup(const group_id: Integer;
-  var cList: TList): Integer;
-var
-
-  rec: TCubicle_Group_Assignment;
-begin
-  result := -1;
-  if not ZConn.Connected then
-    exit;
-
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT * FROM ');
-    SQL.Add('PlatForm_Instance a  JOIN Cubicle_group_Assignment b ');
-    SQL.Add('ON a.Platform_Instance_Index = b.Platform_Instance_Index ');
-    SQL.Add('WHERE (b.Group_Index = ' + IntToStr(group_id) + ')');
-    SQL.Add('ORDER BY a.Instance_Name');
-    Open;
-
-    result := RecordCount;
-    if not IsEmpty then
-    begin
-
-      First;
-
-      if not Assigned(cList) then
-        cList := TList.Create
-      else
-        cList.Clear;
-
-      while not ZQ.Eof do
-      begin
-        rec := TCubicle_Group_Assignment.Create;
-        with rec.FPlatform do
-        begin
-          Platform_Instance_Index := FieldByName('Platform_Instance_Index')
-            .AsInteger;
-          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
-          Platform_Type := FieldByName('Platform_Type').AsInteger; // byte
-          Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
-          Missile_Index := FieldByName('Missile_Index').AsInteger;
-          Torpedo_Index := FieldByName('Torpedo_Index').AsInteger;
-          Mine_Index := FieldByName('Mine_Index').AsInteger;
-          Hybrid_Index := FieldByName('Hybrid_Index').AsInteger;
-          Satellite_Index := FieldByName('Satellite_Index').AsInteger;
-          Sonobuoy_Index := FieldByName('Sonobuoy_Index').AsInteger;
-          Instance_Name := FieldByName('Instance_Name').AsString;
-          Force_Designation := FieldByName('Force_Designation').AsInteger;
-          Track_ID := FieldByName('Track_ID').AsString;
-          Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
-        end;
-
-        cList.Add(rec);
-        ZQ.Next;
-      end;
-    end;
-  end;
-
-end;
-
-// ------------------------------------------------------------------------------
-
-function TdmTTT.getPlatformInstanceByMissile(const miss_id: Integer;
-  var cList: TList): Integer;
-var
-  i: Integer;
-  rec: TPlatform_Instance;
-begin
-  result := -1;
-  if not ZConn.Connected then
-    exit;
-
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT * FROM PlatForm_Instance ');
-    SQL.Add('WHERE (Missile_Index = ' + IntToStr(miss_id) + ')');
-    SQL.Add('ORDER BY Instance_Name');
-    Open;
-
-    result := RecordCount;
-    if not IsEmpty then
-    begin
-
-      First;
-
-      if not Assigned(cList) then
-        cList := TList.Create
-      else
-        cList.Clear;
-
-      while not ZQ.Eof do
-      begin
-        rec := TPlatform_Instance.Create;
-        with rec.FData do
-        begin
-          Platform_Instance_Index := FieldByName('Platform_Instance_Index')
-            .AsInteger;
-          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
-          Platform_Type := FieldByName('Platform_Type').AsInteger; // byte
-          Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
-          Missile_Index := FieldByName('Missile_Index').AsInteger;
-          Torpedo_Index := FieldByName('Torpedo_Index').AsInteger;
-          Mine_Index := FieldByName('Mine_Index').AsInteger;
-          Hybrid_Index := FieldByName('Hybrid_Index').AsInteger;
-          Satellite_Index := FieldByName('Satellite_Index').AsInteger;
-          Sonobuoy_Index := FieldByName('Sonobuoy_Index').AsInteger;
-          Instance_Name := FieldByName('Instance_Name').AsString;
-          Force_Designation := FieldByName('Force_Designation').AsInteger;
-          Track_ID := FieldByName('Track_ID').AsString;
-          Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
-        end;
-
-        cList.Add(rec);
-        ZQ.Next;
-      end;
-    end;
-  end;
-
-end;
+//function TdmTTT.getPlatformInstanceByGroup(const group_id: Integer;
+//  var cList: TList): Integer;
+//var
+//
+//  rec: TCubicle_Group_Assignment;
+//begin
+//  result := -1;
+//  if not ZConn.Connected then
+//    exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT * FROM ');
+//    SQL.Add('PlatForm_Instance a  JOIN Cubicle_group_Assignment b ');
+//    SQL.Add('ON a.Platform_Instance_Index = b.Platform_Instance_Index ');
+//    SQL.Add('WHERE (b.Group_Index = ' + IntToStr(group_id) + ')');
+//    SQL.Add('ORDER BY a.Instance_Name');
+//    Open;
+//
+//    result := RecordCount;
+//    if not IsEmpty then
+//    begin
+//
+//      First;
+//
+//      if not Assigned(cList) then
+//        cList := TList.Create
+//      else
+//        cList.Clear;
+//
+//      while not ZQ.Eof do
+//      begin
+//        rec := TCubicle_Group_Assignment.Create;
+//        with rec.FPlatform do
+//        begin
+//          Platform_Instance_Index := FieldByName('Platform_Instance_Index')
+//            .AsInteger;
+//          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
+//          Platform_Type := FieldByName('Platform_Type').AsInteger; // byte
+//          Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
+//          Missile_Index := FieldByName('Missile_Index').AsInteger;
+//          Torpedo_Index := FieldByName('Torpedo_Index').AsInteger;
+//          Mine_Index := FieldByName('Mine_Index').AsInteger;
+//          Hybrid_Index := FieldByName('Hybrid_Index').AsInteger;
+//          Satellite_Index := FieldByName('Satellite_Index').AsInteger;
+//          Sonobuoy_Index := FieldByName('Sonobuoy_Index').AsInteger;
+//          Instance_Name := FieldByName('Instance_Name').AsString;
+//          Force_Designation := FieldByName('Force_Designation').AsInteger;
+//          Track_ID := FieldByName('Track_ID').AsString;
+//          Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
+//        end;
+//
+//        cList.Add(rec);
+//        ZQ.Next;
+//      end;
+//    end;
+//  end;
+//
+//end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.getPlatformInstanceByHybrid(const hyb_id: Integer;
-  var cList: TList): Integer;
-var
-  i: Integer;
-  rec: TPlatform_Instance;
-begin
-  result := -1;
-  if not ZConn.Connected then
-    exit;
+//function TdmTTT.getPlatformInstanceByMissile(const miss_id: Integer;
+//  var cList: TList): Integer;
+//var
+//  i: Integer;
+//  rec: TPlatform_Instance;
+//begin
+//  result := -1;
+//  if not ZConn.Connected then
+//    exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT * FROM PlatForm_Instance ');
+//    SQL.Add('WHERE (Missile_Index = ' + IntToStr(miss_id) + ')');
+//    SQL.Add('ORDER BY Instance_Name');
+//    Open;
+//
+//    result := RecordCount;
+//    if not IsEmpty then
+//    begin
+//
+//      First;
+//
+//      if not Assigned(cList) then
+//        cList := TList.Create
+//      else
+//        cList.Clear;
+//
+//      while not ZQ.Eof do
+//      begin
+//        rec := TPlatform_Instance.Create;
+//        with rec.FData do
+//        begin
+//          Platform_Instance_Index := FieldByName('Platform_Instance_Index')
+//            .AsInteger;
+//          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
+//          Platform_Type := FieldByName('Platform_Type').AsInteger; // byte
+//          Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
+//          Missile_Index := FieldByName('Missile_Index').AsInteger;
+//          Torpedo_Index := FieldByName('Torpedo_Index').AsInteger;
+//          Mine_Index := FieldByName('Mine_Index').AsInteger;
+//          Hybrid_Index := FieldByName('Hybrid_Index').AsInteger;
+//          Satellite_Index := FieldByName('Satellite_Index').AsInteger;
+//          Sonobuoy_Index := FieldByName('Sonobuoy_Index').AsInteger;
+//          Instance_Name := FieldByName('Instance_Name').AsString;
+//          Force_Designation := FieldByName('Force_Designation').AsInteger;
+//          Track_ID := FieldByName('Track_ID').AsString;
+//          Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
+//        end;
+//
+//        cList.Add(rec);
+//        ZQ.Next;
+//      end;
+//    end;
+//  end;
+//
+//end;
 
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT * FROM PlatForm_Instance ');
-    SQL.Add('WHERE (Hybrid_Index = ' + IntToStr(hyb_id) + ')');
-    SQL.Add('ORDER BY Instance_Name');
-    Open;
+// ------------------------------------------------------------------------------
 
-    result := RecordCount;
-    if not IsEmpty then
-    begin
-
-      First;
-
-      if not Assigned(cList) then
-        cList := TList.Create
-      else
-        cList.Clear;
-
-      while not ZQ.Eof do
-      begin
-        rec := TPlatform_Instance.Create;
-        with rec.FData do
-        begin
-          Platform_Instance_Index := FieldByName('Platform_Instance_Index')
-            .AsInteger;
-          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
-          Platform_Type := FieldByName('Platform_Type').AsInteger; // byte
-          Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
-          Missile_Index := FieldByName('Missile_Index').AsInteger;
-          Torpedo_Index := FieldByName('Torpedo_Index').AsInteger;
-          Mine_Index := FieldByName('Mine_Index').AsInteger;
-          Hybrid_Index := FieldByName('Hybrid_Index').AsInteger;
-          Satellite_Index := FieldByName('Satellite_Index').AsInteger;
-          Sonobuoy_Index := FieldByName('Sonobuoy_Index').AsInteger;
-          Instance_Name := FieldByName('Instance_Name').AsString;
-          Force_Designation := FieldByName('Force_Designation').AsInteger;
-          Track_ID := FieldByName('Track_ID').AsString;
-          Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
-        end;
-
-        cList.Add(rec);
-        ZQ.Next;
-      end;
-    end;
-  end;
-
-end;
+//function TdmTTT.getPlatformInstanceByHybrid(const hyb_id: Integer;
+//  var cList: TList): Integer;
+//var
+//  i: Integer;
+//  rec: TPlatform_Instance;
+//begin
+//  result := -1;
+//  if not ZConn.Connected then
+//    exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT * FROM PlatForm_Instance ');
+//    SQL.Add('WHERE (Hybrid_Index = ' + IntToStr(hyb_id) + ')');
+//    SQL.Add('ORDER BY Instance_Name');
+//    Open;
+//
+//    result := RecordCount;
+//    if not IsEmpty then
+//    begin
+//
+//      First;
+//
+//      if not Assigned(cList) then
+//        cList := TList.Create
+//      else
+//        cList.Clear;
+//
+//      while not ZQ.Eof do
+//      begin
+//        rec := TPlatform_Instance.Create;
+//        with rec.FData do
+//        begin
+//          Platform_Instance_Index := FieldByName('Platform_Instance_Index')
+//            .AsInteger;
+//          Resource_Alloc_Index := FieldByName('Resource_Alloc_Index').AsInteger;
+//          Platform_Type := FieldByName('Platform_Type').AsInteger; // byte
+//          Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
+//          Missile_Index := FieldByName('Missile_Index').AsInteger;
+//          Torpedo_Index := FieldByName('Torpedo_Index').AsInteger;
+//          Mine_Index := FieldByName('Mine_Index').AsInteger;
+//          Hybrid_Index := FieldByName('Hybrid_Index').AsInteger;
+//          Satellite_Index := FieldByName('Satellite_Index').AsInteger;
+//          Sonobuoy_Index := FieldByName('Sonobuoy_Index').AsInteger;
+//          Instance_Name := FieldByName('Instance_Name').AsString;
+//          Force_Designation := FieldByName('Force_Designation').AsInteger;
+//          Track_ID := FieldByName('Track_ID').AsString;
+//          Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
+//        end;
+//
+//        cList.Add(rec);
+//        ZQ.Next;
+//      end;
+//    end;
+//  end;
+//
+//end;
 
 //------------------------------------------------------------------------------
 
-function TdmTTT.getPlatformInstanceByName(const id,ra_id,force: string; var rec: TPlatform_Instance):boolean;
-var ssql : string;
-begin
-  result := false;
-  if not zConn.Connected then Exit;
-
-  with ZQ do begin
-    Close;
-    SQL.Clear;
-    ssql := ssql +
-      'SELECT distinct c.Platform_Instance_Index,c.Instance_Name ';
-    ssql := ssql +
-      'FROM Cubicle_Group a INNER JOIN Cubicle_Group_Assignment b ';
-    ssql := ssql +
-      'ON a.Group_Index = b.Group_Index INNER JOIN Platform_Instance c ';
-    ssql := ssql +
-      'ON b.Platform_Instance_Index = c.Platform_Instance_Index WHERE ';
-
-    ssql := ssql +'c.Instance_Name = ' +  QuotedStr(id) + ' AND ';
-    ssql := ssql + 'c.Resource_Alloc_Index = ' + ra_id + ' AND ';
-    ssql := ssql + 'a.Force_Designation = '+ force;
-    SQL.Add(ssql);
-    Open;
-
-    result := RecordCount > 0;
-    if not IsEmpty then begin
-
-      First;
-      if not Assigned(rec) then
-        rec := TPlatform_Instance.Create;
-
-      with rec.FData do begin
-        Platform_Instance_Index := FieldByName('Platform_Instance_Index').AsInteger;
-        Instance_Name           := FieldByName('Instance_Name').AsString;
-      end;
-
-    end;
-  end;
-end;
+//function TdmTTT.getPlatformInstanceByName(const id,ra_id,force: string; var rec: TPlatform_Instance):boolean;
+//var ssql : string;
+//begin
+//  result := false;
+//  if not zConn.Connected then Exit;
+//
+//  with ZQ do begin
+//    Close;
+//    SQL.Clear;
+//    ssql := ssql +
+//      'SELECT distinct c.Platform_Instance_Index,c.Instance_Name ';
+//    ssql := ssql +
+//      'FROM Cubicle_Group a INNER JOIN Cubicle_Group_Assignment b ';
+//    ssql := ssql +
+//      'ON a.Group_Index = b.Group_Index INNER JOIN Platform_Instance c ';
+//    ssql := ssql +
+//      'ON b.Platform_Instance_Index = c.Platform_Instance_Index WHERE ';
+//
+//    ssql := ssql +'c.Instance_Name = ' +  QuotedStr(id) + ' AND ';
+//    ssql := ssql + 'c.Resource_Alloc_Index = ' + ra_id + ' AND ';
+//    ssql := ssql + 'a.Force_Designation = '+ force;
+//    SQL.Add(ssql);
+//    Open;
+//
+//    result := RecordCount > 0;
+//    if not IsEmpty then begin
+//
+//      First;
+//      if not Assigned(rec) then
+//        rec := TPlatform_Instance.Create;
+//
+//      with rec.FData do begin
+//        Platform_Instance_Index := FieldByName('Platform_Instance_Index').AsInteger;
+//        Instance_Name           := FieldByName('Instance_Name').AsString;
+//      end;
+//
+//    end;
+//  end;
+//end;
 
 //------------------------------------------------------------------------------
 
-function TdmTTT.DeletePlatform_Instance_IdentifierByVec(const id: string): integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Platform_Instance_Identifier  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.DeletePlatform_Instance_IdentifierByVec(const id: string): integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Platform_Instance_Identifier  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 
 //------------------------------------------------------------------------------
 
@@ -35669,64 +35658,64 @@ begin
  end;
 end;
 
-function TdmTTT.DeletePlatform_Instance_Identifier(const id: string): integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Platform_Instance_Identifier  ');
-    SQL.Add('WHERE (Instance_Ident_Index = ' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.DeletePlatform_Instance_Identifier(const id: string): integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Platform_Instance_Identifier  ');
+//    SQL.Add('WHERE (Instance_Ident_Index = ' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 
-function TdmTTT.UpdatePlatform_Instance_Identifier(const id, aIdent: string): integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('UPDATE Platform_Instance_Identifier  ');
-    SQL.Add('SET Instance_Identifier = ' + QuotedStr(aIdent));
-    SQL.Add('WHERE (Instance_Ident_Index = ' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.UpdatePlatform_Instance_Identifier(const id, aIdent: string): integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('UPDATE Platform_Instance_Identifier  ');
+//    SQL.Add('SET Instance_Identifier = ' + QuotedStr(aIdent));
+//    SQL.Add('WHERE (Instance_Ident_Index = ' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.InsertPlatform_Instance_Identifier
-  (var rec: TPlatform_Instance_Identifier): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    with rec.FData do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('INSERT INTO Platform_Instance_Identifier  ');
-      SQL.Add('(Vehicle_Index,Instance_Identifier,vbs_class_name,model_path)');
-      SQL.Add('VALUES ( ');
-      SQL.Add(IntToStr(Vehicle_Index) + ',');
-      SQL.Add('''' + Instance_Identifier + ''',');
-      SQL.Add('''' + vbs_class_name + ''',');
-      SQL.Add('''' + model_path + ''')');
-      ExecSQL;
-
-      SQL.Clear;
-      SQL.Add('SELECT * FROM Platform_Instance_Identifier ');
-      SQL.Add('WHERE Vehicle_Index = '+ IntToStr(Vehicle_Index) +' ');
-      SQL.Add('AND Instance_Identifier = ' + QuotedStr(Instance_Identifier));
-      Open;
-
-      Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
-    end;
-  end;
-end;
+//function TdmTTT.InsertPlatform_Instance_Identifier
+//  (var rec: TPlatform_Instance_Identifier): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    with rec.FData do
+//    begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('INSERT INTO Platform_Instance_Identifier  ');
+//      SQL.Add('(Vehicle_Index,Instance_Identifier,vbs_class_name,model_path)');
+//      SQL.Add('VALUES ( ');
+//      SQL.Add(IntToStr(Vehicle_Index) + ',');
+//      SQL.Add('''' + Instance_Identifier + ''',');
+//      SQL.Add('''' + vbs_class_name + ''',');
+//      SQL.Add('''' + model_path + ''')');
+//      ExecSQL;
+//
+//      SQL.Clear;
+//      SQL.Add('SELECT * FROM Platform_Instance_Identifier ');
+//      SQL.Add('WHERE Vehicle_Index = '+ IntToStr(Vehicle_Index) +' ');
+//      SQL.Add('AND Instance_Identifier = ' + QuotedStr(Instance_Identifier));
+//      Open;
+//
+//      Instance_Ident_Index := FieldByName('Instance_Ident_Index').AsInteger;
+//    end;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -36859,349 +36848,349 @@ begin
 end;
 // ------------------------------------------------------------------------------
 
-function TdmTTT.updateVehicle_Def(var rec: TVehicle_Definition;
-  const id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    with rec.FData do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('UPDATE Vehicle_Definition ');
-      SQL.Add('SET ');
-      SQL.Add('Vehicle_Identifier = ''' + Vehicle_Identifier + ''',');
-      SQL.Add('Platform_Domain = ' + IntToStr(Platform_Domain) + ',');
-      SQL.Add('Platform_Category = ' + IntToStr(Platform_Category) + ',');
-      SQL.Add('Platform_Type = ' + IntToStr(Platform_Type) + ',');
-      SQL.Add('Motion_Characteristics = ' + IntToStr(Motion_Characteristics)
-          + ',');
-      SQL.Add('Length = ' + FloatToStr(Length) + ',');
-      SQL.Add('Width = ' + FloatToStr(Width) + ',');
-      SQL.Add('Height = ' + FloatToStr(Height) + ',');
-      SQL.Add('Draft = ' + FloatToStr(Draft) + ',');
-      SQL.Add('Front_Radar_Cross = ' + FloatToStr(Front_Radar_Cross) + ',');
-      SQL.Add('Side_Radar_Cross = ' + FloatToStr(Side_Radar_Cross) + ',');
-      SQL.Add('Front_Acoustic_Cross = ' + FloatToStr(Front_Acoustic_Cross)
-          + ',');
-      SQL.Add('Side_Acoustic_Cross = ' + FloatToStr(Side_Acoustic_Cross) + ',');
-      SQL.Add('Magnetic_Cross = ' + FloatToStr(Magnetic_Cross) + ',');
-      SQL.Add('Front_Visual_EO_Cross = ' + FloatToStr(Front_Visual_EO_Cross)
-          + ',');
-      SQL.Add('Side_Visual_EO_Cross = ' + FloatToStr(Side_Visual_EO_Cross)
-          + ',');
-      SQL.Add('Front_Infrared_Cross = ' + FloatToStr(Front_Infrared_Cross)
-          + ',');
-      SQL.Add('Side_Infrared_Cross = ' + FloatToStr(Side_Infrared_Cross) + ',');
-      SQL.Add('LSpeed_Acoustic_Intens = ' + FloatToStr(LSpeed_Acoustic_Intens)
-          + ',');
-      SQL.Add('Below_Cav_Acoustic_Intens = ' + FloatToStr
-          (Below_Cav_Acoustic_Intens) + ',');
-      SQL.Add('Above_Cav_Acoustic_Intens = ' + FloatToStr
-          (Above_Cav_Acoustic_Intens) + ',');
-      SQL.Add('HSpeed_Acoustic_Intens = ' + FloatToStr(HSpeed_Acoustic_Intens)
-          + ',');
-      SQL.Add('Cavitation_Speed_Switch = ' + FloatToStr
-          (Cavitation_Speed_Switch) + ',');
-      SQL.Add('Time_of_Weapon_Impact = ' + IntToStr(Time_of_Weapon_Impact)
-          + ',');
-      SQL.Add('Chaff_Seduction_Capable = ' + BoolToStr(Chaff_Seduction_Capable)
-          + ',');
-      SQL.Add('Seduction_Mode_Prob = ' + FloatToStr(Seduction_Mode_Prob) + ',');
-      SQL.Add('Min_Delay_Between_Chaff_Rounds = ' + IntToStr
-          (Min_Delay_Between_Chaff_Rounds) + ',');
-      SQL.Add('Max_Chaff_Salvo_Size = ' + IntToStr(Max_Chaff_Salvo_Size) + ',');
-      SQL.Add('SARH_POH_Modifier = ' + FloatToStr(SARH_POH_Modifier) + ',');
-      SQL.Add('CG_POH_Modifier = ' + FloatToStr(CG_POH_Modifier) + ',');
-      SQL.Add('TARH_POH_Modifier = ' + FloatToStr(TARH_POH_Modifier) + ',');
-      SQL.Add('IR_POH_Modifier = ' + FloatToStr(IR_POH_Modifier) + ',');
-      SQL.Add('AR_POH_Modifier = ' + FloatToStr(AR_POH_Modifier) + ',');
-      SQL.Add('Active_Acoustic_Tor_POH_Mod = ' + FloatToStr
-          (Active_Acoustic_Tor_POH_Mod) + ',');
-      SQL.Add('Passive_Acoustic_Tor_POH_Mod = ' + FloatToStr
-          (Passive_Acoustic_Tor_POH_Mod) + ',');
-      SQL.Add('Active_Passive_Tor_POH_Mod = ' + FloatToStr
-          (Active_Passive_Tor_POH_Mod) + ',');
-      SQL.Add('Wake_Home_POH_Modifier = ' + FloatToStr(Wake_Home_POH_Modifier)
-          + ',');
-      SQL.Add('Wire_Guide_POH_Modifier = ' + FloatToStr
-          (Wire_Guide_POH_Modifier) + ',');
-      SQL.Add('Mag_Mine_POH_Modifier = ' + FloatToStr(Mag_Mine_POH_Modifier)
-          + ',');
-      SQL.Add('Press_Mine_POH_Modifier = ' + FloatToStr
-          (Press_Mine_POH_Modifier) + ',');
-      SQL.Add('Impact_Mine_POH_Modifier = ' + FloatToStr
-          (Impact_Mine_POH_Modifier) + ',');
-      SQL.Add('Acoustic_Mine_POH_Modifier = ' + FloatToStr
-          (Acoustic_Mine_POH_Modifier) + ',');
-      SQL.Add('Sub_Comm_Antenna_Height = ' + FloatToStr
-          (Sub_Comm_Antenna_Height) + ',');
-      SQL.Add('Rel_Comm_Antenna_Height = ' + FloatToStr
-          (Rel_Comm_Antenna_Height) + ',');
-      SQL.Add('Max_Comm_Operating_Depth = ' + FloatToStr
-          (Max_Comm_Operating_Depth) + ',');
-      SQL.Add('HF_Link_Capable = ' + BoolToStr(HF_Link_Capable) + ',');
-      SQL.Add('UHF_Link_Capable = ' + BoolToStr(UHF_Link_Capable) + ',');
-      SQL.Add('HF_Voice_Capable = ' + BoolToStr(HF_Voice_Capable) + ',');
-      SQL.Add('VHF_Voice_Capable = ' + BoolToStr(VHF_Voice_Capable) + ',');
-      SQL.Add('UHF_Voice_Capable = ' + BoolToStr(UHF_Voice_Capable) + ',');
-      SQL.Add('SATCOM_Voice_Capable = ' + BoolToStr(SATCOM_Voice_Capable)
-          + ',');
-      SQL.Add('UWT_Voice_Capable = ' + BoolToStr(UWT_Voice_Capable) + ',');
-      SQL.Add('HF_MHS_Capable = ' + BoolToStr(HF_MHS_Capable) + ',');
-      SQL.Add('UHF_MHS_Capable = ' + BoolToStr(UHF_MHS_Capable) + ',');
-      SQL.Add('SATCOM_MHS_Capable = ' + BoolToStr(SATCOM_MHS_Capable) + ',');
-      SQL.Add('Damage_Capacity = ' + IntToStr(Damage_Capacity) + ',');
-      SQL.Add('Plat_Basing_Capability = ' + BoolToStr(Plat_Basing_Capability)
-          + ',');
-      SQL.Add('Chaff_Capability = ' + BoolToStr(Chaff_Capability) + ',');
-      SQL.Add('Readying_Time = ' + IntToStr(Readying_Time) + ',');
-      SQL.Add('Sonobuoy_Capable = ' + BoolToStr(Sonobuoy_Capable) + ',');
-      SQL.Add('Nav_Light_Capable = ' + BoolToStr(Nav_Light_Capable) + ',');
-      SQL.Add('Periscope_Depth = ' + FloatToStr(Periscope_Depth) + ',');
-      SQL.Add('Periscope_Height_Above_Water = ' + FloatToStr
-          (Periscope_Height_Above_Water) + ',');
-      SQL.Add('Periscope_Front_Radar_Xsection = ' + FloatToStr
-          (Periscope_Front_Radar_Xsection) + ',');
-      SQL.Add('Periscope_Side_Radar_Xsection = ' + FloatToStr
-          (Periscope_Side_Radar_Xsection) + ',');
-      SQL.Add('Periscope_Front_Vis_Xsection = ' + FloatToStr
-          (Periscope_Front_Vis_Xsection) + ',');
-      SQL.Add('Periscope_Side_Vis_Xsection = ' + FloatToStr
-          (Periscope_Side_Vis_Xsection) + ',');
-      SQL.Add('Periscope_Front_IR_Xsection = ' + FloatToStr
-          (Periscope_Front_IR_Xsection) + ',');
-      SQL.Add('Periscope_Side_IR_Xsection = ' + FloatToStr
-          (Periscope_Side_IR_Xsection) + ',');
-      SQL.Add('Engagement_Range = ' + FloatToStr(Engagement_Range) + ',');
-      SQL.Add('Auto_Air_Defense_Capable = ' + BoolToStr
-          (Auto_Air_Defense_Capable) + ',');
-      SQL.Add('Alert_State_Time = ' + FloatToStr(Alert_State_Time) + ',');
-      SQL.Add('Detectability_Type = ' + IntToStr(Detectability_Type) + ',');
-      SQL.Add('Max_Sonobuoys_To_Monitor = ' + IntToStr
-          (Max_Sonobuoys_To_Monitor) + ',');
-      SQL.Add('Sonobuoy_Deploy_Max_Altitude = ' + IntToStr
-          (Sonobuoy_Deploy_Max_Altitude) + ',');
-      SQL.Add('Sonobuoy_Deploy_Min_Altitude = ' + IntToStr
-          (Sonobuoy_Deploy_Min_Altitude) + ',');
-      SQL.Add('Sonobuoy_Deploy_Max_Speed = ' + IntToStr
-          (Sonobuoy_Deploy_Max_Speed) + ',');
-      SQL.Add('Air_Drop_Torpedo_Max_Altitude = ' + IntToStr
-          (Air_Drop_Torpedo_Max_Altitude) + ',');
-      SQL.Add('Air_Drop_Torpedo_Min_Altitude = ' + IntToStr
-          (Air_Drop_Torpedo_Min_Altitude) + ',');
-      SQL.Add('Air_Drop_Torpedo_Max_Speed = ' + IntToStr
-          (Air_Drop_Torpedo_Max_Speed) + ',');
-      SQL.Add('TMA_Rate_Factor = ' + FloatToStr(TMA_Rate_Factor) + ',');
-      SQL.Add('HMS_Noise_Reduction_Factor = ' + FloatToStr
-          (HMS_Noise_Reduction_Factor) + ',');
-      SQL.Add('TAS_Noise_Reduction_Factor = ' + FloatToStr
-          (TAS_Noise_Reduction_Factor) + ',');
-      SQL.Add('Infrared_Decoy_Capable = ' + BoolToStr(Infrared_Decoy_Capable)
-          + ',');
-      SQL.Add('HF_Mid_Course_Update_Capable = ' + BoolToStr
-          (HF_Mid_Course_Update_Capable) + ',');
-      SQL.Add('UHF_Mid_Course_Update_Capable = ' + BoolToStr
-          (UHF_Mid_Course_Update_Capable) + ',');
-//      SQL.Add('SATCOM_Mid_Course_Update_Capable = ' + BoolToStr
-//          (SATCOM_Mid_Course_Update_Capable)+ ',');
-      SQL.Add('Font_id = ' + IntToStr
-          (Font_id)+ ',');
-      SQL.Add('Symbol_id = ' + IntToStr
-          (Symbol_id)+ ',');
-      SQL.Add('Quantity_Group_Personal = ' + IntToStr
-          (Quantity_Group_Personal)+ ',');
-      SQL.Add('Vbs_Class_Name = ''' + Vbs_Class_Name + ''',');
-      SQL.Add('Platform_Capability_Index = ' + IntToStr
-          (Platform_Capability_Index)+ ',');
-      SQL.Add('Logistics_Index = ' + IntToStr
-          (Logistics_Index)+ ',');
-      SQL.Add('Tactical_Symbol_Name = ' + QuotedStr(Tactical_Symbol_Name)+ ',');
-      SQL.Add('GangwayPosition = ' + IntToStr
-          (GangwayPosition)+ ',');
-      SQL.Add('DWT = ' + FloatToStr(DWT)+ ',');
-      SQL.Add('last_updated = GETDATE()');    //dng
-
-      SQL.Add(' WHERE (Vehicle_Index = ' + id + ')');
-      ExecSQL;
-    end;
-  end;
-end;
+//function TdmTTT.updateVehicle_Def(var rec: TVehicle_Definition;
+//  const id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    with rec.FData do
+//    begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('UPDATE Vehicle_Definition ');
+//      SQL.Add('SET ');
+//      SQL.Add('Vehicle_Identifier = ''' + Vehicle_Identifier + ''',');
+//      SQL.Add('Platform_Domain = ' + IntToStr(Platform_Domain) + ',');
+//      SQL.Add('Platform_Category = ' + IntToStr(Platform_Category) + ',');
+//      SQL.Add('Platform_Type = ' + IntToStr(Platform_Type) + ',');
+//      SQL.Add('Motion_Characteristics = ' + IntToStr(Motion_Characteristics)
+//          + ',');
+//      SQL.Add('Length = ' + FloatToStr(Length) + ',');
+//      SQL.Add('Width = ' + FloatToStr(Width) + ',');
+//      SQL.Add('Height = ' + FloatToStr(Height) + ',');
+//      SQL.Add('Draft = ' + FloatToStr(Draft) + ',');
+//      SQL.Add('Front_Radar_Cross = ' + FloatToStr(Front_Radar_Cross) + ',');
+//      SQL.Add('Side_Radar_Cross = ' + FloatToStr(Side_Radar_Cross) + ',');
+//      SQL.Add('Front_Acoustic_Cross = ' + FloatToStr(Front_Acoustic_Cross)
+//          + ',');
+//      SQL.Add('Side_Acoustic_Cross = ' + FloatToStr(Side_Acoustic_Cross) + ',');
+//      SQL.Add('Magnetic_Cross = ' + FloatToStr(Magnetic_Cross) + ',');
+//      SQL.Add('Front_Visual_EO_Cross = ' + FloatToStr(Front_Visual_EO_Cross)
+//          + ',');
+//      SQL.Add('Side_Visual_EO_Cross = ' + FloatToStr(Side_Visual_EO_Cross)
+//          + ',');
+//      SQL.Add('Front_Infrared_Cross = ' + FloatToStr(Front_Infrared_Cross)
+//          + ',');
+//      SQL.Add('Side_Infrared_Cross = ' + FloatToStr(Side_Infrared_Cross) + ',');
+//      SQL.Add('LSpeed_Acoustic_Intens = ' + FloatToStr(LSpeed_Acoustic_Intens)
+//          + ',');
+//      SQL.Add('Below_Cav_Acoustic_Intens = ' + FloatToStr
+//          (Below_Cav_Acoustic_Intens) + ',');
+//      SQL.Add('Above_Cav_Acoustic_Intens = ' + FloatToStr
+//          (Above_Cav_Acoustic_Intens) + ',');
+//      SQL.Add('HSpeed_Acoustic_Intens = ' + FloatToStr(HSpeed_Acoustic_Intens)
+//          + ',');
+//      SQL.Add('Cavitation_Speed_Switch = ' + FloatToStr
+//          (Cavitation_Speed_Switch) + ',');
+//      SQL.Add('Time_of_Weapon_Impact = ' + IntToStr(Time_of_Weapon_Impact)
+//          + ',');
+//      SQL.Add('Chaff_Seduction_Capable = ' + BoolToStr(Chaff_Seduction_Capable)
+//          + ',');
+//      SQL.Add('Seduction_Mode_Prob = ' + FloatToStr(Seduction_Mode_Prob) + ',');
+//      SQL.Add('Min_Delay_Between_Chaff_Rounds = ' + IntToStr
+//          (Min_Delay_Between_Chaff_Rounds) + ',');
+//      SQL.Add('Max_Chaff_Salvo_Size = ' + IntToStr(Max_Chaff_Salvo_Size) + ',');
+//      SQL.Add('SARH_POH_Modifier = ' + FloatToStr(SARH_POH_Modifier) + ',');
+//      SQL.Add('CG_POH_Modifier = ' + FloatToStr(CG_POH_Modifier) + ',');
+//      SQL.Add('TARH_POH_Modifier = ' + FloatToStr(TARH_POH_Modifier) + ',');
+//      SQL.Add('IR_POH_Modifier = ' + FloatToStr(IR_POH_Modifier) + ',');
+//      SQL.Add('AR_POH_Modifier = ' + FloatToStr(AR_POH_Modifier) + ',');
+//      SQL.Add('Active_Acoustic_Tor_POH_Mod = ' + FloatToStr
+//          (Active_Acoustic_Tor_POH_Mod) + ',');
+//      SQL.Add('Passive_Acoustic_Tor_POH_Mod = ' + FloatToStr
+//          (Passive_Acoustic_Tor_POH_Mod) + ',');
+//      SQL.Add('Active_Passive_Tor_POH_Mod = ' + FloatToStr
+//          (Active_Passive_Tor_POH_Mod) + ',');
+//      SQL.Add('Wake_Home_POH_Modifier = ' + FloatToStr(Wake_Home_POH_Modifier)
+//          + ',');
+//      SQL.Add('Wire_Guide_POH_Modifier = ' + FloatToStr
+//          (Wire_Guide_POH_Modifier) + ',');
+//      SQL.Add('Mag_Mine_POH_Modifier = ' + FloatToStr(Mag_Mine_POH_Modifier)
+//          + ',');
+//      SQL.Add('Press_Mine_POH_Modifier = ' + FloatToStr
+//          (Press_Mine_POH_Modifier) + ',');
+//      SQL.Add('Impact_Mine_POH_Modifier = ' + FloatToStr
+//          (Impact_Mine_POH_Modifier) + ',');
+//      SQL.Add('Acoustic_Mine_POH_Modifier = ' + FloatToStr
+//          (Acoustic_Mine_POH_Modifier) + ',');
+//      SQL.Add('Sub_Comm_Antenna_Height = ' + FloatToStr
+//          (Sub_Comm_Antenna_Height) + ',');
+//      SQL.Add('Rel_Comm_Antenna_Height = ' + FloatToStr
+//          (Rel_Comm_Antenna_Height) + ',');
+//      SQL.Add('Max_Comm_Operating_Depth = ' + FloatToStr
+//          (Max_Comm_Operating_Depth) + ',');
+//      SQL.Add('HF_Link_Capable = ' + BoolToStr(HF_Link_Capable) + ',');
+//      SQL.Add('UHF_Link_Capable = ' + BoolToStr(UHF_Link_Capable) + ',');
+//      SQL.Add('HF_Voice_Capable = ' + BoolToStr(HF_Voice_Capable) + ',');
+//      SQL.Add('VHF_Voice_Capable = ' + BoolToStr(VHF_Voice_Capable) + ',');
+//      SQL.Add('UHF_Voice_Capable = ' + BoolToStr(UHF_Voice_Capable) + ',');
+//      SQL.Add('SATCOM_Voice_Capable = ' + BoolToStr(SATCOM_Voice_Capable)
+//          + ',');
+//      SQL.Add('UWT_Voice_Capable = ' + BoolToStr(UWT_Voice_Capable) + ',');
+//      SQL.Add('HF_MHS_Capable = ' + BoolToStr(HF_MHS_Capable) + ',');
+//      SQL.Add('UHF_MHS_Capable = ' + BoolToStr(UHF_MHS_Capable) + ',');
+//      SQL.Add('SATCOM_MHS_Capable = ' + BoolToStr(SATCOM_MHS_Capable) + ',');
+//      SQL.Add('Damage_Capacity = ' + IntToStr(Damage_Capacity) + ',');
+//      SQL.Add('Plat_Basing_Capability = ' + BoolToStr(Plat_Basing_Capability)
+//          + ',');
+//      SQL.Add('Chaff_Capability = ' + BoolToStr(Chaff_Capability) + ',');
+//      SQL.Add('Readying_Time = ' + IntToStr(Readying_Time) + ',');
+//      SQL.Add('Sonobuoy_Capable = ' + BoolToStr(Sonobuoy_Capable) + ',');
+//      SQL.Add('Nav_Light_Capable = ' + BoolToStr(Nav_Light_Capable) + ',');
+//      SQL.Add('Periscope_Depth = ' + FloatToStr(Periscope_Depth) + ',');
+//      SQL.Add('Periscope_Height_Above_Water = ' + FloatToStr
+//          (Periscope_Height_Above_Water) + ',');
+//      SQL.Add('Periscope_Front_Radar_Xsection = ' + FloatToStr
+//          (Periscope_Front_Radar_Xsection) + ',');
+//      SQL.Add('Periscope_Side_Radar_Xsection = ' + FloatToStr
+//          (Periscope_Side_Radar_Xsection) + ',');
+//      SQL.Add('Periscope_Front_Vis_Xsection = ' + FloatToStr
+//          (Periscope_Front_Vis_Xsection) + ',');
+//      SQL.Add('Periscope_Side_Vis_Xsection = ' + FloatToStr
+//          (Periscope_Side_Vis_Xsection) + ',');
+//      SQL.Add('Periscope_Front_IR_Xsection = ' + FloatToStr
+//          (Periscope_Front_IR_Xsection) + ',');
+//      SQL.Add('Periscope_Side_IR_Xsection = ' + FloatToStr
+//          (Periscope_Side_IR_Xsection) + ',');
+//      SQL.Add('Engagement_Range = ' + FloatToStr(Engagement_Range) + ',');
+//      SQL.Add('Auto_Air_Defense_Capable = ' + BoolToStr
+//          (Auto_Air_Defense_Capable) + ',');
+//      SQL.Add('Alert_State_Time = ' + FloatToStr(Alert_State_Time) + ',');
+//      SQL.Add('Detectability_Type = ' + IntToStr(Detectability_Type) + ',');
+//      SQL.Add('Max_Sonobuoys_To_Monitor = ' + IntToStr
+//          (Max_Sonobuoys_To_Monitor) + ',');
+//      SQL.Add('Sonobuoy_Deploy_Max_Altitude = ' + IntToStr
+//          (Sonobuoy_Deploy_Max_Altitude) + ',');
+//      SQL.Add('Sonobuoy_Deploy_Min_Altitude = ' + IntToStr
+//          (Sonobuoy_Deploy_Min_Altitude) + ',');
+//      SQL.Add('Sonobuoy_Deploy_Max_Speed = ' + IntToStr
+//          (Sonobuoy_Deploy_Max_Speed) + ',');
+//      SQL.Add('Air_Drop_Torpedo_Max_Altitude = ' + IntToStr
+//          (Air_Drop_Torpedo_Max_Altitude) + ',');
+//      SQL.Add('Air_Drop_Torpedo_Min_Altitude = ' + IntToStr
+//          (Air_Drop_Torpedo_Min_Altitude) + ',');
+//      SQL.Add('Air_Drop_Torpedo_Max_Speed = ' + IntToStr
+//          (Air_Drop_Torpedo_Max_Speed) + ',');
+//      SQL.Add('TMA_Rate_Factor = ' + FloatToStr(TMA_Rate_Factor) + ',');
+//      SQL.Add('HMS_Noise_Reduction_Factor = ' + FloatToStr
+//          (HMS_Noise_Reduction_Factor) + ',');
+//      SQL.Add('TAS_Noise_Reduction_Factor = ' + FloatToStr
+//          (TAS_Noise_Reduction_Factor) + ',');
+//      SQL.Add('Infrared_Decoy_Capable = ' + BoolToStr(Infrared_Decoy_Capable)
+//          + ',');
+//      SQL.Add('HF_Mid_Course_Update_Capable = ' + BoolToStr
+//          (HF_Mid_Course_Update_Capable) + ',');
+//      SQL.Add('UHF_Mid_Course_Update_Capable = ' + BoolToStr
+//          (UHF_Mid_Course_Update_Capable) + ',');
+////      SQL.Add('SATCOM_Mid_Course_Update_Capable = ' + BoolToStr
+////          (SATCOM_Mid_Course_Update_Capable)+ ',');
+//      SQL.Add('Font_id = ' + IntToStr
+//          (Font_id)+ ',');
+//      SQL.Add('Symbol_id = ' + IntToStr
+//          (Symbol_id)+ ',');
+//      SQL.Add('Quantity_Group_Personal = ' + IntToStr
+//          (Quantity_Group_Personal)+ ',');
+//      SQL.Add('Vbs_Class_Name = ''' + Vbs_Class_Name + ''',');
+//      SQL.Add('Platform_Capability_Index = ' + IntToStr
+//          (Platform_Capability_Index)+ ',');
+//      SQL.Add('Logistics_Index = ' + IntToStr
+//          (Logistics_Index)+ ',');
+//      SQL.Add('Tactical_Symbol_Name = ' + QuotedStr(Tactical_Symbol_Name)+ ',');
+//      SQL.Add('GangwayPosition = ' + IntToStr
+//          (GangwayPosition)+ ',');
+//      SQL.Add('DWT = ' + FloatToStr(DWT)+ ',');
+//      SQL.Add('last_updated = GETDATE()');    //dng
+//
+//      SQL.Add(' WHERE (Vehicle_Index = ' + id + ')');
+//      ExecSQL;
+//    end;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.insertVehicle_Def(rec: TVehicle_Definition): Integer;
-var
-  query : string;
-begin
-  result := -1;
-//  DecimalSeparator := '.';
-  with ZQ do
-  begin
-    with rec.FData do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('INSERT INTO Vehicle_Definition ');
-      SQL.Add(
-        '(Vehicle_Identifier,Platform_Domain,Platform_Category,Platform_Type,Motion_Characteristics,');
-      SQL.Add(
-        'Length,Width,Height,Draft,Front_Radar_Cross,Side_Radar_Cross,Front_Acoustic_Cross,Side_Acoustic_Cross,Magnetic_Cross,');
-      SQL.Add(
-        'Front_Visual_EO_Cross,Side_Visual_EO_Cross,Front_Infrared_Cross,Side_Infrared_Cross,LSpeed_Acoustic_Intens,');
-      SQL.Add(
-        'Below_Cav_Acoustic_Intens,Above_Cav_Acoustic_Intens,HSpeed_Acoustic_Intens,Cavitation_Speed_Switch,');
-      SQL.Add(
-        'Time_of_Weapon_Impact,Chaff_Seduction_Capable,Seduction_Mode_Prob,Min_Delay_Between_Chaff_Rounds,Max_Chaff_Salvo_Size,');
-      SQL.Add(
-        'SARH_POH_Modifier,CG_POH_Modifier,TARH_POH_Modifier,IR_POH_Modifier,AR_POH_Modifier,');
-      SQL.Add(
-        'Active_Acoustic_Tor_POH_Mod,Passive_Acoustic_Tor_POH_Mod,Active_Passive_Tor_POH_Mod,Wake_Home_POH_Modifier,Wire_Guide_POH_Modifier,');
-      SQL.Add(
-        'Mag_Mine_POH_Modifier,Press_Mine_POH_Modifier,Impact_Mine_POH_Modifier,Acoustic_Mine_POH_Modifier,');
-      SQL.Add(
-        'Sub_Comm_Antenna_Height,Rel_Comm_Antenna_Height,Max_Comm_Operating_Depth,HF_Link_Capable,UHF_Link_Capable,');
-      SQL.Add(
-        'HF_Voice_Capable,VHF_Voice_Capable,UHF_Voice_Capable,SATCOM_Voice_Capable,UWT_Voice_Capable,');
-      SQL.Add(
-        'HF_MHS_Capable,UHF_MHS_Capable,Satcom_MHS_Capable,Damage_Capacity,');
-      SQL.Add(
-        'Plat_Basing_Capability,Chaff_Capability,Readying_Time,Sonobuoy_Capable,Nav_Light_Capable,Periscope_Depth,');
-      SQL.Add(
-        'Periscope_Height_Above_Water,Periscope_Front_Radar_Xsection,Periscope_Side_Radar_Xsection,Periscope_Front_Vis_Xsection,Periscope_Side_Vis_Xsection,');
-      SQL.Add(
-        'Periscope_Front_IR_Xsection,Periscope_Side_IR_Xsection,Engagement_Range,Auto_Air_Defense_Capable,Alert_State_Time,');
-      SQL.Add(
-        'Detectability_Type,Max_Sonobuoys_To_Monitor,Sonobuoy_Deploy_Max_Altitude,Sonobuoy_Deploy_Min_Altitude,');
-      SQL.Add(
-        'Sonobuoy_Deploy_Max_Speed,Air_Drop_Torpedo_Max_Altitude,Air_Drop_Torpedo_Min_Altitude,Air_Drop_Torpedo_Max_Speed,TMA_Rate_Factor,');
-      SQL.Add(
-        'HMS_Noise_Reduction_Factor,TAS_Noise_Reduction_Factor,Infrared_Decoy_Capable,HF_Mid_Course_Update_Capable,');
-      SQL.Add
-        ('UHF_Mid_Course_Update_Capable,');//SATCOM_Mid_Course_Update_Capable,font_id,symbol_id,Quantity_Group_Personal,vbs_class_name,Logistics_Index)');
-      SQL.Add
-        ('font_id,symbol_id,Quantity_Group_Personal,vbs_class_name,Platform_Capability_Index,Logistics_Index, Tactical_Symbol_Name, GangwayPosition, DWT, last_updated)');    //dng
-
-      SQL.Add(' VALUES (');
-
-//      SQL.Add('''' + Vehicle_Identifier + ''',');
-      SQL.Add( QuotedStr(Vehicle_Identifier) + ',');
-      SQL.Add(IntToStr(Platform_Domain) + ',');
-      SQL.Add(IntToStr(Platform_Category) + ',');
-      SQL.Add(IntToStr(Platform_Type) + ',');
-      SQL.Add(IntToStr(Motion_Characteristics) + ',');
-      SQL.Add(FloatToStr(Length) + ',');
-      SQL.Add(FloatToStr(Width) + ',');
-      SQL.Add(FloatToStr(Height) + ',');
-      SQL.Add(FloatToStr(Draft) + ',');
-      SQL.Add(FloatToStr(Front_Radar_Cross) + ',');
-      SQL.Add(FloatToStr(Side_Radar_Cross) + ',');
-      SQL.Add(FloatToStr(Front_Acoustic_Cross) + ',');
-      SQL.Add(FloatToStr(Side_Acoustic_Cross) + ',');
-      SQL.Add(FloatToStr(Magnetic_Cross) + ',');
-      SQL.Add(FloatToStr(Front_Visual_EO_Cross) + ',');
-      SQL.Add(FloatToStr(Side_Visual_EO_Cross) + ',');
-      SQL.Add(FloatToStr(Front_Infrared_Cross) + ',');
-      SQL.Add(FloatToStr(Side_Infrared_Cross) + ',');
-      SQL.Add(FloatToStr(LSpeed_Acoustic_Intens) + ',');
-      SQL.Add(FloatToStr(Below_Cav_Acoustic_Intens) + ',');
-      SQL.Add(FloatToStr(Above_Cav_Acoustic_Intens) + ',');
-      SQL.Add(FloatToStr(HSpeed_Acoustic_Intens) + ',');
-      SQL.Add(FloatToStr(Cavitation_Speed_Switch) + ',');
-      SQL.Add(IntToStr(Time_of_Weapon_Impact) + ',');
-      SQL.Add(BoolToStr(Chaff_Seduction_Capable) + ',');
-      SQL.Add(FloatToStr(Seduction_Mode_Prob) + ',');
-      SQL.Add(IntToStr(Min_Delay_Between_Chaff_Rounds) + ',');
-      SQL.Add(IntToStr(Max_Chaff_Salvo_Size) + ',');
-      SQL.Add(FloatToStr(SARH_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(CG_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(TARH_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(IR_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(AR_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(Active_Acoustic_Tor_POH_Mod) + ',');
-      SQL.Add(FloatToStr(Passive_Acoustic_Tor_POH_Mod) + ',');
-      SQL.Add(FloatToStr(Active_Passive_Tor_POH_Mod) + ',');
-      SQL.Add(FloatToStr(Wake_Home_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(Wire_Guide_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(Mag_Mine_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(Press_Mine_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(Impact_Mine_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(Acoustic_Mine_POH_Modifier) + ',');
-      SQL.Add(FloatToStr(Sub_Comm_Antenna_Height) + ',');
-      SQL.Add(FloatToStr(Rel_Comm_Antenna_Height) + ',');
-      SQL.Add(FloatToStr(Max_Comm_Operating_Depth) + ',');
-      SQL.Add(BoolToStr(HF_Link_Capable) + ',');
-      SQL.Add(BoolToStr(UHF_Link_Capable) + ',');
-      SQL.Add(BoolToStr(HF_Voice_Capable) + ',');
-      SQL.Add(BoolToStr(VHF_Voice_Capable) + ',');
-      SQL.Add(BoolToStr(UHF_Voice_Capable) + ',');
-      SQL.Add(BoolToStr(SATCOM_Voice_Capable) + ',');
-      SQL.Add(BoolToStr(UWT_Voice_Capable) + ',');
-      SQL.Add(BoolToStr(HF_MHS_Capable) + ',');
-      SQL.Add(BoolToStr(UHF_MHS_Capable) + ',');
-      SQL.Add(BoolToStr(SATCOM_MHS_Capable) + ',');
-      SQL.Add(IntToStr(Damage_Capacity) + ',');
-      SQL.Add(BoolToStr(Plat_Basing_Capability) + ',');
-      SQL.Add(BoolToStr(Chaff_Capability) + ',');
-      SQL.Add(IntToStr(Readying_Time) + ',');
-      SQL.Add(BoolToStr(Sonobuoy_Capable) + ',');
-      SQL.Add(BoolToStr(Nav_Light_Capable) + ',');
-      SQL.Add(FloatToStr(Periscope_Depth) + ',');
-      SQL.Add(FloatToStr(Periscope_Height_Above_Water) + ',');
-      SQL.Add(FloatToStr(Periscope_Front_Radar_Xsection) + ',');
-      SQL.Add(FloatToStr(Periscope_Side_Radar_Xsection) + ',');
-      SQL.Add(FloatToStr(Periscope_Front_Vis_Xsection) + ',');
-      SQL.Add(FloatToStr(Periscope_Side_Vis_Xsection) + ',');
-      SQL.Add(FloatToStr(Periscope_Front_IR_Xsection) + ',');
-      SQL.Add(FloatToStr(Periscope_Side_IR_Xsection) + ',');
-      SQL.Add(FloatToStr(Engagement_Range) + ',');
-      SQL.Add(BoolToStr(Auto_Air_Defense_Capable) + ',');
-      SQL.Add(FloatToStr(Alert_State_Time) + ',');
-      SQL.Add(IntToStr(Detectability_Type) + ',');
-      SQL.Add(IntToStr(Max_Sonobuoys_To_Monitor) + ',');
-      SQL.Add(IntToStr(Sonobuoy_Deploy_Max_Altitude) + ',');
-      SQL.Add(IntToStr(Sonobuoy_Deploy_Min_Altitude) + ',');
-      SQL.Add(IntToStr(Sonobuoy_Deploy_Max_Speed) + ',');
-      SQL.Add(IntToStr(Air_Drop_Torpedo_Max_Altitude) + ',');
-      SQL.Add(IntToStr(Air_Drop_Torpedo_Min_Altitude) + ',');
-      SQL.Add(IntToStr(Air_Drop_Torpedo_Max_Speed) + ',');
-      SQL.Add(FloatToStr(TMA_Rate_Factor) + ',');
-      SQL.Add(FloatToStr(HMS_Noise_Reduction_Factor) + ',');
-      SQL.Add(FloatToStr(TAS_Noise_Reduction_Factor) + ',');
-      SQL.Add(BoolToStr(Infrared_Decoy_Capable) + ',');
-      SQL.Add(BoolToStr(HF_Mid_Course_Update_Capable) + ',');
-      SQL.Add(BoolToStr(UHF_Mid_Course_Update_Capable) + ',');
-      {SQL.Add(BoolToStr(SATCOM_Mid_Course_Update_Capable) + ','); }
-      SQL.Add(IntToStr(Font_id) + ',');
-      SQL.Add(IntToStr(Symbol_id) + ',');
-      SQL.Add(IntToStr(Quantity_Group_Personal) + ',');
-      SQL.Add(QuotedStr(Vbs_Class_Name) + ',');
-      SQL.Add(IntToStr(Platform_Capability_Index) + ',');   //dng
-      SQL.Add(IntToStr(Logistics_Index) + ',');
-      SQL.Add(QuotedStr(Tactical_Symbol_Name) + ',');
-      SQL.Add(IntToStr(GangwayPosition) + ',');
-      SQL.add(FloatToStr(DWT)+ ',');
-      SQL.Add('GETDATE()' + ')');       //dng
-
-      {query := sql.Text;
-      SQL.Clear;
-      SQL.Add(query);  }
-
-      ExecSQL;
-
-
-      SQL.Clear;
-      SQL.Add('SELECT * FROM Vehicle_Definition ');
-      SQL.Add('WHERE Vehicle_Identifier =' + quotedStr(Vehicle_Identifier));
-      Open;
-      with rec.FData do
-      begin
-        Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
-      end;
-    end;
-  end;
-end;
+//function TdmTTT.insertVehicle_Def(rec: TVehicle_Definition): Integer;
+//var
+//  query : string;
+//begin
+//  result := -1;
+////  DecimalSeparator := '.';
+//  with ZQ do
+//  begin
+//    with rec.FData do
+//    begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('INSERT INTO Vehicle_Definition ');
+//      SQL.Add(
+//        '(Vehicle_Identifier,Platform_Domain,Platform_Category,Platform_Type,Motion_Characteristics,');
+//      SQL.Add(
+//        'Length,Width,Height,Draft,Front_Radar_Cross,Side_Radar_Cross,Front_Acoustic_Cross,Side_Acoustic_Cross,Magnetic_Cross,');
+//      SQL.Add(
+//        'Front_Visual_EO_Cross,Side_Visual_EO_Cross,Front_Infrared_Cross,Side_Infrared_Cross,LSpeed_Acoustic_Intens,');
+//      SQL.Add(
+//        'Below_Cav_Acoustic_Intens,Above_Cav_Acoustic_Intens,HSpeed_Acoustic_Intens,Cavitation_Speed_Switch,');
+//      SQL.Add(
+//        'Time_of_Weapon_Impact,Chaff_Seduction_Capable,Seduction_Mode_Prob,Min_Delay_Between_Chaff_Rounds,Max_Chaff_Salvo_Size,');
+//      SQL.Add(
+//        'SARH_POH_Modifier,CG_POH_Modifier,TARH_POH_Modifier,IR_POH_Modifier,AR_POH_Modifier,');
+//      SQL.Add(
+//        'Active_Acoustic_Tor_POH_Mod,Passive_Acoustic_Tor_POH_Mod,Active_Passive_Tor_POH_Mod,Wake_Home_POH_Modifier,Wire_Guide_POH_Modifier,');
+//      SQL.Add(
+//        'Mag_Mine_POH_Modifier,Press_Mine_POH_Modifier,Impact_Mine_POH_Modifier,Acoustic_Mine_POH_Modifier,');
+//      SQL.Add(
+//        'Sub_Comm_Antenna_Height,Rel_Comm_Antenna_Height,Max_Comm_Operating_Depth,HF_Link_Capable,UHF_Link_Capable,');
+//      SQL.Add(
+//        'HF_Voice_Capable,VHF_Voice_Capable,UHF_Voice_Capable,SATCOM_Voice_Capable,UWT_Voice_Capable,');
+//      SQL.Add(
+//        'HF_MHS_Capable,UHF_MHS_Capable,Satcom_MHS_Capable,Damage_Capacity,');
+//      SQL.Add(
+//        'Plat_Basing_Capability,Chaff_Capability,Readying_Time,Sonobuoy_Capable,Nav_Light_Capable,Periscope_Depth,');
+//      SQL.Add(
+//        'Periscope_Height_Above_Water,Periscope_Front_Radar_Xsection,Periscope_Side_Radar_Xsection,Periscope_Front_Vis_Xsection,Periscope_Side_Vis_Xsection,');
+//      SQL.Add(
+//        'Periscope_Front_IR_Xsection,Periscope_Side_IR_Xsection,Engagement_Range,Auto_Air_Defense_Capable,Alert_State_Time,');
+//      SQL.Add(
+//        'Detectability_Type,Max_Sonobuoys_To_Monitor,Sonobuoy_Deploy_Max_Altitude,Sonobuoy_Deploy_Min_Altitude,');
+//      SQL.Add(
+//        'Sonobuoy_Deploy_Max_Speed,Air_Drop_Torpedo_Max_Altitude,Air_Drop_Torpedo_Min_Altitude,Air_Drop_Torpedo_Max_Speed,TMA_Rate_Factor,');
+//      SQL.Add(
+//        'HMS_Noise_Reduction_Factor,TAS_Noise_Reduction_Factor,Infrared_Decoy_Capable,HF_Mid_Course_Update_Capable,');
+//      SQL.Add
+//        ('UHF_Mid_Course_Update_Capable,');//SATCOM_Mid_Course_Update_Capable,font_id,symbol_id,Quantity_Group_Personal,vbs_class_name,Logistics_Index)');
+//      SQL.Add
+//        ('font_id,symbol_id,Quantity_Group_Personal,vbs_class_name,Platform_Capability_Index,Logistics_Index, Tactical_Symbol_Name, GangwayPosition, DWT, last_updated)');    //dng
+//
+//      SQL.Add(' VALUES (');
+//
+////      SQL.Add('''' + Vehicle_Identifier + ''',');
+//      SQL.Add( QuotedStr(Vehicle_Identifier) + ',');
+//      SQL.Add(IntToStr(Platform_Domain) + ',');
+//      SQL.Add(IntToStr(Platform_Category) + ',');
+//      SQL.Add(IntToStr(Platform_Type) + ',');
+//      SQL.Add(IntToStr(Motion_Characteristics) + ',');
+//      SQL.Add(FloatToStr(Length) + ',');
+//      SQL.Add(FloatToStr(Width) + ',');
+//      SQL.Add(FloatToStr(Height) + ',');
+//      SQL.Add(FloatToStr(Draft) + ',');
+//      SQL.Add(FloatToStr(Front_Radar_Cross) + ',');
+//      SQL.Add(FloatToStr(Side_Radar_Cross) + ',');
+//      SQL.Add(FloatToStr(Front_Acoustic_Cross) + ',');
+//      SQL.Add(FloatToStr(Side_Acoustic_Cross) + ',');
+//      SQL.Add(FloatToStr(Magnetic_Cross) + ',');
+//      SQL.Add(FloatToStr(Front_Visual_EO_Cross) + ',');
+//      SQL.Add(FloatToStr(Side_Visual_EO_Cross) + ',');
+//      SQL.Add(FloatToStr(Front_Infrared_Cross) + ',');
+//      SQL.Add(FloatToStr(Side_Infrared_Cross) + ',');
+//      SQL.Add(FloatToStr(LSpeed_Acoustic_Intens) + ',');
+//      SQL.Add(FloatToStr(Below_Cav_Acoustic_Intens) + ',');
+//      SQL.Add(FloatToStr(Above_Cav_Acoustic_Intens) + ',');
+//      SQL.Add(FloatToStr(HSpeed_Acoustic_Intens) + ',');
+//      SQL.Add(FloatToStr(Cavitation_Speed_Switch) + ',');
+//      SQL.Add(IntToStr(Time_of_Weapon_Impact) + ',');
+//      SQL.Add(BoolToStr(Chaff_Seduction_Capable) + ',');
+//      SQL.Add(FloatToStr(Seduction_Mode_Prob) + ',');
+//      SQL.Add(IntToStr(Min_Delay_Between_Chaff_Rounds) + ',');
+//      SQL.Add(IntToStr(Max_Chaff_Salvo_Size) + ',');
+//      SQL.Add(FloatToStr(SARH_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(CG_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(TARH_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(IR_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(AR_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(Active_Acoustic_Tor_POH_Mod) + ',');
+//      SQL.Add(FloatToStr(Passive_Acoustic_Tor_POH_Mod) + ',');
+//      SQL.Add(FloatToStr(Active_Passive_Tor_POH_Mod) + ',');
+//      SQL.Add(FloatToStr(Wake_Home_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(Wire_Guide_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(Mag_Mine_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(Press_Mine_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(Impact_Mine_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(Acoustic_Mine_POH_Modifier) + ',');
+//      SQL.Add(FloatToStr(Sub_Comm_Antenna_Height) + ',');
+//      SQL.Add(FloatToStr(Rel_Comm_Antenna_Height) + ',');
+//      SQL.Add(FloatToStr(Max_Comm_Operating_Depth) + ',');
+//      SQL.Add(BoolToStr(HF_Link_Capable) + ',');
+//      SQL.Add(BoolToStr(UHF_Link_Capable) + ',');
+//      SQL.Add(BoolToStr(HF_Voice_Capable) + ',');
+//      SQL.Add(BoolToStr(VHF_Voice_Capable) + ',');
+//      SQL.Add(BoolToStr(UHF_Voice_Capable) + ',');
+//      SQL.Add(BoolToStr(SATCOM_Voice_Capable) + ',');
+//      SQL.Add(BoolToStr(UWT_Voice_Capable) + ',');
+//      SQL.Add(BoolToStr(HF_MHS_Capable) + ',');
+//      SQL.Add(BoolToStr(UHF_MHS_Capable) + ',');
+//      SQL.Add(BoolToStr(SATCOM_MHS_Capable) + ',');
+//      SQL.Add(IntToStr(Damage_Capacity) + ',');
+//      SQL.Add(BoolToStr(Plat_Basing_Capability) + ',');
+//      SQL.Add(BoolToStr(Chaff_Capability) + ',');
+//      SQL.Add(IntToStr(Readying_Time) + ',');
+//      SQL.Add(BoolToStr(Sonobuoy_Capable) + ',');
+//      SQL.Add(BoolToStr(Nav_Light_Capable) + ',');
+//      SQL.Add(FloatToStr(Periscope_Depth) + ',');
+//      SQL.Add(FloatToStr(Periscope_Height_Above_Water) + ',');
+//      SQL.Add(FloatToStr(Periscope_Front_Radar_Xsection) + ',');
+//      SQL.Add(FloatToStr(Periscope_Side_Radar_Xsection) + ',');
+//      SQL.Add(FloatToStr(Periscope_Front_Vis_Xsection) + ',');
+//      SQL.Add(FloatToStr(Periscope_Side_Vis_Xsection) + ',');
+//      SQL.Add(FloatToStr(Periscope_Front_IR_Xsection) + ',');
+//      SQL.Add(FloatToStr(Periscope_Side_IR_Xsection) + ',');
+//      SQL.Add(FloatToStr(Engagement_Range) + ',');
+//      SQL.Add(BoolToStr(Auto_Air_Defense_Capable) + ',');
+//      SQL.Add(FloatToStr(Alert_State_Time) + ',');
+//      SQL.Add(IntToStr(Detectability_Type) + ',');
+//      SQL.Add(IntToStr(Max_Sonobuoys_To_Monitor) + ',');
+//      SQL.Add(IntToStr(Sonobuoy_Deploy_Max_Altitude) + ',');
+//      SQL.Add(IntToStr(Sonobuoy_Deploy_Min_Altitude) + ',');
+//      SQL.Add(IntToStr(Sonobuoy_Deploy_Max_Speed) + ',');
+//      SQL.Add(IntToStr(Air_Drop_Torpedo_Max_Altitude) + ',');
+//      SQL.Add(IntToStr(Air_Drop_Torpedo_Min_Altitude) + ',');
+//      SQL.Add(IntToStr(Air_Drop_Torpedo_Max_Speed) + ',');
+//      SQL.Add(FloatToStr(TMA_Rate_Factor) + ',');
+//      SQL.Add(FloatToStr(HMS_Noise_Reduction_Factor) + ',');
+//      SQL.Add(FloatToStr(TAS_Noise_Reduction_Factor) + ',');
+//      SQL.Add(BoolToStr(Infrared_Decoy_Capable) + ',');
+//      SQL.Add(BoolToStr(HF_Mid_Course_Update_Capable) + ',');
+//      SQL.Add(BoolToStr(UHF_Mid_Course_Update_Capable) + ',');
+//      {SQL.Add(BoolToStr(SATCOM_Mid_Course_Update_Capable) + ','); }
+//      SQL.Add(IntToStr(Font_id) + ',');
+//      SQL.Add(IntToStr(Symbol_id) + ',');
+//      SQL.Add(IntToStr(Quantity_Group_Personal) + ',');
+//      SQL.Add(QuotedStr(Vbs_Class_Name) + ',');
+//      SQL.Add(IntToStr(Platform_Capability_Index) + ',');   //dng
+//      SQL.Add(IntToStr(Logistics_Index) + ',');
+//      SQL.Add(QuotedStr(Tactical_Symbol_Name) + ',');
+//      SQL.Add(IntToStr(GangwayPosition) + ',');
+//      SQL.add(FloatToStr(DWT)+ ',');
+//      SQL.Add('GETDATE()' + ')');       //dng
+//
+//      {query := sql.Text;
+//      SQL.Clear;
+//      SQL.Add(query);  }
+//
+//      ExecSQL;
+//
+//
+//      SQL.Clear;
+//      SQL.Add('SELECT * FROM Vehicle_Definition ');
+//      SQL.Add('WHERE Vehicle_Identifier =' + quotedStr(Vehicle_Identifier));
+//      Open;
+//      with rec.FData do
+//      begin
+//        Vehicle_Index := FieldByName('Vehicle_Index').AsInteger;
+//      end;
+//    end;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -37437,18 +37426,18 @@ end;
 // ------------------------------------------------------------------------------
 
 /// /====================================================
-function TdmTTT.DeleteEO_On_Board(const id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM EO_On_Board  ');
-    SQL.Add('WHERE (EO_Instance_Index = ' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.DeleteEO_On_Board(const id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM EO_On_Board  ');
+//    SQL.Add('WHERE (EO_Instance_Index = ' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 // -------------------------------------------------------------------
 
 function TdmTTT.getEO_Def(const id: Integer; var aRec: TList;
@@ -37516,84 +37505,84 @@ end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.updateEO_Def(rec: TEOD_On_Board; id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    with rec.FEO_Def do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('UPDATE EO_Detection_Definition ');
-      SQL.Add('SET ');
-      SQL.Add('Class_Identifier =''' + Class_Identifier + ''',');
-      SQL.Add('Sensor_Type  =' + IntToStr(Sensor_Type) + ',');
-      SQL.Add('Detection_Range =' + FloatToStr(Detection_Range) + ',');
-      SQL.Add('Known_Cross_Section =' + FloatToStr(Known_Cross_Section) + ',');
-      SQL.Add('Max_Range  =' + FloatToStr(Max_Range) + ',');
-      SQL.Add('Scan_Rate =' + FloatToStr(Scan_Rate) + ',');
-      SQL.Add('Num_FC_Channels =' + IntToStr(Num_FC_Channels));
-    end;
-
-    SQL.Add(' WHERE (EO_Index = ' + id + ')');
-    ExecSQL;
-
-  end;
-end;
-
-// ------------------------------------------------------------------------------
-
-function TdmTTT.insertEO_Def(rec: TEOD_On_Board): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    with rec.FEO_Def do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('INSERT INTO EO_Detection_Definition ');
-      SQL.Add(
-        '(Class_Identifier,Sensor_Type,Detection_Range,Known_Cross_Section,');
-      SQL.Add('Max_Range,Scan_Rate,Num_FC_Channels)');
-      SQL.Add(' VALUES (');
-      SQL.Add('''' + Class_Identifier + ''',');
-      SQL.Add(IntToStr(Sensor_Type) + ',');
-      SQL.Add(FloatToStr(Detection_Range) + ',');
-      SQL.Add(FloatToStr(Known_Cross_Section) + ',');
-      SQL.Add(FloatToStr(Max_Range) + ',');
-      SQL.Add(FloatToStr(Scan_Rate) + ',');
-      SQL.Add(IntToStr(Num_FC_Channels) + ')');
-      ExecSQL;
-
-      SQL.Clear;
-      SQL.Add('SELECT EO_Index FROM EO_Detection_Definition ');
-      SQL.Add('WHERE Class_Identifier =' + quotedStr(Class_Identifier));
-      Open;
-      with rec.FEO_Def do
-      begin
-        EO_Index := FieldByName('EO_Index').AsInteger;
-      end;
-    end;
-  end;
-end;
+//function TdmTTT.updateEO_Def(rec: TEOD_On_Board; id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    with rec.FEO_Def do
+//    begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('UPDATE EO_Detection_Definition ');
+//      SQL.Add('SET ');
+//      SQL.Add('Class_Identifier =''' + Class_Identifier + ''',');
+//      SQL.Add('Sensor_Type  =' + IntToStr(Sensor_Type) + ',');
+//      SQL.Add('Detection_Range =' + FloatToStr(Detection_Range) + ',');
+//      SQL.Add('Known_Cross_Section =' + FloatToStr(Known_Cross_Section) + ',');
+//      SQL.Add('Max_Range  =' + FloatToStr(Max_Range) + ',');
+//      SQL.Add('Scan_Rate =' + FloatToStr(Scan_Rate) + ',');
+//      SQL.Add('Num_FC_Channels =' + IntToStr(Num_FC_Channels));
+//    end;
+//
+//    SQL.Add(' WHERE (EO_Index = ' + id + ')');
+//    ExecSQL;
+//
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
-function TdmTTT.deleteEO_Def(id: Integer): Integer;
-begin
-  result := -1;
-  deleteNote(12,IntToStr(id));
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE EO_Detection_Definition ');
-    SQL.Add('WHERE EO_Index =' + IntToStr(id));
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.insertEO_Def(rec: TEOD_On_Board): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    with rec.FEO_Def do
+//    begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('INSERT INTO EO_Detection_Definition ');
+//      SQL.Add(
+//        '(Class_Identifier,Sensor_Type,Detection_Range,Known_Cross_Section,');
+//      SQL.Add('Max_Range,Scan_Rate,Num_FC_Channels)');
+//      SQL.Add(' VALUES (');
+//      SQL.Add('''' + Class_Identifier + ''',');
+//      SQL.Add(IntToStr(Sensor_Type) + ',');
+//      SQL.Add(FloatToStr(Detection_Range) + ',');
+//      SQL.Add(FloatToStr(Known_Cross_Section) + ',');
+//      SQL.Add(FloatToStr(Max_Range) + ',');
+//      SQL.Add(FloatToStr(Scan_Rate) + ',');
+//      SQL.Add(IntToStr(Num_FC_Channels) + ')');
+//      ExecSQL;
+//
+//      SQL.Clear;
+//      SQL.Add('SELECT EO_Index FROM EO_Detection_Definition ');
+//      SQL.Add('WHERE Class_Identifier =' + quotedStr(Class_Identifier));
+//      Open;
+//      with rec.FEO_Def do
+//      begin
+//        EO_Index := FieldByName('EO_Index').AsInteger;
+//      end;
+//    end;
+//  end;
+//end;
+
+// ------------------------------------------------------------------------------
+
+//function TdmTTT.deleteEO_Def(id: Integer): Integer;
+//begin
+//  result := -1;
+//  deleteNote(12,IntToStr(id));
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE EO_Detection_Definition ');
+//    SQL.Add('WHERE EO_Index =' + IntToStr(id));
+//    ExecSQL;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -38626,45 +38615,45 @@ end;
 
 // -----------------------------------------------------------------------------
  ////====================================================
-function TdmTTT.UpdateESM_On_Board(const id: string;
-  var rec: TESM_On_Board): integer;
-begin
-  result := -1;
-  with ZQ do begin
-    with rec.FData do begin
-      Close;
-      SQL.Clear;
-      SQL.Add('UPDATE ESM_On_Board  ');
-      SQL.Add('SET ' );
-      //SQL.Add('ESM_Instance_Index = '+IntToStr(ESM_Instance_Index)+',');
-      SQL.Add('Instance_Identifier = '+ QuotedStr(Instance_Identifier)+',');
-      SQL.Add('Instance_Type = '+IntToStr(Instance_Type)+',');
-      SQL.Add('Vehicle_Index = '+IntToStr(Vehicle_Index)+',');
-      SQL.Add('ESM_Index = '+IntToStr(ESM_Index)+',');
-      SQL.Add('Rel_Antenna_Height = '+FloatToStr(Rel_Antenna_Height)+',');
-      SQL.Add('Max_Operational_Depth = '+FloatToStr(Max_Operational_Depth)+',');
-      SQL.Add('Submerged_Antenna_Height = '+FloatToStr(Submerged_Antenna_Height)+ ' ');
-    end;
-    SQL.Add('WHERE (ESM_Instance_Index = ' +  id + ')' );
-    //ShowMessage(SQL.Text);
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.UpdateESM_On_Board(const id: string;
+//  var rec: TESM_On_Board): integer;
+//begin
+//  result := -1;
+//  with ZQ do begin
+//    with rec.FData do begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('UPDATE ESM_On_Board  ');
+//      SQL.Add('SET ' );
+//      //SQL.Add('ESM_Instance_Index = '+IntToStr(ESM_Instance_Index)+',');
+//      SQL.Add('Instance_Identifier = '+ QuotedStr(Instance_Identifier)+',');
+//      SQL.Add('Instance_Type = '+IntToStr(Instance_Type)+',');
+//      SQL.Add('Vehicle_Index = '+IntToStr(Vehicle_Index)+',');
+//      SQL.Add('ESM_Index = '+IntToStr(ESM_Index)+',');
+//      SQL.Add('Rel_Antenna_Height = '+FloatToStr(Rel_Antenna_Height)+',');
+//      SQL.Add('Max_Operational_Depth = '+FloatToStr(Max_Operational_Depth)+',');
+//      SQL.Add('Submerged_Antenna_Height = '+FloatToStr(Submerged_Antenna_Height)+ ' ');
+//    end;
+//    SQL.Add('WHERE (ESM_Instance_Index = ' +  id + ')' );
+//    //ShowMessage(SQL.Text);
+//    ExecSQL;
+//  end;
+//end;
 //-------------------------------------------------------------------
 
 /// /====================================================
-function TdmTTT.DeleteESM_On_Board(const id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM ESM_On_Board  ');
-    SQL.Add('WHERE (ESM_Instance_Index = ' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.DeleteESM_On_Board(const id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM ESM_On_Board  ');
+//    SQL.Add('WHERE (ESM_Instance_Index = ' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 // -------------------------------------------------------------------
 
 function TdmTTT.deleteESM(id: string): Integer;
@@ -39120,28 +39109,28 @@ begin
 end;
 // -------------------------------------------------------------------
 
-function TdmTTT.updateScriptIFF(rec: TScripted_IFF_Event; id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    with rec.FData do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('UPDATE Scripted_IFF_Event ');
-      SQL.Add('SET ');
-      SQL.Add('IFF_Instance_Index =' + IntToStr(IFF_Instance_Index) + ',');
-      SQL.Add('IFF_Interrogator_Control=' + IntToStr(IFF_Interrogator_Control)
-          + ',');
-      SQL.Add('IFF_Transponder_Control=' + IntToStr(IFF_Transponder_Control));
-    end;
-
-    SQL.Add(' WHERE (Scripted_Event_Index = ' + id + ')');
-    ExecSQL;
-
-  end;
-end;
+//function TdmTTT.updateScriptIFF(rec: TScripted_IFF_Event; id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    with rec.FData do
+//    begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('UPDATE Scripted_IFF_Event ');
+//      SQL.Add('SET ');
+//      SQL.Add('IFF_Instance_Index =' + IntToStr(IFF_Instance_Index) + ',');
+//      SQL.Add('IFF_Interrogator_Control=' + IntToStr(IFF_Interrogator_Control)
+//          + ',');
+//      SQL.Add('IFF_Transponder_Control=' + IntToStr(IFF_Transponder_Control));
+//    end;
+//
+//    SQL.Add(' WHERE (Scripted_Event_Index = ' + id + ')');
+//    ExecSQL;
+//
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -39312,77 +39301,77 @@ begin
 end;
 // -------------------------------------------------------------------
 
-function TdmTTT.DeleteAllSensorAssetFromVehicle(const id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Radar_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM MAD_Sensor_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM ESM_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Sonobuoy_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Sonar_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM EO_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM IFF_Sensor_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Visual_Sensor_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-  end;
-end;
+//function TdmTTT.DeleteAllSensorAssetFromVehicle(const id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Radar_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM MAD_Sensor_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM ESM_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Sonobuoy_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Sonar_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM EO_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM IFF_Sensor_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Visual_Sensor_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//  end;
+//end;
 
 // -----------------------------------------------------------------------------
 
 
-function TdmTTT.DeleteAllWeaponAssetFromVehicle(const id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Fitted_Weapon_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.DeleteAllWeaponAssetFromVehicle(const id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Fitted_Weapon_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 
 function TdmTTT.DeleteAll_GameReport(rec: TRuntime_Game_Report): Integer;
 begin
@@ -39396,66 +39385,66 @@ end;
 
 // ----------------------------------------------------------------------------
 
-function TdmTTT.DeleteAllCountermsAssetFromVehicle(const id: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Jammer_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Air_Bubble_Mount  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Acoustic_Decoy_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Defensive_Jammer_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Towed_Jammer_Decoy_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Floating_Decoy_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Chaff_Launcher_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Chaff_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-
-    Close;
-    SQL.Clear;
-    SQL.Add('DELETE FROM Infrared_Decoy_On_Board  ');
-    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.DeleteAllCountermsAssetFromVehicle(const id: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Jammer_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Air_Bubble_Mount  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Acoustic_Decoy_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Defensive_Jammer_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Towed_Jammer_Decoy_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Floating_Decoy_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Chaff_Launcher_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Chaff_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Infrared_Decoy_On_Board  ');
+//    SQL.Add('WHERE (Vehicle_Index = ' + id + ')');
+//    ExecSQL;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -52414,27 +52403,27 @@ begin
     end;
   end;
 end;
-function TdmTTT.isTargetFromPlatformInst(
-  const vId: Integer): Boolean;
-begin
-  Result := false;
-
-  if not zConn.Connected then Exit;
-
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT Platform_Domain ');
-    SQL.Add('FROM Vehicle_Definition ' );
-    SQL.Add('WHERE Vehicle_Index = ' +  IntToStr(vId));
-
-    Open;
-
-    Result := FieldByName('Platform_Domain').AsInteger = 8;
-
-  end;
-end;
+//function TdmTTT.isTargetFromPlatformInst(
+//  const vId: Integer): Boolean;
+//begin
+//  Result := false;
+//
+//  if not zConn.Connected then Exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT Platform_Domain ');
+//    SQL.Add('FROM Vehicle_Definition ' );
+//    SQL.Add('WHERE Vehicle_Index = ' +  IntToStr(vId));
+//
+//    Open;
+//
+//    Result := FieldByName('Platform_Domain').AsInteger = 8;
+//
+//  end;
+//end;
 
 //============================================================================
 function TdmTTT.getRadar_Vertical_Coverage(const tipe,id: integer; var aRec: TList;
@@ -54760,17 +54749,17 @@ begin
   end;
 end;
 
-function TdmTTT.DeleteWaypointDataByID(const id: integer): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    SQL.Clear;
-    SQL.Add('DELETE FROM Waypoint_Data ');
-    SQL.Add('WHERE Waypoint_Index = ' + IntToStr(id));
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.DeleteWaypointDataByID(const id: integer): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    SQL.Clear;
+//    SQL.Add('DELETE FROM Waypoint_Data ');
+//    SQL.Add('WHERE Waypoint_Index = ' + IntToStr(id));
+//    ExecSQL;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -55975,23 +55964,23 @@ begin
   end;
 end;
 
-function TdmTTT.CekWaypointName(WaypointName: String): Boolean;
-begin
-  Result := False;
-  with ZQ do
-  begin
-
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT * ');
-    SQL.Add('FROM Waypoint');
-    SQL.Add('WHERE Waypoint_Name = '+ QuotedStr(WaypointName));
-
-    Open;
-
-    result := RecordCount > 0;
-  end;
-end;
+//function TdmTTT.CekWaypointName(WaypointName: String): Boolean;
+//begin
+//  Result := False;
+//  with ZQ do
+//  begin
+//
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('SELECT * ');
+//    SQL.Add('FROM Waypoint');
+//    SQL.Add('WHERE Waypoint_Name = '+ QuotedStr(WaypointName));
+//
+//    Open;
+//
+//    result := RecordCount > 0;
+//  end;
+//end;
 
 function TdmTTT.CekPlatformAlreadyExist(rec: TPlatform_Instance): Boolean;
 begin
@@ -63064,65 +63053,65 @@ begin
   end;
 end;
 
-function TdmTTT.GetWaypointByResourceAlloc(const id: Integer;
-  var pList: TList): boolean;
-var
-  ssql: string;
-  rec : TWaypoint_Def;
-begin
-  result := false;
-  if not ZConn.Connected then
-    exit;
-
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    ssql := 'SELECT * ';
-    ssql := ssql + 'FROM Waypoint a ';
-    ssql := ssql +
-      'join Resource_Waypoint_Mapping b on a.Waypoint_Index = b.Waypoint_Index ';
-
-//    if id <> 0 then
-      ssql := ssql + 'WHERE (b.Resource_Alloc_Index = ' + IntToStr(id) + ')';
-
-    SQL.Add(ssql);
-    // ShowMessage(SQL.Text);
-    Open;
-
-    result := RecordCount > 0;
-    if not Assigned(pList) then
-    begin
-      pList.Create;
-    end
-    else
-    begin
-      pList.Clear;
-    end;
-
-    if not IsEmpty then
-    begin
-      First;
-
-      while not ZQ.Eof do
-      begin
-        rec := TWaypoint_Def.Create;
-        with rec.FData do
-        begin
-          Waypoint_Index := FieldByName('Waypoint_Index')
-            .AsInteger;
-          Waypoint_Name := FieldByName('Waypoint_Name').AsString;
-          Termination := FieldByName('Termination').AsInteger;
-          Waypoint_Centre_Lat :=  FieldByName('Waypoint_Centre_Lat').AsFloat;
-          Waypoint_Centre_Long :=  FieldByName('Waypoint_Centre_Long').AsFloat;
-          Dimension := FieldByName('Dimension').AsSingle;
-        end;
-        pList.Add(rec);
-        ZQ.Next;
-      end;
-    end;
-  end;
-end;
+//function TdmTTT.GetWaypointByResourceAlloc(const id: Integer;
+//  var pList: TList): boolean;
+//var
+//  ssql: string;
+//  rec : TWaypoint_Def;
+//begin
+//  result := false;
+//  if not ZConn.Connected then
+//    exit;
+//
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    ssql := 'SELECT * ';
+//    ssql := ssql + 'FROM Waypoint a ';
+//    ssql := ssql +
+//      'join Resource_Waypoint_Mapping b on a.Waypoint_Index = b.Waypoint_Index ';
+//
+////    if id <> 0 then
+//      ssql := ssql + 'WHERE (b.Resource_Alloc_Index = ' + IntToStr(id) + ')';
+//
+//    SQL.Add(ssql);
+//    // ShowMessage(SQL.Text);
+//    Open;
+//
+//    result := RecordCount > 0;
+//    if not Assigned(pList) then
+//    begin
+//      pList.Create;
+//    end
+//    else
+//    begin
+//      pList.Clear;
+//    end;
+//
+//    if not IsEmpty then
+//    begin
+//      First;
+//
+//      while not ZQ.Eof do
+//      begin
+//        rec := TWaypoint_Def.Create;
+//        with rec.FData do
+//        begin
+//          Waypoint_Index := FieldByName('Waypoint_Index')
+//            .AsInteger;
+//          Waypoint_Name := FieldByName('Waypoint_Name').AsString;
+//          Termination := FieldByName('Termination').AsInteger;
+//          Waypoint_Centre_Lat :=  FieldByName('Waypoint_Centre_Lat').AsFloat;
+//          Waypoint_Centre_Long :=  FieldByName('Waypoint_Centre_Long').AsFloat;
+//          Dimension := FieldByName('Dimension').AsSingle;
+//        end;
+//        pList.Add(rec);
+//        ZQ.Next;
+//      end;
+//    end;
+//  end;
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -63192,61 +63181,61 @@ begin
   end;
 end;
 
-procedure TdmTTT.InsertWaypointDataPoint(WaypointIndex: Integer;
-  Waypoint: TRecWaypoint_Data);
-var
-  query : string;
-begin
-  with zq do begin
-
-    query := 'Insert into Waypoint_Data(Waypoint_Index, Scripted_Event_Index, Number_of_Event, '
-             + 'Platform_Event_Index, Speed, Altitude, Vert_Speed, Waypoint_Latitude, Waypoint_Longitude, '
-             + 'Cartesian_Waypoint_X, Cartesian_Waypoint_Y, Time_Waypoint, Time_2_Waypoint, HF_Datalink_Activate, '
-             + 'UHF_Datalink_Activate, Sonobuoy_Resource_Index, Sonobuoy_Instance_Index, Deploy_Sonobuoys, '
-             + 'Sonobuoy_Spacing, Num_Sonobuoys_2_Drop, Sonobuoy_Depth, Jammer_Control, Remove_from_Game, '
-             + 'StartMode, StartAt) values (:Waypoint_Index, :Scripted_Event_Index , :Number_of_Event, :Platform_Event_Index, :Speed, '
-             + ':Altitude, :Vert_Speed, :Waypoint_Latitude, :Waypoint_Longitude, :Cartesian_Waypoint_X, :Cartesian_Waypoint_Y, '
-             + ':Time_Waypoint, :Time_2_Waypoint, :HF_Datalink_Activate, :UHF_Datalink_Activate, '
-             + ':Sonobuoy_Resource_Index, :Sonobuoy_Instance_Index, :Deploy_Sonobuoys, :Sonobuoy_Spacing, '
-             + ':Num_Sonobuoys_2_Drop, :Sonobuoy_Depth, :Jammer_Control, :Remove_from_Game, '
-             + ':StartMode, :StartAt)';
-    ParamCheck := True;
-
-    SQL.Clear;
-    SQL.Add(query);
-    Params.ParamByName('Waypoint_Index').Value := WaypointIndex;
-    Params.ParamByName('Scripted_Event_Index').Value := Waypoint.Scripted_Event_Index;
-    Params.ParamByName('Number_of_Event').Value := Waypoint.Number_of_Event;
-    Params.ParamByName('Platform_Event_Index').Value := Waypoint.Platform_Event_Index;
-    Params.ParamByName('Speed').Value := Waypoint.Speed;
-    Params.ParamByName('Altitude').Value := Waypoint.Altitude;
-    Params.ParamByName('Vert_Speed').Value := Waypoint.Vert_Speed;
-    Params.ParamByName('Waypoint_Latitude').Value := Waypoint.Waypoint_Latitude;
-    Params.ParamByName('Waypoint_Longitude').Value := Waypoint.Waypoint_Longitude;
-    Params.ParamByName('Cartesian_Waypoint_X').Value := Waypoint.Cartesian_Waypoint_X;
-    Params.ParamByName('Cartesian_Waypoint_Y').Value := Waypoint.Cartesian_Waypoint_Y;
-    Params.ParamByName('Time_Waypoint').Value := Waypoint.Time_Waypoint;
-    Params.ParamByName('Time_2_Waypoint').Value := Waypoint.Time_2_Waypoint;
-    Params.ParamByName('HF_Datalink_Activate').Value := Waypoint.HF_Datalink_Activate;
-    Params.ParamByName('UHF_Datalink_Activate').Value := Waypoint.UHF_Datalink_Activate;
-    Params.ParamByName('Sonobuoy_Resource_Index').Value := Waypoint.Sonobuoy_Resource_Index;
-    Params.ParamByName('Sonobuoy_Instance_Index').Value := Waypoint.Sonobuoy_Instance_Index;
-    Params.ParamByName('Deploy_Sonobuoys').Value := Waypoint.Deploy_Sonobuoys;
-    Params.ParamByName('Sonobuoy_Spacing').Value := Waypoint.Sonobuoy_Spacing;
-    Params.ParamByName('Num_Sonobuoys_2_Drop').Value := Waypoint.Num_Sonobuoys_2_Drop;
-    Params.ParamByName('Sonobuoy_Depth').Value := Waypoint.Sonobuoy_Depth;
-    Params.ParamByName('Jammer_Control').Value := Waypoint.Jammer_Control;
-    Params.ParamByName('Remove_from_Game').Value := Waypoint.Remove_from_Game;
-    Params.ParamByName('StartMode').Value := Waypoint.StartMode;
-    Params.ParamByName('StartAt').Value := Waypoint.StartAt;
-
-    try
-      ExecSQL;
-    finally
-    end;
-  end;
-
-end;
+//procedure TdmTTT.InsertWaypointDataPoint(WaypointIndex: Integer;
+//  Waypoint: TRecWaypoint_Data);
+//var
+//  query : string;
+//begin
+//  with zq do begin
+//
+//    query := 'Insert into Waypoint_Data(Waypoint_Index, Scripted_Event_Index, Number_of_Event, '
+//             + 'Platform_Event_Index, Speed, Altitude, Vert_Speed, Waypoint_Latitude, Waypoint_Longitude, '
+//             + 'Cartesian_Waypoint_X, Cartesian_Waypoint_Y, Time_Waypoint, Time_2_Waypoint, HF_Datalink_Activate, '
+//             + 'UHF_Datalink_Activate, Sonobuoy_Resource_Index, Sonobuoy_Instance_Index, Deploy_Sonobuoys, '
+//             + 'Sonobuoy_Spacing, Num_Sonobuoys_2_Drop, Sonobuoy_Depth, Jammer_Control, Remove_from_Game, '
+//             + 'StartMode, StartAt) values (:Waypoint_Index, :Scripted_Event_Index , :Number_of_Event, :Platform_Event_Index, :Speed, '
+//             + ':Altitude, :Vert_Speed, :Waypoint_Latitude, :Waypoint_Longitude, :Cartesian_Waypoint_X, :Cartesian_Waypoint_Y, '
+//             + ':Time_Waypoint, :Time_2_Waypoint, :HF_Datalink_Activate, :UHF_Datalink_Activate, '
+//             + ':Sonobuoy_Resource_Index, :Sonobuoy_Instance_Index, :Deploy_Sonobuoys, :Sonobuoy_Spacing, '
+//             + ':Num_Sonobuoys_2_Drop, :Sonobuoy_Depth, :Jammer_Control, :Remove_from_Game, '
+//             + ':StartMode, :StartAt)';
+//    ParamCheck := True;
+//
+//    SQL.Clear;
+//    SQL.Add(query);
+//    Params.ParamByName('Waypoint_Index').Value := WaypointIndex;
+//    Params.ParamByName('Scripted_Event_Index').Value := Waypoint.Scripted_Event_Index;
+//    Params.ParamByName('Number_of_Event').Value := Waypoint.Number_of_Event;
+//    Params.ParamByName('Platform_Event_Index').Value := Waypoint.Platform_Event_Index;
+//    Params.ParamByName('Speed').Value := Waypoint.Speed;
+//    Params.ParamByName('Altitude').Value := Waypoint.Altitude;
+//    Params.ParamByName('Vert_Speed').Value := Waypoint.Vert_Speed;
+//    Params.ParamByName('Waypoint_Latitude').Value := Waypoint.Waypoint_Latitude;
+//    Params.ParamByName('Waypoint_Longitude').Value := Waypoint.Waypoint_Longitude;
+//    Params.ParamByName('Cartesian_Waypoint_X').Value := Waypoint.Cartesian_Waypoint_X;
+//    Params.ParamByName('Cartesian_Waypoint_Y').Value := Waypoint.Cartesian_Waypoint_Y;
+//    Params.ParamByName('Time_Waypoint').Value := Waypoint.Time_Waypoint;
+//    Params.ParamByName('Time_2_Waypoint').Value := Waypoint.Time_2_Waypoint;
+//    Params.ParamByName('HF_Datalink_Activate').Value := Waypoint.HF_Datalink_Activate;
+//    Params.ParamByName('UHF_Datalink_Activate').Value := Waypoint.UHF_Datalink_Activate;
+//    Params.ParamByName('Sonobuoy_Resource_Index').Value := Waypoint.Sonobuoy_Resource_Index;
+//    Params.ParamByName('Sonobuoy_Instance_Index').Value := Waypoint.Sonobuoy_Instance_Index;
+//    Params.ParamByName('Deploy_Sonobuoys').Value := Waypoint.Deploy_Sonobuoys;
+//    Params.ParamByName('Sonobuoy_Spacing').Value := Waypoint.Sonobuoy_Spacing;
+//    Params.ParamByName('Num_Sonobuoys_2_Drop').Value := Waypoint.Num_Sonobuoys_2_Drop;
+//    Params.ParamByName('Sonobuoy_Depth').Value := Waypoint.Sonobuoy_Depth;
+//    Params.ParamByName('Jammer_Control').Value := Waypoint.Jammer_Control;
+//    Params.ParamByName('Remove_from_Game').Value := Waypoint.Remove_from_Game;
+//    Params.ParamByName('StartMode').Value := Waypoint.StartMode;
+//    Params.ParamByName('StartAt').Value := Waypoint.StartAt;
+//
+//    try
+//      ExecSQL;
+//    finally
+//    end;
+//  end;
+//
+//end;
 
 // ------------------------------------------------------------------------------
 
@@ -63759,21 +63748,21 @@ end;
 
 /// /===================================================
 
-function TdmTTT.UpdatePlatform_Instance_ModelPathByInx(const ins_ident, vbsName, modelPath: string): Integer;
-begin
-  result := -1;
-  with ZQ do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('UPDATE Platform_Instance_Identifier  ');
-    SQL.Add('SET ');
-    SQL.Add('vbs_class_name = ' + QuotedStr(vbsName));
-    SQL.Add(', model_path = ' + QuotedStr(modelPath));
-    SQL.Add('WHERE Instance_Ident_Index = ' + ins_ident);
-    ExecSQL;
-  end;
-end;
+//function TdmTTT.UpdatePlatform_Instance_ModelPathByInx(const ins_ident, vbsName, modelPath: string): Integer;
+//begin
+//  result := -1;
+//  with ZQ do
+//  begin
+//    Close;
+//    SQL.Clear;
+//    SQL.Add('UPDATE Platform_Instance_Identifier  ');
+//    SQL.Add('SET ');
+//    SQL.Add('vbs_class_name = ' + QuotedStr(vbsName));
+//    SQL.Add(', model_path = ' + QuotedStr(modelPath));
+//    SQL.Add('WHERE Instance_Ident_Index = ' + ins_ident);
+//    ExecSQL;
+//  end;
+//end;
 
 function TdmTTT.UpdatePlatform_Library_Entry(const index,id,lib_id: Integer): Integer;
 var ssql : string;
