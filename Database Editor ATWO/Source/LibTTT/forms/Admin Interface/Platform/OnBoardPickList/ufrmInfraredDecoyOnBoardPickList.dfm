@@ -31203,6 +31203,19 @@ object frmInfraredDecoyOnBoardPickList: TfrmInfraredDecoyOnBoardPickList
     ExplicitWidth = 727
     ExplicitHeight = 652
   end
+  object lbl1: TLabel
+    Left = 77
+    Top = 564
+    Width = 62
+    Height = 21
+    Caption = 'Search :'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Deusex'
+    Font.Style = []
+    ParentFont = False
+  end
   object lbAllInfraredDecoyDef: TListBox
     Left = 85
     Top = 126
@@ -34171,5 +34184,15 @@ object frmInfraredDecoyOnBoardPickList: TfrmInfraredDecoyOnBoardPickList
       ParentFont = False
       Transparent = True
     end
+  end
+  object edtSearch: TEdit
+    Left = 145
+    Top = 563
+    Width = 206
+    Height = 23
+    TabOrder = 8
+    Text = 'edtSearch'
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
 end

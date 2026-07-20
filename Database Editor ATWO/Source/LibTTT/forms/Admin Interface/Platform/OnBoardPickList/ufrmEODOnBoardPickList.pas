@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -151,6 +155,19 @@ begin
   UpdateEODList;
 end;
 
+procedure TfrmEODOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateEODList;
+end;
+
+procedure TfrmEODOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateEODList;
+  end;
+end;
+
 procedure TfrmEODOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -180,7 +197,7 @@ begin
   lbAllEODef.Items.Clear;
   lbAllEODOnBoard.Items.Clear;
 
-  dmTTT.GetAllEODef(FAllEODDefList);
+  dmTTT.GetFilterEODDef(FAllEODDefList, edtSearch.Text);
   dmTTT.GetEOOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllEODOnBoardList);
 
   for i := 0 to FAllEODDefList.Count - 1 do

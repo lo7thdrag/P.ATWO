@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -145,6 +149,19 @@ begin
   UpdateBombList;
 end;
 
+procedure TfrmBombOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateBombList;
+end;
+
+procedure TfrmBombOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateBombList;
+  end;
+end;
+
 procedure TfrmBombOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -174,7 +191,7 @@ begin
   lbAllBombDef.Items.Clear;
   lbAllBombOnBoard.Items.Clear;
 
-  dmTTT.GetAllBombDef(FAllBombDefList);
+  dmTTT.GetFilterBombDef(FAllBombDefList, edtSearch.Text);
   dmTTT.GetBombOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllBombOnBoardList);
 
   for i := 0 to FAllBombDefList.Count - 1 do

@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -147,6 +151,19 @@ begin
   UpdateChaffList;
 end;
 
+procedure TfrmChaffOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateChaffList;
+end;
+
+procedure TfrmChaffOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateChaffList;
+  end;
+end;
+
 procedure TfrmChaffOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -170,14 +187,46 @@ end;
 
 procedure TfrmChaffOnBoardPickList.UpdateChaffList;
 var
-  i : Integer;
-  chaff : TChaff_On_Board;
+  i, j : Integer;
+  chaff, chaffonboard : TChaff_On_Board;
+  found : Boolean;
 begin
   lbAllChaffDef.Items.Clear;
   lbAllChaffOnBoard.Items.Clear;
 
-  dmTTT.GetAllChaffDef(FAllChaffDefList);
-  dmTTT.GetChaffOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllChaffOnBoardList);
+  dmTTT.GetFilterChaffDef(FAllChaffDefList, edtSearch.Text);
+  dmTTT.GetChaffOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllChaffOnBoardList);
+
+  {$REGION ' Print Available '}
+  for i := 0 to FAllChaffDefList.Count - 1 do
+  begin
+    chaff := FAllChaffDefList.Items[i];
+
+    found := False;
+    for j := 0 to FAllChaffOnBoardList.Count - 1 do
+    begin
+      chaffOnBoard := FAllChaffOnBoardList.Items[j];
+
+      if chaffOnBoard.FChaff_Def.Chaff_Index = chaff.FChaff_Def.Chaff_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if not found then
+      lbAllChaffDef.Items.AddObject(chaff.FChaff_Def.Chaff_Identifier, chaff);
+
+  end;
+  {$ENDREGION}
+
+  {$REGION ' Print Onboard '}
+  for j := 0 to FAllChaffOnBoardList.Count - 1 do
+  begin
+    chaffOnBoard := FAllChaffOnBoardList.Items[j];
+    lbAllChaffOnBoard.Items.AddObject(chaffOnBoard.FChaff_Def.Chaff_Identifier, chaffOnBoard)
+  end;
+  {$ENDREGION}
 
   for i := 0 to FAllChaffDefList.Count - 1 do
   begin

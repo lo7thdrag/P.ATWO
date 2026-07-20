@@ -31204,6 +31204,19 @@ object frmGunOnBoardPickList: TfrmGunOnBoardPickList
     ExplicitWidth = 733
     ExplicitHeight = 653
   end
+  object lbl1: TLabel
+    Left = 66
+    Top = 565
+    Width = 62
+    Height = 21
+    Caption = 'Search :'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Deusex'
+    Font.Style = []
+    ParentFont = False
+  end
   object lbAllGunDef: TListBox
     Left = 77
     Top = 128
@@ -34160,5 +34173,21 @@ object frmGunOnBoardPickList: TfrmGunOnBoardPickList
       ParentFont = False
       Transparent = True
     end
+  end
+  object edtSearch: TEdit
+    Left = 134
+    Top = 564
+    Width = 208
+    Height = 25
+    AutoSize = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 8
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
 end

@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -145,6 +149,19 @@ begin
   UpdateAirBubbleList;
 end;
 
+procedure TfrmAirBubbleOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateAirBubbleList;
+end;
+
+procedure TfrmAirBubbleOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateAirBubbleList;
+  end;
+end;
+
 procedure TfrmAirBubbleOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -175,9 +192,10 @@ begin
   lbAllAirBubbleDef.Items.Clear;
   lbAllAirBubbleOnBoard.Items.Clear;
 
-  dmTTT.GetAllAirBubbleDef(FAllAirBubbleDefList);
-  dmTTT.GetAirBubbleOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllAirBubbleOnBoardList);
+  dmTTT.GetFilterAirBubbleDef(FAllAirBubbleDefList, edtSearch.Text);
+  dmTTT.GetAirBubbleOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllAirBubbleOnBoardList);
 
+  {$REGION ' Print Available '}
   for i := 0 to FAllAirBubbleDefList.Count - 1 do
   begin
     airbubble := FAllAirBubbleDefList.Items[i];
@@ -194,11 +212,19 @@ begin
       end;
     end;
 
-    if found then
-      lbAllAirBubbleOnBoard.Items.AddObject(airbubbleonboard.FAirBubble_Def.Air_Bubble_Identifier, airbubbleonboard)
-    else
+    if not found then
       lbAllAirBubbleDef.Items.AddObject(airbubble.FAirBubble_Def.Air_Bubble_Identifier, airbubble);
   end;
+  {$ENDREGION}
+
+  {$REGION ' Print Onboard '}
+  for j := 0 to FAllAirBubbleOnBoardList.Count - 1 do
+  begin
+    airbubbleonboard := FAllAirBubbleOnBoardList.Items[j];
+    lbAllAirBubbleOnBoard.Items.AddObject(airbubbleonboard.FAirBubble_Def.Air_Bubble_Identifier, airbubbleonboard)
+  end;
+  {$ENDREGION}
+
 end;
 
 {$ENDREGION}

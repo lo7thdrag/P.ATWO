@@ -31203,6 +31203,19 @@ object frmVisualDetectorOnBoardPickList: TfrmVisualDetectorOnBoardPickList
     ExplicitWidth = 727
     ExplicitHeight = 652
   end
+  object lbl1: TLabel
+    Left = 77
+    Top = 561
+    Width = 62
+    Height = 21
+    Caption = 'Search :'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Deusex'
+    Font.Style = []
+    ParentFont = False
+  end
   object lbAllVisualDetectorDef: TListBox
     Left = 84
     Top = 126
@@ -34159,5 +34172,15 @@ object frmVisualDetectorOnBoardPickList: TfrmVisualDetectorOnBoardPickList
       ParentFont = False
       Transparent = True
     end
+  end
+  object edtSearch: TEdit
+    Left = 145
+    Top = 561
+    Width = 204
+    Height = 23
+    TabOrder = 8
+    Text = 'edtSearch'
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
 end

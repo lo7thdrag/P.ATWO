@@ -31204,6 +31204,19 @@ object frmEmbarkedOnBoardPickList: TfrmEmbarkedOnBoardPickList
     ExplicitWidth = 727
     ExplicitHeight = 652
   end
+  object lbl1: TLabel
+    Left = 66
+    Top = 562
+    Width = 62
+    Height = 21
+    Caption = 'Search :'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Deusex'
+    Font.Style = []
+    ParentFont = False
+  end
   object lbAllVehicleOnBoard: TListBox
     Left = 460
     Top = 126
@@ -34172,5 +34185,21 @@ object frmEmbarkedOnBoardPickList: TfrmEmbarkedOnBoardPickList
       ParentFont = False
       Transparent = True
     end
+  end
+  object edtSearch: TEdit
+    Left = 134
+    Top = 561
+    Width = 209
+    Height = 25
+    AutoSize = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 8
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
 end

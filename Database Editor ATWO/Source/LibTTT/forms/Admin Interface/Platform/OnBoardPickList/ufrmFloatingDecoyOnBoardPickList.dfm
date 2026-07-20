@@ -31201,6 +31201,19 @@ object frmFloatingDecoyOnBoardPickList: TfrmFloatingDecoyOnBoardPickList
     Transparent = True
     ExplicitWidth = 733
   end
+  object lbl1: TLabel
+    Left = 77
+    Top = 561
+    Width = 62
+    Height = 21
+    Caption = 'Search :'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Deusex'
+    Font.Style = []
+    ParentFont = False
+  end
   object lbAllFloatingDecoyDef: TListBox
     Left = 78
     Top = 123
@@ -34169,5 +34182,15 @@ object frmFloatingDecoyOnBoardPickList: TfrmFloatingDecoyOnBoardPickList
     Color = clBtnFace
     TabOrder = 7
     OnClick = btnCloseClick
+  end
+  object edtSearch: TEdit
+    Left = 145
+    Top = 561
+    Width = 196
+    Height = 23
+    TabOrder = 8
+    Text = 'edtSearch'
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
 end

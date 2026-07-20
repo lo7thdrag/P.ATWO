@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -147,6 +151,19 @@ begin
   UpdateTorpedoList;
 end;
 
+procedure TfrmTorpedoOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateTorpedoList;
+end;
+
+procedure TfrmTorpedoOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateTorpedoList;
+  end;
+end;
+
 procedure TfrmTorpedoOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -176,8 +193,8 @@ begin
   lbAllTorpedoDef.Items.Clear;
   lbTorpedoOnBoard.Items.Clear;
 
-  dmTTT.GetAllTorpedoDef(FAllTorpedoDefList);
-  dmTTT.GetTorpedoOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllTorpedoOnBoardList);
+  dmTTT.GetFilterTorpedoDef(FAllTorpedoDefList, edtSearch.Text);
+  dmTTT.GetTorpedoOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllTorpedoOnBoardList);
 
   for i := 0 to FAllTorpedoDefList.Count - 1 do
   begin

@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
   private
     FAllVisualDefList : TList;
@@ -150,6 +154,19 @@ begin
   end;
 
   UpdateVisualList;
+end;
+
+procedure TfrmVisualDetectorOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateVisualList;
+end;
+
+procedure TfrmVisualDetectorOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateVisualList;
+  end;
 end;
 
 procedure TfrmVisualDetectorOnBoardPickList.btnCloseClick(Sender: TObject);

@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -147,6 +151,19 @@ begin
   UpdateMissileList;
 end;
 
+procedure TfrmMissileOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateMissileList;
+end;
+
+procedure TfrmMissileOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateMissileList;
+  end;
+end;
+
 procedure TfrmMissileOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -176,7 +193,7 @@ begin
   lbAllMissileDef.Items.Clear;
   lbAllMissileOnBoard.Items.Clear;
 
-  dmTTT.GetAllMissileDef(FAllMissileDefList);
+  dmTTT.GetFilterMissileDef(FAllMissileDefList, edtSearch.Text);
   dmTTT.GetMissileOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllMissileOnBoardList);
 
   for i := 0 to FAllMissileDefList.Count - 1 do

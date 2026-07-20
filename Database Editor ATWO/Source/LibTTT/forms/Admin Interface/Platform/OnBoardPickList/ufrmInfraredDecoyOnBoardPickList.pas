@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
   private
     FAllInfraredDecoyDefList : TList;
@@ -145,6 +149,19 @@ begin
   UpdateInfraredDecoyList;
 end;
 
+procedure TfrmInfraredDecoyOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateInfraredDecoyList;
+end;
+
+procedure TfrmInfraredDecoyOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateInfraredDecoyList;
+  end;
+end;
+
 procedure TfrmInfraredDecoyOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -175,9 +192,10 @@ begin
   lbAllInfraredDecoyDef.Items.Clear;
   lbAllInfraredDecoyOnBoard.Items.Clear;
 
-  dmTTT.GetAllInfraredDecoyDef(FAllInfraredDecoyDefList);
+  dmTTT.GetFilterInfraredDecoyDef(FAllInfraredDecoyDefList, edtSearch.Text);
   dmTTT.GetInfraredDecoyOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllInfraredDecoyOnBoardList);
 
+  {$REGION ' Print Available '}
   for i := 0 to FAllInfraredDecoyDefList.Count - 1 do
   begin
     infrareddecoy := FAllInfraredDecoyDefList.Items[i];
@@ -194,11 +212,19 @@ begin
       end;
     end;
 
-    if found then
-      lbAllInfraredDecoyOnBoard.Items.AddObject(infrareddecoyOnBoard.FInfraRedDecoy_Def.Infrared_Decoy_Identifier, infrareddecoyOnBoard)
-    else
+    if not found then
       lbAllInfraredDecoyDef.Items.AddObject(infrareddecoy.FInfraRedDecoy_Def.Infrared_Decoy_Identifier, infrareddecoy);
   end;
+  {$ENDREGION}
+
+  {$REGION ' Print Onboard '}
+  for j := 0 to FAllInfraredDecoyOnBoardList.Count - 1 do
+  begin
+    infrareddecoyOnBoard := FAllInfraredDecoyOnBoardList.Items[j];
+    lbAllInfraredDecoyOnBoard.Items.AddObject(infrareddecoyOnBoard.FInfraRedDecoy_Def.Infrared_Decoy_Identifier, infrareddecoyOnBoard)
+  end;
+  {$ENDREGION}
+
 end;
 
 {$ENDREGION}

@@ -34186,9 +34186,9 @@ object frmTowedJammerDecoyOnBoardPickList: TfrmTowedJammerDecoyOnBoardPickList
     end
   end
   object edtSearch: TEdit
-    Left = 136
+    Left = 147
     Top = 561
-    Width = 206
+    Width = 192
     Height = 23
     TabOrder = 8
     Text = 'edtSearch'

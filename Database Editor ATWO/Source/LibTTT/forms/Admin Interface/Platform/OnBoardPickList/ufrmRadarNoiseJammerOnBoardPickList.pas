@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -146,6 +150,20 @@ begin
   UpdateRadarJammerList;
 end;
 
+procedure TfrmRadarNoiseJammerOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateRadarJammerList;
+end;
+
+procedure TfrmRadarNoiseJammerOnBoardPickList.edtSearchKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateRadarJammerList;
+  end;
+end;
+
 procedure TfrmRadarNoiseJammerOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -177,9 +195,10 @@ begin
   lbAllRadarJammerDef.Items.Clear;
   lbAllRadarJammerOnBoard.Items.Clear;
 
-  dmTTT.GetAllRadarNoiseJammerDef(FAllRadarJammerDefList);
+  dmTTT.GetFilterRadarNoiseJammerDef(FAllRadarJammerDefList, edtSearch.Text);
   dmTTT.GetRadarNoiseJammerOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllRadarJammerOnBoardList);
 
+  {$REGION ' Print Available '}
   for i := 0 to FAllRadarJammerDefList.Count - 1 do
   begin
     radarjammer := FAllRadarJammerDefList.Items[i];
@@ -187,7 +206,7 @@ begin
     found := False;
     for j := 0 to FAllRadarJammerOnBoardList.Count - 1 do
     begin
-      radarjammeronboard := FAllRadarJammerOnBoardList.Items[j];
+      radarjammer := FAllRadarJammerOnBoardList.Items[j];
 
       if radarjammeronboard.FDef.Jammer_Index = radarjammer.FDef.Jammer_Index then
       begin
@@ -196,11 +215,20 @@ begin
       end;
     end;
 
-    if found then
-      lbAllRadarJammerOnBoard.Items.AddObject(radarjammeronboard.FData.Instance_Identifier, radarjammeronboard)
-    else
-       lbAllRadarJammerDef.Items.AddObject(radarjammer.FDef.Jammer_Identifier, radarjammer);
+    if not found then
+      lbAllRadarJammerDef.Items.AddObject(radarjammer.FDef.Jammer_Identifier, radarjammer);
+
   end;
+  {$ENDREGION}
+
+  {$REGION ' Print Onboard '}
+  for j := 0 to FAllRadarJammerOnBoardList.Count - 1 do
+  begin
+    radarjammeronboard := FAllRadarJammerOnBoardList.Items[j];
+    lbAllRadarJammerOnBoard.Items.AddObject(radarjammeronboard.FData.Instance_Identifier, radarjammeronboard)
+  end;
+  {$ENDREGION}
+
 end;
 
 {$ENDREGION}

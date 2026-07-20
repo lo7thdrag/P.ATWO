@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -34,6 +36,8 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure ImgHeaderAvailableClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -152,6 +156,19 @@ begin
   UpdateMADList;
 end;
 
+procedure TfrmMADOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateMADList;
+end;
+
+procedure TfrmMADOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateMADList;
+  end;
+end;
+
 procedure TfrmMADOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -181,8 +198,8 @@ begin
   lbAllMADDef.Items.Clear;
   lbAllMADOnBoard.Items.Clear;
 
-  dmTTT.GetAllMADDef(FAllMADDefList);
-  dmTTT.GetMADOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllMADOnBoardList);
+  dmTTT.GetFilterMADDef(FAllMADDefList, edtSearch.Text);
+  dmTTT.GetMADOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllMADOnBoardList);
 
   for i := 0 to FAllMADDefList.Count - 1 do
   begin

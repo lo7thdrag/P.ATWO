@@ -20,6 +20,8 @@ type
     lbl1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    Label1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -146,6 +150,19 @@ begin
   UpdateRadarList;
 end;
 
+procedure TfrmSonobuoyOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateRadarList;
+end;
+
+procedure TfrmSonobuoyOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateRadarList;
+  end;
+end;
+
 procedure TfrmSonobuoyOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -169,26 +186,46 @@ end;
 
 procedure TfrmSonobuoyOnBoardPickList.UpdateRadarList;
 var
-  i : Integer;
-  sonobuoy : TSonobuoy_On_Board;
+  i, j : Integer;
+  sonobuoy, sonobuoyonboard : TSonobuoy_On_Board;
+  found : Boolean;
 begin
   lbAllSonobuoyDef.Items.Clear;
   lbAllSonobuoyOnBoard.Items.Clear;
 
-  dmTTT.GetAllSonobuoyDef(FAllSonobuoyDefList);
-  dmTTT.GetSonobuoyOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllSonobuoyOnBoardList);
+  dmTTT.GetFilterSonobuoyDef(FAllSonobuoyDefList, edtSearch.Text);
+  dmTTT.GetSonobuoyOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllSonobuoyOnBoardList);
 
+  {$REGION ' Print Available '}
   for i := 0 to FAllSonobuoyDefList.Count - 1 do
   begin
     sonobuoy := FAllSonobuoyDefList.Items[i];
-    lbAllSonobuoyDef.Items.AddObject(sonobuoy.FDef.Class_Identifier, sonobuoy);
-  end;
 
-  for i := 0 to FAllSonobuoyOnBoardList.Count - 1 do
-  begin
-    sonobuoy := FAllSonobuoyOnBoardList.Items[i];
-    lbAllSonobuoyOnBoard.Items.AddObject(sonobuoy.FData.Instance_Identifier, sonobuoy);
+    found := False;
+    for j := 0 to FAllSonobuoyOnBoardList.Count - 1 do
+    begin
+      sonobuoyonboard := FAllSonobuoyOnBoardList.Items[j];
+
+      if sonobuoy.FDef.Sonobuoy_Index = sonobuoyonboard.FDef.Sonobuoy_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if not found then
+      lbAllSonobuoyDef.Items.AddObject(sonobuoy.FDef.Class_Identifier, sonobuoy);
   end;
+  {$ENDREGION}
+
+  {$REGION ' Print Onboard '}
+  for j := 0 to FAllSonobuoyOnBoardList.Count - 1 do
+  begin
+    sonobuoyonboard := FAllSonobuoyOnBoardList.Items[j];
+    lbAllSonobuoyOnBoard.Items.AddObject(sonobuoyonboard.FData.Instance_Identifier, sonobuoyonboard);
+  end;
+  {$ENDREGION}
+
 end;
 
 {$ENDREGION}
