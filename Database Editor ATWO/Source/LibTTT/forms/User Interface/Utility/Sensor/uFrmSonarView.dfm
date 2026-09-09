@@ -66354,6 +66354,7 @@ object frmSonarView: TfrmSonarView
     Font.Style = []
     ParentFont = False
     TabOrder = 5
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object pnlTabNotes: TPanel

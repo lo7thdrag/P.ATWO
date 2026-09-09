@@ -405,6 +405,7 @@ type
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -436,22 +437,16 @@ uDataModuleTTT, ufrmAssetDetail;
 
 {$REGION ' Form Handle '}
 
+procedure TfrmPersonelView.edtCheatChange(Sender: TObject);
+begin
+  UpdatePersonelVehicleList;
+end;
+
 procedure TfrmPersonelView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  personelvehicle : TVehicle_Definition;
 begin
   if Key = #13 then
   begin
-    lstPersonel.Items.Clear;
-
-    dmTTT.GetFilterVehicleDef(FPersonelVehicleList, edtCheat.text);
-
-    for i := 0 to FPersonelVehicleList.Count - 1 do
-    begin
-      personelvehicle := FPersonelVehicleList.Items[i];
-      lstPersonel.Items.AddObject(personelvehicle.FData.Vehicle_Identifier, personelvehicle);
-    end;
+    UpdatePersonelVehicleList
   end;
 end;
 

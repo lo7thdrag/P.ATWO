@@ -55,6 +55,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -80,22 +81,16 @@ implementation
 
 {$REGION ' Form Handle '}
 
+procedure TfrmEODView.edtCheatChange(Sender: TObject);
+begin
+  UpdateEODList;
+end;
+
 procedure TfrmEODView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  eod : TEOD_On_Board;
 begin
   if Key = #13 then
   begin
-    lstEOD.Items.Clear;
-
-    dmTTT.GetFilterEODef(FEODList, edtCheat.text);
-
-    for i := 0 to FEODList.Count - 1 do
-    begin
-      eod := FEODList.Items[i];
-      lstEOD.Items.AddObject(eod.FEO_Def.Class_Identifier, eod);
-    end;
+    UpdateEODList
   end;
 end;
 

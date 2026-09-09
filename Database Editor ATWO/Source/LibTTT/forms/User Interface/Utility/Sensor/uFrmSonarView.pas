@@ -189,6 +189,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -215,22 +216,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmSonarView.edtCheatChange(Sender: TObject);
+begin
+  UpdateSonarList;
+end;
+
 procedure TfrmSonarView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  sonar : TSonar_On_Board;
 begin
   if Key = #13 then
   begin
-    lstSonar.Items.Clear;
-
-    dmTTT.GetFilterSonarDef(FSonarList, edtCheat.text);
-
-    for i := 0 to FSonarList.Count - 1 do
-    begin
-      sonar := FSonarList.Items[i];
-      lstSonar.Items.AddObject(sonar.FDef.Sonar_Identifier, sonar);
-    end;
+    UpdateSonarList
   end;
 end;
 

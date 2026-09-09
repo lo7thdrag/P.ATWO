@@ -66364,7 +66364,7 @@ object frmAvailableChaffView: TfrmAvailableChaffView
   end
   object edtSearch: TEdit
     Left = 140
-    Top = 120
+    Top = 121
     Width = 266
     Height = 26
     AutoSize = False

@@ -404,6 +404,7 @@ type
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -434,6 +435,11 @@ uDataModuleTTT, ufrmAssetDetail;
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
+
+procedure TfrmSubSurfaceView.edtCheatChange(Sender: TObject);
+begin
+  UpdateSubSurfaceVehicleList;
+end;
 
 procedure TfrmSubSurfaceView.edtCheatKeyPress(Sender: TObject; var Key: Char);
 var

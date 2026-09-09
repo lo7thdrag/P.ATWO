@@ -66355,6 +66355,7 @@ object frmSonobuoyView: TfrmSonobuoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 4
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object pnlTabNotes: TPanel

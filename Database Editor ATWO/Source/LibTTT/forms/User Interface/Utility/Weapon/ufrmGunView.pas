@@ -139,6 +139,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -166,22 +167,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmGunView.edtCheatChange(Sender: TObject);
+begin
+  UpdateGunList;
+end;
+
 procedure TfrmGunView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  gun : TGun_Definition;
 begin
   if Key = #13 then
   begin
-    lstGun.Items.Clear;
-
-    dmTTT.GetFilterGunDef(FGunList, edtCheat.text);
-
-    for i := 0 to FGunList.Count - 1 do
-    begin
-      gun := FGunList.Items[i];
-      lstGun.Items.AddObject(gun.FData.Gun_Identifier, gun);
-    end;
+    UpdateGunList
   end;
 end;
 

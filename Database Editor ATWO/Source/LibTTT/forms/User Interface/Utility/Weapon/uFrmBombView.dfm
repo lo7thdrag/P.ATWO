@@ -66356,6 +66356,7 @@ object frmBombView: TfrmBombView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object pnlTabNotes: TPanel

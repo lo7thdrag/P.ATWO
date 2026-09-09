@@ -22,6 +22,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
       FRuntimePlatformLibraryList : TList;
   public
@@ -42,22 +43,16 @@ implementation
 
 
 
+procedure TfrmRPLView.edtCheatChange(Sender: TObject);
+begin
+  UpdateRPLList;
+end;
+
 procedure TfrmRPLView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  runtimeplatformlibrary : TRuntime_Platform_Library;
 begin
   if Key = #13 then
   begin
-    lstRPL.Items.Clear;
-
-    dmTTT.GetFilterRuntimePlatformLibraryDef(FRuntimePlatformLibraryList, edtCheat.text);
-
-    for i := 0 to FRuntimePlatformLibraryList.Count - 1 do
-    begin
-      runtimeplatformlibrary := FRuntimePlatformLibraryList.Items[i];
-      lstRPL.Items.AddObject(runtimeplatformlibrary.FData.Library_Name, runtimeplatformlibrary);
-    end;
+    UpdateRPLList
   end;
 end;
 
