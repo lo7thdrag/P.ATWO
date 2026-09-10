@@ -17842,7 +17842,7 @@ object frmAvailableRuntimePlatformLibrary: TfrmAvailableRuntimePlatformLibrary
     OnClick = lbSingleClick
     OnDblClick = btnEditClick
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 85
     Top = 103
     Width = 155
@@ -17855,7 +17855,8 @@ object frmAvailableRuntimePlatformLibrary: TfrmAvailableRuntimePlatformLibrary
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object btnNew: TRzBmpButton
     Left = 253

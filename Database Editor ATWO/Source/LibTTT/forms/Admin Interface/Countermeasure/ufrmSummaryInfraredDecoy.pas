@@ -39,8 +39,6 @@ type
     ImgHeader: TImage;
     edtClass: TEdit;
     txtClass: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     //Global
@@ -80,11 +78,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryInfraredDecoy.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryInfraredDecoy.FormShow(Sender: TObject);
 begin

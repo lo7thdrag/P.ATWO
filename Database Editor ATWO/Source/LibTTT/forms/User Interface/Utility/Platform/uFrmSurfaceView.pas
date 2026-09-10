@@ -404,6 +404,7 @@ type
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -439,22 +440,16 @@ uDataModuleTTT, ufrmAssetDetail;
 
 {$REGION ' Form Handle '}
 
+procedure TfrmSurfaceView.edtCheatChange(Sender: TObject);
+begin
+  UpdateSurfaceVehicleList;
+end;
+
 procedure TfrmSurfaceView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  surfacevehicle : TVehicle_Definition;
 begin
   if Key = #13 then
   begin
-    lstSurface.Items.Clear;
-
-    dmTTT.GetFilterVehicleDef(FSurfaceVehicleList, edtCheat.text);
-
-    for i := 0 to FSurfaceVehicleList.Count - 1 do
-    begin
-      surfacevehicle := FSurfaceVehicleList.Items[i];
-      lstSurface.Items.AddObject(surfacevehicle.FData.Vehicle_Identifier, surfacevehicle);
-    end;
+    UpdateSurfaceVehicleList
   end;
 end;
 

@@ -11,7 +11,7 @@ type
   TfrmAvailableBomb = class(TForm)
     lstBomb: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -33,9 +33,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,12 +57,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableBomb.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FBombList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableBomb.FormCreate(Sender: TObject);
 begin
@@ -255,22 +249,16 @@ begin
   end;
 end;
 
-procedure TfrmAvailableBomb.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  bomb : TBomb_Definition;
+procedure TfrmAvailableBomb.edtSearchChange(Sender: TObject);
+begin
+  UpdateBombList;
+end;
+
+procedure TfrmAvailableBomb.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstBomb.Items.Clear;
-
-    dmTTT.GetFilterBombDef(FBombList, edtCheat.text);
-
-    for i := 0 to FBombList.Count - 1 do
-    begin
-      bomb := FBombList.Items[i];
-      lstBomb.Items.AddObject(bomb.FData.Bomb_Identifier, bomb);
-    end;
+    UpdateBombList
   end;
 end;
 
@@ -290,7 +278,7 @@ var
 begin
   lstBomb.Items.Clear;
 
-  dmTTT.GetAllBombDef(FBombList);
+  dmTTT.GetFilterBombDef(FBombList, edtSearch.Text);
 
   for i := 0 to FBombList.Count - 1 do
   begin

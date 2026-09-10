@@ -95,8 +95,6 @@ type
     ImgHeader: TImage;
     edtClass: TEdit;
     txtClass: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     //Global
@@ -148,11 +146,6 @@ uses
  {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryGun.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryGun.FormShow(Sender: TObject);
 begin

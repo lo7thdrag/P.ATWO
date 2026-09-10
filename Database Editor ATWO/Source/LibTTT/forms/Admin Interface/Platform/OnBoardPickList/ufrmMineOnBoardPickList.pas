@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -34,6 +36,8 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure ImgBackgroundAvailableClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -151,6 +155,19 @@ begin
   UpdateMineList;
 end;
 
+procedure TfrmMineOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateMineList;
+end;
+
+procedure TfrmMineOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateMineList;
+  end;
+end;
+
 procedure TfrmMineOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -180,8 +197,8 @@ begin
   lbAllMineDef.Items.Clear;
   lbMineOnBoard.Items.Clear;
 
-  dmTTT.GetAllMineDef(FAllMineDefList);
-  dmTTT.GetMineOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllMineOnBoardList);
+  dmTTT.GetFilterMineDef(FAllMineDefList, edtSearch.Text);
+  dmTTT.GetMineOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllMineOnBoardList);
 
   for i := 0 to FAllMineDefList.Count - 1 do
   begin

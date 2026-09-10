@@ -16,7 +16,6 @@ object frmSummaryMissile: TfrmSummaryMissile
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34173,6 +34172,10 @@ object frmSummaryMissile: TfrmSummaryMissile
         Caption = 'General'
         DoubleBuffered = True
         ParentDoubleBuffered = False
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblDetectabilityType: TLabel
           Left = 418
           Top = 92
@@ -34575,6 +34578,10 @@ object frmSummaryMissile: TfrmSummaryMissile
       object tsPhysical: TTabSheet
         Caption = 'Physical'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblMotionCharacteristic: TLabel
           Left = 18
           Top = 20
@@ -34986,6 +34993,10 @@ object frmSummaryMissile: TfrmSummaryMissile
       object tsPOHModifier: TTabSheet
         Caption = 'POH Modifier'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grbMissile: TGroupBox
           Left = 24
           Top = 20
@@ -35169,6 +35180,10 @@ object frmSummaryMissile: TfrmSummaryMissile
       object tsGuidance: TTabSheet
         Caption = 'Guidance'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label76: TLabel
           Left = 8
           Top = 10
@@ -36095,6 +36110,10 @@ object frmSummaryMissile: TfrmSummaryMissile
         BorderWidth = 10
         Caption = 'Notes'
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object mmoNotes: TMemo
           Left = 0
           Top = 0

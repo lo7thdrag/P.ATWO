@@ -153,6 +153,7 @@ type
     procedure trckbrJammerStrengthChange(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
    tabIndex, tabMax : Integer;
@@ -178,22 +179,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmRadarView.edtCheatChange(Sender: TObject);
+begin
+  UpdateRadarList;
+end;
+
 procedure TfrmRadarView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  radar : TRadar_On_Board;
 begin
   if Key = #13 then
   begin
-    lstRadar.Items.Clear;
-
-    dmTTT.GetFilterRadarDef(FRadarList, edtCheat.text);
-
-    for i := 0 to FRadarList.Count - 1 do
-    begin
-      radar := FRadarList.Items[i];
-      lstRadar.Items.AddObject(radar.FDef.Radar_Identifier, radar);
-    end;
+    UpdateRadarList
   end;
 end;
 

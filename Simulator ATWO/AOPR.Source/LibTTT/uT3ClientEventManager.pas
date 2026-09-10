@@ -440,12 +440,12 @@ begin
   else if index = 3 then
   begin
      frmToteDisplay.edtdaytimevis.Text := FloatToStr(Value);
-     frmToteDisplay.trbDayVisual.Position := Round(Value);
+     frmToteDisplay.VrDaytimeVisual.Position := Round(Value);
   end
   else if index = 4 then
   begin
      frmToteDisplay.edtNighVisual.Text := FloatToStr(Value);
-     frmToteDisplay.trbNightVisual.Position := Round(Value);
+     frmToteDisplay.vrNighttimeInfra.Position := Round(Value);
   end
   else if index = 14 then
   begin
@@ -493,7 +493,7 @@ begin
     E_Daytime_Visual_Modifier         :
                                       begin
                                          frmToteDisplay.edtdaytimevis.Text := FormatFloat('0.00', Value);
-                                         frmToteDisplay.trbDayVisual.Position := Round(Value);
+                                         frmToteDisplay.VrDaytimeVisual.Position := Round(Value);
 
                                         StrTime := FormatDateTime('HH:NN:SS', simMgrClient.GameTIME);
                                         SecondTime := TimeStringToSecond(StrTime);
@@ -512,7 +512,7 @@ begin
     E_Nighttime_Visual_Modifier       :
                                       begin
                                          frmToteDisplay.edtNighVisual.Text := FormatFloat('0.00', Value);
-                                         frmToteDisplay.trbNightVisual.Position := Round(Value);
+                                         frmToteDisplay.VrNighttimeVisual.Position := Round(Value);
 
                                         StrTime := FormatDateTime('HH:NN:SS', simMgrClient.GameTIME);
                                         SecondTime := TimeStringToSecond(StrTime);
@@ -535,7 +535,7 @@ begin
     E_Daytime_Infrared_Modifier       :
                                       begin
                                         frmToteDisplay.edtDaytimeInfra.Text := FormatFloat('0.00', Value);
-                                        frmToteDisplay.trbDayInfra.Position := Round(Value);
+                                        frmToteDisplay.vrDaytimeInfra.Position := Round(Value);
 
                                         StrTime := FormatDateTime('HH:NN:SS', simMgrClient.GameTIME);
                                         SecondTime := TimeStringToSecond(StrTime);
@@ -554,7 +554,7 @@ begin
     E_Nighttime_Infrared_Modifier     :
                                       begin
                                         frmToteDisplay.edtNighInfra.Text := FormatFloat('0.00', Value);
-                                        frmToteDisplay.trbNightInfra.Position := Round(Value);
+                                        frmToteDisplay.vrNighttimeInfra.Position := Round(Value);
 
                                         StrTime := FormatDateTime('HH:NN:SS', simMgrClient.GameTIME);
                                         SecondTime := TimeStringToSecond(StrTime);

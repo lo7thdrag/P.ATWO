@@ -405,6 +405,7 @@ type
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -435,22 +436,16 @@ uDataModuleTTT, ufrmAssetDetail;
 
 {$REGION ' Form Handle '}
 
+procedure TfrmAirView.edtCheatChange(Sender: TObject);
+begin
+  UpdateAirVehicleList;
+end;
+
 procedure TfrmAirView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  airvehicle : TVehicle_Definition;
 begin
   if Key = #13 then
   begin
-    lstAir.Items.Clear;
-
-    dmTTT.GetFilterVehicleDef(FAirVehicleList, edtCheat.text);
-
-    for i := 0 to FAirVehicleList.Count - 1 do
-    begin
-      airvehicle := FAirVehicleList.Items[i];
-      lstAir.Items.AddObject(airvehicle.FData.Vehicle_Identifier, airvehicle);
-    end;
+    UpdateAirVehicleList
   end;
 end;
 

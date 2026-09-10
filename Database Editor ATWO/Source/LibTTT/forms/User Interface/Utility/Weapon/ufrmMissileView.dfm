@@ -66342,8 +66342,8 @@ object frmMissileView: TfrmMissileView
     OnClick = lbSingleClick
   end
   object edtCheat: TEdit
-    Left = 134
-    Top = 123
+    Left = 136
+    Top = 125
     Width = 280
     Height = 26
     AutoSize = False
@@ -66354,6 +66354,7 @@ object frmMissileView: TfrmMissileView
     Font.Style = []
     ParentFont = False
     TabOrder = 7
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object ImgBtnBack: TRzBmpButton

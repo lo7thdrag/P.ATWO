@@ -31202,6 +31202,19 @@ object frmIFFOnBoardPickList: TfrmIFFOnBoardPickList
     ExplicitWidth = 727
     ExplicitHeight = 652
   end
+  object lbl1: TLabel
+    Left = 66
+    Top = 565
+    Width = 62
+    Height = 21
+    Caption = 'Search :'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Deusex'
+    Font.Style = []
+    ParentFont = False
+  end
   object lbAllIFFDef: TListBox
     Left = 79
     Top = 126
@@ -34170,5 +34183,21 @@ object frmIFFOnBoardPickList: TfrmIFFOnBoardPickList
       ParentFont = False
       Transparent = True
     end
+  end
+  object edtSearch: TEdit
+    Left = 134
+    Top = 564
+    Width = 210
+    Height = 25
+    AutoSize = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 8
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
 end

@@ -15,7 +15,6 @@ object frmAvailableInfraredDecoyView: TfrmAvailableInfraredDecoyView
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -75541,7 +75540,7 @@ object frmAvailableInfraredDecoyView: TfrmAvailableInfraredDecoyView
       Transparent = True
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 148
     Top = 123
     Width = 265
@@ -75554,7 +75553,8 @@ object frmAvailableInfraredDecoyView: TfrmAvailableInfraredDecoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnPreviousTab: TRzBmpButton
     Left = 740

@@ -11,7 +11,7 @@ type
   TfrmAvailableWaypoint = class(TForm)
     lstWaypoint: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,8 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,11 +56,6 @@ uses
   uDataModuleTTT, ufrmSummaryWaypoint, ufrmUsage, uSimContainers;
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableWaypoint.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableWaypoint.FormCreate(Sender: TObject);
 begin
@@ -261,23 +255,16 @@ begin
   
 end;
 
-procedure TfrmAvailableWaypoint.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  waypoint : TWaypoint_Def;
+procedure TfrmAvailableWaypoint.edtSearchChange(Sender: TObject);
+begin
+  UpdateWaypointList
+end;
+
+procedure TfrmAvailableWaypoint.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstWaypoint.Items.Clear;
-
-    dmTTT.GetFilterWaypointDef(FWaypointList, edtCheat.text);
-
-    for i := 0 to FWaypointList.Count - 1 do
-    begin
-      waypoint := FWaypointList.Items[i];
-      lstWaypoint.Items.AddObject(waypoint.FData.Waypoint_Name, waypoint);
-    end;
+    UpdateWaypointList
   end;
 end;
 
@@ -297,7 +284,7 @@ var
 begin
   lstWaypoint.Items.Clear;
 
-  dmTTT.GetAllWaypointDef(FWaypointList);
+  dmTTT.GetFilterWaypointDef(FWaypointList, edtSearch.text);
 
   for i := 0 to FWaypointList.Count - 1 do
   begin

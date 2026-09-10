@@ -15,7 +15,6 @@ object frmSummaryTorpedo: TfrmSummaryTorpedo
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34170,6 +34169,10 @@ object frmSummaryTorpedo: TfrmSummaryTorpedo
       TabWidth = 100
       object tsGeneral: TTabSheet
         Caption = 'General'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblDetectabilityType: TLabel
           Left = 14
           Top = 402
@@ -35020,6 +35023,10 @@ object frmSummaryTorpedo: TfrmSummaryTorpedo
       object tsPOHModifier: TTabSheet
         Caption = 'POH Modifier'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grpTorpedo: TGroupBox
           Left = 18
           Top = 20
@@ -35241,6 +35248,10 @@ object frmSummaryTorpedo: TfrmSummaryTorpedo
       object tsGuidance: TTabSheet
         Caption = 'Guidance'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblMinimumRunoutRange: TLabel
           Left = 395
           Top = 84
@@ -35782,6 +35793,10 @@ object frmSummaryTorpedo: TfrmSummaryTorpedo
         BorderWidth = 10
         Caption = 'Notes'
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object mmoNotes: TMemo
           Left = 0
           Top = 0

@@ -66,6 +66,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -92,22 +93,16 @@ implementation
 
 {$REGION ' Form Handle '}
 
+procedure TfrmSonobuoyView.edtCheatChange(Sender: TObject);
+begin
+  UpdateSonobuoyList;
+end;
+
 procedure TfrmSonobuoyView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  sonobuoy : TSonobuoy_On_Board;
 begin
   if Key = #13 then
   begin
-    lstSonobuoy.Items.Clear;
-
-    dmTTT.GetFilterSonobuoyDef(FSonobuoyList, edtCheat.text);
-
-    for i := 0 to FSonobuoyList.Count - 1 do
-    begin
-      sonobuoy := FSonobuoyList.Items[i];
-      lstSonobuoy.Items.AddObject(sonobuoy.FDef.Class_Identifier, sonobuoy);
-    end;
+    UpdateSonobuoyList
   end;
 end;
 

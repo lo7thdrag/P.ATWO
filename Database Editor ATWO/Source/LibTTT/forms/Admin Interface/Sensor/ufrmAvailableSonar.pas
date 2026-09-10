@@ -11,7 +11,7 @@ type
   TfrmAvailableSonar = class(TForm)
     lbSonar: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -35,7 +33,8 @@ type
     procedure btnUsageClick(Sender: TObject);
 
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -58,12 +57,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableSonar.FormClose(Sender: TObject;  var Action: TCloseAction);
-begin
-  FreeItemsAndFreeList(FSonarList);
-  Action := cafree;
-end;
 
 procedure TfrmAvailableSonar.FormCreate(Sender: TObject);
 begin
@@ -223,22 +216,16 @@ begin
   end;
 end;
 
-procedure TfrmAvailableSonar.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  sonar : TSonar_On_Board;
+procedure TfrmAvailableSonar.edtSearchChange(Sender: TObject);
+begin
+  UpdateSonarList;
+end;
+
+procedure TfrmAvailableSonar.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lbSonar.Items.Clear;
-
-    dmTTT.GetFilterSonarDef(FSonarList, edtCheat.text);
-
-    for i := 0 to FSonarList.Count - 1 do
-    begin
-      sonar := FSonarList.Items[i];
-      lbSonar.Items.AddObject(sonar.FDef.Sonar_Identifier, sonar);
-    end;
+    UpdateSonarList
   end;
 end;
 
@@ -262,7 +249,7 @@ var
 begin
   lbSonar.Items.Clear;
 
-  dmTTT.GetAllSonarDef(FSonarList);
+  dmTTT.GetFilterSonarDef(FSonarList, edtSearch.Text);
 
   for i := 0 to FSonarList.Count - 1 do
   begin

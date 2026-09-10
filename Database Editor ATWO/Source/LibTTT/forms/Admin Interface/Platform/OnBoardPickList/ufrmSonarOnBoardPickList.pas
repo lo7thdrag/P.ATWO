@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
   private
     FAllSonarDefList : TList;
@@ -147,6 +151,19 @@ begin
   UpdateSonarList;
 end;
 
+procedure TfrmSonarOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateSonarList;
+end;
+
+procedure TfrmSonarOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateSonarList;
+  end;
+end;
+
 procedure TfrmSonarOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -176,8 +193,8 @@ begin
   lbAllSonarDef.Items.Clear;
   lbAllSonarOnBoard.Items.Clear;
 
-  dmTTT.GetAllSonarDef(FAllSonarDefList);
-  dmTTT.GetSonarOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllSonarOnBoardList);
+  dmTTT.GetFilterSonarDef(FAllSonarDefList, edtSearch.Text);
+  dmTTT.GetSonarOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllSonarOnBoardList);
 
   for i := 0 to FAllSonarDefList.Count - 1 do
   begin

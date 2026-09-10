@@ -16,8 +16,6 @@ object frmAvailableSelfDefensiveJammer: TfrmAvailableSelfDefensiveJammer
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
-  OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
@@ -17843,7 +17841,7 @@ object frmAvailableSelfDefensiveJammer: TfrmAvailableSelfDefensiveJammer
     OnClick = lbSingleClick
     OnDblClick = btnEditClick
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 85
     Top = 103
     Width = 161
@@ -17856,7 +17854,8 @@ object frmAvailableSelfDefensiveJammer: TfrmAvailableSelfDefensiveJammer
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object btnNew: TRzBmpButton
     Left = 253

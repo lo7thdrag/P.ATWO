@@ -30,8 +30,6 @@ type
     ImgHeader: TImage;
     txtClass: TLabel;
     edtClass: TEdit;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
 
     //Global
@@ -73,11 +71,6 @@ uses
  {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryAcousticDecoy.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryAcousticDecoy.FormShow(Sender: TObject);
 begin

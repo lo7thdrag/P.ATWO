@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -150,6 +154,19 @@ begin
     dmTTT.DeleteHostedPlatform(2, Slave_Index);
 
   UpdateVehicleList;
+end;
+
+procedure TfrmEmbarkedOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateVehicleList;
+end;
+
+procedure TfrmEmbarkedOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateVehicleList;
+  end;
 end;
 
 procedure TfrmEmbarkedOnBoardPickList.btnCloseClick(Sender: TObject);

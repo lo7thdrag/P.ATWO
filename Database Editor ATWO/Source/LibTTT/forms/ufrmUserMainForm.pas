@@ -24,7 +24,6 @@ type
 
     procedure IconMenuMouseEnter(Sender: TObject);
     procedure IconMenuMouseLeave(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     isShutdown : Boolean;
@@ -49,11 +48,6 @@ uses
 {$R *.dfm}
 
 {$Region ' Form Handle '}
-
-procedure TfrmUserMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
-end;
 
 procedure TfrmUserMainForm.FormShow(Sender: TObject);
 begin

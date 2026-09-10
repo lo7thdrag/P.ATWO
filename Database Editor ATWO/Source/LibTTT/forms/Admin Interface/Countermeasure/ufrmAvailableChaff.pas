@@ -11,7 +11,7 @@ type
   TfrmAvailableChaff = class(TForm)
     Label2: TLabel;
     lstChaff: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,9 +32,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -59,12 +58,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableChaff.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FChaffList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableChaff.FormCreate(Sender: TObject);
 begin
@@ -227,22 +220,16 @@ begin
 
 end;
 
-procedure TfrmAvailableChaff.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  chaff : TChaff_On_Board;
+procedure TfrmAvailableChaff.edtSearchChange(Sender: TObject);
+begin
+  UpdateChaffList;
+end;
+
+procedure TfrmAvailableChaff.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstChaff.Items.Clear;
-
-    dmTTT.GetFilterChaffDef(FChaffList, edtCheat.text);
-
-    for i := 0 to FChaffList.Count - 1 do
-    begin
-      chaff := FChaffList.Items[i];
-      lstChaff.Items.AddObject(chaff.FChaff_Def.Chaff_Identifier, chaff);
-    end;
+    UpdateChaffList
   end;
 end;
 
@@ -261,7 +248,7 @@ var
 begin
   lstChaff.Items.Clear;
 
-  dmTTT.GetAllChaffDef(FChaffList);
+  dmTTT.GetFilterChaffDef(FChaffList, edtSearch.Text);
 
   for i := 0 to FChaffList.Count - 1 do
   begin

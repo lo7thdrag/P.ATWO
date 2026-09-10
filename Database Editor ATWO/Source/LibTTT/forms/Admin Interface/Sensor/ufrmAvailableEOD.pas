@@ -11,7 +11,7 @@ type
   TfrmAvailableEOD = class(TForm)
     lbEOD: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -35,8 +33,9 @@ type
     procedure btnUsageClick(Sender: TObject);
 
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,12 +56,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableEOD.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FEODList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableEOD.FormCreate(Sender: TObject);
 begin
@@ -213,22 +206,16 @@ begin
   end;
 end;
 
-procedure TfrmAvailableEOD.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  eod : TEOD_On_Board;
+procedure TfrmAvailableEOD.edtSearchChange(Sender: TObject);
+begin
+  UpdateEODList;
+end;
+
+procedure TfrmAvailableEOD.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lbEOD.Items.Clear;
-
-    dmTTT.GetFilterEODef(FEODList, edtCheat.text);
-
-    for i := 0 to FEODList.Count - 1 do
-    begin
-      eod := FEODList.Items[i];
-      lbEOD.Items.AddObject(eod.FEO_Def.Class_Identifier, eod);
-    end;
+    UpdateEODList
   end;
 end;
 
@@ -252,7 +239,7 @@ var
 begin
   lbEOD.Items.Clear;
 
-  dmTTT.GetAllEODef(FEODList);
+  dmTTT.GetFilterEODDef(FEODList, edtSearch.Text);
 
   for i := 0 to FEODList.Count - 1 do
   begin

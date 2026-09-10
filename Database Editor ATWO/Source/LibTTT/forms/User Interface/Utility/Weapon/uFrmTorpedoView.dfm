@@ -66380,6 +66380,7 @@ object frmTorpedoView: TfrmTorpedoView
     Font.Style = []
     ParentFont = False
     TabOrder = 6
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object ImgBtnBack: TRzBmpButton

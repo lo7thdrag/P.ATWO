@@ -11,7 +11,7 @@ type
   TfrmAvailableLogistic = class(TForm)
     Label2: TLabel;
     lbLogistic: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,8 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -56,11 +55,6 @@ uses
   uDataModuleTTT, ufrmSummaryLogistic, ufrmUsage, uSimContainers;
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableLogistic.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableLogistic.FormCreate(Sender: TObject);
 begin
@@ -221,23 +215,16 @@ begin
   
 end;
 
-procedure TfrmAvailableLogistic.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  logistic : TLogistics;
+procedure TfrmAvailableLogistic.edtSearchChange(Sender: TObject);
+begin
+  UpdateLogisticList;
+end;
+
+procedure TfrmAvailableLogistic.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lbLogistic.Items.Clear;
-
-    dmTTT.GetFilterLogisticDef(FLogisticList, edtCheat.text);
-
-    for i := 0 to FLogisticList.Count - 1 do
-    begin
-      logistic := TLogistics(FLogisticList.Items[i]);
-      lbLogistic.Items.AddObject(logistic.FData.Logistic_Identifier, logistic);
-    end;
+    UpdateLogisticList
   end;
 end;
 
@@ -256,7 +243,7 @@ var
 begin
   lbLogistic.Items.Clear;
 
-  dmTTT.GetAllLogisticDef(FLogisticList);
+  dmTTT.GetFilterLogisticDef(FLogisticList, edtSearch.Text);
 
   for i := 0 to FLogisticList.Count - 1 do
   begin

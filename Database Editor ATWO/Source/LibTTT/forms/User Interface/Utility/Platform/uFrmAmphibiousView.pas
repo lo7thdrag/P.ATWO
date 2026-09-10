@@ -405,6 +405,7 @@ type
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -436,22 +437,16 @@ uDataModuleTTT, ufrmAssetDetail;
 
 {$REGION ' Form Handle '}
 
+procedure TfrmAmphibiousView.edtCheatChange(Sender: TObject);
+begin
+  UpdateAmphibiousVehicleList;
+end;
+
 procedure TfrmAmphibiousView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  amphibiousvehicle : TVehicle_Definition;
 begin
   if Key = #13 then
   begin
-    lstAmphibious.Items.Clear;
-
-    dmTTT.GetFilterVehicleDef(FAmphibiousVehicleList, edtCheat.text);
-
-    for i := 0 to FAmphibiousVehicleList.Count - 1 do
-    begin
-      amphibiousvehicle := FAmphibiousVehicleList.Items[i];
-      lstAmphibious.Items.AddObject(amphibiousvehicle.FData.Vehicle_Identifier, amphibiousvehicle);
-    end;
+    UpdateAmphibiousVehicleList
   end;
 end;
 

@@ -18,7 +18,6 @@ object frmSummarySnrVsPod: TfrmSummarySnrVsPod
   OldCreateOrder = False
   ParentBiDiMode = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

@@ -59,20 +59,20 @@ type
     lblTab: TLabel;
     ImgBc: TImage;
     ImgHeader: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnPreviousTab: TRzBmpButton;
     ImgBtnNextTab: TRzBmpButton;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -99,32 +99,17 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableChaffView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  chaff : TChaff_On_Board;
+procedure TfrmAvailableChaffView.edtSearchChange(Sender: TObject);
+begin
+  UpdateChaffList;
+end;
+
+procedure TfrmAvailableChaffView.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstChaff.Items.Clear;
-
-    dmTTT.GetFilterChaffDef(FChaffList, edtCheat.text);
-
-    for i := 0 to FChaffList.Count - 1 do
-    begin
-      chaff := FChaffList.Items[i];
-      lstChaff.Items.AddObject(chaff.FChaff_Def.Chaff_Identifier, chaff);
-    end;
+    UpdateChaffList
   end;
-end;
-
-procedure TfrmAvailableChaffView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FChaffList);
-//
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableChaffView.FormCreate(Sender: TObject);
@@ -229,7 +214,7 @@ var
 begin
   lstChaff.Items.Clear;
 
-  dmTTT.GetAllChaffDef(FChaffList);
+  dmTTT.GetFilterChaffDef(FChaffList, edtSearch.Text);
 
   for i := 0 to FChaffList.Count - 1 do
   begin

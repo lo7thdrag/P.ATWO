@@ -357,6 +357,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
 
   private
@@ -395,22 +396,16 @@ uDataModuleTTT ;
 
 {$REGION ' Form Handle '}
 
+procedure TfrmMissileView.edtCheatChange(Sender: TObject);
+begin
+  UpdateMissileList;
+end;
+
 procedure TfrmMissileView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  missile : TMissile_On_Board;
 begin
   if Key = #13 then
   begin
-    lstMissile.Items.Clear;
-
-    dmTTT.GetFilterMissileDef(FMissileList, edtCheat.text);
-
-    for i := 0 to FMissileList.Count - 1 do
-    begin
-      missile := FMissileList.Items[i];
-      lstMissile.Items.AddObject(missile.FDef.Class_Identifier, missile);
-    end;
+    UpdateMissileList
   end;
 end;
 

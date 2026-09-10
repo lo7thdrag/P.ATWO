@@ -11,7 +11,7 @@ type
   TfrmAvailableAirBubble = class(TForm)
     Label2: TLabel;
     lstAirBubble: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,8 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -58,12 +57,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableAirBubble.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FAirBubbleList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableAirBubble.FormCreate(Sender: TObject);
 begin
@@ -223,23 +216,16 @@ begin
   
 end;
 
-procedure TfrmAvailableAirBubble.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  airbubble : TAir_Bubble_On_Board;
+procedure TfrmAvailableAirBubble.edtSearchChange(Sender: TObject);
+begin
+  UpdateAirBubbleList;
+end;
+
+procedure TfrmAvailableAirBubble.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstAirBubble.Items.Clear;
-
-    dmTTT.GetFilterAirBubbleDef(FAirBubbleList, edtCheat.text);
-
-    for i := 0 to FAirBubbleList.Count - 1 do
-    begin
-      airbubble := FAirBubbleList.Items[i];
-      lstAirBubble.Items.AddObject(airbubble.FAirBubble_Def.Air_Bubble_Identifier, airbubble);
-    end;
+    UpdateAirBubbleList
   end;
 end;
 
@@ -258,7 +244,7 @@ var
 begin
   lstAirBubble.Items.Clear;
 
-  dmTTT.GetAllAirBubbleDef(FAirBubbleList);
+  dmTTT.GetFilterAirBubbleDef(FAirBubbleList, edtSearch.Text);
 
   for i := 0 to FAirBubbleList.Count - 1 do
   begin

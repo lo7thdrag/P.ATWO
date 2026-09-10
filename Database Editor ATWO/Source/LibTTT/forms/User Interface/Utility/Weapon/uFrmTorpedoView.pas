@@ -288,6 +288,7 @@ type
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FtargetDomainList : TStringList;
@@ -320,22 +321,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmTorpedoView.edtCheatChange(Sender: TObject);
+begin
+  UpdateTorpedoList;
+end;
+
 procedure TfrmTorpedoView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  torpedo : TTorpedo_On_Board;
 begin
   if Key = #13 then
   begin
-    lstTorpedo.Items.Clear;
-
-    dmTTT.GetFilterTorpedoDef(FTorpedoList, edtCheat.text);
-
-    for i := 0 to FTorpedoList.Count - 1 do
-    begin
-      torpedo := FTorpedoList.Items[i];
-      lstTorpedo.Items.AddObject(Torpedo.FDef.Class_Identifier, torpedo);
-    end;
+    UpdateTorpedoList
   end;
 end;
 

@@ -16,7 +16,6 @@ object frmAvailableLogistic: TfrmAvailableLogistic
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -17843,7 +17842,7 @@ object frmAvailableLogistic: TfrmAvailableLogistic
     OnClick = lbSingleClick
     OnDblClick = btnEditClick
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 85
     Top = 103
     Width = 155
@@ -17856,7 +17855,8 @@ object frmAvailableLogistic: TfrmAvailableLogistic
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object btnNew: TRzBmpButton
     Left = 253

@@ -11,7 +11,7 @@ type
   TfrmAvailableAcousticDecoy = class(TForm)
     lstAcousticDecoy: TListBox;
     lblsearch: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     Label1: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnEdit: TRzBmpButton;
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,8 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,12 +56,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableAcousticDecoy.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FAcousticDecoyList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableAcousticDecoy.FormCreate(Sender: TObject);
 begin
@@ -248,22 +241,16 @@ begin
   end;
 end;
 
-procedure TfrmAvailableAcousticDecoy.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  acousticdecoy : TAcoustic_Decoy_On_Board;
+procedure TfrmAvailableAcousticDecoy.edtSearchChange(Sender: TObject);
+begin
+  UpdateAcousticDecoyList;
+end;
+
+procedure TfrmAvailableAcousticDecoy.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstAcousticDecoy.Items.Clear;
-
-    dmTTT.GetFilterAcousticDecoyDef(FAcousticDecoyList, edtCheat.text);
-
-    for i := 0 to FAcousticDecoyList.Count - 1 do
-    begin
-      acousticdecoy := FAcousticDecoyList.Items[i];
-      lstAcousticDecoy.Items.AddObject(acousticdecoy.FAccousticDecoy_Def.Decoy_Identifier, acousticdecoy);
-    end;
+    UpdateAcousticDecoyList
   end;
 end;
 
@@ -287,7 +274,7 @@ var
 begin
   lstAcousticDecoy.Items.Clear;
 
-  dmTTT.GetAllAcousticDecoyDef(FAcousticDecoyList);
+  dmTTT.GetFilterAcousticDecoyDef(FAcousticDecoyList, edtSearch.Text);
 
   for i := 0 to FAcousticDecoyList.Count - 1 do
   begin

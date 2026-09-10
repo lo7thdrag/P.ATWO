@@ -16,7 +16,6 @@ object frmSummaryMotion: TfrmSummaryMotion
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34183,6 +34182,10 @@ object frmSummaryMotion: TfrmSummaryMotion
       TabWidth = 100
       object tsHorizontal: TTabSheet
         Caption = 'Horizontal'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grpIRCM: TGroupBox
           Left = 19
           Top = 10
@@ -34467,6 +34470,10 @@ object frmSummaryMotion: TfrmSummaryMotion
       object tsVertical: TTabSheet
         Caption = 'Vertical'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblMaxAltitude: TLabel
           Left = 16
           Top = 24

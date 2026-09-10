@@ -11,7 +11,7 @@ type
   TfrmAvailableESM = class(TForm)
     lbESM: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,8 +32,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -56,12 +55,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableESM.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FESMList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableESM.FormCreate(Sender: TObject);
 begin
@@ -214,22 +207,16 @@ begin
  
 end;
 
-procedure TfrmAvailableESM.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  esm : TESM_On_Board;
+procedure TfrmAvailableESM.edtSearchChange(Sender: TObject);
+begin
+  UpdateESMList;
+end;
+
+procedure TfrmAvailableESM.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lbESM.Items.Clear;
-
-    dmTTT.GetFilterESMDef(FESMList, edtCheat.text);
-
-    for i := 0 to FESMList.Count - 1 do
-    begin
-      esm := FESMList.Items[i];
-      lbESM.Items.AddObject(esm.FESM_Def.Class_Identifier, esm);
-    end;
+    UpdateESMList
   end;
 end;
 
@@ -253,7 +240,7 @@ var
 begin
   lbESM.Items.Clear;
 
-  dmTTT.GetAllESMDef(FESMList);
+  dmTTT.GetFilterESMDef(FESMList, edtSearch.Text);
 
   for i := 0 to FESMList.Count - 1 do
   begin

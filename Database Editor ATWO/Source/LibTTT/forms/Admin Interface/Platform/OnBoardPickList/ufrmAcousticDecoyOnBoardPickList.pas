@@ -20,6 +20,8 @@ type
     btnRemove: TRzBmpButton;
     btnEdit: TRzBmpButton;
     btnClose: TRzBmpButton;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -146,6 +150,19 @@ begin
   UpdateAcousticDecoyList;
 end;
 
+procedure TfrmAcousticDecoyOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateAcousticDecoyList;
+end;
+
+procedure TfrmAcousticDecoyOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateAcousticDecoyList;
+  end;
+end;
+
 procedure TfrmAcousticDecoyOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -169,25 +186,67 @@ end;
 
 procedure TfrmAcousticDecoyOnBoardPickList.UpdateAcousticDecoyList;
 var
-  i : Integer;
-  acousticdecoy : TAcoustic_Decoy_On_Board;
+  i,  j : Integer;
+  acousticdecoy, acousticdecoyonboard : TAcoustic_Decoy_On_Board;
+  found : Boolean;
 begin
   lbAllAcousticDecoyDef.Items.Clear;
   lbAllAcousticDecoyOnBoard.Items.Clear;
 
-  dmTTT.GetAllAcousticDecoyDef(FAllAcousticDecoyDefList);
+  dmTTT.GetFilterAcousticDecoyDef(FAllAcousticDecoyDefList, edtSearch.Text);
   dmTTT.GetAcousticDecoyOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllAcousticDecoyOnBoardList);
+
+  {$REGION ' Print Available '}
+  for i := 0 to FAllAcousticDecoyDefList.Count - 1 do
+  begin
+    acousticdecoy := FAllAcousticDecoyDefList.Items[i];
+
+    found := False;
+    for j := 0 to FAllAcousticDecoyOnBoardList.Count - 1 do
+    begin
+      acousticdecoyonboard := FAllAcousticDecoyOnBoardList.Items[j];
+
+      if acousticdecoyonboard.FAccousticDecoy_Def.Decoy_Index = acousticdecoy.FAccousticDecoy_Def.Decoy_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if not found then
+      lbAllAcousticDecoyDef.Items.AddObject(acousticdecoy.FAccousticDecoy_Def.Decoy_Identifier, acousticdecoy);
+
+  end;
+  {$ENDREGION}
+
+  {$REGION ' Print Onboard '}
+  for j := 0 to FAllAcousticDecoyOnBoardList.Count - 1 do
+  begin
+    acousticdecoyonboard := FAllAcousticDecoyOnBoardList.Items[j];
+    lbAllAcousticDecoyOnBoard.Items.AddObject(acousticdecoyonboard.FAccousticDecoy_Def.Decoy_Identifier, acousticdecoyonboard)
+  end;
+  {$ENDREGION}
 
   for i := 0 to FAllAcousticDecoyDefList.Count - 1 do
   begin
     acousticdecoy := FAllAcousticDecoyDefList.Items[i];
-    lbAllAcousticDecoyDef.Items.AddObject(acousticdecoy.FAccousticDecoy_Def.Decoy_Identifier, acousticdecoy);
-  end;
 
-  for i := 0 to FAllAcousticDecoyOnBoardList.Count - 1 do
-  begin
-    acousticdecoy := FAllAcousticDecoyOnBoardList.Items[i];
-    lbAllAcousticDecoyOnBoard.Items.AddObject(acousticdecoy.FData.Instance_Identifier, acousticdecoy);
+    found := False;
+    for j := 0 to FAllAcousticDecoyOnBoardList.Count - 1 do
+    begin
+      acousticdecoyonboard := FAllAcousticDecoyOnBoardList.Items[j];
+
+      if acousticdecoyonboard.FAccousticDecoy_Def.Decoy_Index = acousticdecoy.FAccousticDecoy_Def.Decoy_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if found then
+      lbAllAcousticDecoyOnBoard.Items.AddObject(acousticdecoyonboard.FAccousticDecoy_Def.Decoy_Identifier, acousticdecoyonboard)
+    else
+      lbAllAcousticDecoyDef.Items.AddObject(acousticdecoy.FAccousticDecoy_Def.Decoy_Identifier, acousticdecoy);
   end;
 end;
 

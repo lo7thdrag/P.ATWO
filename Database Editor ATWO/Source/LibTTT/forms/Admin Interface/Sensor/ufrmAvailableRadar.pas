@@ -11,7 +11,7 @@ type
   TfrmAvailableRadar = class(TForm)
     lbRadars: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
 
@@ -35,8 +33,9 @@ type
     procedure btnUsageClick(Sender: TObject);
 
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -57,12 +56,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableRadar.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  FreeItemsAndFreeList(FRadarList);
-  Action := cafree;
-end;
 
 procedure TfrmAvailableRadar.FormCreate(Sender: TObject);
 begin
@@ -218,22 +211,16 @@ begin
   end;
 end;
 
-procedure TfrmAvailableRadar.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  radar : TRadar_On_Board;
+procedure TfrmAvailableRadar.edtSearchChange(Sender: TObject);
+begin
+  UpdateRadarList;
+end;
+
+procedure TfrmAvailableRadar.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lbRadars.Items.Clear;
-
-    dmTTT.GetFilterRadarDef(FRadarList, edtCheat.text);
-
-    for i := 0 to FRadarList.Count - 1 do
-    begin
-      radar := FRadarList.Items[i];
-      lbRadars.Items.AddObject(radar.FDef.Radar_Identifier, radar);
-    end;
+    UpdateRadarList
   end;
 end;
 
@@ -257,7 +244,7 @@ var
 begin
   lbRadars.Items.Clear;
 
-  dmTTT.GetAllRadarDef(FRadarList);
+  dmTTT.GetFilterRadarDef(FRadarList, edtSearch.Text);
 
   for i := 0 to FRadarList.Count - 1 do
   begin

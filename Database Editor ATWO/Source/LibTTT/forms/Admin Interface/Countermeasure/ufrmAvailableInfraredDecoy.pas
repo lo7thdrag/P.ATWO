@@ -11,7 +11,7 @@ type
   TfrmAvailableInfraredDecoy = class(TForm)
     Label2: TLabel;
     lstInfraredDecoy: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,9 +32,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -58,12 +57,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableInfraredDecoy.FormClose(Sender: TObject;var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FInfraredDecoyList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableInfraredDecoy.FormCreate(Sender: TObject);
 begin
@@ -225,23 +218,16 @@ begin
 
 end;
 
-procedure TfrmAvailableInfraredDecoy.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-   infrareddecoy : TInfrared_Decoy_On_Board;
+procedure TfrmAvailableInfraredDecoy.edtSearchChange(Sender: TObject);
+begin
+  UpdateInfraredDecoyList;
+end;
+
+procedure TfrmAvailableInfraredDecoy.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstInfraredDecoy.Items.Clear;
-
-    dmTTT.GetFilterInfraredDecoyDef(FInfraredDecoyList, edtCheat.text);
-
-    for i := 0 to FInfraredDecoyList.Count - 1 do
-    begin
-      infrareddecoy := FInfraredDecoyList.Items[i];
-      lstInfraredDecoy.Items.AddObject(infrareddecoy.FInfraredDecoy_Def.Infrared_Decoy_Identifier, infrareddecoy);
-    end;
+    UpdateInfraredDecoyList
   end;
 end;
 
@@ -260,7 +246,7 @@ var
 begin
   lstInfraredDecoy.Items.Clear;
 
-  dmTTT.GetAllInfraredDecoyDef(FInfraredDecoyList);
+  dmTTT.GetFilterInfraredDecoyDef(FInfraredDecoyList, edtSearch.Text);
 
   for i := 0 to FInfraredDecoyList.Count - 1 do
   begin

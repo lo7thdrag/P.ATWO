@@ -44,20 +44,20 @@ type
     lblTab: TLabel;
     ImgBc: TImage;
     ImgHeader: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnPreviousTab: TRzBmpButton;
     ImgBtnNextTab: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -84,32 +84,17 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableInfraredDecoyView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-   infrareddecoy : TInfrared_Decoy_On_Board;
+procedure TfrmAvailableInfraredDecoyView.edtSearchChange(Sender: TObject);
+begin
+  UpdateInfraredDecoyList;
+end;
+
+procedure TfrmAvailableInfraredDecoyView.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstInfraredDecoy.Items.Clear;
-
-    dmTTT.GetFilterInfraredDecoyDef(FInfraredDecoyList, edtCheat.text);
-
-    for i := 0 to FInfraredDecoyList.Count - 1 do
-    begin
-      infrareddecoy := FInfraredDecoyList.Items[i];
-      lstInfraredDecoy.Items.AddObject(infrareddecoy.FInfraredDecoy_Def.Infrared_Decoy_Identifier, infrareddecoy);
-    end;
+    UpdateInfraredDecoyList
   end;
-end;
-
-procedure TfrmAvailableInfraredDecoyView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FInfraredDecoyList);
-//
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableInfraredDecoyView.FormCreate(Sender: TObject);
@@ -210,7 +195,7 @@ var
 begin
   lstInfraredDecoy.Items.Clear;
 
-  dmTTT.GetAllInfraredDecoyDef(FInfraredDecoyList);
+  dmTTT.GetFilterInfraredDecoyDef(FInfraredDecoyList, edtSearch.Text);
 
   for i := 0 to FInfraredDecoyList.Count - 1 do
   begin

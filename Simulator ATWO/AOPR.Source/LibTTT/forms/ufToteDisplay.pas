@@ -13,7 +13,8 @@ uses
   ,uT3MissileDetail, uT3DetectedTrack, uEventSummary, uDBAsset_Embark_Library,
   uBrigadePersonel,
   uSlidingTrans, ufrmWeapon, uDataModuleTTT,uMainLogisticTemplate,ufmLogisticCalculation,
-  System.ImageList, RzBmpBtn, Vcl.Imaging.pngimage, Vcl.Imaging.jpeg{,
+  System.ImageList, RzBmpBtn, Vcl.Imaging.pngimage, Vcl.Imaging.jpeg,
+  VrControls, VrTrackBar, VrWheel{,
   frxClass};
 
 type
@@ -965,10 +966,7 @@ type
     edtDaytimeInfra: TEdit;
     edtdaytimevis: TEdit;
     edtNighInfra: TEdit;
-    trbDayInfra: TTrackBar;
-    trbDayVisual: TTrackBar;
-    trbNightInfra: TTrackBar;
-    pnlAthmosper: TPanel;
+    pnlAtmRefract: TPanel;
     lblAtmos: TLabel;
     Label232: TLabel;
     Label233: TLabel;
@@ -977,31 +975,14 @@ type
     Label237: TLabel;
     Label238: TLabel;
     edtAtmosphereRefac: TEdit;
-    trbAtmosphereRefract: TTrackBar;
     pnlWind: TPanel;
     lblWind: TLabel;
     GroupBox1: TGroupBox;
-    pnlindic: TPanel;
-    Label239: TLabel;
-    Label240: TLabel;
-    Label241: TLabel;
-    Label242: TLabel;
     pnlOceanCurr: TPanel;
     lblOcean: TLabel;
     GroupBox3: TGroupBox;
-    pnlindicocean: TPanel;
-    Label243: TLabel;
-    Label244: TLabel;
-    Label245: TLabel;
-    Label246: TLabel;
     Button2: TButton;
     Button3: TButton;
-    pnWheelAbove: TPanel;
-    edtWindDir: TEdit;
-    edtWindSpeed: TEdit;
-    pnlWheelSurface: TPanel;
-    edtOceanCurrentDirection: TEdit;
-    edtOceanCurrentSpeed: TEdit;
     pnlWindTrue: TPanel;
     Label83: TLabel;
     Label84: TLabel;
@@ -1075,7 +1056,6 @@ type
     Label251: TLabel;
     Label253: TLabel;
     edtNighvisual: TEdit;
-    trbNightVisual: TTrackBar;
     pnlEnviStatus: TPanel;
     pnlEnvironmentDisplay: TPanel;
     pnlStateDisplay: TPanel;
@@ -1252,6 +1232,27 @@ type
     Label231: TLabel;
     lblCrew: TLabel;
     lblRouteLogisticCalculation: TLabel;
+    VrDaytimeVisual: TVrTrackBar;
+    VrNighttimeVisual: TVrTrackBar;
+    vrDaytimeInfra: TVrTrackBar;
+    vrNighttimeInfra: TVrTrackBar;
+    VrAtmRefract: TVrTrackBar;
+    vrWind: TVrWheel;
+    Panel83: TPanel;
+    Label234: TLabel;
+    Label255: TLabel;
+    Label256: TLabel;
+    Label257: TLabel;
+    edtWindDir: TEdit;
+    edtWindSpeed: TEdit;
+    vrCurrent: TVrWheel;
+    Panel108: TPanel;
+    Label239: TLabel;
+    Label240: TLabel;
+    Label241: TLabel;
+    Label242: TLabel;
+    edtOceanCurrentDirection: TEdit;
+    edtOceanCurrentSpeed: TEdit;
     // pnlRightUp: TPanel;
     // pnlRightBottom: TPanel;
     procedure btnPlatformStatusClick(sender: TObject);
@@ -1552,6 +1553,21 @@ type
     procedure SidebarButtonClick(Sender: TObject);
     procedure btnDetailLogisticClick(Sender: TObject);
     procedure Panel85Click(Sender: TObject);
+
+    procedure vrWindMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure VrDaytimeVisualMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure VrNighttimeVisualMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure vrDaytimeInfraMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure vrNighttimeInfraMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure VrAtmRefractMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure vrCurrentMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
 
     {$ENDREGION}
 
@@ -2436,33 +2452,34 @@ end;
 
 procedure TfrmToteDisplay.btnEnviClick(Sender: TObject);
 var
-  button : TRzBmpButton;
-  tag :  Integer;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
 begin
-  button := Sender as TRzBmpButton;
-  tag := button.Tag;
+  with rec do
+  begin
+    rec.Envi_Chance := E_Cloud_Attenuation;
 
-  if not button.Down then button.Down := True;
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
 
-
-  case tag of
-    1: trbCloud.Position := 0;
-    2: trbCloud.Position := 1;
-    3: trbCloud.Position := 2;
-    4: trbCloud.Position := 3;
-    5: trbRainRate.Position := 0;
-    6: trbRainRate.Position := 1;
-    7: trbRainRate.Position := 2;
-    8: trbSea.Position := 0;
-    9: trbSea.Position := 1;
-    10: trbSea.Position := 2;
-    11: trbSea.Position := 3;
-    12: trbSea.Position := 4;
-    13: trbSea.Position := 5;
-    14: trbSea.Position := 6;
-    15: trbSea.Position := 7;
+    rec.Value := TRzBmpButton(Sender).Tag;
   end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec);
 end;
+
 function TfrmToteDisplay.RampAnimation(Ramp: Integer): Boolean;
 var
   HostShip      : TT3PlatformInstance;
@@ -4242,31 +4259,31 @@ var
   rec: TrecSinc_Envi;
   env : TEnvi;
 begin
-   TryStrToFloat(edtWindSpeed.Text, Wind_Speed);
-   edtWindSpeed.Text := ' ';
-   with rec do
-   begin
-     rec.Envi_Chance := 1;
-     if lvEnviroArea.ItemIndex <> -1 then
-       rec.Envi_Type := lvEnviroArea.ItemIndex
-     else
-       rec.Envi_Type := 0;
-
-     rec.Value       := Wind_Speed;
-
-   end;
-
-   if Assigned(lvEnviroArea.Selected) then
-   begin
-     env := lvEnviroArea.Selected.Data;
-
-     if env is TSubArea_Enviro_Definition then
-      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
-     else
-      rec.Sub_EnviID := 0;
-   end;
-
-   simMgrClient.netSend_CmdSyncEnvi(rec);
+//   TryStrToFloat(vrWind.Position, Wind_Speed);
+//   vrWind.Text := ' ';
+//   with rec do
+//   begin
+//     rec.Envi_Chance := 1;
+//     if lvEnviroArea.ItemIndex <> -1 then
+//       rec.Envi_Type := lvEnviroArea.ItemIndex
+//     else
+//       rec.Envi_Type := 0;
+//
+//     rec.Value       := Wind_Speed;
+//
+//   end;
+//
+//   if Assigned(lvEnviroArea.Selected) then
+//   begin
+//     env := lvEnviroArea.Selected.Data;
+//
+//     if env is TSubArea_Enviro_Definition then
+//      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+//     else
+//      rec.Sub_EnviID := 0;
+//   end;
+//
+//   simMgrClient.netSend_CmdSyncEnvi(rec);
 end;
 
 procedure TfrmToteDisplay.sendDayTimeVis;
@@ -4438,17 +4455,17 @@ begin
     simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
   //---------------set envi wind speed--------------------//
-  if TryStrToFloat(edtWindSpeed.Text, ValueData) and
-    (simMgrClient.GameEnvironment.FData.Wind_Speed <> ValueData) then
-  begin
-    with rec do
-    begin
-      Envi_Chance := E_Wind_Speed;
-      Value := ValueData;
-    end;
-
-    simMgrClient.netSend_CmdSyncEnvi(rec);
-  end;
+//  if TryStrToFloat(vrWind.Text, ValueData) and
+//    (simMgrClient.GameEnvironment.FData.Wind_Speed <> ValueData) then
+//  begin
+//    with rec do
+//    begin
+//      Envi_Chance := E_Wind_Speed;
+//      Value := ValueData;
+//    end;
+//
+//    simMgrClient.netSend_CmdSyncEnvi(rec);
+//  end;
   //---------------set envi day time visual--------------------//
   if TryStrToFloat(edtdaytimevis.Text, ValueData) and
     (simMgrClient.GameEnvironment.FData.Daytime_Visual_Modifier <> ValueData) then
@@ -6347,7 +6364,7 @@ end;
 
 procedure TfrmToteDisplay.trbAtmRefractChange(sender: TObject);
 begin
-  edtAtmosphereRefac.Text := IntToStr(trbAtmosphereRefract.Position);
+  edtAtmosphereRefac.Text := IntToStr(VrAtmRefract.Position);
 end;
 
 procedure TfrmToteDisplay.trbAttenCloudChange(sender: TObject);
@@ -6367,22 +6384,22 @@ end;
 
 procedure TfrmToteDisplay.trbDaytimeInfraChange(sender: TObject);
 begin
-  edtDaytimeInfra.Text := IntToStr(trbDayInfra.Position);
+  edtDaytimeInfra.Text := IntToStr(vrDaytimeInfra.Position);
 end;
 
 procedure TfrmToteDisplay.trbDaytimeVisualChange(sender: TObject);
 begin
-  edtdaytimevis.Text := IntToStr(trbDayVisual.Position);
+  edtdaytimevis.Text := IntToStr(VrDaytimeVisual.Position);
 end;
 
 procedure TfrmToteDisplay.trbNighttimeInfraChange(sender: TObject);
 begin
-  edtNighInfra.Text := IntToStr(trbNightInfra.Position);
+  edtNighInfra.Text := IntToStr(vrNighttimeInfra.Position);
 end;
 
 procedure TfrmToteDisplay.trbNighttimeVisualChange(sender: TObject);
 begin
-  edtNighVisual.Text := IntToStr(trbNightVisual.Position);
+  edtNighVisual.Text := IntToStr(VrNighttimeVisual.Position);
 end;
 
 procedure TfrmToteDisplay.trbSeaStateChange(Sender: TObject);
@@ -7418,31 +7435,59 @@ procedure TfrmToteDisplay.edtAtmRefractExit(Sender: TObject);
 var
   value : Integer;
 begin
-  if not TryStrToInt(edtAtmosphereRefac.Text, value) then
-    Exit;
-
-  if value > trbAtmosphereRefract.Max then
-    value := trbAtmosphereRefract.Max;
-
-  trbAtmosphereRefract.Position := value;
+//  if not TryStrToInt(edtAtmosphereRefac.Text, value) then
+//    Exit;
+//
+//  if value > VrAtmRefract.Max then
+//    value := VrAtmRefract.Max;
+//
+  VrAtmRefract.Position := value;
 end;
 
 procedure TfrmToteDisplay.edtAtmRefractKeyPress(Sender: TObject; var Key: Char);
 var
-  value : Integer;
+  ValKey : set of AnsiChar;
+  ValueData : Double;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
 begin
-  if not (Key in [#48 .. #57, #8, #13]) then
+  ValKey := [#48 .. #57, #8, #13, #46];
+  if not(CharInSet(Key, ValKey)) then
     Key := #0;
 
   if Key = #13 then
   begin
-    if not TryStrToInt(edtAtmosphereRefac.Text, value) then
-      Exit;
+    TryStrToFloat(edtAtmRefract.Text, ValueData);
 
-    if value > trbAtmosphereRefract.Max then
-      value := trbAtmosphereRefract.Max;
+    if edtAtmRefract.Text = '' then
+      ValueData := VrAtmRefract.Position;
 
-    trbAtmosphereRefract.Position := value;
+    if ValueData > 200 then
+      ValueData := 200;
+
+    with rec do
+    begin
+      rec.Envi_Chance := E_Atmospheric_Refract_Modifier;
+
+      if lvEnviroArea.ItemIndex <> -1 then
+        rec.Envi_Type := lvEnviroArea.ItemIndex
+      else
+        rec.Envi_Type := 0;
+
+      rec.Value := ValueData;
+    end;
+
+    if Assigned(lvEnviroArea.Selected) then
+    begin
+      env := lvEnviroArea.Selected.Data;
+
+      if env is TSubArea_Enviro_Definition then
+        rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+      else
+        rec.Sub_EnviID := 0;
+    end;
+
+    simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
 end;
 
@@ -7572,28 +7617,56 @@ begin
   if not TryStrToInt(edtDaytimeInfra.Text, value) then
     Exit;
 
-  if value > trbDayInfra.Max then
-    value := trbDayInfra.Max;
+//  if value > vrDaytimeInfra.Max then
+//    value := vrDaytimeInfra.Max;
 
-  trbDayInfra.Position := value;
+  vrDaytimeInfra.Position := value;
 end;
 
 procedure TfrmToteDisplay.edtDayInfraKeyPress(Sender: TObject; var Key: Char);
 var
-  value : Integer;
+  ValKey : set of AnsiChar;
+  ValueData : Double;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
 begin
-  if not (Key in [#48 .. #57, #8, #13]) then
+  ValKey := [#48 .. #57, #8, #13, #46];
+  if not(CharInSet(Key, ValKey)) then
     Key := #0;
 
   if Key = #13 then
   begin
-    if not TryStrToInt(edtDaytimeInfra.Text, value) then
-      Exit;
+    TryStrToFloat(edtDaytimeInfra.Text, ValueData);
 
-    if value > trbDayInfra.Max then
-      value := trbDayInfra.Max;
+    if edtDaytimeInfra.Text = '' then
+      ValueData := vrDaytimeInfra.Position;
 
-    trbDayInfra.Position := value;
+    if ValueData > 100 then
+      ValueData := 100;
+
+    with rec do
+    begin
+      rec.Envi_Chance := E_Daytime_Infrared_Modifier;
+
+      if lvEnviroArea.ItemIndex <> -1 then
+        rec.Envi_Type := lvEnviroArea.ItemIndex
+      else
+        rec.Envi_Type := 0;
+
+      rec.Value := ValueData;
+    end;
+
+    if Assigned(lvEnviroArea.Selected) then
+    begin
+      env := lvEnviroArea.Selected.Data;
+
+      if env is TSubArea_Enviro_Definition then
+        rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+      else
+        rec.Sub_EnviID := 0;
+    end;
+
+    simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
 end;
 
@@ -7604,28 +7677,56 @@ begin
   if not TryStrToInt(edtdaytimevis.Text, value) then
     Exit;
 
-  if value > trbDayVisual.Max then
-    value := trbDayVisual.Max;
+//  if value > VrDaytimeVisual.Max then
+//    value := VrDaytimeVisual.Max;
 
-  trbDayVisual.Position := value;
+  VrDaytimeVisual.Position := value;
 end;
 
 procedure TfrmToteDisplay.edtDayVisKeyPress(Sender: TObject; var Key: Char);
 var
-  value : Integer;
+  ValKey : set of AnsiChar;
+  ValueData : Double;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
 begin
-  if not (Key in [#48 .. #57, #8, #13]) then
+  ValKey := [#48 .. #57, #8, #13, #46];
+  if not(CharInSet(Key, ValKey)) then
     Key := #0;
 
   if Key = #13 then
   begin
-    if not TryStrToInt(edtdaytimevis.Text, value) then
-      Exit;
+    TryStrToFloat(edtdaytimevis.Text, ValueData);
 
-    if value > trbDayVisual.Max then
-      value := trbDayVisual.Max;
+    if edtdaytimevis.Text = '' then
+      ValueData := VrDaytimeVisual.Position;
 
-    trbDayVisual.Position := value;
+    if ValueData > 100 then
+      ValueData := 100;
+
+    with rec do
+    begin
+      rec.Envi_Chance := E_Daytime_Visual_Modifier;
+
+      if lvEnviroArea.ItemIndex <> -1 then
+        rec.Envi_Type := lvEnviroArea.ItemIndex
+      else
+        rec.Envi_Type := 0;
+
+      rec.Value := ValueData;
+    end;
+
+    if Assigned(lvEnviroArea.Selected) then
+    begin
+      env := lvEnviroArea.Selected.Data;
+
+      if env is TSubArea_Enviro_Definition then
+        rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+      else
+        rec.Sub_EnviID := 0;
+    end;
+
+    simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
 end;
 
@@ -7681,28 +7782,56 @@ begin
   if not TryStrToInt(edtNighInfra.Text, value) then
     Exit;
 
-  if value > trbNightInfra.Max then
-    value := trbNightInfra.Max;
+//  if value > vrNighttimeInfra.Max then
+//    value := vrNighttimeInfra.Max;
 
-  trbNightInfra.Position := value;
+  vrNighttimeInfra.Position := value;
 end;
 
 procedure TfrmToteDisplay.edtNightInfraKeyPress(Sender: TObject; var Key: Char);
 var
-  value : Integer;
+  ValKey : set of AnsiChar;
+  ValueData : Double;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
 begin
-  if not (Key in [#48 .. #57, #8, #13]) then
+  ValKey := [#48 .. #57, #8, #13, #46];
+  if not(CharInSet(Key, ValKey)) then
     Key := #0;
 
   if Key = #13 then
   begin
-    if not TryStrToInt(edtNighInfra.Text, value) then
-      Exit;
+    TryStrToFloat(edtNighInfra.Text, ValueData);
 
-    if value > trbNightInfra.Max then
-      value := trbNightInfra.Max;
+    if edtNighInfra.Text = '' then
+      ValueData := vrNighttimeInfra.Position;
 
-    trbNightInfra.Position := value;
+    if ValueData > 100 then
+      ValueData := 100;
+
+    with rec do
+    begin
+      rec.Envi_Chance := E_Nighttime_Infrared_Modifier;
+
+      if lvEnviroArea.ItemIndex <> -1 then
+        rec.Envi_Type := lvEnviroArea.ItemIndex
+      else
+        rec.Envi_Type := 0;
+
+      rec.Value := ValueData;
+    end;
+
+    if Assigned(lvEnviroArea.Selected) then
+    begin
+      env := lvEnviroArea.Selected.Data;
+
+      if env is TSubArea_Enviro_Definition then
+        rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+      else
+        rec.Sub_EnviID := 0;
+    end;
+
+    simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
 end;
 
@@ -7713,35 +7842,16 @@ begin
   if not TryStrToInt(edtNighVisual.Text, value) then
     Exit;
 
-  if value > trbNightVisual.Max then
-    value := trbNightVisual.Max;
+//  if value > VrNighttimeVisual.Max then
+//    value := VrNighttimeVisual.Max;
 
-  trbNightVisual.Position := value;
+  VrNighttimeVisual.Position := value;
 end;
 
 procedure TfrmToteDisplay.edtNightVisKeyPress(Sender: TObject; var Key: Char);
 var
-  value : Integer;
-begin
-  if not (Key in [#48 .. #57, #8, #13]) then
-    Key := #0;
-
-  if Key = #13 then
-  begin
-    if not TryStrToInt(edtNighVisual.Text, value) then
-      Exit;
-
-    if value > trbNightVisual.Max then
-      value := trbNightVisual.Max;
-
-    trbNightVisual.Position := value;
-  end;
-end;
-
-procedure TfrmToteDisplay.edtOceanCurrentDirectionKeyPress(Sender: TObject; var Key: Char);
-var
   ValKey : set of AnsiChar;
-  OceanCurrent_Direction : Double;
+  ValueData : Double;
   rec: TrecSinc_Envi;
   env : TEnvi;
 begin
@@ -7751,8 +7861,57 @@ begin
 
   if Key = #13 then
   begin
-    TryStrToFloat(edtOceanCurrentDirection.Text, OceanCurrent_Direction);
-    edtOceanCurrentDirection.Text := ' ';
+    TryStrToFloat(edtNighvisual.Text, ValueData);
+
+    if edtNighvisual.Text = '' then
+      ValueData := VrNighttimeVisual.Position;
+
+    if ValueData > 100 then
+      ValueData := 100;
+
+    with rec do
+    begin
+      rec.Envi_Chance := E_Nighttime_Visual_Modifier;
+
+      if lvEnviroArea.ItemIndex <> -1 then
+        rec.Envi_Type := lvEnviroArea.ItemIndex
+      else
+        rec.Envi_Type := 0;
+
+      rec.Value := ValueData;
+    end;
+
+    if Assigned(lvEnviroArea.Selected) then
+    begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+    end;
+
+    simMgrClient.netSend_CmdSyncEnvi(rec);
+  end;
+end;
+
+procedure TfrmToteDisplay.edtOceanCurrentDirectionKeyPress(Sender: TObject; var Key: Char);
+var
+  ValKey : set of AnsiChar;
+  ValueData : Double;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+begin
+  ValKey := [#48 .. #57, #8, #13, #46];
+  if not(CharInSet(Key, ValKey)) then
+    Key := #0;
+
+  if Key = #13 then
+  begin
+    TryStrToFloat(edtOceanCurrentDirection.Text, ValueData);
+
+    if edtOceanCurrentDirection.Text = '' then
+      ValueData := 0;
 
     with rec do
     begin
@@ -7763,7 +7922,7 @@ begin
       else
         rec.Envi_Type := 0;
 
-      rec.Value       := OceanCurrent_Direction;
+      rec.Value := ValidateDegree(ValueData);
     end;
 
     if Assigned(lvEnviroArea.Selected) then
@@ -7783,7 +7942,7 @@ end;
 procedure TfrmToteDisplay.edtOceanCurrentSpeedKeyPress(Sender: TObject; var Key: Char);
 var
   ValKey : set of AnsiChar;
-  OceanCurrent_Speed : Double;
+  ValueData : Double;
   rec: TrecSinc_Envi;
   env : TEnvi;
 begin
@@ -7793,32 +7952,40 @@ begin
 
   if Key = #13 then
   begin
-     TryStrToFloat(edtOceanCurrentSpeed.Text, OceanCurrent_Speed);
-     edtOceanCurrentSpeed.Text := ' ';
+    TryStrToFloat(edtOceanCurrentSpeed.Text, ValueData);
 
-     with rec do
-     begin
-       rec.Envi_Chance := 14;
+    if edtOceanCurrentSpeed.Text = '' then
+      ValueData := 0;
 
-       if lvEnviroArea.ItemIndex <> -1 then
-         rec.Envi_Type := lvEnviroArea.ItemIndex
-       else
-         rec.Envi_Type := 0;
+    if ValueData > 6 then
+    begin
+      ShowMessage('The value Input speed Is To High');
+      Exit;
+    end;
 
-       rec.Value       := OceanCurrent_Speed;
-     end;
+    with rec do
+    begin
+      rec.Envi_Chance := 14;
 
-     if Assigned(lvEnviroArea.Selected) then
-     begin
-       env := lvEnviroArea.Selected.Data;
+      if lvEnviroArea.ItemIndex <> -1 then
+        rec.Envi_Type := lvEnviroArea.ItemIndex
+      else
+        rec.Envi_Type := 0;
 
-       if env is TSubArea_Enviro_Definition then
-          rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
-       else
-          rec.Sub_EnviID := 0;
-     end;
+      rec.Value := ValueData;
+    end;
 
-     simMgrClient.netSend_CmdSyncEnvi(rec);
+    if Assigned(lvEnviroArea.Selected) then
+    begin
+      env := lvEnviroArea.Selected.Data;
+
+      if env is TSubArea_Enviro_Definition then
+        rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+      else
+        rec.Sub_EnviID := 0;
+    end;
+
+    simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
 end;
 
@@ -7998,20 +8165,45 @@ end;
 
 procedure TfrmToteDisplay.edtWindDirKeyPress(Sender: TObject; var Key: Char);
 var
-  value : Double;
+  ValKey : set of AnsiChar;
+  ValueData : Double;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
 begin
-  if not (Key in [#48 .. #57, #8, #13]) then
+   ValKey := [#48 .. #57, #8, #13, #46];
+  if not(CharInSet(Key, ValKey)) then
     Key := #0;
 
   if Key = #13 then
   begin
-    if not TryStrToFloat(edtWindDir.Text, value) then
-      Exit;
+     TryStrToFloat(edtWindDir.Text, ValueData);
 
-    if value >= 360 then
-      value := 0;
+     if edtWindDir.Text = '' then
+      ValueData := 0;
 
-    rw.Degree := value;
+     with rec do
+     begin
+       rec.Envi_Chance := E_Wind_Direction;
+
+       if lvEnviroArea.ItemIndex <> -1 then
+         rec.Envi_Type := lvEnviroArea.ItemIndex
+       else
+         rec.Envi_Type := 0;
+
+       rec.Value := ValidateDegree(ValueData);
+     end;
+
+     if Assigned(lvEnviroArea.Selected) then
+     begin
+       env := lvEnviroArea.Selected.Data;
+
+       if env is TSubArea_Enviro_Definition then
+        rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+       else
+        rec.Sub_EnviID := 0;
+     end;
+
+     simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
 end;
 
@@ -8019,25 +8211,59 @@ procedure TfrmToteDisplay.edtWindSpeedExit(Sender: TObject);
 var
   value : Double;
 begin
-  if not TryStrToFloat(edtWindSpeed.Text, value) then
-    Exit;
-
-  edtWindSpeed.Text := FormatFloat('0.0', value);
+//  if not TryStrToFloat(vrWind.Text, value) then
+//    Exit;
+//
+//  vrWind.Text := FormatFloat('0.0', value);
 end;
 
 procedure TfrmToteDisplay.edtWindSpeedKeyPress(Sender: TObject; var Key: Char);
 var
-  value : Double;
+  ValKey : set of AnsiChar;
+  ValueData : Double;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
 begin
-  if not (Key in [#48 .. #57, #8, #13, #46]) then
+  ValKey := [#48 .. #57, #8, #13, #46];
+  if not(CharInSet(Key, ValKey)) then
     Key := #0;
 
   if Key = #13 then
   begin
-    if not TryStrToFloat(edtWindSpeed.Text, value) then
-      Exit;
+    TryStrToFloat(edtWindSpeed.Text, ValueData);
 
-    edtWindSpeed.Text := FormatFloat('0.0', value);
+    if edtWindSpeed.Text = '' then
+      ValueData := 0;
+
+    if ValueData > 50 then
+    begin
+      ShowMessage('The value Input speed Is To High');
+      Exit;
+    end;
+
+    with rec do
+    begin
+      rec.Envi_Chance := E_Wind_Speed;
+
+      if lvEnviroArea.ItemIndex <> -1 then
+        rec.Envi_Type := lvEnviroArea.ItemIndex
+      else
+        rec.Envi_Type := 0;
+
+      rec.Value := ValueData;
+    end;
+
+    if Assigned(lvEnviroArea.Selected) then
+    begin
+      env := lvEnviroArea.Selected.Data;
+
+      if env is TSubArea_Enviro_Definition then
+        rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+      else
+        rec.Sub_EnviID := 0;
+    end;
+
+    simMgrClient.netSend_CmdSyncEnvi(rec);
   end;
 end;
 
@@ -8113,19 +8339,19 @@ end;
 procedure TfrmToteDisplay.setWheel;
 begin
   rw := TRotWheel.Create(self);
-  rw.Parent := pnWheelAbove;
+  rw.Parent := edtWindDir;
   rw.Left := 0;
   rw.Top := 0;
-  rw.Width := pnWheelAbove.Width;
-  rw.Height := pnWheelAbove.Height;
+  rw.Width := edtWindDir.Width;
+  rw.Height := edtWindDir.Height;
   rw.OnDegreeChange := RotWheelAboveDegreeChange;
 
   rw1 := TRotWheel.Create(self);
-  rw1.Parent := pnlWheelSurface;
+//  rw1.Parent := pnlWheelSurface;
   rw1.Left := 0;
   rw1.Top := 0;
-  rw1.Width := pnlWheelSurface.Width;
-  rw1.Height := pnlWheelSurface.Height;
+//  rw1.Width := pnlWheelSurface.Width;
+//  rw1.Height := pnlWheelSurface.Height;
   rw1.OnDegreeChange := RotWheelSurfaceChange;
 end;
 
@@ -10586,12 +10812,12 @@ begin
     with ge.FData do
     begin
       edtWindDir.Text := FormatCourse(Wind_Direction);
-      edtWindSpeed.Text := FormatSpeed(Wind_Speed);
+//      vrWind.Text := FormatSpeed(Wind_Speed);
 
-      trbDayVisual.Position := Round(Daytime_Visual_Modifier * (100.0/100.0));
-      trbDayInfra.Position := Round(Daytime_Infrared_Modifier * (100.0/100.0));
-      trbNightVisual.Position := Round(Nighttime_Visual_Modifier * (100.0/100.0));
-      trbNightInfra.Position := Round(Nighttime_Infrared_Modifier * (100.0/100.0));
+      VrDaytimeVisual.Position := Round(Daytime_Visual_Modifier * (100.0/100.0));
+      vrDaytimeInfra.Position := Round(Daytime_Infrared_Modifier * (100.0/100.0));
+      VrNighttimeVisual.Position := Round(Nighttime_Visual_Modifier * (100.0/100.0));
+      vrNighttimeInfra.Position := Round(Nighttime_Infrared_Modifier * (100.0/100.0));
 
       t := SecondToTime(Sunrise);
       lblEnviCtrlSunrise.Caption := FormatDateTime('hh : nn : ss', t);
@@ -10608,7 +10834,7 @@ begin
       edtAirTemp.Text := FormatFloat('00.0', Air_Temperature);
       edtCloudBaseHeight.Text := FormatFloat('0000.0', Cloud_Base_Height);
 
-      trbAtmosphereRefract.Position := Round(Atmospheric_Refract_Modifier);
+      VrAtmRefract.Position := Round(Atmospheric_Refract_Modifier);
 
       edtOceanCurrentDirection.Text := FormatFloat('00.0',
         ge.FData.Ocean_Current_Direction);
@@ -10658,12 +10884,12 @@ begin
     with se.FData do
     begin
       edtWindDir.Text := FormatCourse(Wind_Direction);
-      edtWindSpeed.Text := FormatSpeed(Wind_Speed);
+//      vrWind.Text := FormatSpeed(Wind_Speed);
 
-      trbDayVisual.Position := Round(Daytime_Visual_Modifier * 100.0);
-      trbDayInfra.Position := Round(Daytime_Infrared_Modifier * 100.0);
-      trbNightVisual.Position := Round(Nighttime_Visual_Modifier * 100.0);
-      trbNightInfra.Position := Round(Nighttime_Infrared_Modifier * 100.0);
+      VrDaytimeVisual.Position := Round(Daytime_Visual_Modifier * 100.0);
+      vrDaytimeInfra.Position := Round(Daytime_Infrared_Modifier * 100.0);
+      VrNighttimeVisual.Position := Round(Nighttime_Visual_Modifier * 100.0);
+      vrNighttimeInfra.Position := Round(Nighttime_Infrared_Modifier * 100.0);
       {
         t := SecondToTime(Sunrise);
         lblEnviCtrlSunrise.Caption := FormatDateTime('hh : nn : ss', t);
@@ -10680,7 +10906,7 @@ begin
       edtAirTemp.Text := FormatFloat('00.0', Air_Temperature);
       edtCloudBaseHeight.Text := FormatFloat('0000.0', Cloud_Base_Height);
 
-      trbAtmosphereRefract.Position := Round(Atmospheric_Refract_Modifier);
+      VrAtmRefract.Position := Round(Atmospheric_Refract_Modifier);
 
       edtOceanCurrentDirection.Text := FormatFloat('00.0',
         Ocean_Current_Direction);
@@ -13160,6 +13386,237 @@ begin
   tvWeapons.FullExpand;
   if tvWeapons.Items.Count > 0 then
     tvWeapons.Select(tvWeapons.Items[0]);
+end;
+
+procedure TfrmToteDisplay.VrAtmRefractMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+begin
+  with rec do
+  begin
+    rec.Envi_Chance := E_Atmospheric_Refract_Modifier;
+
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
+
+    rec.Value := trbAtmRefract.Position;
+  end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec);
+end;
+
+procedure TfrmToteDisplay.vrCurrentMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  newheading : integer;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+
+begin
+  if vrCurrent.Position < 180 then
+    newheading := (180 + vrCurrent.Position)
+  else
+    newheading := (vrCurrent.Position - 180);
+
+  with rec do
+  begin
+    rec.Envi_Chance := E_Ocean_Current_Direction;
+
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
+
+    rec.Value := ValidateDegree(newheading);
+  end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec)
+end;
+
+procedure TfrmToteDisplay.vrDaytimeInfraMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+begin
+  with rec do
+  begin
+    rec.Envi_Chance := E_Daytime_Infrared_Modifier;
+
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
+
+    rec.Value := vrDaytimeInfra.Position;
+  end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec);
+end;
+
+procedure TfrmToteDisplay.VrDaytimeVisualMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+begin
+  with rec do
+  begin
+    rec.Envi_Chance := E_Daytime_Visual_Modifier;
+
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
+
+    rec.Value := VrDaytimeVisual.Position;
+  end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec);
+end;
+
+procedure TfrmToteDisplay.vrNighttimeInfraMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+begin
+  with rec do
+  begin
+    rec.Envi_Chance := E_Nighttime_Infrared_Modifier;
+
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
+
+    rec.Value := vrNighttimeInfra.Position;
+  end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec);
+end;
+
+procedure TfrmToteDisplay.VrNighttimeVisualMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+begin
+  with rec do
+  begin
+    rec.Envi_Chance := E_Nighttime_Visual_Modifier;
+
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
+
+    rec.Value := VrNighttimeVisual.Position;
+  end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec);
+end;
+
+procedure TfrmToteDisplay.vrWindMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+var
+  newheading : integer;
+  rec: TrecSinc_Envi;
+  env : TEnvi;
+
+begin
+  if vrWind.Position < 180 then
+    newheading := (180 + vrWind.Position)
+  else
+    newheading := (vrWind.Position - 180);
+
+  with rec do
+  begin
+    rec.Envi_Chance := E_Wind_Direction;
+
+    if lvEnviroArea.ItemIndex <> -1 then
+      rec.Envi_Type := lvEnviroArea.ItemIndex
+    else
+      rec.Envi_Type := 0;
+
+    rec.Value := ValidateDegree(newheading);
+  end;
+
+  if Assigned(lvEnviroArea.Selected) then
+  begin
+    env := lvEnviroArea.Selected.Data;
+
+    if env is TSubArea_Enviro_Definition then
+      rec.Sub_EnviID := TSubArea_Enviro_Definition(env).FData.Enviro_Index
+    else
+      rec.Sub_EnviID := 0;
+  end;
+
+  simMgrClient.netSend_CmdSyncEnvi(rec)
 end;
 
 procedure TfrmToteDisplay.WriteEventSummary;

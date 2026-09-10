@@ -35,6 +35,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -217,22 +218,16 @@ begin
   
 end;
 
+procedure TfrmAvailableBase.edtCheatChange(Sender: TObject);
+begin
+  UpdateBaseList;
+end;
+
 procedure TfrmAvailableBase.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  base : TBase;
 begin
   if Key = #13 then
   begin
-    lstBase.Items.Clear;
-
-    dmTTT.GetFilterBaseDef(FBaseList, edtCheat.text);
-
-    for i := 0 to FBaseList.Count - 1 do
-    begin
-      base := FBaseList.Items[i];
-      lstBase.Items.AddObject(base.FData.Base_Identifier, base);
-    end;
+    UpdateBaseList
   end;
 end;
 

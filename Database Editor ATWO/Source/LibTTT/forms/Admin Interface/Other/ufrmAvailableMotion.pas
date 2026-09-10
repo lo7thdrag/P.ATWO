@@ -11,7 +11,7 @@ type
   TfrmAvailablemotion = class(TForm)
     lbMotions: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -23,7 +23,6 @@ type
     ImgBtnBack: TRzBmpButton;
 
     procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormActivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -36,8 +35,9 @@ type
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure CheatClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -63,11 +63,6 @@ uses
 procedure TfrmAvailableMotion.FormActivate(Sender: TObject);
 begin
 //  WindowState := wsMaximized;
-end;
-
-procedure TfrmAvailablemotion.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableMotion.FormCreate(Sender: TObject);
@@ -247,25 +242,19 @@ end;
 
 procedure TfrmAvailablemotion.CheatClick(Sender: TObject);
 begin
-  edtCheat.Visible := not edtCheat.Visible;
+//  edtCheat.Visible := not edtCheat.Visible;
 end;
 
-procedure TfrmAvailablemotion.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  motion : TMotion_Characteristics;
+procedure TfrmAvailablemotion.edtSearchChange(Sender: TObject);
+begin
+  UpdateMotionList;
+end;
+
+procedure TfrmAvailablemotion.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lbMotions.Items.Clear;
-
-    dmTTT.GetFilterMotionDef(FMotionList, edtCheat.text);
-
-    for i := 0 to FMotionList.Count - 1 do
-    begin
-      motion := FMotionList.Items[i];
-      lbMotions.Items.AddObject(motion.FData.Motion_Identifier, motion);
-    end;
+    UpdateMotionList
   end;
 end;
 
@@ -284,7 +273,7 @@ var
 begin
   lbMotions.Items.Clear;
 
-  dmTTT.GetAllMotionCharacteristicDef(FMotionList);
+  dmTTT.GetFilterMotionCharacteristicDef(FMotionList, edtSearch.Text);
 
   for i := 0 to FMotionList.Count - 1 do
   begin

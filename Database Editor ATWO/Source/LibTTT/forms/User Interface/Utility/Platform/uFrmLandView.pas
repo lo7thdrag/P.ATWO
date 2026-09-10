@@ -404,6 +404,7 @@ type
     procedure UpdateCbbTypeItems;
     procedure btnAssetClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtCheatChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -435,22 +436,16 @@ uDataModuleTTT, ufrmAssetDetail;
 
 {$REGION ' Form Handle '}
 
+procedure TfrmLandView.edtCheatChange(Sender: TObject);
+begin
+  UpdateLandVehicleList;
+end;
+
 procedure TfrmLandView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  landvehicle : TVehicle_Definition;
 begin
   if Key = #13 then
   begin
-    lstLand.Items.Clear;
-
-    dmTTT.GetFilterVehicleDef(FLandVehicleList, edtCheat.text);
-
-    for i := 0 to FLandVehicleList.Count - 1 do
-    begin
-      landvehicle := FLandVehicleList.Items[i];
-      lstLand.Items.AddObject(landvehicle.FData.Vehicle_Identifier, landvehicle);
-    end;
+    UpdateLandVehicleList
   end;
 end;
 

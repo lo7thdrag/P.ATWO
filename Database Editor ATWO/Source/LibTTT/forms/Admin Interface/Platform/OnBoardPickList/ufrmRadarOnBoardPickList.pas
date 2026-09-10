@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
   private
     FAllRadarDefList : TList;
@@ -148,6 +152,19 @@ begin
   UpdateRadarList;
 end;
 
+procedure TfrmRadarOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateRadarList;
+end;
+
+procedure TfrmRadarOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateRadarList;
+  end;
+end;
+
 procedure TfrmRadarOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -177,7 +194,7 @@ begin
   lbAllRadarDef.Items.Clear;
   lbAllRadarOnBoard.Items.Clear;
 
-  dmTTT.GetAllRadarDef(FAllRadarDefList);
+  dmTTT.GetFilterRadarDef(FAllRadarDefList, edtSearch.Text);
   dmTTT.GetRadarOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllRadarOnBoardList);
 
   for i := 0 to FAllRadarDefList.Count - 1 do

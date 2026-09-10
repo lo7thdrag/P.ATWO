@@ -19,6 +19,9 @@ type
     Label1: TLabel;
     Panel2: TPanel;
     Label2: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
+    btnEditMount: TButton;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -30,6 +33,8 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FAllDefensiveJammerDefList : TList;
@@ -124,6 +129,19 @@ begin
   Result := True;
 end;
 
+procedure TfrmSelfDefensiveJammerOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateDefensiveJammerList;
+end;
+
+procedure TfrmSelfDefensiveJammerOnBoardPickList.edtSearchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateDefensiveJammerList;
+  end;
+end;
+
 procedure TfrmSelfDefensiveJammerOnBoardPickList.btnRemoveClick(Sender: TObject);
 begin
   if lbAllDefensiveJammerOnBoard.ItemIndex = -1 then
@@ -160,26 +178,47 @@ end;
 
 procedure TfrmSelfDefensiveJammerOnBoardPickList.UpdateDefensiveJammerList;
 var
-  i : Integer;
-  definsivejammer : TDefensive_Jammer_On_Board;
+  i, j : Integer;
+  definsivejammer, definsivejammeronboard: TDefensive_Jammer_On_Board;
+  found : Boolean;
 begin
   lbAllDefensiveJammerDef.Items.Clear;
   lbAllDefensiveJammerOnBoard.Items.Clear;
 
-  dmTTT.GetAllSelfDefensiveJammerDef(FAllDefensiveJammerDefList);
+  dmTTT.GetFilterSelfDefensiveJammerDef(FAllDefensiveJammerDefList, edtSearch.Text);
   dmTTT.GetSelfDefensiveJammerOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllDefensiveJammerOnBoardList);
 
+  {$REGION ' Print Available '}
   for i := 0 to FAllDefensiveJammerDefList.Count - 1 do
   begin
     definsivejammer := FAllDefensiveJammerDefList.Items[i];
-    lbAllDefensiveJammerDef.Items.AddObject(definsivejammer.FDefensiveJammer_Def.Defensive_Jammer_Identifier, definsivejammer);
-  end;
 
-  for i := 0 to FAllDefensiveJammerOnBoardList.Count - 1 do
-  begin
-    definsivejammer := FAllDefensiveJammerOnBoardList.Items[i];
-    lbAllDefensiveJammerOnBoard.Items.AddObject(definsivejammer.FData.Instance_Identifier, definsivejammer);
+    found := False;
+    for j := 0 to FAllDefensiveJammerOnBoardList.Count - 1 do
+    begin
+      definsivejammerOnboard := FAllDefensiveJammerOnBoardList.Items[j];
+
+      if definsivejammerOnboard.FDefensiveJammer_Def.Defensive_Jammer_Index = definsivejammer.FDefensiveJammer_Def.Defensive_Jammer_Index then
+      begin
+        found := True;
+        Break;
+      end;
+    end;
+
+    if not found then
+      lbAllDefensiveJammerDef.Items.AddObject(definsivejammer.FDefensiveJammer_Def.Defensive_Jammer_Identifier, definsivejammer);
+
   end;
+  {$ENDREGION}
+
+  {$REGION ' Print Onboard '}
+  for j := 0 to FAllDefensiveJammerOnBoardList.Count - 1 do
+  begin
+    definsivejammerOnboard := FAllDefensiveJammerOnBoardList.Items[j];
+    lbAllDefensiveJammerOnBoard.Items.AddObject(definsivejammerOnboard.FDefensiveJammer_Def.Defensive_Jammer_Identifier, definsivejammerOnboard)
+  end;
+  {$ENDREGION}
+
 end;
 
 {$ENDREGION}

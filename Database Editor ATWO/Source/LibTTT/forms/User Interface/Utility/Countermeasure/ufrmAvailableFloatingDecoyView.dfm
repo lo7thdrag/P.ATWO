@@ -15,7 +15,6 @@ object frmAvailableFloatingDecoyView: TfrmAvailableFloatingDecoyView
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -75917,7 +75916,7 @@ object frmAvailableFloatingDecoyView: TfrmAvailableFloatingDecoyView
       TabOrder = 3
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 140
     Top = 123
     Width = 267
@@ -75931,7 +75930,8 @@ object frmAvailableFloatingDecoyView: TfrmAvailableFloatingDecoyView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 203

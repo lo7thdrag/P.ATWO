@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -146,6 +150,19 @@ begin
   UpdateGunList;
 end;
 
+procedure TfrmGunOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateGunList;
+end;
+
+procedure TfrmGunOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateGunList;
+  end;
+end;
+
 procedure TfrmGunOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -175,8 +192,8 @@ begin
   lbAllGunDef.Items.Clear;
   lbAllGunOnBoard.Items.Clear;
 
-  dmTTT.GetAllGunDef(FAllGunDefList);
-  dmTTT.GetGunOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllGunOnBoardList);
+  dmTTT.GetFilterGunDef(FAllGunDefList, edtSearch.Text);
+  dmTTT.GetGunOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllGunOnBoardList);
 
   for i := 0 to FAllGunDefList.Count - 1 do
   begin

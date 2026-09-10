@@ -92,6 +92,7 @@ type
     procedure trckbrLethalityChange(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -116,22 +117,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmMineView.edtCheatChange(Sender: TObject);
+begin
+  UpdateMineList;
+end;
+
 procedure TfrmMineView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  mine : TMine_On_Board;
 begin
   if Key = #13 then
   begin
-    lstMine.Items.Clear;
-
-    dmTTT.GetFilterMineDef(FMineList, edtCheat.text);
-
-    for i := 0 to FMineList.Count - 1 do
-    begin
-      mine := FMineList.Items[i];
-      lstMine.Items.AddObject(mine.FMine_Def.Mine_Identifier, mine);
-    end;
+    UpdateMineList
   end;
 end;
 

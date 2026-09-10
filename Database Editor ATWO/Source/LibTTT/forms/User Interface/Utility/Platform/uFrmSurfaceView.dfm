@@ -66351,6 +66351,7 @@ object frmSurfaceView: TfrmSurfaceView
     Font.Style = []
     ParentFont = False
     TabOrder = 9
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object ImgBtnBack: TRzBmpButton

@@ -69,20 +69,20 @@ type
     ImgHeader: TImage;
     lblTab: TLabel;
     ImgBc: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnPreviousTab: TRzBmpButton;
     ImgBtnNextTab: TRzBmpButton;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -109,32 +109,17 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableFloatingDecoyView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  floatingdecoy : TFloating_Decoy_On_Board;
+procedure TfrmAvailableFloatingDecoyView.edtSearchChange(Sender: TObject);
+begin
+  UpdateFloatingDecoyList;
+end;
+
+procedure TfrmAvailableFloatingDecoyView.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstFloatingDecoy.Items.Clear;
-
-    dmTTT.GetFilterFloatingDecoyDef(FFloatingDecoyList, edtCheat.text);
-
-    for i := 0 to FFloatingDecoyList.Count - 1 do
-    begin
-      floatingdecoy := FFloatingDecoyList.Items[i];
-      lstFloatingDecoy.Items.AddObject(floatingdecoy.FFloatingDecoy_Def.Floating_Decoy_Identifier, floatingdecoy);
-    end;
+    UpdateFloatingDecoyList
   end;
-end;
-
-procedure TfrmAvailableFloatingDecoyView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FFloatingDecoyList);
-//
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableFloatingDecoyView.FormCreate(Sender: TObject);
@@ -237,7 +222,7 @@ var
 begin
   lstFloatingDecoy.Items.Clear;
 
-  dmTTT.GetAllFloatingDecoyDef(FFloatingDecoyList);
+  dmTTT.GetFilterFloatingDecoyDef(FFloatingDecoyList, edtSearch.Text);
 
   for i := 0 to FFloatingDecoyList.Count - 1 do
   begin

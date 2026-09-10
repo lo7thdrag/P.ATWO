@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
 
   private
@@ -148,6 +152,19 @@ begin
   UpdateESMList;
 end;
 
+procedure TfrmESMOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateESMList;
+end;
+
+procedure TfrmESMOnBoardPickList.edtSearchKeyPress(Sender: TObject;var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateESMList;
+  end;
+end;
+
 procedure TfrmESMOnBoardPickList.btnCloseClick(Sender: TObject);
 begin
   Close;
@@ -177,8 +194,8 @@ begin
   lbAllESMDef.Items.Clear;
   lbESMOnBoard.Items.Clear;
 
-  dmTTT.GetAllESMDef(FAllESMDefList);
-  dmTTT.GetESMOnBoard(FSelectedVehicle.FData.Vehicle_Index,FAllESMOnBoardList);
+  dmTTT.GetFilterESMDef(FAllESMDefList, edtSearch.Text);
+  dmTTT.GetESMOnBoard(FSelectedVehicle.FData.Vehicle_Index, FAllESMOnBoardList);
 
   for i := 0 to FAllESMDefList.Count - 1 do
   begin

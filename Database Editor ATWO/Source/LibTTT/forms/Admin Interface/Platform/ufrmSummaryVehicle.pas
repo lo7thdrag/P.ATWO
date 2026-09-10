@@ -334,8 +334,6 @@ type
     cbGangwayStarboard: TCheckBox;
     edtClass: TEdit;
     txtClass: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -409,6 +407,9 @@ type
 
   private
     FSelectedVehicle : TVehicle_Definition;
+    FSelectedMotion : TMotion_Characteristics;
+    FSelectedLogistic : TLogistics;
+    FSelectedTransport : TTransport;
 
     FPlatInstList : TList;
     FSelectedPIIdent : TPlatform_Instance_Identifier;
@@ -466,23 +467,21 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmSummaryVehicle.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FPlatInstList);
-//  FreeItemsAndFreeList(iList);
-//  FreeItemsAndFreeList(PIList);
-//  FreeItemsAndFreeList(embarkedList);
-//  Action := cafree;
-end;
-
 procedure TfrmSummaryVehicle.FormCreate(Sender: TObject);
 begin
   FPlatInstList := TList.Create;
+
+  FSelectedMotion := TMotion_Characteristics.Create;
+  FSelectedLogistic := TLogistics.Create;
+  FSelectedTransport := TTransport.Create;
 end;
 
 procedure TfrmSummaryVehicle.FormDestroy(Sender: TObject);
 begin
   FreeItemsAndFreeList(FPlatInstList);
+  FSelectedMotion.Free;
+  FSelectedLogistic.Free;
+  FSelectedTransport.Free;
 end;
 
 procedure TfrmSummaryVehicle.FormShow(Sender: TObject);
@@ -1879,33 +1878,19 @@ begin
 end;
 
 procedure TfrmSummaryVehicle.UpdateLogisticData;
-var
-  logistic : TLogistics;
 begin
-  with FSelectedVehicle.FData do
-    dmTTT.GetLogisticDef(Logistics_Index, logistic);
-
-  if Assigned(logistic) then
-    edtDefaultLogistics.Text := logistic.FData.Logistic_Identifier
+  if dmTTT.GetLogisticDef(FSelectedVehicle.FData.Logistics_Index, FSelectedLogistic) then
+    edtDefaultLogistics.Text := FSelectedLogistic.FData.Logistic_Identifier
   else
     edtDefaultLogistics.Text := '(None)';
-
-  logistic.Free
 end;
 
 procedure TfrmSummaryVehicle.UpdateTransportData;
-var
-  transport : TTransport;
 begin
-  with FSelectedVehicle.FData do
-    dmTTT.GetTransportDef(Platform_Capability_Index, transport);
-
-  if Assigned(transport) then
-    edtDefaultCarryingCap.Text := transport.FData.Transport_Identifier
+  if dmTTT.GetTransportDef(FSelectedVehicle.FData.Platform_Capability_Index, FSelectedTransport) then
+    edtDefaultCarryingCap.Text := FSelectedTransport.FData.Transport_Identifier
   else
     edtDefaultCarryingCap.Text := '(None)';
-
-  transport.Free;
 end;
 
 procedure TfrmSummaryVehicle.UpdateCbbCategoryItems(const aDomain, IdCategory: Byte);

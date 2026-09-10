@@ -11,7 +11,7 @@ type
   TfrmAvailableRadarNoiseJammer = class(TForm)
     Label2: TLabel;
     lstRadarNoiseJammer: TListBox;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -21,8 +21,6 @@ type
     btnUsage: TRzBmpButton;
     btnDelete: TRzBmpButton;
     ImgBtnBack: TRzBmpButton;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -34,9 +32,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure ImgBackgroundClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
 
   private
@@ -59,13 +58,6 @@ uses
 {$R *.dfm}
 
 {$REGION ' Form Handle '}
-
-procedure TfrmAvailableRadarNoiseJammer.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FRadarNoiseJammerList);
-//  Action := cafree;
-end;
 
 procedure TfrmAvailableRadarNoiseJammer.FormCreate(Sender: TObject);
 begin
@@ -227,23 +219,16 @@ begin
 
 end;
 
-procedure TfrmAvailableRadarNoiseJammer.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  radarnoisejammer : TRadar_Noise_Jammer_On_Board;
+procedure TfrmAvailableRadarNoiseJammer.edtSearchChange(Sender: TObject);
+begin
+  UpdateRadarNoiseJammerList;
+end;
+
+procedure TfrmAvailableRadarNoiseJammer.edtSearchKeyPress(Sender: TObject;var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstRadarNoiseJammer.Items.Clear;
-
-    dmTTT.GetFilterRadarNoiseJammerDef(FRadarNoiseJammerList, edtCheat.text);
-
-    for i := 0 to FRadarNoiseJammerList.Count - 1 do
-    begin
-      radarnoisejammer := FRadarNoiseJammerList.Items[i];
-      lstRadarNoiseJammer.Items.AddObject(radarnoisejammer.FDef.Jammer_Identifier, radarnoisejammer);
-    end;
+    UpdateRadarNoiseJammerList
   end;
 end;
 
@@ -262,7 +247,7 @@ var
 begin
   lstRadarNoiseJammer.Items.Clear;
 
-  dmTTT.GetAllRadarNoiseJammerDef(FRadarNoiseJammerList);
+  dmTTT.GetFilterRadarNoiseJammerDef(FRadarNoiseJammerList, edtSearch.Text);
 
   for i := 0 to FRadarNoiseJammerList.Count - 1 do
   begin

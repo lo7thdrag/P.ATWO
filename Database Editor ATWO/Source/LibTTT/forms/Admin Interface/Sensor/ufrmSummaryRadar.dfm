@@ -15,7 +15,6 @@ object frmSummaryRadar: TfrmSummaryRadar
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 16
@@ -34176,6 +34175,10 @@ object frmSummaryRadar: TfrmSummaryRadar
       TabWidth = 100
       object tsGeneral: TTabSheet
         Caption = 'General'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object lblBaselineDelectionRange: TLabel
           Left = 373
           Top = 33
@@ -34714,6 +34717,10 @@ object frmSummaryRadar: TfrmSummaryRadar
       object tsAntiJamming: TTabSheet
         Caption = 'Anti Jamming'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grbBasicCapabilities: TGroupBox
           Left = 16
           Top = 20
@@ -34900,6 +34907,10 @@ object frmSummaryRadar: TfrmSummaryRadar
         BorderWidth = 10
         Caption = 'Notes'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object mmoNotes: TMemo
           Left = 0
           Top = 0

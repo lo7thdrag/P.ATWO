@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     Panel2: TPanel;
     Label4: TLabel;
+    lbl1: TLabel;
+    edtSearch: TEdit;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -33,6 +35,8 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
 
   private
     FAllIFFDefList : TList;
@@ -149,6 +153,20 @@ begin
   end;
 
   UpdateIFFList;
+end;
+
+procedure TfrmIFFOnBoardPickList.edtSearchChange(Sender: TObject);
+begin
+  UpdateIFFList;
+end;
+
+procedure TfrmIFFOnBoardPickList.edtSearchKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    UpdateIFFList;
+  end;
 end;
 
 procedure TfrmIFFOnBoardPickList.btnCloseClick(Sender: TObject);

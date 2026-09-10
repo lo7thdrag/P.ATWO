@@ -67,6 +67,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -92,22 +93,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmBombView.edtCheatChange(Sender: TObject);
+begin
+  UpdateBombList;
+end;
+
 procedure TfrmBombView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  bomb : TBomb_Definition;
 begin
   if Key = #13 then
   begin
-    lstBomb.Items.Clear;
-
-    dmTTT.GetFilterBombDef(FBombList, edtCheat.text);
-
-    for i := 0 to FBombList.Count - 1 do
-    begin
-      bomb := FBombList.Items[i];
-      lstBomb.Items.AddObject(bomb.FData.Bomb_Identifier, bomb);
-    end;
+    UpdateBombList
   end;
 end;
 

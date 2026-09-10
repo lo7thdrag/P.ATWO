@@ -15,7 +15,6 @@ object frmSummarySonobuoy: TfrmSummarySonobuoy
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34247,6 +34246,10 @@ object frmSummarySonobuoy: TfrmSummarySonobuoy
       object tsPhysical: TTabSheet
         Caption = 'Physical'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grbDimensions: TGroupBox
           Left = 15
           Top = 20
@@ -34332,6 +34335,10 @@ object frmSummarySonobuoy: TfrmSummarySonobuoy
         BorderWidth = 10
         Caption = 'Notes'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object mmoNotes: TMemo
           Left = 0
           Top = 0

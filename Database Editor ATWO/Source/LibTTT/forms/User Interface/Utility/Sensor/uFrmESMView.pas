@@ -93,6 +93,7 @@ type
     procedure ImgBtnPreviousTabClick(Sender: TObject);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -118,22 +119,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmESMView.edtCheatChange(Sender: TObject);
+begin
+  UpdateESMList;
+end;
+
 procedure TfrmESMView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  esm : TESM_On_Board;
 begin
   if Key = #13 then
   begin
-    lstESM.Items.Clear;
-
-    dmTTT.GetFilterESMDef(FESMList, edtCheat.text);
-
-    for i := 0 to FESMList.Count - 1 do
-    begin
-      esm := FESMList.Items[i];
-      lstESM.Items.AddObject(esm.FESM_Def.Class_Identifier, esm);
-    end;
+    UpdateESMList
   end;
 end;
 

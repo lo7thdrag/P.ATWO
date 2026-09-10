@@ -44,6 +44,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtCheatChange(Sender: TObject);
 
   private
     tabIndex, tabMax : Integer;
@@ -69,22 +70,16 @@ uses
 
 {$REGION ' Form Handle '}
 
+procedure TfrmMADView.edtCheatChange(Sender: TObject);
+begin
+  UpdateMADList;
+end;
+
 procedure TfrmMADView.edtCheatKeyPress(Sender: TObject; var Key: Char);
-var
-  i : Integer;
-  mad : TMAD_On_Board;
 begin
   if Key = #13 then
   begin
-    lstMAD.Items.Clear;
-
-    dmTTT.GetFilterMADDef(FMADList, edtCheat.text);
-
-    for i := 0 to FMADList.Count - 1 do
-    begin
-      mad := FMADList.Items[i];
-      lstMAD.Items.AddObject(mad.FMAD_Def.Class_Identifier, mad);
-    end;
+    UpdateMADList
   end;
 end;
 

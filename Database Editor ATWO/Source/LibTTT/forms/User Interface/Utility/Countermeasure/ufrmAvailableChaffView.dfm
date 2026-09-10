@@ -15,7 +15,6 @@ object frmAvailableChaffView: TfrmAvailableChaffView
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -66363,9 +66362,9 @@ object frmAvailableChaffView: TfrmAvailableChaffView
     TabOrder = 0
     OnClick = lbSingleClick
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 140
-    Top = 120
+    Top = 121
     Width = 266
     Height = 26
     AutoSize = False
@@ -66376,7 +66375,8 @@ object frmAvailableChaffView: TfrmAvailableChaffView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 215

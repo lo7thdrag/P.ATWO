@@ -59,8 +59,6 @@ type
     Label1: TLabel;
     edtClass: TEdit;
     txtClass: TLabel;
-
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     Procedure FormShow(Sender: TObject);
 
     //Global
@@ -105,11 +103,6 @@ uses
 
 
 {$REGION ' Form Handle '}
-
-procedure TfrmSummaryESM.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := cafree;
-end;
 
 procedure TfrmSummaryESM.FormShow(Sender: TObject);
 begin

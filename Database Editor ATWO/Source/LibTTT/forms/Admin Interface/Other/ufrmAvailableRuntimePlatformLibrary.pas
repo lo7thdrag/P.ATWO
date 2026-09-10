@@ -11,7 +11,7 @@ type
   TfrmAvailableRuntimePlatformLibrary = class(TForm)
     lstRuntimePlatformLibrary: TListBox;
     Label2: TLabel;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     ImgBackgroundForm: TImage;
     lblsearch: TLabel;
     ImgHeader: TImage;
@@ -34,8 +34,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUsageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
 
   private
     FUpdateList : Boolean;
@@ -231,7 +232,7 @@ var
 begin
   lstRuntimePlatformLibrary.Items.Clear;
 
-  dmTTT.GetAllRuntimePlatformLibraryDef(FRuntimePlatformLibraryList);
+ dmTTT.GetFilterRuntimePlatformLibraryDef(FRuntimePlatformLibraryList, edtSearch.Text);
 
   for i := 0 to FRuntimePlatformLibraryList.Count - 1 do
   begin
@@ -285,23 +286,16 @@ begin
 end;
 
 
-procedure TfrmAvailableRuntimePlatformLibrary.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  runtimeplatformlibrary : TRuntime_Platform_Library;
+procedure TfrmAvailableRuntimePlatformLibrary.edtSearchChange(Sender: TObject);
+begin
+  UpdateRPLList;
+end;
+
+procedure TfrmAvailableRuntimePlatformLibrary.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstRuntimePlatformLibrary.Items.Clear;
-
-    dmTTT.GetFilterRuntimePlatformLibraryDef(FRuntimePlatformLibraryList, edtCheat.text);
-
-    for i := 0 to FRuntimePlatformLibraryList.Count - 1 do
-    begin
-      runtimeplatformlibrary := FRuntimePlatformLibraryList.Items[i];
-      lstRuntimePlatformLibrary.Items.AddObject(runtimeplatformlibrary.FData.Library_Name, runtimeplatformlibrary);
-    end;
+    UpdateRPLList
   end;
 end;
 

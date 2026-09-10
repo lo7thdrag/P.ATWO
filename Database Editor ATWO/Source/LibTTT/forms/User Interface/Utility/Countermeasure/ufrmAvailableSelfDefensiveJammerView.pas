@@ -48,7 +48,7 @@ type
     ImgHeader: TImage;
     lblTab: TLabel;
     ImgBc: TImage;
-    edtCheat: TEdit;
+    edtSearch: TEdit;
     lblsearch: TLabel;
     ImgBtnBack: TRzBmpButton;
     ImgBtnNextTab: TRzBmpButton;
@@ -56,14 +56,14 @@ type
     Label18: TLabel;
     Label19: TLabel;
     procedure ImgBtnBackClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbSingleClick(Sender: TObject);
     procedure ImgBtnNextTabClick(Sender: TObject);
     procedure ImgBtnPreviousTabClick(Sender: TObject);
-    procedure edtCheatKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSearchKeyPress(Sender: TObject; var Key: Char);
     procedure FormDestroy(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
   private
     { Private declarations }
 
@@ -93,32 +93,17 @@ uses
 
 {$REGION ' Form Handle '}
 
-procedure TfrmAvailableSelfDefensiveJammerView.edtCheatKeyPress(Sender: TObject;
-  var Key: Char);
-var
-  i : Integer;
-  selfdefensivejammer : TDefensive_Jammer_On_Board;
+procedure TfrmAvailableSelfDefensiveJammerView.edtSearchChange(Sender: TObject);
+begin
+  UpdateSelfDefensiveJammerList;
+end;
+
+procedure TfrmAvailableSelfDefensiveJammerView.edtSearchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    lstSelfDefensiveJammer.Items.Clear;
-
-    dmTTT.GetFilterSelfDefensiveJammerDef(FSelfDefensiveJammerList, edtCheat.text);
-
-    for i := 0 to FSelfDefensiveJammerList.Count - 1 do
-    begin
-      selfdefensivejammer := FSelfDefensiveJammerList.Items[i];
-      lstSelfDefensiveJammer.Items.AddObject(selfdefensivejammer.FDefensiveJammer_Def.Defensive_Jammer_Identifier, selfdefensivejammer);
-    end;
+    UpdateSelfDefensiveJammerList
   end;
-end;
-
-procedure TfrmAvailableSelfDefensiveJammerView.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-//  FreeItemsAndFreeList(FSelfDefensiveJammerList);
-//
-//  Action := cafree;
 end;
 
 procedure TfrmAvailableSelfDefensiveJammerView.FormCreate(Sender: TObject);
@@ -220,7 +205,7 @@ var
 begin
   lstSelfDefensiveJammer.Items.Clear;
 
-  dmTTT.GetAllSelfDefensiveJammerDef(FSelfDefensiveJammerList);
+  dmTTT.GetFilterSelfDefensiveJammerDef(FSelfDefensiveJammerList, edtSearch.Text);
 
   for i := 0 to FSelfDefensiveJammerList.Count - 1 do
   begin

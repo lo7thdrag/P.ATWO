@@ -15,7 +15,6 @@ object frmAvailableAirBubbleView: TfrmAvailableAirBubbleView
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -75429,7 +75428,7 @@ object frmAvailableAirBubbleView: TfrmAvailableAirBubbleView
       Transparent = True
     end
   end
-  object edtCheat: TEdit
+  object edtSearch: TEdit
     Left = 138
     Top = 115
     Width = 269
@@ -75442,7 +75441,8 @@ object frmAvailableAirBubbleView: TfrmAvailableAirBubbleView
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnKeyPress = edtCheatKeyPress
+    OnChange = edtSearchChange
+    OnKeyPress = edtSearchKeyPress
   end
   object ImgBtnBack: TRzBmpButton
     Left = 206

@@ -17856,6 +17856,7 @@ object frmAvailableGameDefault: TfrmAvailableGameDefault
     ParentFont = False
     TabOrder = 1
     Visible = False
+    OnChange = edtCheatChange
     OnKeyPress = edtCheatKeyPress
   end
   object btnNew: TRzBmpButton
