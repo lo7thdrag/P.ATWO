@@ -59,21 +59,23 @@ type
     { Private declarations }
   public
     { Public declarations }
-    function InitZDB(const zDbServer, zDBProto, zDBname,
-      zDBuser, zDBPass: string): boolean;
-    function InsertGameReport(aRec : TRecGameReport) : integer;
+    function InitZDB(const zDbServer, zDBProto, zDBname, zDBuser, zDBPass: string): boolean;
+
     function SelectGameReport(const id : Integer; var recList : TList): Boolean;
-    function SelectGameReportBySceID(const SceID : Integer; var recList : TList): Boolean;
     function UpdateGameReport(const id : integer; aRec : TRecGameReport): Integer;
+
+    function InsertGameReport(aRec : TRecGameReport) : integer;
+    function SelectGameReportBySceID(const SceID : Integer; var recList : TList): Boolean;
     function CancelGame : Boolean;
     function ClearGC : Boolean;
+
     function GetStatusGC : Boolean;
     procedure GetScenarioListFromDB(var l: TList);
-    procedure GetScenarioListFromCDB(var ls: TList);
     procedure GetScenarioInfo(const scID: integer; var scInfo: TScenarioInfo);
     procedure GetRecordListFromDB(var l : TList);
-    procedure GetGameArea(const scID: integer;var GameAreaIdentifier   : string;
-    var GameAreaIndex  : Integer);
+
+    procedure GetScenarioListFromCDB(var ls: TList);
+    procedure GetGameArea(const scID: integer; var GameAreaIdentifier : string; var GameAreaIndex  : Integer);
 
     procedure GetGroupList(const scId: Integer; var l: TList);
     procedure GetGroupMember(const grpId: Integer; var l: TList);
