@@ -110,10 +110,6 @@ object frmEMCON: TfrmEMCON
             ExplicitTop = 326
             ExplicitHeight = 30
           end
-          inherited Label1: TLabel
-            Top = 32
-            ExplicitTop = 32
-          end
           inherited Label2: TLabel
             Top = 52
             ExplicitTop = 52

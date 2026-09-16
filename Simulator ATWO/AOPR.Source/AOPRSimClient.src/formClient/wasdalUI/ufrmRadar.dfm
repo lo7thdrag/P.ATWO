@@ -1,7 +1,7 @@
 object frmSensor: TfrmSensor
   Left = 0
   Top = 0
-  BorderIcons = []
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Sensor'
   ClientHeight = 565
@@ -214,8 +214,6 @@ object frmSensor: TfrmSensor
           inherited ScrollBox4: TScrollBox
             Width = 324
             Height = 428
-            ExplicitLeft = 2
-            ExplicitTop = 18
             ExplicitWidth = 324
             ExplicitHeight = 428
             inherited Bevel3: TBevel
@@ -300,8 +298,6 @@ object frmSensor: TfrmSensor
           inherited ScrollBox5: TScrollBox
             Width = 324
             Height = 428
-            ExplicitLeft = 2
-            ExplicitTop = 18
             ExplicitWidth = 324
             ExplicitHeight = 428
             inherited Bevel5: TBevel
@@ -976,18 +972,6 @@ object frmSensor: TfrmSensor
               ExplicitWidth = 86
               ExplicitHeight = 35
             end
-            inherited cbActivationInterval: TCheckBox [18]
-              Left = 12
-              Top = 145
-              Width = 120
-              Height = 14
-              Color = clWhite
-              ParentColor = False
-              ExplicitLeft = 12
-              ExplicitTop = 145
-              ExplicitWidth = 120
-              ExplicitHeight = 14
-            end
             inherited editComboInterval: TEdit [19]
               Left = 139
               Top = 140
@@ -1127,6 +1111,18 @@ object frmSensor: TfrmSensor
                 ExplicitWidth = 40
                 ExplicitHeight = 24
               end
+            end
+            inherited cbActivationInterval: TCheckBox [23]
+              Left = 12
+              Top = 145
+              Width = 120
+              Height = 14
+              Color = clWhite
+              ParentColor = False
+              ExplicitLeft = 12
+              ExplicitTop = 145
+              ExplicitWidth = 120
+              ExplicitHeight = 14
             end
             inherited pnlControlRadar: TPanel
               Left = 12
